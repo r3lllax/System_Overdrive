@@ -24,7 +24,7 @@ public class EnemyAI : MonoBehaviour
         StartCoroutine(RoamingRoutline());
     }
 
-    // <!--Раскомментировать чтобы противник преследовал только в определенном радиусе--!>
+    // <!-Раскомментировать чтобы противник преследовал только в определенном радиусе-!>
     // private void OnTriggerEnter2D(Collider2D collision)
     // {
     //     Debug.Log(collision.name);
