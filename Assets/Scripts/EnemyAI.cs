@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] private Transform Player;
+    public Transform Player;
+    
     private enum State{
         Roaming,
         FollowPlayer
     }
     private State state;
     private EnemyPathfinder enemyPathfinder;
+    public void SetPlayerOBJ(GameObject PlayerLink){
+        Player = PlayerLink.GetComponent<Transform>();
+    }
 
     private void Awake()
     {
         enemyPathfinder = GetComponent<EnemyPathfinder>();
         state = State.FollowPlayer;
-        
 
     }
     private void Start()
