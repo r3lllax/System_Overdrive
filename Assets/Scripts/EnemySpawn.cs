@@ -16,10 +16,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void Start()
     {
-        for (short i = 0; i < 4; i++)
-        {
-            SpawnVirus(PointOutOfScreen());
-        }
+    
     }
 
     private Vector3 PointOutOfScreen()
