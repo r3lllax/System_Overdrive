@@ -45,7 +45,6 @@ public class EnemySpawnController : MonoBehaviour
         //К примеру если прошло 5 минут то в avalibletypes добавить Elite, если 15 минут то добавить Boss
         string TypeToSpawn = AvailbleTypes[Random.Range(0,AvailbleTypes.Length)];
         GameObject enemy = pool.GetEnemy(TypeToSpawn);
-        Debug.Log(enemy);
         if(enemy!=null){
             currentEnemies++;
             Enemy EnemyComponent = enemy.GetComponent<Enemy>();

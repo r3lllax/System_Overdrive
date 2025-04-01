@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour
     public void SetHealth(int HP){
         health = HP;
     }
+    //Пока не убирать, позже переделать через инит, так как через ссылки на скрипты че то не оч мне нравится
     public void Init(EnemySpawnController SpawnController,EnemyPool enemyPool){
         ESC = SpawnController;
         pool = enemyPool;
@@ -22,7 +23,6 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
-        Debug.Log($"При смерти возвращаем {gameObject}");
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
         

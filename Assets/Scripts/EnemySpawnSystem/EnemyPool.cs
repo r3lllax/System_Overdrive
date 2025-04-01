@@ -18,7 +18,7 @@ public class EnemyPool : MonoBehaviour
         VirusPrefab = VirusPrefabLink;
         pools = new List<PoolSettings>
         {
-            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 10},
+            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 100},
             // new PoolSettings{Type = "Elite", prefab = VirusPrefab,poolSize = 100},
             // new PoolSettings{Type = "Boss", prefab = VirusPrefab,poolSize = 100},
         };
@@ -45,7 +45,6 @@ public class EnemyPool : MonoBehaviour
         
         if(poolDict[EnemyType].Count == 0){
             PoolSettings pool = pools.Find(p => p.Type == EnemyType);
-            Debug.Log(pool.Type);
             if (pool != null)
             {
                 GameObject newEnemy = Instantiate(pool.prefab, new Vector3(0,0,0), Quaternion.identity);

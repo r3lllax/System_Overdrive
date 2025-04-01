@@ -22,6 +22,18 @@ public class EnemyAI : MonoBehaviour
         state = State.FollowPlayer;
 
     }
+    [ContextMenu("Roaming")]
+    public void SetRoaming(){
+        StopCoroutine(RoamingRoutline());
+        state = State.Roaming;
+        StartCoroutine(RoamingRoutline());
+    }
+    [ContextMenu("FollowPlayer")]
+    public void SetFollowPlayer(){
+        StopCoroutine(RoamingRoutline());
+        state = State.FollowPlayer;
+        StartCoroutine(RoamingRoutline());
+    }
     private void Start()
     {
         StartCoroutine(RoamingRoutline());
@@ -32,17 +44,13 @@ public class EnemyAI : MonoBehaviour
     // {
     //     Debug.Log(collision.name);
     //     if(collision.name == "shadow"){
-    //         StopCoroutine(RoamingRoutline());
-    //         state = State.FollowPlayer;
-    //         StartCoroutine(RoamingRoutline());
+    //         SetFollowPlayer()
     //     }
     // }
     // private void OnTriggerExit2D(Collider2D collision)
     // {
     //     if(collision.name == "shadow"){
-    //         StopCoroutine(RoamingRoutline());
-    //         state = State.Roaming;
-    //         StartCoroutine(RoamingRoutline());
+    //         void SetRoaming()
     //     }
     // }
     void OnDisable()
