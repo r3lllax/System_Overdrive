@@ -11,10 +11,10 @@ TagManager:
   - Camera
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - enemy
+  - Enviroment
+  - border
   - 
   - 
   - 
