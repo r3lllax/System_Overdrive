@@ -8,6 +8,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
+    private string[] AvailbleTypes = {"Basic"};
     private int currentEnemies;
     private new Camera camera;
 
@@ -40,14 +41,18 @@ public class EnemySpawnController : MonoBehaviour
     }
 
     private void SpawnEnemy(){
-        string TypeToSpawn = "Basic";
+        
+        //К примеру если прошло 5 минут то в avalibletypes добавить Elite, если 15 минут то добавить Boss
+        string TypeToSpawn = AvailbleTypes[Random.Range(0,AvailbleTypes.Length)];
         GameObject enemy = pool.GetEnemy(TypeToSpawn);
+        Debug.Log(enemy);
         if(enemy!=null){
             currentEnemies++;
-            enemy.GetComponent<Enemy>().SetHealth(5);
-            enemy.GetComponent<Enemy>().pool = pool;
-            enemy.GetComponent<Enemy>().ESC = this;
-            enemy.GetComponent<Enemy>().SetEnemyType(TypeToSpawn);
+            Enemy EnemyComponent = enemy.GetComponent<Enemy>();
+            EnemyComponent.SetHealth(5);
+            EnemyComponent.pool = pool;
+            EnemyComponent.ESC = this;
+            EnemyComponent.SetEnemyType(TypeToSpawn);
             enemy.transform.position = camera.ViewportToWorldPoint(PointOutOfScreen());
             enemy.SetActive(true);
         }

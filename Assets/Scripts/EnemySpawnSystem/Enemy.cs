@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
+        Debug.Log($"При смерти возвращаем {gameObject}");
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
         
