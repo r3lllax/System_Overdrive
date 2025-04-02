@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawnController : MonoBehaviour
@@ -8,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private string[] AvailbleTypes = {"Basic"};
+    private List<string> AvailbleTypes = new List<string>{"Basic"};
     private int currentEnemies;
     private new Camera camera;
 
@@ -25,6 +26,7 @@ public class EnemySpawnController : MonoBehaviour
 
     private IEnumerator SpawnRoutine(){
         while(true){
+
             if(currentEnemies < maxEnemies){
                 SpawnEnemy();
             }
@@ -43,12 +45,21 @@ public class EnemySpawnController : MonoBehaviour
     private void SpawnEnemy(){
         
         //К примеру если прошло 5 минут то в avalibletypes добавить Elite, если 15 минут то добавить Boss
-        string TypeToSpawn = AvailbleTypes[Random.Range(0,AvailbleTypes.Length)];
+        string TypeToSpawn = AvailbleTypes[Random.Range(0,AvailbleTypes.Count)];
         GameObject enemy = pool.GetEnemy(TypeToSpawn);
         if(enemy!=null){
             currentEnemies++;
             Enemy EnemyComponent = enemy.GetComponent<Enemy>();
-            EnemyComponent.SetHealth(5);
+            int enemyHp = 1;
+            
+            if (EnemyComponent.GetEnemyType() == "Basic"){
+                enemyHp = 5;
+            }
+            else if(EnemyComponent.GetEnemyType()=="Elite"){
+                enemyHp = Random.Range(10,20);
+                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f,2f));
+            }
+            EnemyComponent.SetHealth(enemyHp);
             EnemyComponent.pool = pool;
             EnemyComponent.ESC = this;
             EnemyComponent.SetEnemyType(TypeToSpawn);
@@ -58,6 +69,18 @@ public class EnemySpawnController : MonoBehaviour
     }
     public void OnEnemyDeath(){
         currentEnemies--;
+    }
+    public void IncreaseMaxEnemies(int num){
+        maxEnemies += num;
+    }
+    public void AddTypeToAvailble(string newType){
+        AvailbleTypes.Add(newType);
+    }
+    public void DecreaseSpawnInterval(float number){
+        spawnInterval-=number;
+        if(spawnInterval<0){
+            spawnInterval = 0;
+        }
     }
 
 

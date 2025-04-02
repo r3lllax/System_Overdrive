@@ -2,15 +2,28 @@ using UnityEngine;
 
 public class DifficultyController : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] private EnemySpawnController ESC;
+    [SerializeField] private float timeToIncreaseDifficulty = 30f;
+    [SerializeField] private int enemyInIncrease = 15;
+    private float timeToElite = 2;
+    private float timer;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        timer += Time.deltaTime;
+        if(timer>timeToIncreaseDifficulty){
+            if(timeToElite>0){
+                timeToElite--;
+            }
+            else{
+                timeToElite=-1;
+            }
+            if(timeToElite==0){
+                ESC.AddTypeToAvailble("Elite");
+            }
+            ESC.IncreaseMaxEnemies(enemyInIncrease);
+            ESC.DecreaseSpawnInterval(0.2f);
+            timer = 0;
+        }
     }
 }

@@ -5,8 +5,10 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     public static GameObject VirusPrefab;
+    public static GameObject ScriptPrefab;
     public GameObject Player;
     [SerializeField] private GameObject VirusPrefabLink;
+    [SerializeField] private GameObject ScriptPrefabLink;
     public class PoolSettings
     {
         public string Type;
@@ -16,10 +18,11 @@ public class EnemyPool : MonoBehaviour
     private void Awake()
     {
         VirusPrefab = VirusPrefabLink;
+        ScriptPrefab = ScriptPrefabLink;
         pools = new List<PoolSettings>
         {
-            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 100},
-            // new PoolSettings{Type = "Elite", prefab = VirusPrefab,poolSize = 100},
+            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 170},
+            new PoolSettings{Type = "Elite", prefab = ScriptPrefab,poolSize = 170},
             // new PoolSettings{Type = "Boss", prefab = VirusPrefab,poolSize = 100},
         };
     }
@@ -33,6 +36,8 @@ public class EnemyPool : MonoBehaviour
             Queue<GameObject> enemyQueue = new Queue<GameObject>();
             for(int i = 0;i<pool.poolSize;i++){
                 var enemy = Instantiate(pool.prefab, new Vector3(0,0,0), Quaternion.identity);
+                Debug.Log(pool.Type);
+                enemy.GetComponent<Enemy>().SetEnemyType(pool.Type);
                 enemy.GetComponent<EnemyAI>().Player = Player.transform;
                 enemy.SetActive(false);
                 enemyQueue.Enqueue(enemy);
@@ -58,6 +63,7 @@ public class EnemyPool : MonoBehaviour
         }
         GameObject enemy = poolDict[EnemyType].Dequeue();
         enemy.SetActive(true);
+        
         return enemy;
     }
     public void ReturnEnemy(GameObject enemy){
@@ -66,5 +72,6 @@ public class EnemyPool : MonoBehaviour
         poolDict[EnemyType].Enqueue(enemy);
         enemy.SetActive(false);
     }
+   
 
 }

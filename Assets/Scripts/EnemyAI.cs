@@ -34,6 +34,12 @@ public class EnemyAI : MonoBehaviour
         state = State.FollowPlayer;
         StartCoroutine(RoamingRoutline());
     }
+    [ContextMenu("LogState")]
+    public void LogState(){
+        Debug.Log(state);
+    }
+    
+    private int EnableCount = 1;
     private void Start()
     {
         StartCoroutine(RoamingRoutline());
@@ -53,6 +59,16 @@ public class EnemyAI : MonoBehaviour
     //         void SetRoaming()
     //     }
     // }
+    void OnEnable()
+    {
+        if(EnableCount >1){
+            SetFollowPlayer();
+        }
+        else{
+            EnableCount++;
+        }
+        
+    }
     void OnDisable()
     {
         StopCoroutine(RoamingRoutline());

@@ -6,6 +6,9 @@ public class EnemyPathfinder : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveDir;
 
+    public void SetMoveSpeed(float Num){
+        moveSpeed = Num;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();

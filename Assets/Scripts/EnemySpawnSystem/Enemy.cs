@@ -23,10 +23,10 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
+        
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
         
-        //Обращение к пулу с целью возврата
     }
     public string GetEnemyType(){
         return Type;
