@@ -25,6 +25,16 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.LeftShift)){
+            moveSpeed*=1.5f;
+            transform.GetChild(2).gameObject.SetActive(true);
+        }
+        if(Input.GetKeyUp(KeyCode.LeftShift)){
+            if(moveSpeed!=0){
+                moveSpeed/=1.5f;
+            }
+            transform.GetChild(2).gameObject.SetActive(false);
+        }
         PlayerInput();
     }
     private void FixedUpdate()
