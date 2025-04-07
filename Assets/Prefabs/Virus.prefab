@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6395514750225154861}
   - component: {fileID: 5204237599670001151}
   - component: {fileID: 5506292141099689429}
+  - component: {fileID: 1488329603901368855}
+  - component: {fileID: 6337898686269032727}
   m_Layer: 7
   m_Name: Virus
   m_TagString: Untagged
@@ -217,7 +219,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23892b2fc67f79041ba36f0330679a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEffect: {fileID: 5214810043253317559, guid: 95abc57496097fc4c843f7e7f5503f86, type: 3}
   Type: Basic
   health: 0
   ESC: {fileID: 0}
   pool: {fileID: 0}
+--- !u!114 &1488329603901368855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871812499208310907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b58581a14d01429c125bb0c45e5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.2
+--- !u!114 &6337898686269032727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 871812499208310907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68a9cef80b048c45b567ae376377d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 0}
+  refreshDefaultMatTime: 0.2

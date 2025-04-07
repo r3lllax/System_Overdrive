@@ -2,10 +2,18 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public GameObject DeathEffect;
     [SerializeField]private string Type;
     [SerializeField] private int health;
     public EnemySpawnController ESC;
     public EnemyPool pool;
+    private Knockback knockback;
+    private Flash flash;
+    private void Awake()
+    {
+        knockback = GetComponent<Knockback>();
+        flash = GetComponent<Flash>();
+    }
     public void SetHealth(int HP){
         health = HP;
     }
@@ -14,16 +22,24 @@ public class Enemy : MonoBehaviour
         ESC = SpawnController;
         pool = enemyPool;
     }
-    public void TakeDamage(int Damage){
-        health -=Damage;
+    public void CheckDeath(){
         if(health<=0){
+            knockback.Refresh();
+            flash.Refresh();
             Die();
         }
+    }
+    public void TakeDamage(int Damage){
+        health -=Damage;
+        flash.StartCoroutine(flash.FlashRoutine());
+        knockback.GetKnockBack(PlayerController.Instance.transform,15f);
+        
+        
     }
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
-        
+        Instantiate(DeathEffect,transform.position,Quaternion.identity);
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
         

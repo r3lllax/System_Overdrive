@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 1688397130969823145}
   - component: {fileID: 4182013830633542331}
   - component: {fileID: -2572184119167944766}
+  - component: {fileID: -6015629558614203538}
+  - component: {fileID: -2237743296054071745}
   m_Layer: 7
   m_Name: Script
   m_TagString: Untagged
@@ -190,6 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23892b2fc67f79041ba36f0330679a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathEffect: {fileID: 5214810043253317559, guid: 95abc57496097fc4c843f7e7f5503f86, type: 3}
   Type: Elite
   health: 0
   ESC: {fileID: 0}
@@ -221,3 +224,30 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
+--- !u!114 &-6015629558614203538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087640818555516820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a98b58581a14d01429c125bb0c45e5eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackTime: 0.1
+--- !u!114 &-2237743296054071745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087640818555516820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68a9cef80b048c45b567ae376377d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 0}
+  refreshDefaultMatTime: 0.2
