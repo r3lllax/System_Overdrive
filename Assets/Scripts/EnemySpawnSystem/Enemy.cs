@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject DeathEffect;
+    public GameObject DamageEffect;
     [SerializeField]private string Type;
     [SerializeField] private int health;
     public EnemySpawnController ESC;
@@ -33,6 +34,7 @@ public class Enemy : MonoBehaviour
         health -=Damage;
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,15f);
+        Instantiate(DamageEffect,transform.position,Quaternion.identity);
         
         
     }

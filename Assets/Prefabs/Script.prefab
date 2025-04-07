@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DeathEffect: {fileID: 5214810043253317559, guid: 95abc57496097fc4c843f7e7f5503f86, type: 3}
+  DamageEffect: {fileID: 6325392617095057417, guid: b444c4d5bb480ec4bbc5bd481519a4c8, type: 3}
   Type: Elite
   health: 0
   ESC: {fileID: 0}
@@ -249,5 +250,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68a9cef80b048c45b567ae376377d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  whiteFlashMat: {fileID: 0}
+  whiteFlashMat: {fileID: 2100000, guid: 7fe40089ca356ea4abcb5d00b8691198, type: 2}
   refreshDefaultMatTime: 0.2
