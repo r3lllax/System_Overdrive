@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour
     private PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
+    private Transform transform;
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     private void Awake()
     {
         Instance = this;
+        transform = GetComponent<Transform>();
         playerControls = new PlayerControls();
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -27,6 +29,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        //Переделать через инпут систем
         if(Input.GetKeyDown(KeyCode.LeftShift)){
             moveSpeed*=1.5f;
             transform.GetChild(2).gameObject.SetActive(true);

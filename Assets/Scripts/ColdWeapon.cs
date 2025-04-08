@@ -3,11 +3,20 @@ using UnityEngine;
 
 public class ColdWeapon : MonoBehaviour
 {
+    [SerializeField]private Weapon currentWeapon;
     private Animator anim;
     private List<Collider2D> CollideEnemy;
     [SerializeField]private int Damage;
+    [SerializeField]private float AnimationSpeed;
     public void AttackStart(){
         transform.GetChild(0).gameObject.SetActive(true);
+    }
+    public void SetCurrentWeapon(Weapon weapon){
+        this.currentWeapon = weapon;
+    }
+    private void Update()
+    {
+        anim.speed = AnimationSpeed;
     }
     public void AttackEnd(){
         anim.SetBool("Attack",false);
@@ -19,7 +28,8 @@ public class ColdWeapon : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         CollideEnemy =  new List<Collider2D>();
-        Damage = 2;
+        Damage = currentWeapon.Damage;
+        AnimationSpeed = currentWeapon.AnimationSpeed;
         
     }
     public void OnTriggerEnter2D(Collider2D collision)

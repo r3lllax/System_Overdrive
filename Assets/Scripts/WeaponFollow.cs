@@ -2,29 +2,33 @@ using UnityEngine;
 
 public class WeaponFollow : MonoBehaviour
 {
+    [SerializeField]private Weapon currentWeapon;
     public Transform player;
-    public float distanceFromPlayer;
+    [SerializeField]private float distanceFromPlayer;
     
     private Camera mainCamera;
     private SpriteRenderer sp;
     private Animator Anim;
     public static bool AnimEnd = true;
-    [SerializeField]private float AnSpeed;
 
     private void Start() {
         mainCamera = Camera.main;
+        player = PlayerController.Instance.transform;
         sp = GetComponentInChildren<Transform>().GetChild(0).GetComponent<SpriteRenderer>();
         Anim = GetComponentInChildren<Transform>().GetChild(0).GetComponent<Animator>();
-        AnSpeed = 1f;
+        distanceFromPlayer = currentWeapon.distanceFromPlayer;
+        Instantiate(currentWeapon.AttackParticles,GetComponentInChildren<Transform>().GetChild(0).transform.position,Quaternion.identity);
+
+    }
+    private void Awake()
+    {
+        GetComponentInChildren<Transform>().GetChild(0).GetComponent<ColdWeapon>().SetCurrentWeapon(currentWeapon);
     }
 
     private void Update() {
-        Anim.speed = AnSpeed;
-        
         if(AnimEnd){
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
-            
 
             Vector3 direction = mousePosition - player.position;
             direction.Normalize();
@@ -34,17 +38,9 @@ public class WeaponFollow : MonoBehaviour
             transform.position = player.position + direction * distanceFromPlayer;
         }
 
-        // if(mousePosition.x < GetComponent<Transform>().position.x){
-        //     sp.flipY = true;
-        // }
-        // else{
-        //     sp.flipY = false;
-        // }
-
-        
+        //Переделать через инпут систем(Перенести в плеер контроллер)
         if(Input.GetMouseButton(0) && AnimEnd){
             AnimEnd = false;
-            Anim.SetBool("Flip",sp.flipY);
             Anim.SetBool("Attack",true);
             
         }

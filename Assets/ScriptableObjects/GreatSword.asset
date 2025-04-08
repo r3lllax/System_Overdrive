@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9cf5d553f85ed4f9bfd2b03943f5e0, type: 3}
+  m_Name: GreatSword
+  m_EditorClassIdentifier: 
+  WeaponName: GreatSword
+  distanceFromPlayer: 0.2
+  AnimationSpeed: 0.2
+  Damage: 6
+  WeaponPrefab: {fileID: 6801085675323255941, guid: dd23154cc8cde454886af5749fad8fc3, type: 3}
+  AttackParticles: {fileID: 9122314165558837979, guid: eaa43317ec6e9b3498678d8dc9707e59, type: 3}

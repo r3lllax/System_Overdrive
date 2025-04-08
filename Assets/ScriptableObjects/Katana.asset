@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9cf5d553f85ed4f9bfd2b03943f5e0, type: 3}
+  m_Name: Katana
+  m_EditorClassIdentifier: 
+  WeaponName: Katana
+  distanceFromPlayer: 0.45
+  AnimationSpeed: 1
+  Damage: 2
+  WeaponPrefab: {fileID: 1830983953047547336, guid: bb6f6ac7d05ed274d8c0588fe181a2a7, type: 3}
+  AttackParticles: {fileID: 45014590926149467, guid: 8496ed3ec3a9791468bf8426b4ce7146, type: 3}

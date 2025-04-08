@@ -21,6 +21,7 @@ public class DifficultyController : MonoBehaviour
             if(timeToElite==0){
                 ESC.AddTypeToAvailble("Elite");
             }
+            
             ESC.IncreaseMaxEnemies(enemyInIncrease);
             ESC.DecreaseSpawnInterval(0.2f);
             timer = 0;
