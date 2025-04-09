@@ -15,6 +15,7 @@ MonoBehaviour:
   WeaponName: Katana
   distanceFromPlayer: 0.45
   AnimationSpeed: 1
+  PlayerSpeedMultiplier: 1
   Damage: 2
   WeaponPrefab: {fileID: 1830983953047547336, guid: bb6f6ac7d05ed274d8c0588fe181a2a7, type: 3}
   AttackParticles: {fileID: 45014590926149467, guid: 8496ed3ec3a9791468bf8426b4ce7146, type: 3}

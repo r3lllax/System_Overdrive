@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    public void SetPlayerMSWithMultiplier(float speed){
+        this.moveSpeed *= speed;
+    }
     private void Awake()
     {
         Instance = this;

@@ -20,6 +20,8 @@ public class ColdWeapon : MonoBehaviour
     }
     public void AttackEnd(){
         anim.SetBool("Attack",false);
+        anim.SetBool("SwingDown",!anim.GetBool("SwingDown"));
+        anim.SetBool("SwingUp",!anim.GetBool("SwingUp"));
         CollideEnemy.Clear();
         WeaponFollow.AnimEnd = true;
         transform.GetChild(0).gameObject.SetActive(false);

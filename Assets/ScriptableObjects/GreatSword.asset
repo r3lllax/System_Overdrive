@@ -15,6 +15,7 @@ MonoBehaviour:
   WeaponName: GreatSword
   distanceFromPlayer: 0.2
   AnimationSpeed: 0.2
+  PlayerSpeedMultiplier: 2
   Damage: 6
   WeaponPrefab: {fileID: 6801085675323255941, guid: dd23154cc8cde454886af5749fad8fc3, type: 3}
   AttackParticles: {fileID: 9122314165558837979, guid: eaa43317ec6e9b3498678d8dc9707e59, type: 3}
