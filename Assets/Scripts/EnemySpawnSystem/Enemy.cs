@@ -38,6 +38,9 @@ public class Enemy : MonoBehaviour
         
         
     }
+    public void KnockBackWithoutDamage(){
+        knockback.GetKnockBack(PlayerController.Instance.transform,15f);
+    }
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти

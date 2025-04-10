@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WeaponFollow : MonoBehaviour
 {
-    [SerializeField]private Weapon currentWeapon;
+    [SerializeField]public Weapon currentWeapon;
     public Transform player;
     [SerializeField]private float distanceFromPlayer;
     

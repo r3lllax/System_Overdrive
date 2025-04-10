@@ -21,6 +21,7 @@ public class Knockback : MonoBehaviour
         rb.AddForce(diff,ForceMode2D.Impulse);
         StartCoroutine(KnockRoutine());
     }
+    
     private IEnumerator KnockRoutine(){
         yield return new WaitForSeconds(knockBackTime);
         rb.linearVelocity = Vector2.zero;

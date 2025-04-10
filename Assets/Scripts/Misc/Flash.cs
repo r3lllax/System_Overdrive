@@ -25,6 +25,8 @@ public class Flash : MonoBehaviour
         sp.material = whiteFlashMat;
         yield return new WaitForSeconds(refreshDefaultMatTime);
         sp.material = defaulMat;
-        enemy.CheckDeath();
+        if(enemy!=null){
+            enemy.CheckDeath();
+        }
     }
 }
