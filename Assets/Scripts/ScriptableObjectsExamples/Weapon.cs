@@ -9,6 +9,7 @@ public class Weapon : ScriptableObject
     public float GunAttackSpeed;
     public float GunMagazineSize;
     public float GunBulletSpeed;
+    public float GunBulletLifeTime;
     public float GunMagazineReloadTime;
     public float PlayerSpeedMultiplier;
     public int Damage;

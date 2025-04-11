@@ -18,6 +18,7 @@ MonoBehaviour:
   GunAttackSpeed: 0.5
   GunMagazineSize: 4
   GunBulletSpeed: 10
+  GunBulletLifeTime: 4
   GunMagazineReloadTime: 2
   PlayerSpeedMultiplier: 1
   Damage: 5

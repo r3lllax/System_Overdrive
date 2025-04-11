@@ -9,6 +9,7 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private float MagazineSize;
     [SerializeField] private float FireSpeed;
     [SerializeField] private float BulletSpeed;
+    [SerializeField] private float BulletLifeTime;
     [SerializeField] private float MagazineReloadTime;
     [SerializeField] private int Damage;
     private Timer timer;
@@ -23,6 +24,7 @@ public class GunWeapon : MonoBehaviour
         MagazineReloadTime = CurrentWeapon.GunMagazineReloadTime;
         BulletSpeed = CurrentWeapon.GunBulletSpeed;
         Damage = CurrentWeapon.Damage;
+        BulletLifeTime = CurrentWeapon.GunBulletLifeTime;
         CurrentMagazineSize = MagazineSize;
         
     }
@@ -46,6 +48,7 @@ public class GunWeapon : MonoBehaviour
 
         GameObject bullet = BulletPool.Instance.GetBullet();
         bullet.GetComponent<Bullet>().SetDamage(Damage);
+        bullet.GetComponent<Bullet>().SetBulletLifeTime(BulletLifeTime);
         Vector2 pos = transform.position;
         pos.y += 0.1f;
         bullet.transform.position = pos;
@@ -53,17 +56,15 @@ public class GunWeapon : MonoBehaviour
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * BulletSpeed;
-
-        StartCoroutine(ReturnBulletAfterTime(bullet, 5f));
+        
+        //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
+        //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
+        bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet,BulletLifeTime));
 
         AttackStart();
         Reload();
     }
-    IEnumerator ReturnBulletAfterTime(GameObject bullet, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        BulletPool.Instance.ReturnBullet(bullet);
-    }
+    
     private void Reload(){
         if(CurrentMagazineSize==0){
             ReloadTime = MagazineReloadTime;
