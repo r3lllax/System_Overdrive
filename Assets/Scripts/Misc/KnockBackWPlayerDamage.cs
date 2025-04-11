@@ -4,12 +4,22 @@ using UnityEngine;
 public class KnockBackWPlayerDamage : MonoBehaviour
 {
     private List<Collider2D> CollideEnemies;
+    private float radius = 4.63f;
+
+    private void SetRadius(float Num){
+        radius = Num;
+    }
+
+    private void NewRadius(float Radius){
+        GetComponent<CircleCollider2D>().radius = Radius;
+    }
 
     private void Awake()
     {
         CollideEnemies = new List<Collider2D>();
     }
 
+    
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.layer == 7){
             if(!CollideEnemies.Contains(other)){

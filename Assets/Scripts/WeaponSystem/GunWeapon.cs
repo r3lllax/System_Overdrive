@@ -56,7 +56,7 @@ public class GunWeapon : MonoBehaviour
 
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * BulletSpeed;
-        
+        Debug.Log(BulletLifeTime);
         //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
         //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
         bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet,BulletLifeTime));

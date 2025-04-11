@@ -54,11 +54,18 @@ public class EnemySpawnController : MonoBehaviour
             
             if (EnemyComponent.GetEnemyType() == "Basic"){
                 enemyHp = 5;
+                EnemyComponent.SetLowExpTh(10);
+                EnemyComponent.SetHighExpTh(20);
             }
             else if(EnemyComponent.GetEnemyType()=="Elite"){
                 enemyHp = Random.Range(10,20);
+                EnemyComponent.SetLowExpTh(30);
+                EnemyComponent.SetHighExpTh(60);
+
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f,2f));
+                
             }
+            
             EnemyComponent.SetHealth(enemyHp);
             EnemyComponent.pool = pool;
             EnemyComponent.ESC = this;

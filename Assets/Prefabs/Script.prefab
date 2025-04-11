@@ -63,7 +63,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 77ba6c852c807014588a81a750bc53af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,9 +129,9 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0012642564, y: -0.64929014}
-  m_Size: {x: 2.1647947, y: 1.3588539}
-  m_Direction: 1
+  m_Offset: {x: -0.05718565, y: -0.10526109}
+  m_Size: {x: 1.4847527, y: 2.4469256}
+  m_Direction: 0
 --- !u!95 &6748586461629948355
 Animator:
   serializedVersion: 7

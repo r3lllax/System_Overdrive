@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6406355703721075176}
   - component: {fileID: 1499700390957742620}
   - component: {fileID: 7247551235906158155}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: BulletRevoler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 1d4bcf3f0187bee408f169eb28ef5370, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,7 +167,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b13d7ec6f47a9be4babe0c269235899b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0
 --- !u!1 &5904150417814116673
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,7 +178,7 @@ GameObject:
   - component: {fileID: 1585404501906106424}
   - component: {fileID: 1055863639478725670}
   - component: {fileID: 6850852549403203370}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1091,7 +1090,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2

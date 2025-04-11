@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 925045035610556116}
   - component: {fileID: 8997186003415460094}
   - component: {fileID: 37285079214618806}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -923,7 +923,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4846,7 +4846,7 @@ GameObject:
   - component: {fileID: 6464748986984005449}
   - component: {fileID: -6886109705391510351}
   - component: {fileID: 2320888563126021381}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4892,7 +4892,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: cbe1e7feb91f63c42b54055fc981fe33, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5000,4 +5000,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b01b493e257bd644ebf070e016cec646, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0

@@ -6,7 +6,7 @@ public class Player : MonoBehaviour
     //Обращаемся к классу TEMPDATA и в переменную SpeedMultiply получаем множитель скорости с оружием
     private Weapon Data;
     [SerializeField] private GameObject DamagePrefab; // Также брать из СО
-    private float Health; // Получаем с префаба или СО
+    [SerializeField]private float Health; // Получаем с префаба или СО
     private float MoveSpeed; //Точно также
     private float PlayerSpeedMultiplier = 1f;
 

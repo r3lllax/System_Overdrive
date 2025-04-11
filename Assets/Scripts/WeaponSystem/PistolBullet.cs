@@ -3,12 +3,21 @@ using UnityEngine;
 
 public class PistolBullet : Bullet
 {
-    private void OnEnable()
-    {
-        StartCoroutine(ReturnBulletAfterTime(gameObject, BulletLifeTIme));
-    }
+    private int MaxBypassesCount = 1;
+    private int BypassesCount;
     private void OnTriggerEnter2D(Collider2D other){
         DamageRegTrigger(other);
+    }
+
+    private void OnEnable()
+    {
+        BypassesCount = MaxBypassesCount;
+    }
+    public void IncreaseBypassCount(int Num){
+        BypassesCount+=Num;
+    }
+    public void DecreaseBypassCount(int Num){
+        BypassesCount-=Num;
     }
 
     private void OnDisable()
@@ -23,7 +32,14 @@ public class PistolBullet : Bullet
     public override void DamageRegTrigger(Collider2D collision){
         if (collision.gameObject.layer == 7)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+            if(BypassesCount>0){
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                BypassesCount--;
+            }
+            else{
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                BulletPool.Instance.ReturnBullet(gameObject);
+            }
         }
 
 

@@ -10,6 +10,15 @@ public class Enemy : MonoBehaviour
     public EnemyPool pool;
     private Knockback knockback;
     private Flash flash;
+    private int lowExpThreshold;
+    private int highExpThreshold;
+    public void SetLowExpTh(int Num){
+        lowExpThreshold = Num;
+    }
+    public void SetHighExpTh(int Num){
+        highExpThreshold = Num;
+    }
+    
     private void Awake()
     {
         knockback = GetComponent<Knockback>();
@@ -45,9 +54,23 @@ public class Enemy : MonoBehaviour
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
         Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        DropEXP();
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
         
+    }
+    public void DropEXP(){
+        GameObject Exp = ExpPool.Instance.GetExp();
+        Exp.GetComponent<Exp>().SetExpCount(Random.Range(lowExpThreshold,highExpThreshold));
+        Vector2 pos = transform.position;
+        pos.y += 0.1f;
+        Exp.transform.position = pos;
+        Exp.transform.rotation = transform.rotation;
+    }
+    public void TryDropExp(){
+        if(Random.Range(0,10)>=3){
+            LevelSystem.Instance.AddCurrentExp(Random.Range(lowExpThreshold,highExpThreshold));
+        }
     }
     public string GetEnemyType(){
         return Type;
