@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ColdWeapon : MonoBehaviour
 {
-    [SerializeField]private Weapon currentWeapon;
+    private Weapon currentWeapon;
     private Animator anim;
     private List<Collider2D> CollideEnemy;
     [SerializeField]private int Damage;
@@ -11,12 +11,11 @@ public class ColdWeapon : MonoBehaviour
     public void AttackStart(){
         transform.GetChild(0).gameObject.SetActive(true);
     }
-    public void SetCurrentWeapon(Weapon weapon){
-        this.currentWeapon = weapon;
-    }
+
     private void Update()
     {
         anim.speed = AnimationSpeed;
+        
     }
     public void AttackEnd(){
         anim.SetBool("Attack",false);
@@ -25,6 +24,10 @@ public class ColdWeapon : MonoBehaviour
         CollideEnemy.Clear();
         WeaponFollow.AnimEnd = true;
         transform.GetChild(0).gameObject.SetActive(false);
+    }
+    private void Awake()
+    {
+        currentWeapon = TempData.ChoosenWeapon;
     }
     private void Start()
     {

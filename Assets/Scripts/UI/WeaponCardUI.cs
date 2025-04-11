@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class WeaponCardUI : MonoBehaviour
 {
-    [SerializeField] private GameObject WeaponPrefab;
+    [SerializeField] private Weapon WeaponData;
 
 
     public void SetChosenWeapon(){
-        TempData.ChoosenWeapon = WeaponPrefab;
+        TempData.ChoosenWeapon = WeaponData;
     }
 }

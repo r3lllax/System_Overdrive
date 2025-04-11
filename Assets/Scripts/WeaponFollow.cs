@@ -22,7 +22,7 @@ public class WeaponFollow : MonoBehaviour
     }
     private void Awake()
     {
-        GetComponentInChildren<Transform>().GetChild(0).GetComponent<ColdWeapon>().SetCurrentWeapon(currentWeapon);
+        currentWeapon = TempData.ChoosenWeapon;
     }
 
     private void Update() {
