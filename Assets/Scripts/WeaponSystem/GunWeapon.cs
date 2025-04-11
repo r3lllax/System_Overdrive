@@ -45,7 +45,6 @@ public class GunWeapon : MonoBehaviour
         CurrentMagazineSize-=1;
 
         GameObject bullet = BulletPool.Instance.GetBullet();
-        Debug.Log(Damage);
         bullet.GetComponent<Bullet>().SetDamage(Damage);
         Vector2 pos = transform.position;
         pos.y += 0.1f;
