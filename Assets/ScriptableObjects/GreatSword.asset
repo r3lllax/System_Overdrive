@@ -15,7 +15,12 @@ MonoBehaviour:
   WeaponName: GreatSword
   distanceFromPlayer: 0.2
   AnimationSpeed: 0.2
+  GunAttackSpeed: 0
+  GunMagazineSize: 0
+  GunBulletSpeed: 0
+  GunMagazineReloadTime: 0
   PlayerSpeedMultiplier: 0.5
   Damage: 6
   WeaponPrefab: {fileID: 6801085675323255941, guid: dd23154cc8cde454886af5749fad8fc3, type: 3}
-  AttackParticles: {fileID: 9122314165558837979, guid: eaa43317ec6e9b3498678d8dc9707e59, type: 3}
+  BulletPrefab: {fileID: 0}
+  AttackParticles: {fileID: 4970389369108533788, guid: eaa43317ec6e9b3498678d8dc9707e59, type: 3}

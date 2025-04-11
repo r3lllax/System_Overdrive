@@ -30,7 +30,7 @@ public class KnockBackWPlayerDamage : MonoBehaviour
     
     public void KnockBackClosestEnemy(){
         foreach(Collider2D enemy in CollideEnemies){
-            enemy.GetComponent<Knockback>().GetKnockBack(PlayerController.Instance.transform,15f);
+            enemy.GetComponent<Knockback>().GetKnockBack(PlayerController.Instance.transform,30f);
         }
     }
 }

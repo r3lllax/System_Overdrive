@@ -30,10 +30,10 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void TakeDamage(int Damage){
+    public void TakeDamage(int Damage, float strength){
         health = health-Damage<=0 ? 0 : health-=Damage;
         flash.StartCoroutine(flash.FlashRoutine());
-        knockback.GetKnockBack(PlayerController.Instance.transform,15f);
+        knockback.GetKnockBack(PlayerController.Instance.transform,strength);
         Instantiate(DamageEffect,transform.position,Quaternion.identity);
         
         

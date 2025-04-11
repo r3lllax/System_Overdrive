@@ -23,6 +23,7 @@ public class WeaponFollow : MonoBehaviour
     private void Awake()
     {
         currentWeapon = TempData.ChoosenWeapon;
+
     }
 
     private void Update() {

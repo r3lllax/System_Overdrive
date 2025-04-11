@@ -42,7 +42,7 @@ public class ColdWeapon : MonoBehaviour
         if(collision.gameObject.layer == 7 && anim.GetBool("Attack")){
             if(!CollideEnemy.Contains(collision)){
                 CollideEnemy.Add(collision);
-                collision.GetComponent<Enemy>().TakeDamage(Damage);
+                collision.GetComponent<Enemy>().TakeDamage(Damage, 15f);
             }
         }
     }
@@ -51,7 +51,7 @@ public class ColdWeapon : MonoBehaviour
         if(collision.gameObject.layer == 7 && anim.GetBool("Attack")){
             if(!CollideEnemy.Contains(collision)){
                 CollideEnemy.Add(collision);
-                collision.GetComponent<Enemy>().TakeDamage(Damage);
+                collision.GetComponent<Enemy>().TakeDamage(Damage,15f);
             }
         }
     }

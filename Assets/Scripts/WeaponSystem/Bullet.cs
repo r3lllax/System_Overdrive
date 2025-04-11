@@ -9,16 +9,19 @@ public class Bullet : MonoBehaviour
         damage = Num;
     }
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.layer == 7)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage);
+            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
             BulletPool.Instance.ReturnBullet(gameObject);
         }
         else{
             BulletPool.Instance.ReturnBullet(gameObject);
         }
+        
     }
 
 }
