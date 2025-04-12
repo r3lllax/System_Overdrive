@@ -12,6 +12,7 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private float BulletLifeTime;
     [SerializeField] private float MagazineReloadTime;
     [SerializeField] private int Damage;
+
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
@@ -28,6 +29,7 @@ public class GunWeapon : MonoBehaviour
         CurrentMagazineSize = MagazineSize;
         
     }
+    
     public void AttackStart(){
         var FireEffect = Instantiate(CurrentWeapon.AttackParticles,CurrentWeapon.AttackParticles.transform.position,CurrentWeapon.AttackParticles.transform.rotation);
         FireEffect.SetActive(true);
@@ -38,6 +40,7 @@ public class GunWeapon : MonoBehaviour
     }
     public void TryFire(){
         if(CurrentMagazineSize>0){
+            
             Fire();
         }
 
@@ -45,6 +48,8 @@ public class GunWeapon : MonoBehaviour
 
     private void Fire(){
         CurrentMagazineSize-=1;
+        
+        
 
         GameObject bullet = BulletPool.Instance.GetBullet();
         bullet.GetComponent<Bullet>().SetDamage(Damage);
@@ -54,9 +59,9 @@ public class GunWeapon : MonoBehaviour
         bullet.transform.position = pos;
         bullet.transform.rotation = transform.rotation;
 
+        
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * BulletSpeed;
-        Debug.Log(BulletLifeTime);
         //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
         //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
         bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet,BulletLifeTime));

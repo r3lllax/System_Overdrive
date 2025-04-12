@@ -3,21 +3,24 @@ using UnityEngine;
 
 public class PistolBullet : Bullet
 {
-    private int MaxBypassesCount = 1;
-    private int BypassesCount;
+    private void Start()
+    {
+        BypassesCount = MaxBypassesCount;
+    }
     private void OnTriggerEnter2D(Collider2D other){
         DamageRegTrigger(other);
     }
 
     private void OnEnable()
     {
-        BypassesCount = MaxBypassesCount;
+        
+        SetBypassCount(1);
     }
-    public void IncreaseBypassCount(int Num){
-        BypassesCount+=Num;
+    public override void IncreaseBypassCount(int Num){
+        MaxBypassesCount+=Num;
     }
-    public void DecreaseBypassCount(int Num){
-        BypassesCount-=Num;
+    public override void DecreaseBypassCount(int Num){
+        MaxBypassesCount-=Num;
     }
 
     private void OnDisable()

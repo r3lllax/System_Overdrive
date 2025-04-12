@@ -125,7 +125,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MagazineSize: 0
   FireSpeed: 0
+  BulletSpeed: 0
+  BulletLifeTime: 0
   MagazineReloadTime: 0
+  Damage: 0
   ReloadTime: 0
 --- !u!1 &6759788824461987047
 GameObject:

@@ -23,7 +23,7 @@ public class DifficultyController : MonoBehaviour
             }
             
             ESC.IncreaseMaxEnemies(enemyInIncrease);
-            ESC.DecreaseSpawnInterval(0.5f);
+            ESC.DecreaseSpawnInterval(0.2f);
             timer = 0;
         }
     }
