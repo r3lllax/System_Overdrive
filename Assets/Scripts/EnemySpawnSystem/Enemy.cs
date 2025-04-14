@@ -55,8 +55,12 @@ public class Enemy : MonoBehaviour
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,strength);
         Instantiate(DamageEffect,transform.position,Quaternion.identity);
-        
-        
+    }
+    public void OneShot(float strength){
+        health = 0;
+        flash.StartCoroutine(flash.FlashRoutine());
+        knockback.GetKnockBack(PlayerController.Instance.transform,strength);
+        Instantiate(DamageEffect,transform.position,Quaternion.identity);
     }
 
 

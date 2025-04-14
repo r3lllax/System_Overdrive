@@ -17,6 +17,13 @@ public class EnemyPool : MonoBehaviour
     }
     private void Awake()
     {
+        
+    }
+    private Dictionary<string,Queue<GameObject>> poolDict;
+    public List<PoolSettings> pools = new List<PoolSettings>();
+    private void Start()
+    {
+        Player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
         VirusPrefab = VirusPrefabLink;
         ScriptPrefab = ScriptPrefabLink;
         pools = new List<PoolSettings>
@@ -25,12 +32,6 @@ public class EnemyPool : MonoBehaviour
             new PoolSettings{Type = "Elite", prefab = ScriptPrefab,poolSize = 170},
             // new PoolSettings{Type = "Boss", prefab = VirusPrefab,poolSize = 100},
         };
-    }
-    private Dictionary<string,Queue<GameObject>> poolDict;
-    public List<PoolSettings> pools = new List<PoolSettings>();
-    private void Start()
-    {
-
         poolDict = new Dictionary<string, Queue<GameObject>>();
         foreach(PoolSettings pool in pools){
             Queue<GameObject> enemyQueue = new Queue<GameObject>();

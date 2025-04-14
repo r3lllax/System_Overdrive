@@ -2,7 +2,13 @@ using System;
 using UnityEngine;
 
 public class RevolverBullet : Bullet
-{
+{   
+    
+    void Start()
+    {
+        MaxBounceCount = SessionData.BulletRebonceCount;
+        BounceCount = MaxBounceCount;
+    }
 
     private void OnDisable()
     {
@@ -17,12 +23,37 @@ public class RevolverBullet : Bullet
         DamageRegCollision(other);
 
     }
-    
+    private void Update()
+    {
+        if(SessionData.NeedRefresh){
+            RefreshSize();
+            MaxBounceCount = SessionData.BulletRebonceCount;
+            // SessionData.NeedRefresh = false;
+        }
+    }
 
     public override void DamageRegCollision(Collision2D collision){
         if (collision.gameObject.layer == 7)
         {
-            collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+            // collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+            if(BounceCount>0){
+                if(TryOneShot()==true){
+                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+                }
+                else{
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                }
+                BounceCount--;
+            }
+            else{
+                if(TryOneShot()==true){
+                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+                }
+                else{
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                }
+                BulletPool.Instance.ReturnBullet(gameObject);
+            }
         }
 
     }

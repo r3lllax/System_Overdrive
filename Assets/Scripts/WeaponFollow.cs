@@ -27,6 +27,9 @@ public class WeaponFollow : MonoBehaviour
     }
 
     private void Update() {
+        
+        gameObject.transform.localScale = SessionData.MeleeSize;
+        
         if(AnimEnd){
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;

@@ -12,10 +12,19 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private float BulletLifeTime;
     [SerializeField] private float MagazineReloadTime;
     [SerializeField] private int Damage;
+    [SerializeField] private int BypassesCount;
 
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
+    private void UpdateData(){
+        MagazineSize = SessionData.MagazineCapacity;
+        FireSpeed = SessionData.CdBetweenFire;
+        MagazineReloadTime = SessionData.CdBetweenMagazine;
+        BulletSpeed = SessionData.BulletSpeed;
+        Damage = SessionData.Damage;
+        BulletLifeTime = SessionData.BulletLifeTime;
+    }
 
     private void Awake()
     {
@@ -58,7 +67,6 @@ public class GunWeapon : MonoBehaviour
         pos.y += 0.1f;
         bullet.transform.position = pos;
         bullet.transform.rotation = transform.rotation;
-
         
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * BulletSpeed;
@@ -83,7 +91,11 @@ public class GunWeapon : MonoBehaviour
     }
 
     private void Update()
-    {
+    {   
+        if(SessionData.NeedRefresh){
+            UpdateData();
+            // SessionData.NeedRefresh=false;
+        }
         if(ReloadTime>0){
             ReloadTime-=Time.deltaTime;
         }

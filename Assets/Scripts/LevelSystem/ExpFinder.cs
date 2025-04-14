@@ -16,14 +16,15 @@ public class ExpFinder : MonoBehaviour
 
     private void Awake()
     {
-        TempData.ExpPrefab = ExpPrefab;
+        
         ObjCollider = GetComponent<CircleCollider2D>();
         Light = GetComponent<Light2D>();
-        FinderRadius = 3;
+        FinderRadius = SessionData.ExpFinderRadius;
     }
 
     private void Update()
     {
+        FinderRadius = SessionData.ExpFinderRadius;
         ObjCollider.radius = FinderRadius;
         Light.pointLightInnerRadius = FinderRadius;
         Light.pointLightOuterRadius = FinderRadius*2;

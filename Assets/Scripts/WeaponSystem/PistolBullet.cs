@@ -5,6 +5,8 @@ public class PistolBullet : Bullet
 {
     private void Start()
     {
+        RefreshSize();
+        MaxBypassesCount = SessionData.BulletBypassCount;
         BypassesCount = MaxBypassesCount;
     }
     private void OnTriggerEnter2D(Collider2D other){
@@ -13,8 +15,7 @@ public class PistolBullet : Bullet
 
     private void OnEnable()
     {
-        
-        SetBypassCount(1);
+
     }
     public override void IncreaseBypassCount(int Num){
         MaxBypassesCount+=Num;
@@ -36,11 +37,21 @@ public class PistolBullet : Bullet
         if (collision.gameObject.layer == 7)
         {
             if(BypassesCount>0){
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                if(TryOneShot()==true){
+                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+                }
+                else{
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                }
                 BypassesCount--;
             }
             else{
-                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                if(TryOneShot()==true){
+                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+                }
+                else{
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                }
                 BulletPool.Instance.ReturnBullet(gameObject);
             }
         }

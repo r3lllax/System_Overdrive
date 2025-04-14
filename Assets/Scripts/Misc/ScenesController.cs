@@ -10,7 +10,7 @@ public class ScenesController : MonoBehaviour
         SceneManager.LoadScene("SampleScene");
     }
     public void TryLoadGameScene(){
-        if(/*TempData.ChoosenCharacter == null || */TempData.ChoosenWeapon == null){
+        if(TempData.ChoosenCharacter == null ||TempData.ChoosenWeapon == null){
             StartCoroutine(BadChoice());
         }
         else{

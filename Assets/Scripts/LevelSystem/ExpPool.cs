@@ -12,7 +12,8 @@ public class ExpPool : MonoBehaviour
     void Awake()
     {
         Instance = this;
-        ExpPrefab = TempData.ExpPrefab;
+        TempData.ExpPrefab = ExpPrefab;
+        
         InitializePool();
     }
 

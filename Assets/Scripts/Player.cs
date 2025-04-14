@@ -5,22 +5,38 @@ public class Player : MonoBehaviour
 {
     //Обращаемся к классу TEMPDATA и в переменную SpeedMultiply получаем множитель скорости с оружием
     private Weapon Data;
-    [SerializeField] private GameObject DamagePrefab; // Также брать из СО
-    [SerializeField]private float Health; // Получаем с префаба или СО
-    private float MoveSpeed; //Точно также
-    private float PlayerSpeedMultiplier = 1f;
+    [SerializeField] private GameObject DamagePrefab;
+    [SerializeField]private float Health;
+    private float MoveSpeed;
+    private float sprintMultiplier;
+    private float PlayerSpeedMultiplier;
 
+    private void UpdateData(){
+        
+        Health = SessionData.Health;
+        sprintMultiplier = SessionData.SprintMultiplier;
+        MoveSpeed = SessionData.MoveSpeed;
+        PlayerSpeedMultiplier = SessionData.StartSpeedMultiplier;
+    }
+    public float GetSprintMultiplier(){
+        return sprintMultiplier;
+    }
     private void Awake()
     {
-        //Пока что
-        Health = 4;
-        MoveSpeed = 4;
+        UpdateData();
+    }
+    private void Update()
+    {
+            UpdateData();
+            Debug.Log(MoveSpeed);
+            Debug.Log(SessionData.MoveSpeed);
+            // SessionData.NeedRefresh = false;
+        
+        
     }
     private void Start()
     {
         GetComponent<PlayerController>().SetPlayerMSWithMultiplier(PlayerSpeedMultiplier);
-        
-        
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

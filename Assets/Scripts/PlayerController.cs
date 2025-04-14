@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    public bool NotTakeSpeed =false;
     public void SetPlayerMSWithMultiplier(float speed){
         this.moveSpeed *= speed;
     }
@@ -32,19 +33,25 @@ public class PlayerController : MonoBehaviour
     }
     private void Start(){
         moveSpeed = GetComponent<Player>().GetMoveSpeed();
-        
     }
     private void Update()
     {
+        if(NotTakeSpeed!=true){
+            moveSpeed = GetComponent<Player>().GetMoveSpeed();
+        }
+        
+        
         //Переделать через инпут систем
         if(Input.GetKeyDown(KeyCode.LeftShift)){
-            moveSpeed*=1.5f;
+            NotTakeSpeed = true;
+            moveSpeed*=GetComponent<Player>().GetSprintMultiplier();
             transform.GetChild(2).gameObject.SetActive(true);
         }
         if(Input.GetKeyUp(KeyCode.LeftShift)){
             if(moveSpeed!=0){
-                moveSpeed/=1.5f;
+                moveSpeed/=GetComponent<Player>().GetSprintMultiplier();
             }
+            NotTakeSpeed = false;
             transform.GetChild(2).gameObject.SetActive(false);
         }
         PlayerInput();
