@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3d94b7d0a12d34880acf52c59556fd, type: 3}
   m_Name: Char2
   m_EditorClassIdentifier: 
-  CharacterName: 
-  Health: 0
-  MoveSpeed: 0
-  CharacterPrefab: {fileID: 0}
+  CharacterName: SIGMA
+  Health: 999
+  MoveSpeed: 19
+  CharacterPrefab: {fileID: 7717986223910873738, guid: cf299a1ea0d072b448f5b1830b50b641, type: 3}
