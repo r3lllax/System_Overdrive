@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("Add5MagazineCapacity")]
+    public void Add5MagazineCapacity(){
+        SessionData.AddValueFloat(ref SessionData.MagazineCapacity,5);
+        SessionData.ShowData();
+    }
+    [ContextMenu("Add30ProcentHp")]
+    public void Add30ProcentHp(){
+        SessionData.AddProcentesFloat(ref SessionData.Health,30);
+        SessionData.ShowData();
+    }
     [ContextMenu("BulletLifeTime1")]
     public void BulletLifeTime1(){
         SessionData.SetValueFloat(ref SessionData.BulletLifeTime,1);
@@ -25,6 +35,11 @@ public class test : MonoBehaviour
     [ContextMenu("Minus50ProcentCDFireSpeed")]
     public void Minus50ProcentCDFireSpeed(){
         SessionData.DecreaseProcentesFloat(ref SessionData.CdBetweenFire,50);
+        SessionData.ShowData();
+    }
+    [ContextMenu("Minus50ProcentCDMagazine")]
+    public void Minus50ProcentCDMagazine(){
+        SessionData.DecreaseProcentesFloat(ref SessionData.CdBetweenMagazine,50);
         SessionData.ShowData();
     }
     [ContextMenu("AddDamage100Procente")]
