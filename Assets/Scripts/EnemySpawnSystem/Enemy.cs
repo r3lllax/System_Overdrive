@@ -12,6 +12,16 @@ public class Enemy : MonoBehaviour
     private Flash flash;
     private int lowExpThreshold;
     private int highExpThreshold;
+    private bool InCameraView;
+    private SpriteRenderer sp;
+
+    public void SetInCameraView(bool New){
+        InCameraView = New;
+    }
+    public bool GetInCameraView(){
+        return InCameraView;
+    }
+
     public void SetLowExpTh(int Num){
         lowExpThreshold = Num;
     }
@@ -23,6 +33,7 @@ public class Enemy : MonoBehaviour
     {
         knockback = GetComponent<Knockback>();
         flash = GetComponent<Flash>();
+        sp = GetComponent<SpriteRenderer>();
     }
     public void SetHealth(int HP){
         health = HP;
@@ -47,6 +58,8 @@ public class Enemy : MonoBehaviour
         
         
     }
+
+
     public void KnockBackWithoutDamage(){
         knockback.GetKnockBack(PlayerController.Instance.transform,15f);
     }
