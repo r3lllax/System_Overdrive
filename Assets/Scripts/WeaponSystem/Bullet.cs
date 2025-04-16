@@ -24,9 +24,7 @@ public class Bullet : MonoBehaviour
     }
     protected bool TryOneShot(){
         var Rand = Random.Range(0,SessionData.ProcenteScaleMax+1);
-        Debug.Log($"{Rand},{SessionData.OneShootChance}");
         if(Random.Range(0,SessionData.ProcenteScaleMax+1)<=SessionData.OneShootChance){
-            Debug.Log("ONESHOOT");
             return true;
         }
         else return false;

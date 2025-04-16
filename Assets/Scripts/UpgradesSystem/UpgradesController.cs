@@ -112,12 +112,14 @@ public class UpgradesController : MonoBehaviour
     /// 
 
     public void GenerateOfferUpdates(int n){
+        NowSuggestedUpgrades.Clear();
         FilterUpgrades();
         for(int i =0;i<n;i++){
             OfferUpdates();
         }
         UiUpgradePanel panelComponent = Panel.GetComponent<UiUpgradePanel>();
         Vector3 StartPos = new Vector3(-400,0,0); 
+        
         for(int i=0;i<n;i++){
             StartPos.x+=200;
             panelComponent.CreateCard(StartPos,CardPrefab,NowSuggestedUpgrades[i]);
