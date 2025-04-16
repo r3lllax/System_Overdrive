@@ -5,9 +5,13 @@ public class PistolBullet : Bullet
 {
     private void Start()
     {
-        RefreshSize();
+        
         MaxBypassesCount = SessionData.BulletBypassCount;
         BypassesCount = MaxBypassesCount;
+    }
+    private void Update()
+    {
+        RefreshSize();
     }
     private void OnTriggerEnter2D(Collider2D other){
         DamageRegTrigger(other);

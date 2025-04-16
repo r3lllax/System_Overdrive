@@ -28,6 +28,7 @@ public class FollowGun : MonoBehaviour
 
     private void Update() {
         Reload = Gun.ReloadTime;
+        if(Time.timeScale==0){return;}
         Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         if(mousePosition.x<player.position.x){
             sp.flipY = true;

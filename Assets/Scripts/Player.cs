@@ -28,8 +28,6 @@ public class Player : MonoBehaviour
     private void Update()
     {
             UpdateData();
-            Debug.Log(MoveSpeed);
-            Debug.Log(SessionData.MoveSpeed);
             // SessionData.NeedRefresh = false;
         
         

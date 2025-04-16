@@ -34,6 +34,7 @@ public class Bullet : MonoBehaviour
 
     protected void RefreshSize(){
         gameObject.transform.localScale = SessionData.BulletSize;
+        
     }
 
     public virtual void DamageRegCollision(Collision2D collision){

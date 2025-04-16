@@ -28,6 +28,7 @@ public class GunWeapon : MonoBehaviour
 
     private void Awake()
     {
+        UpgradesController.PlayerType = "Range";
         CurrentWeapon = TempData.ChoosenWeapon;
         MagazineSize = CurrentWeapon.GunMagazineSize;
         FireSpeed = CurrentWeapon.GunAttackSpeed;

@@ -35,6 +35,10 @@ public class ColdWeapon : MonoBehaviour
         WeaponFollow.AnimEnd = true;
         transform.GetChild(0).gameObject.SetActive(false);
     }
+    private void Awake()
+    {
+        UpgradesController.PlayerType = "Melee";
+    }
 
     private void Start()
     {

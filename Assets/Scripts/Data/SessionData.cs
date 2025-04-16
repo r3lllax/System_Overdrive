@@ -160,9 +160,11 @@ public class SessionData
     ///FLOAT
     public static void AddProcentesFloat(ref float variable,float procente){
         if(variable==0){return;}
-        
+        Debug.Log($"Переменная:{variable}");
         float Add = variable/100*procente;
+        Debug.Log($"Добавка:{Add}");
         variable += Add;
+        Debug.Log($"Переменная:{variable}");
         NeedRefresh = true;
     }
     public static void AddValueFloat(ref float variable,float addValue){

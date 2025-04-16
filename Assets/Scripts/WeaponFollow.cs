@@ -30,7 +30,7 @@ public class WeaponFollow : MonoBehaviour
         
         gameObject.transform.localScale = SessionData.MeleeSize;
         
-        if(AnimEnd){
+        if(AnimEnd && Time.timeScale>0){
             Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
             mousePosition.z = 0f;
 
@@ -43,7 +43,7 @@ public class WeaponFollow : MonoBehaviour
         }
 
         //Переделать через инпут систем(Перенести в плеер контроллер)
-        if(Input.GetMouseButton(0) && AnimEnd){
+        if(Input.GetMouseButton(0) && AnimEnd && Time.timeScale>0){
             AnimEnd = false;
             Anim.SetBool("Attack",true);
             

@@ -28,6 +28,7 @@ public class BulletPool : MonoBehaviour
 
     public GameObject GetBullet()
     {
+        Debug.Log($"COUNTB - {bullets.Count}");
         if (bullets.Count > 0)
         {
             GameObject bullet = bullets.Dequeue();
@@ -37,6 +38,8 @@ public class BulletPool : MonoBehaviour
         else
         {
             GameObject bullet = Instantiate(bulletPrefab);
+            bullets.Enqueue(bullet);
+            bullet.SetActive(true);
             return bullet;
         }
     }
