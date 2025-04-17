@@ -28,7 +28,6 @@ public class BulletPool : MonoBehaviour
 
     public GameObject GetBullet()
     {
-        Debug.Log($"COUNTB - {bullets.Count}");
         if (bullets.Count > 0)
         {
             GameObject bullet = bullets.Dequeue();

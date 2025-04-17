@@ -43,10 +43,12 @@ public class UpgradesController : MonoBehaviour
         { "StartSpeedMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.StartSpeedMultiplier, isPercent, val) },
         { "SprintMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.SprintMultiplier, isPercent, val) },
         { "MagazineCapacity", (isPercent, val) => ApplyToFloatField(ref SessionData.MagazineCapacity, isPercent, Convert.ToInt32(Math.Round(val))) },
-        { "OneShootChance", (isPercent, val) => ApplyToFloatField(ref SessionData.OneShootChance, isPercent, val) },
         { "BulletSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletSpeed, isPercent, val) },
         { "BulletLifeTime", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletLifeTime, isPercent, val) },
  
+        //Chances
+        { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
+
         // Int 
         { "Damage", (isPercent, val) => ApplyToIntField(ref SessionData.Damage, isPercent, Mathf.RoundToInt(val)) },
         { "BulletBypassCount", (isPercent, val) => ApplyToIntField(ref SessionData.BulletBypassCount, isPercent, Mathf.RoundToInt(val)) },
@@ -83,6 +85,13 @@ public class UpgradesController : MonoBehaviour
 
     }
 
+    private static void ApplyToChanceField(ref float field, bool isPercent, float value)
+    {
+        if (isPercent)
+            SessionData.AddProcentesChance(ref field, value);
+        else
+            SessionData.AddValueChance(ref field, value);
+    }
     
 
     private static void ApplyToIntField(ref int field, bool isPercent, int value)

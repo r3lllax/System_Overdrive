@@ -1015,7 +1015,7 @@ MonoBehaviour:
   pool: {fileID: 519420035}
   spawnInterval: 3
   spawnDistance: 10
-  maxEnemies: 15
+  maxEnemies: 17
 --- !u!114 &519420037
 MonoBehaviour:
   m_ObjectHideFlags: 0
