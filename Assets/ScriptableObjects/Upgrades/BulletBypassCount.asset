@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletBypassCount
   m_EditorClassIdentifier: 
   Name: "\u041F\u0440\u043E\u043B\u0435\u0442 \u043F\u0443\u043B\u044C"
-  Image: {fileID: 0}
+  Image: {fileID: -1813725338820558796, guid: 6dcce5d08d0e49448b2022faa3ce8508, type: 3}
   Description: 
   minVal: 1
   maxVal: 1

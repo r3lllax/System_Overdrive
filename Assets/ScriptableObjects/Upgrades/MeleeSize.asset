@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: MeleeSize
   m_EditorClassIdentifier: 
-  Name: "\u0423\u0432\u0435\u043B\u0438\u0447\u0435\u043D\u0438\u0435 \u043C\u0435\u0447\u0430"
-  Image: {fileID: 0}
+  Name: "\u0423\u0432\u0435\u043Be\u0447\u0435\u043D\u0438\u0435 \u043C\u0435\u0447\u0430"
+  Image: {fileID: 2696919388039067399, guid: d3251fb53ea490f48b1618a8afdf65d6, type: 3}
   Description: 
   minVal: 0.2
   maxVal: 0.3

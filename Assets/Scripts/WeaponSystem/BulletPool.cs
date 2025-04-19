@@ -13,6 +13,7 @@ public class BulletPool : MonoBehaviour
     {
         Instance = this;
         bulletPrefab = TempData.ChoosenWeapon.BulletPrefab;
+        //Добавить отсылку типа в апгрейд контроллер
         InitializePool();
     }
 

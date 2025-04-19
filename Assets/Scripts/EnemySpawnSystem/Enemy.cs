@@ -70,7 +70,9 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Die")]
     public void Die(){
         //Оюбращение к контроллеру с сообщением о смерти
-        Instantiate(DeathEffect,transform.position,Quaternion.identity);
+
+        //Добавить настройку эффекта
+        //Instantiate(DeathEffect,transform.position,Quaternion.identity);
         DropEXP();
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();

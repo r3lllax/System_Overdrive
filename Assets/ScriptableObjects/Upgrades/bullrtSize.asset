@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bullrtSize
   m_EditorClassIdentifier: 
   Name: BulletSize
-  Image: {fileID: 0}
+  Image: {fileID: 6369395231987544056, guid: 98cdf5cddb8a31045bdb0ad26e06c8ab, type: 3}
   Description: 
   minVal: 10
   maxVal: 10

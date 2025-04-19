@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MS
   m_EditorClassIdentifier: 
   Name: MoveSpeed
-  Image: {fileID: 0}
+  Image: {fileID: -3159239463613903916, guid: d086b3858da2f8c4b85bf4b0c6b64e76, type: 3}
   Description: 
   minVal: 50
   maxVal: 50

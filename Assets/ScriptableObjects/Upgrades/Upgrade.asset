@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Upgrade
   m_EditorClassIdentifier: 
   Name: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u0440\u0435\u043B"
-  Image: {fileID: 0}
+  Image: {fileID: 7801585300541132556, guid: 3e9ec420671e47641b27cad5828dcc4c, type: 3}
   Description: 
   minVal: -50
   maxVal: -30

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OneSHootChanvce
   m_EditorClassIdentifier: 
   Name: OneShootChance
-  Image: {fileID: 0}
+  Image: {fileID: -5558356933634855317, guid: dbca2b63318c6fb4dbc0a685ce5044b6, type: 3}
   Description: 
   minVal: 1
   maxVal: 3
