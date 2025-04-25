@@ -7,11 +7,16 @@ public class Bullet : MonoBehaviour
     [SerializeField]protected int BypassesCount;
     [SerializeField]protected int MaxBounceCount;
     [SerializeField]protected int BounceCount;
+    [SerializeField]protected int targetLayerNum = 7;
     protected int damage = 0;
     protected float BulletLifeTIme;
 
+
     public void SetDamage(int Num){
         damage = Num;
+    }
+    public void SetTargetLayer(int Num){
+        targetLayerNum = Num;
     }
     public void SetBulletLifeTime(float Num){
         BulletLifeTIme = Num;
@@ -32,7 +37,6 @@ public class Bullet : MonoBehaviour
 
     protected void RefreshSize(){
         gameObject.transform.localScale = SessionData.BulletSize;
-        
     }
 
     public virtual void DamageRegCollision(Collision2D collision){

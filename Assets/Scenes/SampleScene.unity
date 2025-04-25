@@ -1000,6 +1000,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   VirusPrefabLink: {fileID: 871812499208310907, guid: 6ba6f74c08bf7fe43add15745dc9ffce, type: 3}
   ScriptPrefabLink: {fileID: 3087640818555516820, guid: db9c69bc648998d48b6f8dea6ea68c74, type: 3}
+  BugPrefabLink: {fileID: 7378594685458041303, guid: f953de404edd52c4f99b69338c1e912e, type: 3}
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0

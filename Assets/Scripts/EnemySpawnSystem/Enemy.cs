@@ -4,7 +4,7 @@ public class Enemy : MonoBehaviour
 {
     public GameObject DeathEffect;
     public GameObject DamageEffect;
-    [SerializeField]private string Type;
+    [SerializeField] private string Type;
     [SerializeField] private int health;
     public EnemySpawnController ESC;
     public EnemyPool pool;
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour
         //Оюбращение к контроллеру с сообщением о смерти
 
         //Добавить настройку эффекта
-        //Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        // Instantiate(DeathEffect,transform.position,Quaternion.identity);
         DropEXP();
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();

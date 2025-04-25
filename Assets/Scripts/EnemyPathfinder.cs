@@ -17,8 +17,10 @@ public class EnemyPathfinder : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(knockback.KnockedBack){return;}
-        rb.MovePosition(rb.position+moveDir*(moveSpeed*Time.fixedDeltaTime));
+        if(knockback.KnockedBack || GetComponent<EnemyAI>().GetState()=="RangedAttack"){return;}
+        //rb.MovePosition(rb.position+moveDir*(moveSpeed*Time.fixedDeltaTime));
+        float speed = 2f;
+        transform.position = Vector2.MoveTowards(transform.position,PlayerController.Instance.transform.position, speed * Time.deltaTime);
     }
     public void MoveTo(Vector2 targetPos){
         moveDir = targetPos;

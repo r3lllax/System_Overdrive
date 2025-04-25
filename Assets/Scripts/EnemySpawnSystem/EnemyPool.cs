@@ -6,9 +6,11 @@ public class EnemyPool : MonoBehaviour
 {
     public static GameObject VirusPrefab;
     public static GameObject ScriptPrefab;
+    public static GameObject BugPrefab;
     public GameObject Player;
     [SerializeField] private GameObject VirusPrefabLink;
     [SerializeField] private GameObject ScriptPrefabLink;
+    [SerializeField] private GameObject BugPrefabLink;
     public class PoolSettings
     {
         public string Type;
@@ -26,10 +28,12 @@ public class EnemyPool : MonoBehaviour
         Player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
         VirusPrefab = VirusPrefabLink;
         ScriptPrefab = ScriptPrefabLink;
+        BugPrefab = BugPrefabLink;
         pools = new List<PoolSettings>
         {
             new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 170},
             new PoolSettings{Type = "Elite", prefab = ScriptPrefab,poolSize = 170},
+            new PoolSettings{Type = "Ranged", prefab = BugPrefab,poolSize = 70},
             // new PoolSettings{Type = "Boss", prefab = VirusPrefab,poolSize = 100},
         };
         poolDict = new Dictionary<string, Queue<GameObject>>();

@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Basic"};
+    private List<string> AvailbleTypes = new List<string>{"Basic","Ranged"};
     private int currentEnemies;
     private new Camera camera;
 
@@ -65,7 +65,14 @@ public class EnemySpawnController : MonoBehaviour
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f,2f));
                 
             }
-            
+            else if(EnemyComponent.GetEnemyType()=="Ranged"){
+                enemyHp = Random.Range(2,6);
+                EnemyComponent.SetLowExpTh(10);
+                EnemyComponent.SetHighExpTh(20);
+
+                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(2f,3f));
+                
+            }
             EnemyComponent.SetHealth(enemyHp);
             EnemyComponent.pool = pool;
             EnemyComponent.ESC = this;

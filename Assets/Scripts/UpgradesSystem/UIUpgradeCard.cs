@@ -9,19 +9,22 @@ public class UIUpgradeCard : MonoBehaviour
     [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private Image image;
     [SerializeField]private TextMeshProUGUI Body;//Тут инфа о том сколько наносит итд
+    private GameObject Panel;
     private float value;
     public void SetCurrentUpgrade(Upgrade NEW){
         CurrentUpgrate = NEW;
     }
     void Start()
     {
+        Panel = GameObject.FindWithTag("Panel");
         RenderUpgrate();
     }
     public void Choose(){
+        if(Panel.GetComponent<UiUpgradePanel>().inAnim){return;}
+        Panel.GetComponent<UiUpgradePanel>().inAnim = true;
+        Panel.GetComponent<Animator>().SetTrigger("toggle");
         UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
         Time.timeScale = 1;
-        GameObject Panel = GameObject.FindWithTag("Panel");
-        Panel.GetComponent<Animator>().SetTrigger("toggle");
     }
     private void RenderUpgrate(){
         Title.text = CurrentUpgrate.Name;

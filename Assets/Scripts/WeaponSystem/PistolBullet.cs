@@ -39,7 +39,7 @@ public class PistolBullet : Bullet
         }
     }    
     public override void DamageRegTrigger(Collider2D collision){
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == targetLayerNum)
         {
             if(BypassesCount>0){
                 if(TryOneShot()==true){

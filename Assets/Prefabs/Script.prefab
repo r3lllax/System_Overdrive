@@ -179,7 +179,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee770616084bb746abfa8920b5875b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 8790517253790061082, guid: 8d3b7529c87c7464b864556a29342618, type: 3}
   Player: {fileID: 0}
+  state: 0
 --- !u!114 &4182013830633542331
 MonoBehaviour:
   m_ObjectHideFlags: 0

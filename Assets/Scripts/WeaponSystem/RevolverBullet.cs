@@ -33,7 +33,7 @@ public class RevolverBullet : Bullet
     }
 
     public override void DamageRegCollision(Collision2D collision){
-        if (collision.gameObject.layer == 7)
+        if (collision.gameObject.layer == targetLayerNum)
         {
             // collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
             if(BounceCount>0){
