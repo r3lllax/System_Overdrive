@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+       
         if(NotTakeSpeed!=true){
             moveSpeed = GetComponent<Player>().GetMoveSpeed();
         }

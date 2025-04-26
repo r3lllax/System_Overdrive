@@ -24,7 +24,9 @@ public class UIUpgradeCard : MonoBehaviour
         Panel.GetComponent<UiUpgradePanel>().inAnim = true;
         Panel.GetComponent<Animator>().SetTrigger("toggle");
         UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
+        UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
         Time.timeScale = 1;
+        
     }
     private void RenderUpgrate(){
         Title.text = CurrentUpgrate.Name;

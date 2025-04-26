@@ -22,10 +22,6 @@ public class UiUpgradePanel : MonoBehaviour
     public void TogglePanel(){
         GetComponent<Animator>().SetTrigger("toggle");
     }
-    void Update()
-    {
-        Debug.Log($"{inAnim}-inAnim");
-    }
     public void StopTime(){
         Time.timeScale = 0;
     }

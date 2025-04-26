@@ -1,0 +1,86 @@
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+public class DamageUI : MonoBehaviour
+{
+    public static DamageUI Instance {get; private set;}
+ 
+    private class ActiveText{
+        public TextMeshProUGUI UIText;
+        public float maxTime;
+        public float Timer;
+        public Vector3 Position;
+
+        public void MoveText(Camera camera){
+            float delta = 1f - (Timer/maxTime);
+            Vector3 pos = Position + new Vector3(delta,delta,0f);
+            pos = camera.WorldToScreenPoint(pos);
+            pos.z = 0f;
+
+            UIText.transform.position = pos;
+        }
+
+    }
+ 
+    public TextMeshProUGUI TextPrefab;
+    const int PoolSize = 64;
+
+    Queue<TextMeshProUGUI> TextPool = new Queue<TextMeshProUGUI>();
+    List<ActiveText> ActiveTexts = new List<ActiveText>(); 
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+    Camera camera;
+    Transform m_transform;
+
+    private void Start()
+    {
+        camera = Camera.main;
+        m_transform = transform;
+        for(int i=0;i<PoolSize;i++){
+            TextMeshProUGUI temp = Instantiate(TextPrefab,m_transform);
+            temp.gameObject.SetActive(false);
+            TextPool.Enqueue(temp);
+        }
+    }
+
+    private void Update()
+    {
+        for(int i =0;i<ActiveTexts.Count;i++){
+            ActiveText at = ActiveTexts[i];
+            at.Timer -=Time.deltaTime;
+
+            if(at.Timer <=0.0f){
+                at.UIText.gameObject.SetActive(false);
+                TextPool.Enqueue(at.UIText);
+                ActiveTexts.RemoveAt(i);
+                i--;
+            }
+            else{
+                var color = at.UIText.color;
+                color.a = at.Timer/at.maxTime;
+                at.UIText.color = color;
+
+                at.MoveText(camera);
+            }
+        }
+    }
+
+    public void AddText(int amt,Vector3 Pos){
+        var t = TextPool.Dequeue();
+        t.text = amt.ToString();
+        t.gameObject.SetActive(true);
+
+        ActiveText at = new ActiveText(){maxTime = 1f};
+        at.Timer = at.maxTime;
+        at.UIText = t;
+        at.Position = Pos+ Vector3.up;
+
+        at.MoveText(camera);
+        ActiveTexts.Add(at);
+    }
+}

@@ -11,12 +11,18 @@ public class Player : MonoBehaviour
     private float sprintMultiplier;
     private float PlayerSpeedMultiplier;
 
+    private void SetPlayerMSWithMultiplier(float speed){
+        this.MoveSpeed *= speed;
+    }
+
     private void UpdateData(){
         
         Health = SessionData.Health;
         sprintMultiplier = SessionData.SprintMultiplier;
         MoveSpeed = SessionData.MoveSpeed;
+        MoveSpeed = MoveSpeed<0?0:MoveSpeed;
         PlayerSpeedMultiplier = SessionData.StartSpeedMultiplier;
+        SetPlayerMSWithMultiplier(PlayerSpeedMultiplier);
     }
     public float GetSprintMultiplier(){
         return sprintMultiplier;
@@ -34,7 +40,7 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        GetComponent<PlayerController>().SetPlayerMSWithMultiplier(PlayerSpeedMultiplier);
+        //GetComponent<PlayerController>().SetPlayerMSWithMultiplier(PlayerSpeedMultiplier);
     }
     
     private void OnCollisionEnter2D(Collision2D collision)

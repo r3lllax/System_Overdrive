@@ -9,11 +9,11 @@ public class UpgradesController : MonoBehaviour
     [SerializeField]private AllUpgrades AllUpgrades;
     private List<Upgrade> AvailableUpgrades;
     private List<Upgrade> NowSuggestedUpgrades;
-    private List<Upgrade> PlayerUpgrades;
+    public static List<Upgrade> PlayerUpgrades;
     public static string PlayerType;
+    public static string BulletType = "None";
     [SerializeField]private GameObject CardPrefab;
     private GameObject Panel;
-
     private void Awake()
     {
         AvailableUpgrades = new List<Upgrade>();
@@ -173,9 +173,23 @@ public class UpgradesController : MonoBehaviour
         AvailableUpgrades.Clear();
         for(int i=0;i<AllUpgrades.UpgradesList.Count;i++){
             if((AllUpgrades.UpgradesList[i].Melee && PlayerType=="Melee")||(AllUpgrades.UpgradesList[i].Range && PlayerType=="Range")){
-                AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
+                Debug.Log(BulletType);
+                switch(BulletType){
+                    case "Bullet":
+                        if(AllUpgrades.UpgradesList[i].targerStat.ToString()!="BulletRebonceCount"){
+                            AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
+                        }
+                        break;
+                    case "BulletRevoler":
+                        if(AllUpgrades.UpgradesList[i].targerStat.ToString()!="BulletBypassCount"){
+                            AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
+                        }
+                        break;
+                    case "None":
+                        AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
+                        break;
+                }
             }
         }
-        Debug.Log($"{AvailableUpgrades.Count} - AVCOUNT");
     }
 }

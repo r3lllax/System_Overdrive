@@ -10,7 +10,7 @@ public class CurrentWeapon : MonoBehaviour
         
         GameObject Weapon = Instantiate(ChoosenWeapon.WeaponPrefab, new Vector3(0, 0, 0), Quaternion.identity);
         Weapon.transform.SetParent(gameObject.transform, false); 
-        transform.parent.GetComponent<PlayerController>().SetPlayerMSWithMultiplier(ChoosenWeapon.PlayerSpeedMultiplier);
+        //transform.parent.GetComponent<PlayerController>().SetPlayerMSWithMultiplier(ChoosenWeapon.PlayerSpeedMultiplier);
     }
 
 
