@@ -47,6 +47,7 @@ public class WeaponFollow : MonoBehaviour
             AnimEnd = false;
             Anim.SetBool("Attack",true);
             
+            
         }
     }
     

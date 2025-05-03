@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -58,7 +59,7 @@ public class GunWeapon : MonoBehaviour
     private void Fire(){
         CurrentMagazineSize-=1;
         
-        
+        GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
 
         GameObject bullet = BulletPool.Instance.GetBullet();
         bullet.GetComponent<Bullet>().SetDamage(Damage);

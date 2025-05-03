@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class ColdWeapon : MonoBehaviour
@@ -8,6 +9,7 @@ public class ColdWeapon : MonoBehaviour
     [SerializeField]private int Damage;
     [SerializeField]private float AnimationSpeed;
     public void AttackStart(){
+        GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         transform.GetChild(0).gameObject.SetActive(true);
     }
     private void UpdateData(){

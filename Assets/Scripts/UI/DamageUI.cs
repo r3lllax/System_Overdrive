@@ -25,7 +25,7 @@ public class DamageUI : MonoBehaviour
     }
  
     public TextMeshProUGUI TextPrefab;
-    const int PoolSize = 64;
+    const int PoolSize = 256;
 
     Queue<TextMeshProUGUI> TextPool = new Queue<TextMeshProUGUI>();
     List<ActiveText> ActiveTexts = new List<ActiveText>(); 

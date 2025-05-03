@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float Damage){
         Health = Health-Damage<0?0:Health-Damage;
+        GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         Instantiate(DamagePrefab,transform.position,Quaternion.identity);
         StartCoroutine(DamageRoutine());
         transform.GetChild(transform.childCount-1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();

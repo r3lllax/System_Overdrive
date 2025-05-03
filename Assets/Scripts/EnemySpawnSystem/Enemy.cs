@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
     }
     public void TakeDamage(int Damage, float strength){
         health = health-Damage<=0 ? 0 : health-=Damage;
+        GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         DamageUI.Instance.AddText(Damage,transform.position);
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,strength);
