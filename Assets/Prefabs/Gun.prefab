@@ -99,7 +99,7 @@ Animator:
   m_GameObject: {fileID: 1764286346837993195}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a307d3b928776224fb6d0d546b55fd1b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
   BulletLifeTime: 0
   MagazineReloadTime: 0
   Damage: 0
+  BypassesCount: 0
   ReloadTime: 0
 --- !u!1 &6759788824461987047
 GameObject:

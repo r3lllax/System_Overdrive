@@ -50,7 +50,6 @@ public class GunWeapon : MonoBehaviour
     }
     public void TryFire(){
         if(CurrentMagazineSize>0){
-            
             Fire();
         }
 
@@ -74,7 +73,7 @@ public class GunWeapon : MonoBehaviour
         //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
         //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
         bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet,BulletLifeTime));
-
+        
         AttackStart();
         Reload();
     }
@@ -83,12 +82,24 @@ public class GunWeapon : MonoBehaviour
         if(CurrentMagazineSize==0){
             ReloadTime = MagazineReloadTime;
             CurrentMagazineSize = MagazineSize;
+            StartCoroutine(AnimReload());
         }
         else{
             ReloadTime = FireSpeed;
             
         }
         
+    }
+
+    private IEnumerator AnimReload(){
+        Debug.Log($"{ReloadTime} - {GetComponent<Animator>().speed}");
+        if(ReloadTime<1){
+            GetComponent<Animator>().speed +=1/ReloadTime;
+        }
+        GetComponent<Animator>().SetBool("Reload",true);
+        yield return new WaitForSeconds(ReloadTime);
+        GetComponent<Animator>().SetBool("Reload",false);
+        GetComponent<Animator>().speed =1;
     }
 
     private void Update()
