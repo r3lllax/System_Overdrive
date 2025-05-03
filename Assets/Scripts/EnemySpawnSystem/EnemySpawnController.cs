@@ -9,8 +9,14 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Basic","Ranged"};
+    private List<string> AvailbleTypes = new List<string>{"Basic"};
     private int currentEnemies;
+    private int MinBasicHP=3;
+    private int MaxBasicHP=5;
+    private int MinRangedHP=2;
+    private int MaxRangedHP=3;
+    private int MinEliteHP=10;
+    private int MaxEliteHP=20;
     private new Camera camera;
 
     private void Awake()
@@ -42,6 +48,15 @@ public class EnemySpawnController : MonoBehaviour
         return new Vector3(X, Y, spawnDistance);
     }
 
+    public void IncreaseHpStats(){
+        MinBasicHP++;
+        MaxBasicHP++;
+        MinEliteHP++;
+        MaxEliteHP++;
+        MinRangedHP++;
+        MaxRangedHP++;
+    }
+
     private void SpawnEnemy(){
         
         //К примеру если прошло 5 минут то в avalibletypes добавить Elite, если 15 минут то добавить Boss
@@ -53,12 +68,12 @@ public class EnemySpawnController : MonoBehaviour
             int enemyHp = 1;
             
             if (EnemyComponent.GetEnemyType() == "Basic"){
-                enemyHp = 5;
+                enemyHp = Random.Range(MinBasicHP,MaxBasicHP);
                 EnemyComponent.SetLowExpTh(10);
                 EnemyComponent.SetHighExpTh(20);
             }
             else if(EnemyComponent.GetEnemyType()=="Elite"){
-                enemyHp = Random.Range(10,20);
+                enemyHp = Random.Range(MinEliteHP,MaxEliteHP);
                 EnemyComponent.SetLowExpTh(30);
                 EnemyComponent.SetHighExpTh(60);
 
@@ -66,7 +81,7 @@ public class EnemySpawnController : MonoBehaviour
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Ranged"){
-                enemyHp = Random.Range(2,6);
+                enemyHp = Random.Range(MinRangedHP,MaxRangedHP);
                 EnemyComponent.SetLowExpTh(10);
                 EnemyComponent.SetHighExpTh(20);
 

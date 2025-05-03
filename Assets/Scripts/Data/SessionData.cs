@@ -16,6 +16,7 @@ public class SessionData
     public static float SprintMultiplier;//✓
     public static float MagazineCapacity;//✓
     public static float OneShootChance;//✓
+    public static float EnemySpeedMultiplier = 1f;//✓
     public static Vector3 MeleeSize;//✓
     public static Vector3 BulletSize;//✓
     public static float BulletSpeed;//✓

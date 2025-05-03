@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     public GameObject DamageEffect;
     [SerializeField] private string Type;
     [SerializeField] private int health;
+    public float speed = 2f;
     public EnemySpawnController ESC;
     public EnemyPool pool;
     private Knockback knockback;

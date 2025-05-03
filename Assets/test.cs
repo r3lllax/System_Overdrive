@@ -7,6 +7,15 @@ public class test : MonoBehaviour
         SessionData.AddValueFloat(ref SessionData.MagazineCapacity,5);
         SessionData.ShowData();
     }
+    [ContextMenu("GAMESPEED")]
+    public void GAMESPEED(){
+        Time.timeScale =5;
+    }
+    [ContextMenu("Add30ProcentHp")]
+    [ContextMenu("GAMESPEEDDef")]
+    public void GAMESPEEDDef(){
+        Time.timeScale =1;
+    }
     [ContextMenu("Add30ProcentHp")]
     public void Add30ProcentHp(){
         SessionData.AddProcentesFloat(ref SessionData.Health,30);
@@ -83,4 +92,5 @@ public class test : MonoBehaviour
         SessionData.ShowData();
     }
     
+
 }
