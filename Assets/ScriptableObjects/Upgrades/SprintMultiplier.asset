@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
-  m_Name: Damage
+  m_Name: SprintMultiplier
   m_EditorClassIdentifier: 
-  Name: Damage
-  Image: {fileID: 5931275240766778604, guid: 2c3539faa9321ea4e863652637848e15, type: 3}
+  Name: SprintMultiplier
+  Image: {fileID: -3617753576130722596, guid: 5f3b6a43fded88744beda56b12b1f81c, type: 3}
   Description: 
-  minVal: 2
-  maxVal: 5
+  minVal: 10
+  maxVal: 10
   Melee: 1
   Range: 1
-  Procente: 0
+  Procente: 1
   HasDebuff: 0
-  targerStat: 2
+  targerStat: 7
   debuffStat: 0
   DebufSize: 0
