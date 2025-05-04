@@ -60,6 +60,17 @@ public class ColdWeapon : MonoBehaviour
         }
         else return false;
     }
+
+    private bool TryCrit(){
+        var Rand = Random.Range(0,SessionData.ProcenteScaleMax+1);
+        Debug.Log($"{Rand},{SessionData.CritChance}");
+        if(Random.Range(0,SessionData.ProcenteScaleMax+1)<=SessionData.CritChance){
+            Debug.Log("Crit");
+            return true;
+        }
+        else return false;
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.layer == 7 && anim.GetBool("Attack")){
@@ -67,6 +78,9 @@ public class ColdWeapon : MonoBehaviour
                 CollideEnemy.Add(collision);
                 if(TryOneShot()==true){
                     collision.GetComponent<Enemy>().OneShot(20f);
+                }
+                else if(TryCrit()){
+                    collision.GetComponent<Enemy>().TakeDamage(Damage*2, 15f,"crit");
                 }
                 else{
                     collision.GetComponent<Enemy>().TakeDamage(Damage, 15f);
@@ -81,6 +95,9 @@ public class ColdWeapon : MonoBehaviour
                 CollideEnemy.Add(collision);
                 if(TryOneShot()==true){
                     collision.GetComponent<Enemy>().OneShot(20f);
+                }
+                else if(TryCrit()){
+                    collision.GetComponent<Enemy>().TakeDamage(Damage*2, 15f,"crit");
                 }
                 else{
                     collision.GetComponent<Enemy>().TakeDamage(Damage, 15f);

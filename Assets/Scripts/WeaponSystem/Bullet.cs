@@ -35,6 +35,14 @@ public class Bullet : MonoBehaviour
         else return false;
     }
 
+    protected bool TryCrit(){
+        var Rand = Random.Range(0,SessionData.ProcenteScaleMax+1);
+        if(Random.Range(0,SessionData.ProcenteScaleMax+1)<=SessionData.CritChance){
+            return true;
+        }
+        else return false;
+    }
+
     protected void RefreshSize(){
         gameObject.transform.localScale = SessionData.BulletSize;
     }

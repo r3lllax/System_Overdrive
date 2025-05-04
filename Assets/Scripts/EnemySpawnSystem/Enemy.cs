@@ -52,16 +52,26 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void TakeDamage(int Damage, float strength){
+    public void TakeDamage(int Damage, float strength,string modifier="default"){
         health = health-Damage<=0 ? 0 : health-=Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
-        DamageUI.Instance.AddText(Damage,transform.position);
+        if(modifier=="crit"){
+            DamageUI.Instance.AddText(Damage,transform.position,"crit");
+        }
+        else if(modifier=="oneshoot"){
+            DamageUI.Instance.AddText(Damage,transform.position,"oneshoot");
+        }
+        else{
+            DamageUI.Instance.AddText(Damage,transform.position);
+        }
+        
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,strength);
         Instantiate(DamageEffect,transform.position,Quaternion.identity);
     }
     public void OneShot(float strength){
         health = 0;
+        DamageUI.Instance.AddText(1,transform.position,"oneshoot");
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,strength);
         Instantiate(DamageEffect,transform.position,Quaternion.identity);

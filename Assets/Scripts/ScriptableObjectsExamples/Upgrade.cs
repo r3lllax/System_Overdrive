@@ -24,12 +24,14 @@ public class Upgrade : ScriptableObject
         SprintMultiplier,
         MagazineCapacity,
         OneShootChance,
+        CritChance,
         MeleeSize,
         BulletSize,
         BulletSpeed,
         BulletLifeTime,
         BulletBypassCount,
         BulletRebonceCount,
+        EnemySpeedMultiplier,
 
     }
     public Stats targerStat = Stats.Health;

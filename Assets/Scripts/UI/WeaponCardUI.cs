@@ -16,6 +16,7 @@ public class WeaponCardUI : MonoBehaviour
         SessionData.StartSpeedMultiplier = WeaponData.PlayerSpeedMultiplier;
         SessionData.MagazineCapacity = WeaponData.GunMagazineSize;
         SessionData.OneShootChance = 0;
+        SessionData.CritChance = 0;
         SessionData.BulletSpeed = WeaponData.GunBulletSpeed;
         SessionData.BulletLifeTime = WeaponData.GunBulletLifeTime;
         SessionData.MeleeSize = WeaponData.WeaponPrefab.transform.localScale;

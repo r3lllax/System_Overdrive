@@ -48,6 +48,7 @@ public class UpgradesController : MonoBehaviour
  
         //Chances
         { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
+        { "CritChance", (isPercent, val) => ApplyToChanceField(ref SessionData.CritChance, isPercent, val) },
 
         // Int 
         { "Damage", (isPercent, val) => ApplyToIntField(ref SessionData.Damage, isPercent, Mathf.RoundToInt(val)) },

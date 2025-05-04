@@ -70,9 +70,21 @@ public class DamageUI : MonoBehaviour
         }
     }
 
-    public void AddText(int amt,Vector3 Pos){
+    public void AddText(int amt,Vector3 Pos,string modifier="default"){
         var t = TextPool.Dequeue();
-        t.text = amt.ToString();
+        if(modifier=="crit"){
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255,60,60,91);
+            t.text = amt.ToString();
+        }
+        if(modifier=="oneshoot"){
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(238, 130, 238,91);
+            t.text = "Execute!";
+        }
+        else{
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,0);
+            t.text = amt.ToString();
+        }
+        
         t.gameObject.SetActive(true);
 
         ActiveText at = new ActiveText(){maxTime = 1f};

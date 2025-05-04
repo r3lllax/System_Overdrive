@@ -61,6 +61,16 @@ public class test : MonoBehaviour
         SessionData.SetProcentesChance(ref SessionData.OneShootChance,100);
         SessionData.ShowData();
     }
+    [ContextMenu("SetCritChance100")]
+    public void SetCritChance100(){
+        SessionData.SetProcentesChance(ref SessionData.CritChance,100);
+        SessionData.ShowData();
+    }
+    [ContextMenu("SetCritChance50")]
+    public void SetCritChance50(){
+        SessionData.SetProcentesChance(ref SessionData.CritChance,50);
+        SessionData.ShowData();
+    }
     [ContextMenu("IncreaseSprint200Procente")]
     public void IncreaseSprint200Procente(){
         SessionData.AddProcentesFloat(ref SessionData.SprintMultiplier,200);

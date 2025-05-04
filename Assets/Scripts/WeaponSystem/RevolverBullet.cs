@@ -40,6 +40,9 @@ public class RevolverBullet : Bullet
                 if(TryOneShot()==true){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
+                else if(TryCrit()){
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit");
+                }
                 else{
                     collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
                 }
@@ -48,6 +51,9 @@ public class RevolverBullet : Bullet
             else{
                 if(TryOneShot()==true){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+                }
+                else if(TryCrit()){
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit");
                 }
                 else{
                     collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
