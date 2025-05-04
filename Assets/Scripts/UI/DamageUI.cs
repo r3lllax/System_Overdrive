@@ -76,9 +76,13 @@ public class DamageUI : MonoBehaviour
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255,60,60,91);
             t.text = amt.ToString();
         }
-        if(modifier=="oneshoot"){
+        else if(modifier=="oneshoot"){
             t.GetComponent<TextMeshProUGUI>().color = new Color32(238, 130, 238,91);
             t.text = "Execute!";
+        }
+        else if(modifier=="LevelUP"){
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 255,255);
+            t.text = "LEVEL UP!";
         }
         else{
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,0);

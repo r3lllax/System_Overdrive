@@ -173,7 +173,7 @@ public class SessionData
         NeedRefresh = true;
     }
     public static void AddValueFloat(ref float variable,float addValue){
-        variable+=addValue;
+        variable = variable+addValue<=0?0.1f:variable+addValue;
         NeedRefresh = true;
     }
     public static void DecreaseProcentesFloat(ref float variable,float procente){
@@ -184,7 +184,8 @@ public class SessionData
     }
     public static void DecreaseValueFloat(ref float variable,float decValue){
 
-        variable-=decValue;
+        variable = variable<=0?0.1f:variable-=decValue;
+        
         NeedRefresh = true;
     }
     public static void SetProcentesFloat(ref float variable,float procente){

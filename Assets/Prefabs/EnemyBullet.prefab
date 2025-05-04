@@ -39,7 +39,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2862114980205642900}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -256,6 +256,4 @@ MonoBehaviour:
   MaxBounceCount: 0
   BounceCount: 0
   targetLayerNum: 7
-  speed: 3
   CanBeMove: 0
-  targetPos: {x: 0, y: 0}

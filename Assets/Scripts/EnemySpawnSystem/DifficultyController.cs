@@ -12,7 +12,7 @@ public class DifficultyController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(GlobalTimer);
+        //Debug.Log(GlobalTimer);
         timer += Time.deltaTime;
         GlobalTimer += Time.deltaTime;
         if(timer>timeToIncreaseDifficulty){

@@ -22,6 +22,7 @@ public class LevelSystem : MonoBehaviour
     }
     [ContextMenu("LEVELUP")]
     public void LevelUP(){
+        DamageUI.Instance.AddText(1,transform.position,"LevelUP");
         CurrentLevel++;
         CurrentExpCount%=ExpCountToNextLevel;
         ExpCountToNextLevel = ExpCountToNextLevel + (ExpCountToNextLevel*IncreaseProcente);

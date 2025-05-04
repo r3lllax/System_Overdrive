@@ -55,16 +55,7 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int Damage, float strength,string modifier="default"){
         health = health-Damage<=0 ? 0 : health-=Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
-        if(modifier=="crit"){
-            DamageUI.Instance.AddText(Damage,transform.position,"crit");
-        }
-        else if(modifier=="oneshoot"){
-            DamageUI.Instance.AddText(Damage,transform.position,"oneshoot");
-        }
-        else{
-            DamageUI.Instance.AddText(Damage,transform.position);
-        }
-        
+        DamageUI.Instance.AddText(Damage,transform.position,modifier);
         flash.StartCoroutine(flash.FlashRoutine());
         knockback.GetKnockBack(PlayerController.Instance.transform,strength);
         Instantiate(DamageEffect,transform.position,Quaternion.identity);

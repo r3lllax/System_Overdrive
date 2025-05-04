@@ -21,6 +21,6 @@ MonoBehaviour:
   Range: 1
   Procente: 1
   HasDebuff: 1
-  targerStat: 13
+  targerStat: 14
   debuffStat: 2
   DebufSize: 1
