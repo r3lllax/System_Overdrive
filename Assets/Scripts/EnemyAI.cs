@@ -152,10 +152,8 @@ public class EnemyAI : MonoBehaviour
      private void OnTriggerEnter2D(Collider2D collision)
     {
         if(GetComponent<Enemy>().GetEnemyType() != "Ranged"){return;}
-        Debug.Log(collision.name);
 
         if(collision.name == "shadow"){
-            Debug.Log("Вход в зону");
             SetRangedAttack();
         }
     }
@@ -163,7 +161,6 @@ public class EnemyAI : MonoBehaviour
     {
         if(GetComponent<Enemy>().GetEnemyType() != "Ranged"){return;}
         if(collision.name == "shadow"){
-            Debug.Log("Выход из зоны");
             SetFollowPlayer();
         }
     }
