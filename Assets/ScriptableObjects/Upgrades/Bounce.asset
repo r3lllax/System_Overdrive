@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bounce
   m_EditorClassIdentifier: 
   Name: "\u041F\u0440\u044B\u0433\u0443\u0447\u0438\u0435 \u043F\u0443\u043B\u0438"
-  Image: {fileID: 0}
+  Image: {fileID: 3404041270511148884, guid: fd5d9a398a42f7f4c98a51abe22d96b7, type: 3}
   Description: 
   minVal: 1
   maxVal: 1

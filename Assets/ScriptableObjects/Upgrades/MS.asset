@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: MS
   m_EditorClassIdentifier: 
-  Name: MoveSpeed
+  Name: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043F\u0435\u0440\u0435\u0434\u0432\u0438\u0436\u0435\u043D\u0438\u044F"
   Image: {fileID: -3159239463613903916, guid: d086b3858da2f8c4b85bf4b0c6b64e76, type: 3}
   Description: 
   minVal: 50

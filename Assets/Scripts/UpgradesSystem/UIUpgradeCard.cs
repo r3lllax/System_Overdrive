@@ -33,9 +33,13 @@ public class UIUpgradeCard : MonoBehaviour
         image.sprite = CurrentUpgrate.Image;
         value = UpgradesController.CalculateUpgradeValue(CurrentUpgrate);
         string ProcenteDigit = CurrentUpgrate.Procente?"%":"";
-        string Debuff = CurrentUpgrate.HasDebuff?$@"-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {CurrentUpgrate.debuffStat}":"";
+        string ReadbleStatVar = UpgradesController.GetReadableString(CurrentUpgrate.targerStat.ToString());
+        string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());
+        string Debuff = CurrentUpgrate.HasDebuff?$@"-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
+        
+        Debug.Log($"Нечитаемая характеристика: {CurrentUpgrate.targerStat}, читаемая:{ReadbleStatVar}");
         string body = 
-        $@"{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {CurrentUpgrate.targerStat}\n{Debuff}";
+        $@"{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}\n{Debuff}";
         Body.text = body;
     }
 

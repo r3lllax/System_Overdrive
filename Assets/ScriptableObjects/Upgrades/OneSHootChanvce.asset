@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: OneSHootChanvce
   m_EditorClassIdentifier: 
-  Name: OneShootChance
+  Name: "\u0428\u0430\u043D\u0441 \u0432\u0430\u043D\u0448\u043E\u0442\u0430"
   Image: {fileID: -5558356933634855317, guid: dbca2b63318c6fb4dbc0a685ce5044b6, type: 3}
   Description: 
   minVal: 1

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: Damage
   m_EditorClassIdentifier: 
-  Name: Damage
+  Name: "\u0423\u0440\u043E\u043D"
   Image: {fileID: 5931275240766778604, guid: 2c3539faa9321ea4e863652637848e15, type: 3}
   Description: 
   minVal: 2

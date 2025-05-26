@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: Health
   m_EditorClassIdentifier: 
-  Name: "\u0411\u0440\u043E\u043D\u044F"
+  Name: "\u0417\u0434\u043E\u0440\u043E\u0432\u044C\u0435"
   Image: {fileID: -5322945098657118106, guid: a5139e83221408e4d8ee4c37febba576, type: 3}
   Description: 
   minVal: 1

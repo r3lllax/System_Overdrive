@@ -1,12 +1,36 @@
 using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 
 public class UpgradesController : MonoBehaviour
 {
-    [SerializeField]private AllUpgrades AllUpgrades;
+    private static Dictionary<string, string> UpgradeName = new Dictionary<string, string>
+    {
+        {"Health","Здоровье"},
+        {"MoveSpeed","Скорость передвижения"},
+        {"Damage","Урон"},
+        {"ExpFinderRadius","Радиус поиска"},
+        {"AttackSpeedMelee","Скорость атаки"},
+        {"CdBetweenFire","Скорострельность"},
+        {"CdBetweenMagazine","Перезарядка"},
+        {"StartSpeedMultiplier","Начальная скорость атаки"},
+        {"SprintMultiplier","Множитель спринта"},
+        {"MagazineCapacity","Размер магазина"},
+        {"OneShootChance","Шанс ваншота"},
+        {"CritChance","Шанс крита"},
+        {"EnemySpeedMultiplier","Множитель скорости врагов"},
+        {"MeleeSize","Размер оружия"},
+        {"BulletSize","Размер пуль"},
+        {"BulletSpeed","Скорость пуль"},
+        {"BulletLifeTime","Время полета пуль"},
+        {"BulletBypassCount","Количество пробиваемых пулей целей"},
+        {"BulletRebonceCount","Количество отскоков пули"},
+        
+    };
+    [SerializeField] private AllUpgrades AllUpgrades;
     private List<Upgrade> AvailableUpgrades;
     private List<Upgrade> NowSuggestedUpgrades;
     public static List<Upgrade> PlayerUpgrades;
@@ -27,8 +51,20 @@ public class UpgradesController : MonoBehaviour
         GenerateOfferUpdates(3);
     }
 
-    public static float CalculateUpgradeValue(Upgrade upg){
-        return UnityEngine.Random.Range(upg.minVal,upg.maxVal);
+    public static string GetReadableString(string param)
+    {
+        try
+        {
+            return UpgradeName[param];
+        }
+        catch
+        {
+            return "NOT FOUND";
+        }
+    }
+    public static float CalculateUpgradeValue(Upgrade upg)
+    {
+        return UnityEngine.Random.Range(upg.minVal, upg.maxVal);
     }
 
     private static readonly Dictionary<string, Action<bool, float>> _fieldHandlers = new()

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ExpFinder
   m_EditorClassIdentifier: 
   Name: "\u0424\u043E\u043D\u0430\u0440\u0438\u043A"
-  Image: {fileID: 0}
+  Image: {fileID: -84298950520002881, guid: 5a1de8c2a7f0a0a4cab9caa86eea181f, type: 3}
   Description: 
   minVal: 1
   maxVal: 2

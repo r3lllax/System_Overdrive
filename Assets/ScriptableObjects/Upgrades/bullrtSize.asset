@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: bullrtSize
   m_EditorClassIdentifier: 
-  Name: BulletSize
+  Name: "\u0420\u0430\u0437\u043C\u0435\u0440 \u043F\u0443\u043B\u044C"
   Image: {fileID: 6369395231987544056, guid: 98cdf5cddb8a31045bdb0ad26e06c8ab, type: 3}
   Description: 
   minVal: 10

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: SprintMultiplier
   m_EditorClassIdentifier: 
-  Name: SprintMultiplier
+  Name: "\u041C\u043D\u043E\u0436\u0438\u0442\u0435\u043B\u044C \u0441\u043F\u0440\u0438\u043D\u0442\u0430"
   Image: {fileID: -3617753576130722596, guid: 5f3b6a43fded88744beda56b12b1f81c, type: 3}
   Description: 
   minVal: 10
