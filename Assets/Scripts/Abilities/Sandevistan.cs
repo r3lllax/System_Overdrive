@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class TestAbility : Ability
+public class Sandevistan : Ability
 {
     private float PlayerSpeedBefore = 0;
     private float PlayerSpeedAfter = 0;
@@ -9,20 +9,22 @@ public class TestAbility : Ability
     private float PlayerCDdAfter = 0;
     private float PlayerMLSBefore = 0;
     private float PlayerMLSAfter = 0;
-    void Awake()
+
+    void Start()
     {
-        cooldown = 15f;
+        activeTime = cooldown / 3;
     }
     protected override void ExecuteAbility()
     {
+
         PlayerSpeedBefore = SessionData.MoveSpeed;
         PlayerSpeedAfter = PlayerSpeedBefore * 3;
 
         PlayerCDBefore = SessionData.CdBetweenFire;
-        PlayerCDdAfter = PlayerCDBefore/3;
+        PlayerCDdAfter = PlayerCDBefore / 3;
 
         PlayerMLSBefore = SessionData.AttackSpeedMelee;
-        PlayerMLSAfter = PlayerMLSBefore*3;
+        PlayerMLSAfter = PlayerMLSBefore * 3;
         StopAllCoroutines();
         StartCoroutine(WaitEndOfAbility());
         Debug.Log($"Исполняю способность с каст-таймом равному {castTime} и кд {cooldown}");
@@ -34,7 +36,7 @@ public class TestAbility : Ability
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSAfter);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDdAfter);
 
-        yield return new WaitForSecondsRealtime(cooldown / 3);
+        yield return new WaitForSeconds(activeTime/2);
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedBefore);
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSBefore);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDBefore);

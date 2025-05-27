@@ -4,6 +4,7 @@ using UnityEngine;
 public abstract class Ability : MonoBehaviour
 {
     [SerializeField] protected float cooldown = 0f;
+    [SerializeField] protected float activeTime = 0f;
     [SerializeField] protected float castTime = 0f;
     [SerializeField] protected KeyCode hotkey = KeyCode.None;
 
@@ -13,7 +14,8 @@ public abstract class Ability : MonoBehaviour
     private void Awake()
     {
         //Скорее всего придется искать через родителя или на подобии
-        owner = gameObject;
+        owner = this.transform.parent.transform.parent.gameObject;
+        Debug.Log(owner.name);
     }
 
     public KeyCode GetHotkey()
@@ -41,7 +43,7 @@ public abstract class Ability : MonoBehaviour
     
     protected virtual bool CanActivate() => true;
     
-    private IEnumerator CooldownRoutine()
+    protected virtual IEnumerator CooldownRoutine()
     {
         yield return new WaitForSeconds(cooldown);
         isReady = true;

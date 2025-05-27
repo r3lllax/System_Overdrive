@@ -84,8 +84,13 @@ public class DamageUI : MonoBehaviour
             t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 255,255);
             t.text = "LEVEL UP!";
         }
-        else{
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(255,255,255,0);
+        else if(modifier=="GhostMode"){
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255,255);
+            t.text = "GhostMode!";
+        }
+        else
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255);
             t.text = amt.ToString();
         }
         

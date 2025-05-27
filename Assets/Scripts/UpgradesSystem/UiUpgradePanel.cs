@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class UiUpgradePanel : MonoBehaviour
 {
+    private float timeBefore = 1;
     public bool inAnim = false;
     [ContextMenu("DELETETEST")]
     public void DeleteCards(){
@@ -23,10 +24,11 @@ public class UiUpgradePanel : MonoBehaviour
         GetComponent<Animator>().SetTrigger("toggle");
     }
     public void StopTime(){
+        timeBefore = Time.timeScale;
         Time.timeScale = 0;
     }
     public void StartTime(){
-        Time.timeScale = 1;
+        Time.timeScale = timeBefore;
     }
     public void AnimStart(){
         inAnim=true;

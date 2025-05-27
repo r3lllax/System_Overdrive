@@ -18,7 +18,8 @@ public class GunWeapon : MonoBehaviour
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
-    private void UpdateData(){
+    private void UpdateData()
+    {
         MagazineSize = SessionData.MagazineCapacity;
         FireSpeed = SessionData.CdBetweenFire;
         MagazineReloadTime = SessionData.CdBetweenMagazine;
@@ -40,7 +41,16 @@ public class GunWeapon : MonoBehaviour
         CurrentMagazineSize = MagazineSize;
         
     }
-    
+    public void ForcedReload()
+    {
+        if (CurrentMagazineSize == MagazineSize)
+        {
+            return;
+        }
+        ReloadTime = MagazineReloadTime;
+        CurrentMagazineSize = MagazineSize;
+        StartCoroutine(AnimReload());
+    }
     public void AttackStart(){
         var FireEffect = Instantiate(CurrentWeapon.AttackParticles,CurrentWeapon.AttackParticles.transform.position,CurrentWeapon.AttackParticles.transform.rotation);
         FireEffect.SetActive(true);
