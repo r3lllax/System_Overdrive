@@ -21,7 +21,7 @@ MonoBehaviour:
   GunBulletLifeTime: 4
   GunMagazineReloadTime: 2
   PlayerSpeedMultiplier: 1
-  Damage: 1
+  Damage: 3
   WeaponPrefab: {fileID: 6759788824461987047, guid: d4c616b2354a9ea409943a72a702d99b, type: 3}
   BulletPrefab: {fileID: 5529071270179187034, guid: 15f53d35196841349ae1236050667ae0, type: 3}
   AttackParticles: {fileID: 3636966496708500094, guid: 95170c00dd08129429ec03541c9efd23, type: 3}

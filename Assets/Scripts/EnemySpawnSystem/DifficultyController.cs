@@ -4,17 +4,14 @@ public class DifficultyController : MonoBehaviour
 {
     [SerializeField] private EnemySpawnController ESC;
     [SerializeField] private float timeToIncreaseDifficulty = 30f;
-    [SerializeField] private int enemyInIncrease = 10;
+    [SerializeField] private int enemyInIncrease = 5;
     private float timeToElite = 3;
     private float timeToRanged = 5;
     private float timer;
-    private float GlobalTimer;
 
     private void Update()
     {
-        //Debug.Log(GlobalTimer);
         timer += Time.deltaTime;
-        GlobalTimer += Time.deltaTime;
         if(timer>timeToIncreaseDifficulty){
             if(timeToElite>0){
                 timeToElite--;
