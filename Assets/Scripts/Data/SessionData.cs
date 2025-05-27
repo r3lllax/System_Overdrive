@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SessionData
 {
-    public static float Health;//✓
+    public static int Health;//✓
     public static float MoveSpeed;//✓
     public static int Damage;//✓
     public static float ExpFinderRadius = 3;//✓
@@ -14,7 +14,7 @@ public class SessionData
     public static float CdBetweenMagazine;//✓
     public static float StartSpeedMultiplier;//✓
     public static float SprintMultiplier;//✓
-    public static float MagazineCapacity;//✓
+    public static int MagazineCapacity;//✓
     public static float OneShootChance;//✓
     public static float CritChance;//✓
     public static float EnemySpeedMultiplier = 1f;//✓
@@ -22,6 +22,8 @@ public class SessionData
     public static Vector3 BulletSize;//✓
     public static float BulletSpeed;//✓
     public static float BulletLifeTime;//✓
+    public static float AbilityCooldown = 0f;//✓
+    public static float AbilityActiveTime = 0f;//✓
     public static int BulletBypassCount = 1;//✓
     public static int BulletRebonceCount = 1;//✓
     public static bool NeedRefresh;

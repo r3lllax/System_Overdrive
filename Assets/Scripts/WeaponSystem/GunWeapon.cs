@@ -14,10 +14,15 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private float MagazineReloadTime;
     [SerializeField] private int Damage;
     [SerializeField] private int BypassesCount;
+    private bool unlimitedAmmos = false;
 
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
+    public void SetUnlimitedAmmo(bool newState)
+    {
+        unlimitedAmmos = newState;
+    }
     private void UpdateData()
     {
         MagazineSize = SessionData.MagazineCapacity;
@@ -67,7 +72,10 @@ public class GunWeapon : MonoBehaviour
     }
 
     private void Fire(){
-        CurrentMagazineSize-=1;
+        if (!unlimitedAmmos)
+        {
+            CurrentMagazineSize -=1;
+        }
         
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
 

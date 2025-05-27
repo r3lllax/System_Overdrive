@@ -13,7 +13,6 @@ public class GhostMode : Ability
     {
         PlayerColider = owner.GetComponent<CapsuleCollider2D>();
         sp = owner.GetComponent<SpriteRenderer>();
-        activeTime = cooldown / 3;
     }
     protected override IEnumerator CastingRoutine()
     {

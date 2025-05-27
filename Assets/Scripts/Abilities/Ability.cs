@@ -15,7 +15,14 @@ public abstract class Ability : MonoBehaviour
     {
         //Скорее всего придется искать через родителя или на подобии
         owner = this.transform.parent.transform.parent.gameObject;
-        Debug.Log(owner.name);
+        SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
+        SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
+    }
+
+    private void Update()
+    {
+        cooldown = SessionData.AbilityCooldown;
+        activeTime = SessionData.AbilityActiveTime;
     }
 
     public KeyCode GetHotkey()

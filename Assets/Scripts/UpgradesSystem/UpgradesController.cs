@@ -28,6 +28,8 @@ public class UpgradesController : MonoBehaviour
         {"BulletLifeTime","Время полета пуль"},
         {"BulletBypassCount","Количество пробиваемых пулей целей"},
         {"BulletRebonceCount","Количество отскоков пули"},
+        {"AbilityActiveTime","Время действия способности"},
+        {"AbilityCooldown","Время перезарядки способности"},
         
     };
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -64,13 +66,33 @@ public class UpgradesController : MonoBehaviour
     }
     public static float CalculateUpgradeValue(Upgrade upg)
     {
+        Debug.Log(upg.targerStat);
+        switch (upg.targerStat.ToString())
+        {
+            case "Health":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "Damage":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "MagazineCapacity":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "BulletBypassCount":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "BulletRebonceCount":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            
+        }
         return UnityEngine.Random.Range(upg.minVal, upg.maxVal);
     }
 
     private static readonly Dictionary<string, Action<bool, float>> _fieldHandlers = new()
     {
         // Float
-        { "Health", (isPercent, val) => ApplyToFloatField(ref SessionData.Health, isPercent, val) },
+        
         { "MoveSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.MoveSpeed, isPercent, val) },
         { "ExpFinderRadius", (isPercent, val) => ApplyToFloatField(ref SessionData.ExpFinderRadius, isPercent, val) },
         { "AttackSpeedMelee", (isPercent, val) => ApplyToFloatField(ref SessionData.AttackSpeedMelee, isPercent, val) },
@@ -78,9 +100,10 @@ public class UpgradesController : MonoBehaviour
         { "CdBetweenMagazine", (isPercent, val) => ApplyToFloatField(ref SessionData.CdBetweenMagazine, isPercent, val) },
         { "StartSpeedMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.StartSpeedMultiplier, isPercent, val) },
         { "SprintMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.SprintMultiplier, isPercent, val) },
-        { "MagazineCapacity", (isPercent, val) => ApplyToFloatField(ref SessionData.MagazineCapacity, isPercent, Convert.ToInt32(Math.Round(val))) },
         { "BulletSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletSpeed, isPercent, val) },
         { "BulletLifeTime", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletLifeTime, isPercent, val) },
+        { "AbilityActiveTime", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityActiveTime, isPercent, val) },
+        { "AbilityCooldown", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityCooldown, isPercent, val) },
  
         //Chances
         { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
@@ -90,6 +113,9 @@ public class UpgradesController : MonoBehaviour
         { "Damage", (isPercent, val) => ApplyToIntField(ref SessionData.Damage, isPercent, Mathf.RoundToInt(val)) },
         { "BulletBypassCount", (isPercent, val) => ApplyToIntField(ref SessionData.BulletBypassCount, isPercent, Mathf.RoundToInt(val)) },
         { "BulletRebonceCount", (isPercent, val) => ApplyToIntField(ref SessionData.BulletRebonceCount, isPercent, Mathf.RoundToInt(val)) },
+        { "Health", (isPercent, val) => ApplyToIntField(ref SessionData.Health, isPercent, Mathf.RoundToInt(val)) },
+        { "MagazineCapacity", (isPercent, val) => ApplyToIntField(ref SessionData.MagazineCapacity, isPercent, Mathf.RoundToInt(val)) },
+
         
         // V3
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },

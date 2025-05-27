@@ -4,7 +4,7 @@ using UnityEngine;
 public class GameCharacter : ScriptableObject
 {
     public string CharacterName;
-    public float Health;
+    public int Health;
     public float MoveSpeed;
     public GameObject CharacterPrefab;   
 }

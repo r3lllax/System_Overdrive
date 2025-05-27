@@ -12,7 +12,8 @@ public class Upgrade : ScriptableObject
     public bool Range;
     public bool Procente;
     public bool HasDebuff;
-    public enum Stats{
+    public enum Stats
+    {
         Health,
         MoveSpeed,
         Damage,
@@ -32,6 +33,8 @@ public class Upgrade : ScriptableObject
         BulletBypassCount,
         BulletRebonceCount,
         EnemySpeedMultiplier,
+        AbilityActiveTime,
+        AbilityCooldown,
 
     }
     public Stats targerStat = Stats.Health;

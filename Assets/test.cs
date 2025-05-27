@@ -4,7 +4,7 @@ public class test : MonoBehaviour
 {
     [ContextMenu("Add5MagazineCapacity")]
     public void Add5MagazineCapacity(){
-        SessionData.AddValueFloat(ref SessionData.MagazineCapacity,5);
+        SessionData.AddValueInt(ref SessionData.MagazineCapacity,5);
         SessionData.ShowData();
     }
     [ContextMenu("GAMESPEED")]
@@ -18,7 +18,7 @@ public class test : MonoBehaviour
     }
     [ContextMenu("Add30ProcentHp")]
     public void Add30ProcentHp(){
-        SessionData.AddProcentesFloat(ref SessionData.Health,30);
+        SessionData.AddProcentesInt(ref SessionData.Health,30);
         SessionData.ShowData();
     }
     [ContextMenu("BulletLifeTime1")]

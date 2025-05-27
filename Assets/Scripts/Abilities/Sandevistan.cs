@@ -9,10 +9,17 @@ public class Sandevistan : Ability
     private float PlayerCDdAfter = 0;
     private float PlayerMLSBefore = 0;
     private float PlayerMLSAfter = 0;
+    private GunWeapon weapon;
 
     void Start()
     {
         activeTime = cooldown / 3;
+        try
+        {
+            weapon = GameObject.FindWithTag("ActiveWeapon").GetComponent<GunWeapon>();
+        }
+        catch{}
+        
     }
     protected override void ExecuteAbility()
     {
@@ -32,11 +39,19 @@ public class Sandevistan : Ability
     private IEnumerator WaitEndOfAbility()
     {
         Time.timeScale = 0.5f;
+        if (weapon)
+        {
+            weapon.SetUnlimitedAmmo(true);
+        }
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedAfter);
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSAfter);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDdAfter);
 
         yield return new WaitForSeconds(activeTime/2);
+         if (weapon)
+        {
+            weapon.SetUnlimitedAmmo(false);
+        }
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedBefore);
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSBefore);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDBefore);
