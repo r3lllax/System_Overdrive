@@ -46,17 +46,24 @@ public class Player : MonoBehaviour
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.layer == 7){
+        if (collision.gameObject.layer == 7)
+        {
+            
             TakeDamage(1);
+            
         }
     }
 
-    public void TakeDamage(float Damage){
+    public void TakeDamage(float Damage, bool knock = true){
         Health = Health-Damage<0?0:Health-Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         Instantiate(DamagePrefab,transform.position,Quaternion.identity);
         StartCoroutine(DamageRoutine());
-        transform.GetChild(transform.childCount-1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+        if (knock)
+        {
+            transform.GetChild(transform.childCount-1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+
+        }
         if(CheckDeath()){
             Death();
         }

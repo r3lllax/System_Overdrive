@@ -304,7 +304,7 @@ GameObject:
   - component: {fileID: 4621036640568555076}
   m_Layer: 6
   m_Name: RadiusToKnockBack
-  m_TagString: Untagged
+  m_TagString: RadiusToKnockBack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5636,6 +5636,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 8860256072873949742}
+  isPlayerOwner: 1
 --- !u!1 &8829109453137204986
 GameObject:
   m_ObjectHideFlags: 0

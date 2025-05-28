@@ -8,7 +8,7 @@ public class DifficultyController : MonoBehaviour
     [SerializeField] private int enemyInIncrease = 5;
     private float timeToElite = 3;
     private float timeToRanged = 5;
-    private float timeToBoss = 1/**20*/;
+    private float timeToBoss = 20/**1*/;
     private float timer;
 
     private IEnumerator Boss()

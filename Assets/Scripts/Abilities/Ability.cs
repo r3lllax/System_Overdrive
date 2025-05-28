@@ -6,6 +6,7 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected float cooldown = 0f;
     [SerializeField] protected float activeTime = 0f;
     [SerializeField] protected float castTime = 0f;
+    protected bool PlayerIsOwner = true;
     [SerializeField] protected KeyCode hotkey = KeyCode.None;
 
     protected bool isReady = true;
@@ -15,19 +16,31 @@ public abstract class Ability : MonoBehaviour
     {
         //Скорее всего придется искать через родителя или на подобии
         owner = this.transform.parent.transform.parent.gameObject;
-        SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
-        SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
+        if (PlayerIsOwner)
+        {
+            SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
+            SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
+        }
+        
     }
 
     private void Update()
     {
-        cooldown = SessionData.AbilityCooldown;
-        activeTime = SessionData.AbilityActiveTime;
+        if (PlayerIsOwner)
+        {
+            cooldown = SessionData.AbilityCooldown;
+            activeTime = SessionData.AbilityActiveTime;
+        }
+        
     }
 
     public KeyCode GetHotkey()
     {
         return hotkey;
+    }
+    public bool GetReady()
+    {
+        return isReady;
     }
      public bool TryActivate()
     {
@@ -43,6 +56,7 @@ public abstract class Ability : MonoBehaviour
         yield return new WaitForSeconds(castTime);
         
         ExecuteAbility();
+        yield return new WaitForSeconds(activeTime);
         StartCoroutine(CooldownRoutine());
     }
 

@@ -13,7 +13,7 @@ public class Sandevistan : Ability
 
     void Start()
     {
-        activeTime = cooldown / 3;
+        activeTime = cooldown / 2;
         try
         {
             weapon = GameObject.FindWithTag("ActiveWeapon").GetComponent<GunWeapon>();

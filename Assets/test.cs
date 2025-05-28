@@ -11,6 +11,11 @@ public class test : MonoBehaviour
     public void GAMESPEED(){
         Time.timeScale =5;
     }
+    [ContextMenu("cdAb0")]
+    public void cdAb0(){
+        SessionData.SetValueFloat(ref SessionData.AbilityCooldown,0.1f);
+
+    }
     [ContextMenu("Add30ProcentHp")]
     [ContextMenu("GAMESPEEDDef")]
     public void GAMESPEEDDef(){

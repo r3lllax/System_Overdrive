@@ -7,6 +7,8 @@ TagManager:
   - Expirience
   - Panel
   - ActiveWeapon
+  - RadiusToKnockBack
+  - Boss
   layers:
   - Default
   - TransparentFX

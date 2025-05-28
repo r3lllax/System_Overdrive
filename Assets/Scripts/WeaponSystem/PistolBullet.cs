@@ -12,7 +12,6 @@ public class PistolBullet : Bullet
     private void Update()
     {
         RefreshSize();
-        Debug.Log(BypassesCount);
     }
     private void OnTriggerEnter2D(Collider2D other){
         DamageRegTrigger(other);

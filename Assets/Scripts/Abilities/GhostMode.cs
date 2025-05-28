@@ -24,16 +24,17 @@ public class GhostMode : Ability
         yield return new WaitForSeconds(castTime);
         
         ExecuteAbility();
+        yield return new WaitForSeconds(activeTime);
         StartCoroutine(CooldownRoutine());
     }
     protected override void ExecuteAbility()
     {
         PlayerSpeedBefore = SessionData.MoveSpeed;
         PlayerSpeedAfter = PlayerSpeedBefore * 1.5f;
-        StopAllCoroutines();
         StartCoroutine(AbilityRoutine());
 
     }
+    
     private IEnumerator AbilityRoutine()
     {
         DamageUI.Instance.AddText(1, owner.transform.position, "GhostMode");
@@ -44,12 +45,12 @@ public class GhostMode : Ability
         for (int i = 0; i < 3; i++)
         {
             playerLight.enabled = false;
-            yield return new WaitForSeconds(((activeTime / 3 * 1) / 3)/2);
+            yield return new WaitForSeconds(((activeTime / 3 * 1) / 3) / 2);
             playerLight.enabled = true;
-            yield return new WaitForSeconds(((activeTime / 3 * 1) / 3)/2);
+            yield return new WaitForSeconds(((activeTime / 3 * 1) / 3) / 2);
         }
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedBefore);
         sp.color = oldColor;
-        PlayerColider.enabled=true;
+        PlayerColider.enabled = true;
     }
 }
