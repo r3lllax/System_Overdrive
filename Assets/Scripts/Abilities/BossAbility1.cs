@@ -22,14 +22,12 @@ public class BossAbility1 : Ability
     }
     protected override void ExecuteAbility()
     {
-        Debug.Log($"Точка - {GenerateAbilityPoint()}");
-        Debug.Log($"Босс используетс способность {gameObject.name}");
         Points.Clear();
         for (int i = 0; i < ExplosionsCount; i++)
         {
             Points.Add(GenerateAbilityPoint());
         }
-        Debug.Log($"Точки");
+        
         StartCoroutine(SpawnExplosions());
         
     }

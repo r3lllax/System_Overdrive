@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private SpriteRenderer spriteRenderer;
     public bool NotTakeSpeed =false;
-    public void SetPlayerMSWithMultiplier(float speed){
+    public bool isFreezed = false;
+    public void SetPlayerMSWithMultiplier(float speed)
+    {
         this.moveSpeed *= speed;
     }
     private void Awake()
@@ -44,18 +46,25 @@ public class PlayerController : MonoBehaviour
         
         //Переделать через инпут систем
         if(Input.GetKeyDown(KeyCode.LeftShift)){
+            if(isFreezed){ return; }
             NotTakeSpeed = true;
             moveSpeed*=GetComponent<Player>().GetSprintMultiplier();
             transform.GetChild(2).gameObject.SetActive(true);
         }
         if(Input.GetKeyUp(KeyCode.LeftShift)){
-            if(moveSpeed!=0){
-                moveSpeed/=GetComponent<Player>().GetSprintMultiplier();
+            if(isFreezed){ return; }
+            if (moveSpeed != 0)
+            {
+                moveSpeed /= GetComponent<Player>().GetSprintMultiplier();
             }
             NotTakeSpeed = false;
             transform.GetChild(2).gameObject.SetActive(false);
         }
         PlayerInput();
+    }
+    public void SetMoveSpeed(float speed)
+    {
+        moveSpeed = speed;
     }
     private void FixedUpdate()
     {

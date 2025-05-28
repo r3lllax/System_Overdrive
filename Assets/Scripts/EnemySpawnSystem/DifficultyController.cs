@@ -54,7 +54,7 @@ public class DifficultyController : MonoBehaviour
                 StartCoroutine(Boss());
             } 
             
-            SessionData.AddProcentesFloat(ref SessionData.EnemySpeedMultiplier, 5f);
+            SessionData.AddProcentesFloat(ref SessionData.EnemySpeedMultiplier, 3.5f);
             ESC.IncreaseHpStats();
             ESC.IncreaseMaxEnemies(enemyInIncrease);
             ESC.DecreaseSpawnInterval(0.2f);

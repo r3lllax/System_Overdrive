@@ -52,12 +52,15 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void TakeDamage(int Damage, float strength,string modifier="default"){
-        health = health-Damage<=0 ? 0 : health-=Damage;
+    public void TakeDamage(int Damage, float strength, string modifier = "default") {
+        health = health - Damage <= 0 ? 0 : health -= Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
-        DamageUI.Instance.AddText(Damage,transform.position,modifier);
+        DamageUI.Instance.AddText(Damage, transform.position, modifier);
         flash.StartCoroutine(flash.FlashRoutine());
-        knockback.GetKnockBack(PlayerController.Instance.transform,strength);
+        if (Type != "Boss")
+        {
+            knockback.GetKnockBack(PlayerController.Instance.transform,strength);
+        }
         Instantiate(DamageEffect,transform.position,Quaternion.identity);
     }
     public void OneShot(float strength){

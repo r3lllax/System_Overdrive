@@ -32,7 +32,6 @@ public class Sandevistan : Ability
 
         PlayerMLSBefore = SessionData.AttackSpeedMelee;
         PlayerMLSAfter = PlayerMLSBefore * 3;
-        StopAllCoroutines();
         StartCoroutine(WaitEndOfAbility());
         Debug.Log($"Исполняю способность с каст-таймом равному {castTime} и кд {cooldown}");
     }

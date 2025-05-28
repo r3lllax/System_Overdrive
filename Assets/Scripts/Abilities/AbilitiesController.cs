@@ -7,6 +7,7 @@ public class AbilitiesController : MonoBehaviour
     private Dictionary<KeyCode, Ability> abilityKeyMap;
     [SerializeField]private bool isPlayerOwner = true;
     private bool NeedChooseAbility = false;
+    private bool UseEveryCD = false;
     private List<Ability> AvailableSpells;
 
 
@@ -30,24 +31,46 @@ public class AbilitiesController : MonoBehaviour
     {
         NeedChooseAbility = true;
     }
-
+    
     public bool CanUseSpell()
     {
         return AvailableSpells.Count > 0 ? true : false;
     }
+    [ContextMenu("UseEveryCD")]
+    public void ToggleUseByCD()
+    {
+        UseEveryCD = !UseEveryCD;
+    }
 
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Z))
+        {
+            ToggleUseByCD();
+        }
         if (isPlayerOwner)
         {
-            foreach (var key in abilityKeyMap.Keys)
+            if (UseEveryCD)
             {
-
-                if (Input.GetKey(key))
+                foreach (var key in abilityKeyMap.Keys)
                 {
+
                     abilityKeyMap[key].TryActivate();
+
                 }
             }
+            else
+            {
+                foreach (var key in abilityKeyMap.Keys)
+                {
+
+                    if (Input.GetKey(key))
+                    {
+                        abilityKeyMap[key].TryActivate();
+                    }
+                }
+            }
+
         }
         else
         {

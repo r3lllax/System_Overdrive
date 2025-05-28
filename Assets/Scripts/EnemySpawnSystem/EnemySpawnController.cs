@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Boss"};
+    private List<string> AvailbleTypes = new List<string>{"Basic"};
     private int currentEnemies;
     private int MinBasicHP=3;
     private int MaxBasicHP=5;
@@ -121,7 +121,7 @@ public class EnemySpawnController : MonoBehaviour
     public void DecreaseSpawnInterval(float number){
         spawnInterval-=number;
         if(spawnInterval<0){
-            spawnInterval = 0.2f;
+            spawnInterval = 0.5f;
         }
     }
 
