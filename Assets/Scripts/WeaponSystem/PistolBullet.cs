@@ -42,7 +42,7 @@ public class PistolBullet : Bullet
         if (collision.gameObject.layer == targetLayerNum)
         {
             if(BypassesCount>0){
-                if(TryOneShot()==true){
+                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){
@@ -54,7 +54,7 @@ public class PistolBullet : Bullet
                 BypassesCount--;
             }
             else{
-                if(TryOneShot()==true){
+                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){

@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: AbilityAT
   m_EditorClassIdentifier: 
-  Name: 
-  Image: {fileID: 0}
+  Name: "\u0421\u0432\u0435\u0440\u0445\u0435\u0441\u0442\u0435\u0441\u0442\u0432\u0435\u043D\u043D\u0430\u044F
+    \u0432\u044B\u043D\u043E\u0441\u043B\u0438\u0432\u043E\u0441\u0442\u044C"
+  Image: {fileID: 4315813676697364914, guid: 8389504f668080846a5cfbb59dca3e00, type: 3}
   Description: 
-  minVal: 0
-  maxVal: 0
-  Melee: 0
-  Range: 0
+  minVal: 1
+  maxVal: 2
+  Melee: 1
+  Range: 1
   Procente: 0
-  HasDebuff: 0
-  targerStat: 0
+  HasDebuff: 1
+  targerStat: 19
   debuffStat: 0
-  DebufSize: 0
+  DebufSize: 1

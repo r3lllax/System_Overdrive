@@ -37,7 +37,7 @@ public class RevolverBullet : Bullet
         {
             // collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
             if(BounceCount>0){
-                if(TryOneShot()==true){
+                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){
@@ -49,7 +49,7 @@ public class RevolverBullet : Bullet
                 BounceCount--;
             }
             else{
-                if(TryOneShot()==true){
+                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){

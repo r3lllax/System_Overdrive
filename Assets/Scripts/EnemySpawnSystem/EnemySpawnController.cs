@@ -110,13 +110,18 @@ public class EnemySpawnController : MonoBehaviour
     public void IncreaseMaxEnemies(int num){
         maxEnemies += num;
     }
-    public void AddTypeToAvailble(string newType){
+    public void ClearAvailableTypes()
+    {
+        AvailbleTypes.Clear();
+    }
+    public void AddTypeToAvailble(string newType)
+    {
         AvailbleTypes.Add(newType);
     }
     public void DecreaseSpawnInterval(float number){
         spawnInterval-=number;
         if(spawnInterval<0){
-            spawnInterval = 0;
+            spawnInterval = 0.2f;
         }
     }
 

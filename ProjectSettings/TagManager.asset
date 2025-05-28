@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Expirience
   - Panel
+  - ActiveWeapon
   layers:
   - Default
   - TransparentFX
