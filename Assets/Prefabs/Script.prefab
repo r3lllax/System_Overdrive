@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1416698973517387961}
   m_Layer: 7
   m_Name: Script
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -199,6 +199,7 @@ MonoBehaviour:
   DamageEffect: {fileID: 6325392617095057417, guid: b444c4d5bb480ec4bbc5bd481519a4c8, type: 3}
   Type: Elite
   health: 0
+  speed: 2
   ESC: {fileID: 0}
   pool: {fileID: 0}
 --- !u!50 &-2572184119167944766

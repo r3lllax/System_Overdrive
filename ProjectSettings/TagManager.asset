@@ -9,6 +9,7 @@ TagManager:
   - ActiveWeapon
   - RadiusToKnockBack
   - Boss
+  - Enemy
   layers:
   - Default
   - TransparentFX

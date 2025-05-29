@@ -8,8 +8,14 @@ public class EnemyPathfinder : MonoBehaviour
     private Vector2 moveDir;
     private Knockback knockback;
 
-    public void SetMoveSpeed(float Num){
+    private bool isFreezed = false;
+
+    public void SetMoveSpeed(float Num) {
         moveSpeed = Num;
+    }
+    public void SetFreezed(bool newState)
+    {
+        isFreezed = newState;
     }
     private void Awake()
     {
@@ -19,7 +25,7 @@ public class EnemyPathfinder : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(knockback.KnockedBack || GetComponent<EnemyAI>().GetState()=="RangedAttack"){return;}
+        if(knockback.KnockedBack || GetComponent<EnemyAI>().GetState()=="RangedAttack" ||isFreezed){return;}
         //rb.MovePosition(rb.position+moveDir*(moveSpeed*Time.fixedDeltaTime));
         
         float speed = enemy.speed*SessionData.EnemySpeedMultiplier;

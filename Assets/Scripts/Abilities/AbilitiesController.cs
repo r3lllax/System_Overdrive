@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AbilitiesController : MonoBehaviour
 {
-    [SerializeField] private Ability[] abilities;
-    private Dictionary<KeyCode, Ability> abilityKeyMap;
+    [SerializeField] public List<Ability> abilities;
+    public Dictionary<KeyCode, Ability> abilityKeyMap;
     [SerializeField] private bool isPlayerOwner = true;
     private bool NeedChooseAbility = false;
     private bool UseEveryCD = false;
@@ -14,6 +14,11 @@ public class AbilitiesController : MonoBehaviour
     private bool isProcessing = false;
 
     private void Awake()
+    {
+        CalculateAbilities();
+    }
+
+    public void CalculateAbilities()
     {
         AvailableSpells = new List<Ability>();
         abilityKeyMap = new Dictionary<KeyCode, Ability>();
@@ -25,8 +30,6 @@ public class AbilitiesController : MonoBehaviour
             }
 
         }
-
-
     }
 
     public void UseRandomSpell()
@@ -64,7 +67,6 @@ public class AbilitiesController : MonoBehaviour
         }
         if (isPlayerOwner)
         {
-            Debug.Log($"USECD:{UseEveryCD}");
             if (UseEveryCD)
             {
                 foreach (var key in abilityKeyMap.Keys)

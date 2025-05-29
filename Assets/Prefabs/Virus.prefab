@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 2681989405501086934}
   m_Layer: 7
   m_Name: Virus
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -227,6 +227,7 @@ MonoBehaviour:
   DamageEffect: {fileID: 6325392617095057417, guid: 92dc7ddebcc0e68499bce85f739ee90a, type: 3}
   Type: Basic
   health: 0
+  speed: 2
   ESC: {fileID: 0}
   pool: {fileID: 0}
 --- !u!114 &1488329603901368855

@@ -35,7 +35,9 @@ public class BossAbility1 : Ability
     {
         foreach (Vector2 point in Points)
         {
-            Instantiate(ExplosionPrefab, point, Quaternion.identity);
+            
+            var BE = Instantiate(ExplosionPrefab, point, Quaternion.identity);
+            BE.GetComponent<BossExplosion>().SetOnwer(owner);
             yield return new WaitForSeconds(activeTime / Points.Count);
         }
     }

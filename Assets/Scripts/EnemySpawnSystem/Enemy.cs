@@ -40,8 +40,13 @@ public class Enemy : MonoBehaviour
     public void SetHealth(int HP){
         health = HP;
     }
+    public int GetHealth()
+    {
+        return health;
+    }
     //Пока не убирать, позже переделать через инит, так как через ссылки на скрипты че то не оч мне нравится
-    public void Init(EnemySpawnController SpawnController,EnemyPool enemyPool){
+    public void Init(EnemySpawnController SpawnController, EnemyPool enemyPool)
+    {
         ESC = SpawnController;
         pool = enemyPool;
     }
