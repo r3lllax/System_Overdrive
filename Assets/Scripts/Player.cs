@@ -61,7 +61,14 @@ public class Player : MonoBehaviour
         StartCoroutine(DamageRoutine());
         if (knock)
         {
-            transform.GetChild(transform.childCount-1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+            try
+            {
+                transform.GetChild(transform.childCount - 1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+            }
+            catch
+            {
+                transform.GetChild(transform.childCount-2).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+            }
 
         }
         if(CheckDeath()){

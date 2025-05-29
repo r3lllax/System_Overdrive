@@ -10,6 +10,7 @@ TagManager:
   - RadiusToKnockBack
   - Boss
   - Enemy
+  - bulletShield
   layers:
   - Default
   - TransparentFX

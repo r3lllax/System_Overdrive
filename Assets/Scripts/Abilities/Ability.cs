@@ -25,7 +25,11 @@ public abstract class Ability : MonoBehaviour
     }
     private void Start()
     {
-        owner = transform.parent.transform.parent.gameObject;
+        try
+        {
+            owner = transform.parent.transform.parent.gameObject;
+        }
+        catch{}
     }
 
     private void Update()

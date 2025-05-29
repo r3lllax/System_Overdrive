@@ -536,9 +536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 24
-  activeTime: 0
+  activeTime: 5
   castTime: 0
   hotkey: 50
+  shieldPrefab: {fileID: 7139332826240947738, guid: 3dd683afd124fa842ae8436ede81bae3, type: 3}
 --- !u!1 &7213629801598630143
 GameObject:
   m_ObjectHideFlags: 0

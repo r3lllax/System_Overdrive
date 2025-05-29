@@ -89,9 +89,9 @@ public class EnemySpawnController : MonoBehaviour
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Boss"){
-                enemyHp = 1;
-                EnemyComponent.SetLowExpTh(0);
-                EnemyComponent.SetHighExpTh(0);
+                enemyHp = 1000;
+                EnemyComponent.SetLowExpTh(1000);
+                EnemyComponent.SetHighExpTh(3000);
 
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(1.5f,2f));
                 
