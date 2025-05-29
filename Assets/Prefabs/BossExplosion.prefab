@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6897446170405031806}
   - component: {fileID: 8077464132863545209}
   - component: {fileID: 5230641466173829407}
+  - component: {fileID: 2561665741838665153}
   m_Layer: 11
   m_Name: BossExplosion
   m_TagString: Untagged
@@ -30,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.2786, y: -4.7467, z: 0}
-  m_LocalScale: {x: 2.8025477, y: 2.456338, z: 1}
+  m_LocalScale: {x: 1.0335796, y: 0.83834815, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1304809900141787405}
@@ -80,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9062439499732290214, guid: 9cfe299dda7d3c14db3bfb92a89af1fe, type: 3}
+  m_Sprite: {fileID: -682715573991986222, guid: 397b63d299e289748b134342df61b739, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -152,8 +153,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.48}
-  m_Size: {x: 1, y: 1}
+  m_Offset: {x: 0, y: 1.98}
+  m_Size: {x: 2.72, y: 0.7}
   m_Direction: 1
 --- !u!114 &5230641466173829407
 MonoBehaviour:
@@ -168,6 +169,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExplosionDeadPrefab: {fileID: 5214810043253317559, guid: 95abc57496097fc4c843f7e7f5503f86, type: 3}
+--- !u!95 &2561665741838665153
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697821175430596921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 508f91aea50dd5e459410267ca11250f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4602001733238031755
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,15 +1,17 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AbilitiesController : MonoBehaviour
 {
-   [SerializeField] private Ability[] abilities;
+    [SerializeField] private Ability[] abilities;
     private Dictionary<KeyCode, Ability> abilityKeyMap;
-    [SerializeField]private bool isPlayerOwner = true;
+    [SerializeField] private bool isPlayerOwner = true;
     private bool NeedChooseAbility = false;
     private bool UseEveryCD = false;
     private List<Ability> AvailableSpells;
 
+    private bool isProcessing = false;
 
     private void Awake()
     {
@@ -31,25 +33,38 @@ public class AbilitiesController : MonoBehaviour
     {
         NeedChooseAbility = true;
     }
-    
+
     public bool CanUseSpell()
     {
         return AvailableSpells.Count > 0 ? true : false;
     }
     [ContextMenu("UseEveryCD")]
-    public void ToggleUseByCD()
+    public void ToggleAutoUse()
     {
+        if (!isProcessing)
+        {
+            StartCoroutine(ToggleUseByCD());
+        }
+        
+    }
+
+    private IEnumerator ToggleUseByCD()
+    {
+        isProcessing = true;
         UseEveryCD = !UseEveryCD;
+        yield return new WaitForSeconds(1);
+        isProcessing = false;
     }
 
     private void Update()
     {
         if (Input.GetKey(KeyCode.Z))
         {
-            ToggleUseByCD();
+            ToggleAutoUse();
         }
         if (isPlayerOwner)
         {
+            Debug.Log($"USECD:{UseEveryCD}");
             if (UseEveryCD)
             {
                 foreach (var key in abilityKeyMap.Keys)

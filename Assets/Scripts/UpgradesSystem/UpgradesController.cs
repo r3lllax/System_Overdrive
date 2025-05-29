@@ -30,6 +30,7 @@ public class UpgradesController : MonoBehaviour
         {"BulletRebonceCount","Количество отскоков пули"},
         {"AbilityActiveTime","Время действия способности"},
         {"AbilityCooldown","Время перезарядки способности"},
+        {"BackFire","Доп. атака"}
         
     };
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -115,11 +116,13 @@ public class UpgradesController : MonoBehaviour
         { "BulletRebonceCount", (isPercent, val) => ApplyToIntField(ref SessionData.BulletRebonceCount, isPercent, Mathf.RoundToInt(val)) },
         { "Health", (isPercent, val) => ApplyToIntField(ref SessionData.Health, isPercent, Mathf.RoundToInt(val)) },
         { "MagazineCapacity", (isPercent, val) => ApplyToIntField(ref SessionData.MagazineCapacity, isPercent, Mathf.RoundToInt(val)) },
-
+        { "BackFire", (isPercent, val) => ApplyToIntField(ref SessionData.BackFire, isPercent, Mathf.RoundToInt(val)) },
         
         // V3
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },
+        //Bool
+        // { "BackFire", (isPercent, val) => ApplyToBoolField(ref SessionData.BackFire, isPercent, Convert.ToBoolean(val)) },
         
     };
 
@@ -154,6 +157,13 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesChance(ref field, value);
         else
             SessionData.AddValueChance(ref field, value);
+    }
+
+     private static void ApplyToBoolField(ref bool field, bool isPercent, bool value)
+    {
+
+        SessionData.SetBool(ref field, value);
+       
     }
     
 
@@ -235,16 +245,19 @@ public class UpgradesController : MonoBehaviour
     public void FilterUpgrades(){
         AvailableUpgrades.Clear();
         for(int i=0;i<AllUpgrades.UpgradesList.Count;i++){
-            if((AllUpgrades.UpgradesList[i].Melee && PlayerType=="Melee")||(AllUpgrades.UpgradesList[i].Range && PlayerType=="Range")){
-                Debug.Log(BulletType);
-                switch(BulletType){
+            if ((AllUpgrades.UpgradesList[i].Melee && PlayerType == "Melee") || (AllUpgrades.UpgradesList[i].Range && PlayerType == "Range"))
+            {
+                switch (BulletType)
+                {
                     case "Bullet":
-                        if(AllUpgrades.UpgradesList[i].targerStat.ToString()!="BulletRebonceCount"){
+                        if (AllUpgrades.UpgradesList[i].targerStat.ToString() != "BulletRebonceCount")
+                        {
                             AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
                         }
                         break;
                     case "BulletRevoler":
-                        if(AllUpgrades.UpgradesList[i].targerStat.ToString()!="BulletBypassCount"){
+                        if (AllUpgrades.UpgradesList[i].targerStat.ToString() != "BulletBypassCount")
+                        {
                             AvailableUpgrades.Add(AllUpgrades.UpgradesList[i]);
                         }
                         break;

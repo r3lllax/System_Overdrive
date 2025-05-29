@@ -112,7 +112,7 @@ public class EnemyAI : MonoBehaviour
             attackTimer-=Time.deltaTime;
         }
         else if(!canAttack && attackTimer <=0){
-            attackTimer = 2f;
+            attackTimer = 3f;
             canAttack=true;
         }
         

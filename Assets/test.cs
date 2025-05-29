@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("AddBackFire")]
+    public void AddBackFire(){
+        SessionData.AddValueInt(ref SessionData.BackFire,1);
+        SessionData.ShowData();
+    }
     [ContextMenu("Add5MagazineCapacity")]
     public void Add5MagazineCapacity(){
         SessionData.AddValueInt(ref SessionData.MagazineCapacity,5);

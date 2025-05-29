@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         }
     }
     public void TakeDamage(int Damage, float strength, string modifier = "default") {
+        Debug.Log($"TAKEN - {Damage}");
         health = health - Damage <= 0 ? 0 : health -= Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         DamageUI.Instance.AddText(Damage, transform.position, modifier);

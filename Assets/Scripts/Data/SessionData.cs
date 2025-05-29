@@ -27,6 +27,8 @@ public class SessionData
     public static int BulletBypassCount = 1;//✓
     public static int BulletRebonceCount = 1;//✓
     public static bool NeedRefresh;
+    // public static bool BackFire = false;
+    public static int BackFire = 0;
     public static float ProcenteScaleMax = 1000;
 
     //test
@@ -257,4 +259,8 @@ public class SessionData
         NeedRefresh = true;
     }
     ///V3
+    ///Bool
+    public static void SetBool(ref bool variable,bool value){
+        variable = value;
+    }
 }

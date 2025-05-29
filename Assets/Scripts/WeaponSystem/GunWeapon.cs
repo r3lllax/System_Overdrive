@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.Intrinsics;
 using Unity.Cinemachine;
 using Unity.Mathematics;
 using Unity.VisualScripting;
@@ -15,10 +16,10 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private int Damage;
     [SerializeField] private int BypassesCount;
     private bool unlimitedAmmos = false;
-
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
+    private bool backFireProcessing = false;
     public void SetUnlimitedAmmo(bool newState)
     {
         unlimitedAmmos = newState;
@@ -44,7 +45,7 @@ public class GunWeapon : MonoBehaviour
         Damage = CurrentWeapon.Damage;
         BulletLifeTime = CurrentWeapon.GunBulletLifeTime;
         CurrentMagazineSize = MagazineSize;
-        
+
     }
     public void ForcedReload()
     {
@@ -56,27 +57,149 @@ public class GunWeapon : MonoBehaviour
         CurrentMagazineSize = MagazineSize;
         StartCoroutine(AnimReload());
     }
-    public void AttackStart(){
-        var FireEffect = Instantiate(CurrentWeapon.AttackParticles,CurrentWeapon.AttackParticles.transform.position,CurrentWeapon.AttackParticles.transform.rotation);
+    public void AttackStart() {
+        var FireEffect = Instantiate(CurrentWeapon.AttackParticles, CurrentWeapon.AttackParticles.transform.position, CurrentWeapon.AttackParticles.transform.rotation);
         FireEffect.SetActive(true);
-        FireEffect.transform.SetParent(transform,false);
+        FireEffect.transform.SetParent(transform, false);
     }
-    public void AttackEnd(){
-        
+    public void AttackEnd() {
+
     }
-    public void TryFire(){
-        if(CurrentMagazineSize>0){
-            Fire();
+    public void TryFire() {
+        if (CurrentMagazineSize > 0)
+        {
+            if (SessionData.BackFire > 0)
+            {
+                if (!backFireProcessing)
+                {
+                    StartCoroutine(BackAttack());
+                }
+                
+            }
+            else
+            {
+                Fire();
+            }
+            
         }
 
     }
 
-    private void Fire(){
+    private IEnumerator BackAttack()
+    {
+        backFireProcessing = true;
+        for (int i = 0; i < SessionData.BackFire + 1; i++)
+        {
+            if (i > 0 )
+            {
+                yield return new WaitForSeconds(SessionData.CdBetweenFire/2f / SessionData.BackFire);
+            }
+            if (!unlimitedAmmos)
+            {
+                if (i == 0)
+                {
+                    CurrentMagazineSize -= 1;
+                    GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
+                }
+            }
+
+            Debug.Log($"Итерация:{i}");
+            
+            GameObject bullet = BulletPool.Instance.GetBullet();
+            bullet.GetComponent<Bullet>().SetDamage(Damage);
+            bullet.GetComponent<Bullet>().SetBulletLifeTime(BulletLifeTime);
+            Vector3 pos = transform.position;
+            pos.y += 0.1f;
+
+            if (i >= 1)
+            {
+                Vector3 diff = PlayerController.Instance.transform.position - pos;
+                pos += diff * 2;
+
+            }
+            bullet.transform.position = pos;
+            bullet.transform.rotation = transform.rotation;
+
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (i == 0)
+            {
+                rb.linearVelocity = transform.right * BulletSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = -transform.right * BulletSpeed;
+            }
+
+            bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
+            if (i == 0)
+            {
+                AttackStart();
+            }
+
+        }
+        Reload();
+        backFireProcessing = false;
+    }
+
+    //Убрать при чистке
+    private void CircleAttack()
+    {
+        for (int i = 0; i < SessionData.BackFire + 1; i++)
+        {
+            if (!unlimitedAmmos)
+            {
+                if (i == 0)
+                {
+                    CurrentMagazineSize -= 1;
+                    GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
+                }
+            }
+
+
+
+            GameObject bullet = BulletPool.Instance.GetBullet();
+            bullet.GetComponent<Bullet>().SetDamage(Damage);
+            bullet.GetComponent<Bullet>().SetBulletLifeTime(BulletLifeTime);
+            Vector3 pos = transform.position;
+            pos.y += 0.1f;
+
+            if (i >= 1)
+            {
+                Vector3 diff = PlayerController.Instance.transform.position - pos;
+                pos += diff * 2;
+
+            }
+            bullet.transform.position = pos;
+            bullet.transform.rotation = transform.rotation;
+
+            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
+            if (i == 0)
+            {
+                rb.linearVelocity = transform.right * BulletSpeed;
+            }
+            else
+            {
+                rb.linearVelocity = -transform.right * BulletSpeed;
+            }
+
+            bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
+            if (i == 0)
+            {
+                AttackStart();
+            }
+
+        }
+        
+        Reload();
+    }
+
+    private void Fire()
+    {
         if (!unlimitedAmmos)
         {
-            CurrentMagazineSize -=1;
+            CurrentMagazineSize -= 1;
         }
-        
+
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
 
         GameObject bullet = BulletPool.Instance.GetBullet();
@@ -86,13 +209,13 @@ public class GunWeapon : MonoBehaviour
         pos.y += 0.1f;
         bullet.transform.position = pos;
         bullet.transform.rotation = transform.rotation;
-        
+
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
         rb.linearVelocity = transform.right * BulletSpeed;
         //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
         //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
-        bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet,BulletLifeTime));
-        
+        bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
+
         AttackStart();
         Reload();
     }

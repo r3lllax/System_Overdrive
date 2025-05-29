@@ -35,6 +35,7 @@ public class Upgrade : ScriptableObject
         EnemySpeedMultiplier,
         AbilityActiveTime,
         AbilityCooldown,
+        BackFire,
 
     }
     public Stats targerStat = Stats.Health;
