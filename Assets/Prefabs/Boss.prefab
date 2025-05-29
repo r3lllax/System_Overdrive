@@ -385,7 +385,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fdbc5bb01606c14ebc12d8469f09938, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RewardSpell: {fileID: 3484672341420617911, guid: d3b40748b53ebed42a03c93aeda0693f, type: 3}
+  RewardSpell: {fileID: 2193903334727479937}
 --- !u!70 &7044811999866998853
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -538,7 +538,7 @@ MonoBehaviour:
   cooldown: 24
   activeTime: 0
   castTime: 0
-  hotkey: 0
+  hotkey: 50
 --- !u!1 &7213629801598630143
 GameObject:
   m_ObjectHideFlags: 0

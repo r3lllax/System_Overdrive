@@ -29,8 +29,16 @@ public class BossAI : MonoBehaviour
         Health = GetComponent<Enemy>().GetHealth();
         if (Health <= 0 && !SpellWasGivenToPlayer)
         {
+           
+            //игрок и спелл контроллер
             GameObject player = GameObject.FindWithTag("Player");
             AbilitiesController playerSpellsController = player.GetComponentInChildren<AbilitiesController>();
+
+            GameObject BossSpellController = transform.GetChild(0).gameObject;
+            int childsCount = BossSpellController.transform.childCount;
+            RewardSpell = BossSpellController.transform.GetChild(Random.Range(0, childsCount)).gameObject;
+
+            //Перекидываем спелл
             var AbilityInPlayerContoller = Instantiate(RewardSpell, playerSpellsController.transform);
             playerSpellsController.abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
             playerSpellsController.CalculateAbilities();

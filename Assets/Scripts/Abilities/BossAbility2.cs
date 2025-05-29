@@ -8,6 +8,6 @@ public class BossAbility2 : Ability
     }
     protected override void ExecuteAbility()
     {
-        Debug.Log($"Босс использует способность {gameObject.name}");
+        Debug.Log($"{owner.gameObject.tag} использует способность {gameObject.name}");
     }
 }

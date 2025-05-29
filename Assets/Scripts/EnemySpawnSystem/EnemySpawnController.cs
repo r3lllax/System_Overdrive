@@ -89,7 +89,7 @@ public class EnemySpawnController : MonoBehaviour
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Boss"){
-                enemyHp = 500;
+                enemyHp = 1;
                 EnemyComponent.SetLowExpTh(0);
                 EnemyComponent.SetHighExpTh(0);
 
