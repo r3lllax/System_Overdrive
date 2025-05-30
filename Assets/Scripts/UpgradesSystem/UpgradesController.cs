@@ -30,7 +30,13 @@ public class UpgradesController : MonoBehaviour
         {"BulletRebonceCount","Количество отскоков пули"},
         {"AbilityActiveTime","Время действия способности"},
         {"AbilityCooldown","Время перезарядки способности"},
-        {"BackFire","Доп. атака"}
+        {"BackFire","Доп. атака"},
+        {"LightningProcChance","Шанс появления молнии"},
+        {"LightningMaxJumps","Количество отскоков молнии"},
+        {"LightningJumpRadius","Радиус отскока молнии"},
+        {"LightningDamageMultiplier","Множитель урона за отскок молнии"},
+        {"LightningDelay","Задержка меджу отскоками молнии"},
+
         
     };
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -104,11 +110,14 @@ public class UpgradesController : MonoBehaviour
         { "BulletSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletSpeed, isPercent, val) },
         { "BulletLifeTime", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletLifeTime, isPercent, val) },
         { "AbilityActiveTime", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityActiveTime, isPercent, val) },
-        { "AbilityCooldown", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityCooldown, isPercent, val) },
+        { "LightningJumpRadius", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningJumpRadius, isPercent, val) },
+        { "LightningDamageMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDamageMultiplier, isPercent, val) },
+        { "LightningDelay", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDelay, isPercent, val) },
  
         //Chances
         { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
         { "CritChance", (isPercent, val) => ApplyToChanceField(ref SessionData.CritChance, isPercent, val) },
+        { "LightningProcChance", (isPercent, val) => ApplyToChanceField(ref SessionData.LightningProcChance, isPercent, val) },
 
         // Int 
         { "Damage", (isPercent, val) => ApplyToIntField(ref SessionData.Damage, isPercent, Mathf.RoundToInt(val)) },
@@ -117,6 +126,7 @@ public class UpgradesController : MonoBehaviour
         { "Health", (isPercent, val) => ApplyToIntField(ref SessionData.Health, isPercent, Mathf.RoundToInt(val)) },
         { "MagazineCapacity", (isPercent, val) => ApplyToIntField(ref SessionData.MagazineCapacity, isPercent, Mathf.RoundToInt(val)) },
         { "BackFire", (isPercent, val) => ApplyToIntField(ref SessionData.BackFire, isPercent, Mathf.RoundToInt(val)) },
+        { "LightningMaxJumps", (isPercent, val) => ApplyToIntField(ref SessionData.LightningMaxJumps, isPercent, Mathf.RoundToInt(val)) },
         
         // V3
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },
@@ -244,9 +254,14 @@ public class UpgradesController : MonoBehaviour
     }
     public void FilterUpgrades(){
         AvailableUpgrades.Clear();
-        for(int i=0;i<AllUpgrades.UpgradesList.Count;i++){
+        for (int i = 0; i < AllUpgrades.UpgradesList.Count; i++)
+        {
             if ((AllUpgrades.UpgradesList[i].Melee && PlayerType == "Melee") || (AllUpgrades.UpgradesList[i].Range && PlayerType == "Range"))
             {
+                if (SessionData.LightningProcChance== 0 && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningJumpRadius" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDamageMultiplier" ||AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDelay" ||AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningMaxJumps" ))
+                {
+                    continue;
+                }
                 switch (BulletType)
                 {
                     case "Bullet":
@@ -266,6 +281,7 @@ public class UpgradesController : MonoBehaviour
                         break;
                 }
             }
+            
         }
     }
 }

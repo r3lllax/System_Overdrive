@@ -4,26 +4,43 @@ using UnityEngine;
 
 public class LightningController : MonoBehaviour
 {
-    private float procChance = 0.25f;
-    private float startDamage = 1f;
-    private int maxJumps = 3;
-    private float jumpRadius = 5f;
-    private float damageMultiplier = 0.7f;
-    private float delay = 0.15f;
+    public float procChance;
+    public float startDamage = 1f;
+    public int maxJumps = 3;
+    public float jumpRadius = 5f;
+    public float damageMultiplier = 0.7f;
+    public float delay = 0.15f;
     public LayerMask enemyLayer;
 
-    public void TryProcLightning(GameObject firstTarget)
+    public void TryProcLightning(GameObject firstTarget, float damage)
     {
-        startDamage = SessionData.Damage;
+        startDamage = damage;
+        Debug.Log($"procChance - {procChance} Random.value - {Random.value} {Random.value <= procChance}");
         if (Random.value <= procChance)
         {
+            ActualizeData();
             StartCoroutine(TriggerLightningChain(firstTarget));
 
         }
     }
+    void Update()
+    {
+        ActualizeData();
+    }
+
+    private void ActualizeData()
+    {
+        procChance = SessionData.ScaleValueToProcente(SessionData.LightningProcChance)/100;
+        // startDamage = SessionData.Damage;
+        maxJumps = SessionData.LightningMaxJumps;
+        jumpRadius = SessionData.LightningJumpRadius;
+        damageMultiplier = SessionData.LightningDamageMultiplier;
+        delay = SessionData.LightningDelay;
+    }
 
     private IEnumerator TriggerLightningChain(GameObject firstTarget)
     {
+        
         List<GameObject> affectedTargets = new List<GameObject>();
         GameObject currentTarget = firstTarget;
         float currentDamage = startDamage;
@@ -32,14 +49,18 @@ public class LightningController : MonoBehaviour
         while (jumpsLeft > 0 && currentTarget != null)
         {
             Enemy targetEnemy = currentTarget.GetComponent<Enemy>();
-            
+
             if (targetEnemy != null)
             {
-            
-                targetEnemy.TakeDamage((int)currentDamage, 0f);
-                affectedTargets.Add(currentTarget);
-                
-                
+                //Проверка на жив враг или нет добавлять сюда
+                if (targetEnemy.gameObject.activeSelf)
+                {
+                    targetEnemy.TakeDamage((int)currentDamage, 0f,"Lightning");
+                    affectedTargets.Add(currentTarget);
+                }
+
+
+
             }
             if (jumpsLeft != maxJumps)
             {
@@ -48,9 +69,9 @@ public class LightningController : MonoBehaviour
                 {
                     CreateLightningEffect(affectedTargets[affectedTargets.Count - 2 < 0 ? 0 : affectedTargets.Count - 2].transform.position, currentTarget.transform.position);
                 }
-                
+
             }
-            
+
 
 
             GameObject nextTarget = FindNextTarget(currentTarget.transform.position, affectedTargets);
@@ -62,7 +83,7 @@ public class LightningController : MonoBehaviour
             jumpsLeft--;
             yield return new WaitForSeconds(delay);
         }
-        
+
     }
     private GameObject FindNextTarget(Vector3 origin, List<GameObject> exclude)
     {

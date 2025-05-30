@@ -36,6 +36,12 @@ public class Upgrade : ScriptableObject
         AbilityActiveTime,
         AbilityCooldown,
         BackFire,
+        LightningProcChance,
+        LightningJumpRadius,
+        LightningDamageMultiplier,
+        LightningDelay,
+        LightningMaxJumps,
+        
 
     }
     public Stats targerStat = Stats.Health;

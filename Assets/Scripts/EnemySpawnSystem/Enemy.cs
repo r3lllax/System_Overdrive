@@ -54,10 +54,18 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void TakeDamage(int Damage, float strength, string modifier = "default") {
+    public void TakeDamage(int Damage, float strength, string modifier = "default",bool tryLightning = false) {
         Debug.Log($"TAKEN - {lightningController}");
         health = health - Damage <= 0 ? 0 : health -= Damage;
-        lightningController.TryProcLightning(this.gameObject);
+        if (tryLightning)
+        {
+            if (lightningController)
+            {
+                lightningController.TryProcLightning(this.gameObject,(float)Damage);
+
+            }
+
+        }
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         DamageUI.Instance.AddText(Damage, transform.position, modifier);
         flash.StartCoroutine(flash.FlashRoutine());

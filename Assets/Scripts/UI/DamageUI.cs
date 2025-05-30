@@ -88,6 +88,10 @@ public class DamageUI : MonoBehaviour
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255,255);
             t.text = "GhostMode!";
         }
+        else if(modifier=="Lightning"){
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 234,255);
+            t.text = amt.ToString();
+        }
         else
         {
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255);

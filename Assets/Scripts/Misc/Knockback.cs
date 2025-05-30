@@ -19,7 +19,11 @@ public class Knockback : MonoBehaviour
         KnockedBack = true;
         Vector2 diff = (transform.position - damageSource.position).normalized * knockBackThrust * rb.mass;
         rb.AddForce(diff,ForceMode2D.Impulse);
-        StartCoroutine(KnockRoutine());
+        if (gameObject.activeSelf)
+        {
+            StartCoroutine(KnockRoutine());
+        }
+        
     }
     
     private IEnumerator KnockRoutine(){

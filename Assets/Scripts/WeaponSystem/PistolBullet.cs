@@ -45,10 +45,10 @@ public class PistolBullet : Bullet
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit");
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",true);
                 }
                 else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
                 }
                 BypassesCount--;
             }
@@ -57,10 +57,10 @@ public class PistolBullet : Bullet
                     collision.gameObject.GetComponent<Enemy>().OneShot(10f);
                 }
                 else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit");
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",tryLightning:true);
                 }
                 else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
+                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
                 }
                 BulletPool.Instance.ReturnBullet(gameObject);
             }

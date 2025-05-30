@@ -26,6 +26,14 @@ public class SessionData
     public static float AbilityActiveTime = 0f;//✓
     public static int BulletBypassCount = 1;//✓
     public static int BulletRebonceCount = 1;//✓
+    /// <summary>
+    /// 
+    /// </summary>
+    public static float LightningProcChance = 0;//✓
+    public static int LightningMaxJumps = 3;//✓
+    public static float LightningJumpRadius = 5;//✓
+    public static float LightningDamageMultiplier = 0.7f;//✓
+    public static float LightningDelay = 0.15f;//✓
     public static bool NeedRefresh;
     // public static bool BackFire = false;
     public static int BackFire = 0;

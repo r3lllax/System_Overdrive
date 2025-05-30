@@ -7,6 +7,11 @@ public class test : MonoBehaviour
         SessionData.AddValueInt(ref SessionData.BackFire,1);
         SessionData.ShowData();
     }
+    [ContextMenu("50Chancelightning")]
+    public void Chancelightning(){
+        SessionData.AddProcentesChance(ref SessionData.LightningProcChance,30);
+        SessionData.ShowData();
+    }
     [ContextMenu("Add5MagazineCapacity")]
     public void Add5MagazineCapacity(){
         SessionData.AddValueInt(ref SessionData.MagazineCapacity,5);
@@ -15,6 +20,10 @@ public class test : MonoBehaviour
     [ContextMenu("GAMESPEED")]
     public void GAMESPEED(){
         Time.timeScale =5;
+    }
+    [ContextMenu("GAMESPEED1/2")]
+    public void GAMESPEEDhalf(){
+        Time.timeScale =0.5f;
     }
     [ContextMenu("cdAb0")]
     public void cdAb0(){

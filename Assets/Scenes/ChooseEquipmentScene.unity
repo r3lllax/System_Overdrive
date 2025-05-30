@@ -968,6 +968,22 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 18
       objectReference: {fileID: 0}
+    - target: {fileID: 3445727215433245403, guid: cef730022370b2446a7987bc35f7d0e3, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445727215433245403, guid: cef730022370b2446a7987bc35f7d0e3, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445727215433245403, guid: cef730022370b2446a7987bc35f7d0e3, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3445727215433245403, guid: cef730022370b2446a7987bc35f7d0e3, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294506744
+      objectReference: {fileID: 0}
     - target: {fileID: 6476298887804563476, guid: cef730022370b2446a7987bc35f7d0e3, type: 3}
       propertyPath: m_SizeDelta.x
       value: 100
