@@ -472,8 +472,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 15
+  Image: {fileID: -6867348379347549183, guid: cd6a8d08bf4b0914999e7b252c9eb57f, type: 3}
   activeTime: 5
   castTime: 0
+  currentCooldown: 0
   hotkey: 49
 --- !u!1 &3657795979656711499
 GameObject:
@@ -5603,6 +5605,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 976ea51ac0c535143bc7d4f3767008ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  procChance: 0
+  startDamage: 1
+  maxJumps: 3
+  jumpRadius: 5
+  damageMultiplier: 0.7
+  delay: 0.15
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

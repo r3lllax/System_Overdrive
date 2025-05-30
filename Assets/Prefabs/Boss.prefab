@@ -90,7 +90,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8142324264754721945, guid: 7b5c4c610732d4f47ab7290457856d93, type: 3}
+  m_Sprite: {fileID: -6349360636359246829, guid: 1f2c21e6f06d233439a8adf3a8cb15eb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -146,7 +146,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 871812499208310907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f004181b512e4c443938b212c7edf742, type: 2}
   m_CullingMode: 2
@@ -420,8 +420,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.2562499}
-  m_Size: {x: 2.5625, y: 2.5625}
+  m_Offset: {x: 0, y: -1.04}
+  m_Size: {x: 3.13, y: 3.91}
   m_Direction: 1
 --- !u!1 &1446223388645230753
 GameObject:
@@ -490,7 +490,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: -0.29}
-  m_Radius: 7.52
+  m_Radius: 7.97
 --- !u!1 &2193903334727479937
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +536,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 24
+  Image: {fileID: -6046766495968015756, guid: e2a4193f75d55ad4da73a6a6e383a5c9, type: 3}
   activeTime: 5
   castTime: 0
+  currentCooldown: 0
   hotkey: 50
   shieldPrefab: {fileID: 7139332826240947738, guid: 3dd683afd124fa842ae8436ede81bae3, type: 3}
 --- !u!1 &7213629801598630143
@@ -642,6 +644,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ability1
       objectReference: {fileID: 0}
+    - target: {fileID: 3693173596198628243, guid: d3b40748b53ebed42a03c93aeda0693f, type: 3}
+      propertyPath: Image
+      value: 
+      objectReference: {fileID: -682715573991986222, guid: 397b63d299e289748b134342df61b739, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

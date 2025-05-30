@@ -46,7 +46,7 @@ public class Sandevistan : Ability
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSAfter);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDdAfter);
 
-        yield return new WaitForSeconds(activeTime/2);
+        yield return new WaitForSeconds(activeTime);
          if (weapon)
         {
             weapon.SetUnlimitedAmmo(false);

@@ -5305,8 +5305,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 15
+  Image: {fileID: -3400387904147105493, guid: 189e30860caa36541ac205049f16cb7c, type: 3}
   activeTime: 5
   castTime: 1
+  currentCooldown: 0
   hotkey: 49
 --- !u!1 &6877538638454522250
 GameObject:

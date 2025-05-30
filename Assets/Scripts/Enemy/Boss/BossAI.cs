@@ -36,13 +36,15 @@ public class BossAI : MonoBehaviour
 
             GameObject BossSpellController = transform.GetChild(0).gameObject;
             int childsCount = BossSpellController.transform.childCount;
-            RewardSpell = BossSpellController.transform.GetChild(Random.Range(1, childsCount)).gameObject;
+            RewardSpell = BossSpellController.transform.GetChild(Random.Range(0, childsCount)).gameObject;
 
             //Перекидываем спелл
             var AbilityInPlayerContoller = Instantiate(RewardSpell, playerSpellsController.transform);
             playerSpellsController.abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
             playerSpellsController.CalculateAbilities();
             Debug.Log("Игрок получает способность босса");
+
+            AbiilityPanel.NeedRefreshAbilityPanel = true;
             SpellWasGivenToPlayer = true;
         }
     }

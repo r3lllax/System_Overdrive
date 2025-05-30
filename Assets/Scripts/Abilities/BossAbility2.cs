@@ -15,14 +15,8 @@ public class BossAbility2 : Ability
 
     protected override void ExecuteAbility()
     {
-        StartCoroutine(ActiveAbility());
-    }
-
-    private IEnumerator ActiveAbility()
-    {
         if (!ShieldObject)
         {
-            Debug.Log($"{owner.tag} - OWTAG");
             ShieldObject = Instantiate(shieldPrefab, owner.transform);
             for (int i = 0; i < ShieldObject.transform.childCount; i++)
             {
@@ -30,12 +24,36 @@ public class BossAbility2 : Ability
             }
         }
         ShieldObject.SetActive(true);
-        yield return new WaitForSeconds(activeTime);
-        ShieldObject.SetActive(false);
+        
     }
+
+    protected override IEnumerator CooldownRoutine()
+    {
+        ShieldObject.SetActive(false);
+        currentCooldown = cooldown;
+        Reload = true;
+        yield return new WaitForSeconds(cooldown);
+        Reload = false;
+        isReady = true;
+    }
+
+    
 
     void Update()
     {
+        if (PlayerIsOwner)
+        {
+            cooldown = SessionData.AbilityCooldown;
+            activeTime = SessionData.AbilityActiveTime;
+        }
+        if (Reload)
+        {
+            currentCooldown -= Time.deltaTime;
+        }
+        else
+        {
+            currentCooldown = 0f;
+        }
 
         if (ShieldObject)
         {
