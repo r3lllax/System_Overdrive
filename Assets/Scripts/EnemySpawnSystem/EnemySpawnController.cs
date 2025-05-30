@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Boss"};
+    private List<string> AvailbleTypes = new List<string>{"Basic"};
     private int currentEnemies;
     private int MinBasicHP=3;
     private int MaxBasicHP=5;
@@ -89,7 +89,7 @@ public class EnemySpawnController : MonoBehaviour
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Boss"){
-                enemyHp = 1000;
+                enemyHp = 10000;
                 EnemyComponent.SetLowExpTh(1000);
                 EnemyComponent.SetHighExpTh(3000);
 

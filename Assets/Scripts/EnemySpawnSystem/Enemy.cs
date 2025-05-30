@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     private int lowExpThreshold;
     private int highExpThreshold;
     private bool InCameraView;
+    private LightningController lightningController;
     private SpriteRenderer sp;
 
     public void SetInCameraView(bool New){
@@ -30,12 +31,13 @@ public class Enemy : MonoBehaviour
     public void SetHighExpTh(int Num){
         highExpThreshold = Num;
     }
-    
+
     private void Awake()
     {
         knockback = GetComponent<Knockback>();
         flash = GetComponent<Flash>();
         sp = GetComponent<SpriteRenderer>();
+        lightningController = GameObject.FindWithTag("Player").GetComponentInChildren<LightningController>();
     }
     public void SetHealth(int HP){
         health = HP;
@@ -44,12 +46,7 @@ public class Enemy : MonoBehaviour
     {
         return health;
     }
-    //Пока не убирать, позже переделать через инит, так как через ссылки на скрипты че то не оч мне нравится
-    public void Init(EnemySpawnController SpawnController, EnemyPool enemyPool)
-    {
-        ESC = SpawnController;
-        pool = enemyPool;
-    }
+    
     public void CheckDeath(){
         if(health<=0){
             knockback.Refresh();
@@ -58,8 +55,9 @@ public class Enemy : MonoBehaviour
         }
     }
     public void TakeDamage(int Damage, float strength, string modifier = "default") {
-        Debug.Log($"TAKEN - {Damage}");
+        Debug.Log($"TAKEN - {lightningController}");
         health = health - Damage <= 0 ? 0 : health -= Damage;
+        lightningController.TryProcLightning(this.gameObject);
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         DamageUI.Instance.AddText(Damage, transform.position, modifier);
         flash.StartCoroutine(flash.FlashRoutine());
