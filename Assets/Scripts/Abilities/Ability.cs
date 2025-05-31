@@ -54,6 +54,7 @@ public abstract class Ability : MonoBehaviour
         {
             currentCooldown = 0f;
         }
+        Debug.Log($"cooldown - {cooldown}");
 
     }
 

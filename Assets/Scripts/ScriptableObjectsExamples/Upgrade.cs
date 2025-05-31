@@ -41,6 +41,7 @@ public class Upgrade : ScriptableObject
         LightningDamageMultiplier,
         LightningDelay,
         LightningMaxJumps,
+        offersCount,
         
 
     }

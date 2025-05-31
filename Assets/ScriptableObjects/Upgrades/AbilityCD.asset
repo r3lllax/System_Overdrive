@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AbilityCD
   m_EditorClassIdentifier: 
   Name: "\u0423\u0441\u043A\u043E\u0440\u0435\u043D\u0438\u0435 \u043F\u0435\u0440\u0435\u0433\u0440\u0443\u0437\u043A\u0438"
-  Image: {fileID: 7542498486919935338, guid: 4d381b68eed7a6049ad49e0299fe88b2, type: 3}
+  Image: {fileID: -4356633198005010010, guid: a234579b7d6351e4d86a478daf346fac, type: 3}
   Description: 
   minVal: -5
   maxVal: -2

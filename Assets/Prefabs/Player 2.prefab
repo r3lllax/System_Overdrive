@@ -5526,6 +5526,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DamagePrefab: {fileID: 5861686677664674593, guid: 22a20c06e6daf5748ad66c6548a8770f, type: 3}
   Health: 0
+  HPUIprefab: {fileID: 2739943070878531251, guid: 5a7c481162f57a44a8897a3fe5b1edc0, type: 3}
 --- !u!114 &-5739710115371541645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5539,7 +5540,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllUpgrades: {fileID: 11400000, guid: ded6cdeb6ff877948861a560d63d87b3, type: 2}
-  CardPrefab: {fileID: 3658414232132868688, guid: 45bc82aba0cb9394ba58f34e8f5e9f71, type: 3}
+  CardPrefab: {fileID: 7833796483668342831, guid: f59a7a13366e8fb438b7afec3892ec5c, type: 3}
 --- !u!114 &5202646253273335962
 MonoBehaviour:
   m_ObjectHideFlags: 0

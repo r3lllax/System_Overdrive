@@ -30,14 +30,15 @@ public class test : MonoBehaviour
         SessionData.SetValueFloat(ref SessionData.AbilityCooldown,0.1f);
 
     }
-    [ContextMenu("Add30ProcentHp")]
+    
+    
     [ContextMenu("GAMESPEEDDef")]
     public void GAMESPEEDDef(){
         Time.timeScale =1;
     }
     [ContextMenu("Add30ProcentHp")]
     public void Add30ProcentHp(){
-        SessionData.AddProcentesInt(ref SessionData.Health,30);
+        SessionData.AddValueInt(ref SessionData.Health,1);
         SessionData.ShowData();
     }
     [ContextMenu("BulletLifeTime1")]

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MagazineCapacity
   m_EditorClassIdentifier: 
   Name: "\u041E\u0431\u044A\u0435\u043C \u043C\u0430\u0433\u0430\u0437\u0438\u043D\u0430"
-  Image: {fileID: 7801585300541132556, guid: 3e9ec420671e47641b27cad5828dcc4c, type: 3}
+  Image: {fileID: -469608574116489635, guid: aa02d27b38bf31c4cb6152b6803a89a4, type: 3}
   Description: 
   minVal: 1
   maxVal: 5

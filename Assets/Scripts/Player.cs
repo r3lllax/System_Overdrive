@@ -7,18 +7,25 @@ public class Player : MonoBehaviour
     //Обращаемся к классу TEMPDATA и в переменную SpeedMultiply получаем множитель скорости с оружием
     private Weapon Data;
     [SerializeField] private GameObject DamagePrefab;
-    [SerializeField]private float Health;
+    [SerializeField]private int Health;
     private float MoveSpeed;
     private float sprintMultiplier;
     private float PlayerSpeedMultiplier;
-
-    private void SetPlayerMSWithMultiplier(float speed){
+    private GameObject HPUI;
+    [SerializeField] private GameObject HPUIprefab;
+    private bool DrawUIHPFlag = true;
+    private void SetPlayerMSWithMultiplier(float speed)
+    {
         this.MoveSpeed *= speed;
     }
 
     private void UpdateData(){
-        
-        Health = SessionData.Health;
+
+        if (Health != SessionData.Health)
+        {
+            Health = SessionData.Health;
+            DrawUIHPFlag = true;
+        }
         sprintMultiplier = SessionData.SprintMultiplier;
         MoveSpeed = SessionData.MoveSpeed;
         MoveSpeed = MoveSpeed<0?0:MoveSpeed;
@@ -30,14 +37,32 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        HPUI = GameObject.FindWithTag("HPUI");
         UpdateData();
     }
     private void Update()
     {
-            UpdateData();
+        UpdateData();
+        if (DrawUIHPFlag)
+        {
+            drawUIHP();
+            DrawUIHPFlag = false;
+        }
             // SessionData.NeedRefresh = false;
-        
-        
+
+
+    }
+    private void drawUIHP()
+    {
+        for (int i = 0; i < HPUI.transform.childCount; i++)
+        {
+            Destroy(HPUI.transform.GetChild(i).gameObject);
+        }
+    
+        for (int i = 0; i < Health; i++)
+        {
+            Instantiate(HPUIprefab, HPUI.transform);
+        }
     }
     private void Start()
     {
@@ -54,8 +79,8 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float Damage, bool knock = true){
-        Health = Health-Damage<0?0:Health-Damage;
+    public void TakeDamage(int Damage, bool knock = true){
+        SessionData.Health = Health-Damage<0?0:Health-Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         Instantiate(DamagePrefab,transform.position,Quaternion.identity);
         StartCoroutine(DamageRoutine());

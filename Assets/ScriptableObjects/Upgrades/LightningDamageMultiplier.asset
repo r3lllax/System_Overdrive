@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041A\u043E\u044D\u0444\u0438\u0446\u0435\u043D\u0442 \u0443\u0440\u043E\u043D\u0430
     \u043C\u043E\u043B\u043D\u0438\u0438"
-  Image: {fileID: 19429290613529363, guid: aad75acbd0f26c541805accc7a0da8d3, type: 3}
+  Image: {fileID: 68530278948802137, guid: dc43832dea345f944abdc0e2f22ec8a2, type: 3}
   Description: 
   minVal: 0.05
   maxVal: 0.1

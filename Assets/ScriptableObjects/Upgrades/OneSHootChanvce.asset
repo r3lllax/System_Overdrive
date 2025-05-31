@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: OneSHootChanvce
   m_EditorClassIdentifier: 
   Name: "\u0428\u0430\u043D\u0441 \u0432\u0430\u043D\u0448\u043E\u0442\u0430"
-  Image: {fileID: -5558356933634855317, guid: dbca2b63318c6fb4dbc0a685ce5044b6, type: 3}
+  Image: {fileID: 1528985934873148728, guid: de3cd688aa68a024fb25f572c8cabdaa, type: 3}
   Description: 
   minVal: 1
   maxVal: 3

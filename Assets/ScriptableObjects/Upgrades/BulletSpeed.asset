@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletSpeed
   m_EditorClassIdentifier: 
   Name: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u044C \u043F\u0443\u043B\u044C"
-  Image: {fileID: 8800780614044803008, guid: 8e383ba92b7cdad4281a4e7a136a57ae, type: 3}
+  Image: {fileID: 687318203165001789, guid: fa7e3c3852c374148a3c5c259be29aee, type: 3}
   Description: 
   minVal: 10
   maxVal: 15

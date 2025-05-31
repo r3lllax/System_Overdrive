@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   Name: "\u0423\u0440\u043E\u043D"
-  Image: {fileID: 5931275240766778604, guid: 2c3539faa9321ea4e863652637848e15, type: 3}
+  Image: {fileID: 4545537306022236803, guid: bd7cdc056edd507478dcad8014cdb56f, type: 3}
   Description: 
   minVal: 2
   maxVal: 5

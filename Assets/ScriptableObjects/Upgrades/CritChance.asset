@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritChance
   m_EditorClassIdentifier: 
   Name: "\u0428\u0430\u043D\u0441 \u043A\u0440\u0438\u0442\u0430"
-  Image: {fileID: -1118777426085891526, guid: cb760526598cc7d47b3e6566da5d84aa, type: 3}
+  Image: {fileID: 9047034415747387922, guid: d98351fd5db14114ebb7d69ffa246c49, type: 3}
   Description: 
   minVal: 10
   maxVal: 15

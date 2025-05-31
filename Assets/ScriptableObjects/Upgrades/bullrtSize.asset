@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: bullrtSize
   m_EditorClassIdentifier: 
   Name: "\u0420\u0430\u0437\u043C\u0435\u0440 \u043F\u0443\u043B\u044C"
-  Image: {fileID: 6369395231987544056, guid: 98cdf5cddb8a31045bdb0ad26e06c8ab, type: 3}
+  Image: {fileID: -5203659461144931714, guid: e9df02dec51a73d4aa9f4b33061f958f, type: 3}
   Description: 
   minVal: 10
   maxVal: 10

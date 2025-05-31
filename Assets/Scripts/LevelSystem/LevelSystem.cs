@@ -84,7 +84,7 @@ public class LevelSystem : MonoBehaviour
             canContinue = false;
             Panel.GetComponent<UiUpgradePanel>().DeleteCards();
             Player.GetComponent<UpgradesController>().FilterUpgrades();
-            Player.GetComponent<UpgradesController>().GenerateOfferUpdates(3);
+            Player.GetComponent<UpgradesController>().GenerateOfferUpdates(SessionData.offersCount);
             if (i == 0)
             {
                 Panel.GetComponent<Animator>().SetTrigger("toggle");

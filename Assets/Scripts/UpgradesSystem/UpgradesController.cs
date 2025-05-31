@@ -9,34 +9,34 @@ public class UpgradesController : MonoBehaviour
 {
     private static Dictionary<string, string> UpgradeName = new Dictionary<string, string>
     {
-        {"Health","Здоровье"},
-        {"MoveSpeed","Скорость передвижения"},
-        {"Damage","Урон"},
-        {"ExpFinderRadius","Радиус поиска"},
-        {"AttackSpeedMelee","Скорость атаки"},
-        {"CdBetweenFire","Скорострельность"},
-        {"CdBetweenMagazine","Перезарядка"},
+        {"Health","<color=#87d96f>Здоровье<#87d96f>"},
+        {"MoveSpeed","<color=#62bcf5>Скорость передвижения<#ffd12b>"},
+        {"Damage","<color=#ff4f4f>Урон<#ff4f4f>"},
+        {"ExpFinderRadius","<color=#b196ff>Радиус поиска<#b196ff>"},
+        {"AttackSpeedMelee","<color=#87d96f>Скорость атаки<#87d96f>"},
+        {"CdBetweenFire","<color=#ffd12b>Скорострельность<#ffd12b>"},
+        {"CdBetweenMagazine","<color=#9cb1f0>Перезарядка<#9cb1f0>"},
         {"StartSpeedMultiplier","Начальная скорость атаки"},
-        {"SprintMultiplier","Множитель спринта"},
-        {"MagazineCapacity","Размер магазина"},
-        {"OneShootChance","Шанс ваншота"},
-        {"CritChance","Шанс крита"},
-        {"EnemySpeedMultiplier","Множитель скорости врагов"},
-        {"MeleeSize","Размер оружия"},
-        {"BulletSize","Размер пуль"},
-        {"BulletSpeed","Скорость пуль"},
-        {"BulletLifeTime","Время полета пуль"},
-        {"BulletBypassCount","Количество пробиваемых пулей целей"},
-        {"BulletRebonceCount","Количество отскоков пули"},
-        {"AbilityActiveTime","Время действия способности"},
-        {"AbilityCooldown","Время перезарядки способности"},
-        {"BackFire","Доп. атака"},
-        {"LightningProcChance","Шанс появления молнии"},
-        {"LightningMaxJumps","Количество отскоков молнии"},
-        {"LightningJumpRadius","Радиус отскока молнии"},
-        {"LightningDamageMultiplier","Множитель урона за отскок молнии"},
-        {"LightningDelay","Задержка меджу отскоками молнии"},
-
+        {"SprintMultiplier","<color=#ffd12b>Множитель спринта<#ffd12b>"},
+        {"MagazineCapacity","<color=#ffd12b>Размер магазина<#ffd12b>"},
+        {"OneShootChance","<color=#ff29ad>Шанс ваншота<#ff29ad>"},
+        {"CritChance","<color=#ff2929>Шанс крита<#ff2929>"},
+        {"EnemySpeedMultiplier","<color=#ff2929>Множитель скорости врагов<#ff2929>"},
+        {"MeleeSize","<color=#62bcf5>Размер оружия<#62bcf5>"},
+        {"BulletSize","<color=#62bcf5>Размер пуль<#62bcf5>"},
+        {"BulletSpeed","<color=#ffd12b>Скорость пуль<#ffd12b>"},
+        {"BulletLifeTime","<color=#f57c20>Время полета пуль<#f57c20>"},
+        {"BulletBypassCount","<color=#f57c20>Количество пробиваемых пулей целей<#f57c20>"},
+        {"BulletRebonceCount","<color=#f57c20>Количество отскоков пули<#f57c20>"},
+        {"AbilityActiveTime","<color=#62bcf5>Время действия способности<#62bcf5>"},
+        {"AbilityCooldown","<color=#80a9d9>Время перезарядки способности<#80a9d9>"},
+        {"BackFire","<color=#faf739>Доп. атака сзади<#faf739>"},
+        {"LightningProcChance","<color=#2cf5ee>Шанс появления молнии<#2cf5ee>"},
+        {"LightningMaxJumps","<color=#2cf5ee>Количество отскоков молнии<#2cf5ee>"},
+        {"LightningJumpRadius","<color=#2cf5ee>Радиус отскока молнии<#2cf5ee>"},
+        {"LightningDamageMultiplier","<color=#2cf5ee>Множитель урона за отскок молнии<#2cf5ee>"},
+        {"LightningDelay","<color=#2cf5ee>Задержка меджу отскоками молнии<#2cf5ee>"},
+        {"offersCount","<color=#ffd12b>Количество предлагаемых улучшений<#ffd12b>"},
         
     };
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -73,7 +73,6 @@ public class UpgradesController : MonoBehaviour
     }
     public static float CalculateUpgradeValue(Upgrade upg)
     {
-        Debug.Log(upg.targerStat);
         switch (upg.targerStat.ToString())
         {
             case "Health":
@@ -89,6 +88,12 @@ public class UpgradesController : MonoBehaviour
                 return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
                 break;
             case "BulletRebonceCount":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "offersCount":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
+            case "LightningMaxJumps":
                 return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
                 break;
             
@@ -110,6 +115,7 @@ public class UpgradesController : MonoBehaviour
         { "BulletSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletSpeed, isPercent, val) },
         { "BulletLifeTime", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletLifeTime, isPercent, val) },
         { "AbilityActiveTime", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityActiveTime, isPercent, val) },
+        { "AbilityCooldown", (isPercent, val) => ApplyToFloatField(ref SessionData.AbilityCooldown, isPercent, val) },
         { "LightningJumpRadius", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningJumpRadius, isPercent, val) },
         { "LightningDamageMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDamageMultiplier, isPercent, val) },
         { "LightningDelay", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDelay, isPercent, val) },
@@ -127,7 +133,7 @@ public class UpgradesController : MonoBehaviour
         { "MagazineCapacity", (isPercent, val) => ApplyToIntField(ref SessionData.MagazineCapacity, isPercent, Mathf.RoundToInt(val)) },
         { "BackFire", (isPercent, val) => ApplyToIntField(ref SessionData.BackFire, isPercent, Mathf.RoundToInt(val)) },
         { "LightningMaxJumps", (isPercent, val) => ApplyToIntField(ref SessionData.LightningMaxJumps, isPercent, Mathf.RoundToInt(val)) },
-        
+        { "offersCount", (isPercent, val) => ApplyToIntField(ref SessionData.offersCount, isPercent, Mathf.RoundToInt(val)) },
         // V3
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },

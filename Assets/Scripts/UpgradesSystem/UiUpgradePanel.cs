@@ -6,10 +6,11 @@ public class UiUpgradePanel : MonoBehaviour
     private float timeBefore = 1;
     private GameObject UpgradeCounterUI;
     private LevelSystem playerLevelSystem;
+    private GameObject Upgrades;
     public bool inAnim = false;
     [ContextMenu("DELETETEST")]
     public void DeleteCards(){
-        foreach (Transform child in transform){
+        foreach (Transform child in Upgrades.transform){
             if(child!=null && child.tag!="UpgradeCountUI"){
                 Destroy(child.gameObject);
             }
@@ -17,6 +18,7 @@ public class UiUpgradePanel : MonoBehaviour
     }
     private void Awake()
     {
+        Upgrades = transform.GetChild(0).gameObject.transform.GetChild(0).gameObject.transform.GetChild(0).gameObject;
         UpgradeCounterUI = GameObject.FindWithTag("UpgradeCountUI");
     }
     private void Start()
@@ -26,14 +28,11 @@ public class UiUpgradePanel : MonoBehaviour
     }
     private void Update()
     {
-        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount()>1?$"Улучшений:{playerLevelSystem.GetLevelUpsCount()}":"";
+        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount()>0?$"Доступно улучшений:{playerLevelSystem.GetLevelUpsCount()}":"";
     }
     public void CreateCard(Vector3 position, GameObject Card, Upgrade upgr)
     {
-        var card = Instantiate(Card, Vector3.zero, Quaternion.identity);
-        card.transform.SetParent(transform);
-        card.transform.localPosition = position;
-        card.transform.localScale = Vector3.one;
+        var card = Instantiate(Card, Upgrades.transform);
         card.GetComponent<UIUpgradeCard>().SetCurrentUpgrade(upgr);
     }
     [ContextMenu("TogglePanel")]

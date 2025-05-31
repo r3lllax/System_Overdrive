@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BackFire
   m_EditorClassIdentifier: 
   Name: "\u0410\u0442\u0430\u043A\u0430 \u0441\u0437\u0430\u0434\u0438"
-  Image: {fileID: -8832746599627180622, guid: 0ca8183b6392ce942a78d9799e3aec58, type: 3}
+  Image: {fileID: 687318203165001789, guid: fa7e3c3852c374148a3c5c259be29aee, type: 3}
   Description: 
   minVal: 1
   maxVal: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningMaxJumps
   m_EditorClassIdentifier: 
   Name: "\u041F\u0440\u044B\u0436\u043A\u0438 \u043C\u043E\u043B\u043D\u0438\u0439"
-  Image: {fileID: -2482910170518722821, guid: ece117b452137e04a95abda43d1cfd59, type: 3}
+  Image: {fileID: -9003402540411548155, guid: e6b9bce958947cd498d3cea4a9ec74cb, type: 3}
   Description: 
   minVal: 1
   maxVal: 2

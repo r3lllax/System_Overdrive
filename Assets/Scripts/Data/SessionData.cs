@@ -8,6 +8,7 @@ public class SessionData
     public static int Health;//✓
     public static float MoveSpeed;//✓
     public static int Damage;//✓
+    public static int offersCount = 3;//✓
     public static float ExpFinderRadius = 3;//✓
     public static float AttackSpeedMelee;//✓
     public static float CdBetweenFire;//✓

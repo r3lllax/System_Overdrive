@@ -38,6 +38,7 @@ public class UIUpgradeCard : MonoBehaviour
             Panel.GetComponent<Animator>().SetTrigger("toggle");
             Time.timeScale = 1;
         }
+        Debug.Log($"CurrentUpgrate,value:{CurrentUpgrate.targerStat},{value}");
         UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
         UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
         
@@ -50,10 +51,10 @@ public class UIUpgradeCard : MonoBehaviour
         string ProcenteDigit = CurrentUpgrate.Procente?"%":"";
         string ReadbleStatVar = UpgradesController.GetReadableString(CurrentUpgrate.targerStat.ToString());
         string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());
-        string Debuff = CurrentUpgrate.HasDebuff?$@"-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
+        string Debuff = CurrentUpgrate.HasDebuff?$@"<color=#FFFFFF>-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
         
         string body = 
-        $@"{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}\n{Debuff}";
+        $@"<color=#FFFFFF>{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}\n{Debuff}";
         Body.text = body;
     }
 
