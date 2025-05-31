@@ -20,7 +20,7 @@ MonoBehaviour:
   Melee: 1
   Range: 1
   Procente: 1
-  HasDebuff: 0
+  HasDebuff: 1
   targerStat: 10
-  debuffStat: 0
-  DebufSize: 0
+  debuffStat: 1
+  DebufSize: 5

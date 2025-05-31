@@ -23,4 +23,4 @@ MonoBehaviour:
   HasDebuff: 1
   targerStat: 4
   debuffStat: 1
-  DebufSize: 1
+  DebufSize: 0.5

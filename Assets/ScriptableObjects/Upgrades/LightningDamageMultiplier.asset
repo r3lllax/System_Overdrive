@@ -16,8 +16,8 @@ MonoBehaviour:
     \u043C\u043E\u043B\u043D\u0438\u0438"
   Image: {fileID: 68530278948802137, guid: dc43832dea345f944abdc0e2f22ec8a2, type: 3}
   Description: 
-  minVal: 0.05
-  maxVal: 0.1
+  minVal: 0.1
+  maxVal: 0.15
   Melee: 1
   Range: 1
   Procente: 0

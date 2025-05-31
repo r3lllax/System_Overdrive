@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,18 +14,21 @@ public class LevelSystem : MonoBehaviour
     private float ExpCountToNextLevel = 100;
     private GameObject Panel;
     private GameObject Player;
-    private Image Tracker;
+    private GameObject Tracker;
     private bool canContinue = true;
     private float fillAmount = 0f;
     private int levelUpsCount = 0;
-    [SerializeField] private float IncreaseProcente = 0.2f;
-    
+    private TextMeshProUGUI LevelTextUI;
+    [SerializeField] private float IncreaseProcente = 0.1f;
+
     public void Awake()
     {
         Player = transform.parent.gameObject;
-        Tracker = GameObject.FindWithTag("ProgressTracker").GetComponent<Image>();
+        Tracker = GameObject.FindWithTag("ProgressTracker");
         Instance = this;
-        Panel = GameObject.FindWithTag("Panel"); 
+        Panel = GameObject.FindWithTag("Panel");
+        LevelTextUI = Tracker.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        LevelTextUI.text = $"Level {CurrentLevel+1}";
     }
     public void Continue(bool newState)
     {
@@ -63,17 +67,7 @@ public class LevelSystem : MonoBehaviour
             }
         
         }
-        Debug.Log($"levelUpsCount CurrentExpCount - {CurrentExpCount}");
-        Debug.Log($"levelUpsCount ExpCountToNextLevel - {ExpCountToNextLevel}");
-        Debug.Log($"levelUpsCount DEL - {CurrentExpCount / ExpCountToNextLevel}");
-        Debug.Log($"levelUpsCount - {levelUpsCount}");
-
         StartCoroutine(LevelUpsRoutine(levelUpsCount));
-        
-        
-        //Считает на некст сколько надо
-        //Удаляю старые карты
-        
     }
 
     private IEnumerator LevelUpsRoutine(int count)
@@ -102,6 +96,7 @@ public class LevelSystem : MonoBehaviour
             LevelUP();
         }
         fillAmount = CurrentExpCount / ExpCountToNextLevel;
-        Tracker.fillAmount = fillAmount;
+        LevelTextUI.text = $"Level {CurrentLevel+1}";
+        Tracker.GetComponent<Image>().fillAmount = fillAmount;
     }
 }

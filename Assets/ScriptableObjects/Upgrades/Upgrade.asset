@@ -15,8 +15,8 @@ MonoBehaviour:
   Name: "\u0421\u043A\u043E\u0440\u043E\u0441\u0442\u0440\u0435\u043B"
   Image: {fileID: 8588114766276614526, guid: f76d266650a88f747a602cf4368e3f54, type: 3}
   Description: 
-  minVal: -50
-  maxVal: -30
+  minVal: -60
+  maxVal: -40
   Melee: 0
   Range: 1
   Procente: 1

@@ -250,13 +250,13 @@ public class GunWeapon : MonoBehaviour
     {
         string CMST = "";
         string MST = "";
-        if (CurrentMagazineSize.ToString().Length > 1) {
+        if (CurrentMagazineSize.ToString().Length <= 1) {
             CMST = $"0{CurrentMagazineSize}";
         }
         else {
             CMST = CurrentMagazineSize.ToString();
         }
-        if (MagazineSize.ToString().Length > 1) {
+        if (MagazineSize.ToString().Length <= 1) {
             MST = $"0{MagazineSize}";
         }
         else {

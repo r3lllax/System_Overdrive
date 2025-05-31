@@ -16,7 +16,7 @@ MonoBehaviour:
   Image: {fileID: -5203659461144931714, guid: e9df02dec51a73d4aa9f4b33061f958f, type: 3}
   Description: 
   minVal: 10
-  maxVal: 10
+  maxVal: 20
   Melee: 0
   Range: 1
   Procente: 1

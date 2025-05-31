@@ -96,7 +96,9 @@ public class UpgradesController : MonoBehaviour
             case "LightningMaxJumps":
                 return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
                 break;
-            
+            case "BackFire":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
         }
         return UnityEngine.Random.Range(upg.minVal, upg.maxVal);
     }
