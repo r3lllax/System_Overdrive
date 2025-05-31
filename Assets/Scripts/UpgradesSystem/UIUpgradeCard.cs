@@ -9,23 +9,38 @@ public class UIUpgradeCard : MonoBehaviour
     [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private Image image;
     [SerializeField]private TextMeshProUGUI Body;//Тут инфа о том сколько наносит итд
+    private LevelSystem playerLevelSystem;
     private GameObject Panel;
     private float value;
-    public void SetCurrentUpgrade(Upgrade NEW){
+    
+    
+    public void SetCurrentUpgrade(Upgrade NEW)
+    {
         CurrentUpgrate = NEW;
     }
     void Start()
     {
+        playerLevelSystem = GameObject.FindWithTag("Player").transform.GetChild(0).transform.GetComponentInChildren<LevelSystem>();
         Panel = GameObject.FindWithTag("Panel");
         RenderUpgrate();
     }
-    public void Choose(){
-        if(Panel.GetComponent<UiUpgradePanel>().inAnim){return;}
-        Panel.GetComponent<UiUpgradePanel>().inAnim = true;
-        Panel.GetComponent<Animator>().SetTrigger("toggle");
+    public void Choose()
+    {
+        if (Panel.GetComponent<UiUpgradePanel>().inAnim) { return; }
+
+        if (playerLevelSystem.GetLevelUpsCount() > 1)
+        {
+            playerLevelSystem.Continue(true);
+        }
+        else
+        {
+            Panel.GetComponent<UiUpgradePanel>().inAnim = true;
+            Panel.GetComponent<Animator>().SetTrigger("toggle");
+            Time.timeScale = 1;
+        }
         UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
         UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
-        Time.timeScale = 1;
+        
         
     }
     private void RenderUpgrate(){
@@ -37,7 +52,6 @@ public class UIUpgradeCard : MonoBehaviour
         string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());
         string Debuff = CurrentUpgrate.HasDebuff?$@"-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
         
-        Debug.Log($"Нечитаемая характеристика: {CurrentUpgrate.targerStat}, читаемая:{ReadbleStatVar}");
         string body = 
         $@"{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}\n{Debuff}";
         Body.text = body;

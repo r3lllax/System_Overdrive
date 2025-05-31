@@ -5,12 +5,18 @@ public class AbiilityPanel : MonoBehaviour
     public static bool NeedRefreshAbilityPanel = true;
     private GameObject Player;
     private AbilitiesController PlayerAbilityController;
+    private LevelSystem playerLevelSystem;
+    
+
     [SerializeField] private GameObject AbilitySlotPrefab;
+
+    
 
     private void Start()
     {
         Player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
         PlayerAbilityController = Player.GetComponentInChildren<AbilitiesController>();
+        playerLevelSystem = Player.transform.GetComponentInChildren<LevelSystem>();
 
     }
     private void Update()

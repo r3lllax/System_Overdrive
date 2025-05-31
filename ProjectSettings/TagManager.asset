@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - Enemy
   - bulletShield
+  - ProgressTracker
+  - UpgradeCountUI
   layers:
   - Default
   - TransparentFX
