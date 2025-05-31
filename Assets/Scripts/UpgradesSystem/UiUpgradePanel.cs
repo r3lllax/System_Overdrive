@@ -28,7 +28,7 @@ public class UiUpgradePanel : MonoBehaviour
     }
     private void Update()
     {
-        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount()>0?$"Доступно улучшений:{playerLevelSystem.GetLevelUpsCount()}":"";
+        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount()>0?$"Доступно улучшений: {playerLevelSystem.GetLevelUpsCount()}":"";
     }
     public void CreateCard(Vector3 position, GameObject Card, Upgrade upgr)
     {
