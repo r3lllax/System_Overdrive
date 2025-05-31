@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AbilitiesController : MonoBehaviour
 {
@@ -8,6 +9,12 @@ public class AbilitiesController : MonoBehaviour
     public Dictionary<KeyCode, Ability> abilityKeyMap;
     [SerializeField] private bool isPlayerOwner = true;
     private bool NeedChooseAbility = false;
+    private Color32 disabledColor = new Color32(255, 255, 255, 34);
+    private Color32 enabledColor = new Color32(255, 255, 255, 255);
+    private Image AutoUseIndicator;
+    private float AutoToggleReload = 0f;
+    private float AutoUseReload = 0.5f;
+
     private bool UseEveryCD = false;
     private List<Ability> AvailableSpells;
 
@@ -15,6 +22,7 @@ public class AbilitiesController : MonoBehaviour
 
     private void Awake()
     {
+        AutoUseIndicator = GameObject.FindWithTag("AutoUseIndicator").GetComponent<Image>();
         CalculateAbilities();
     }
 
@@ -55,12 +63,24 @@ public class AbilitiesController : MonoBehaviour
     {
         isProcessing = true;
         UseEveryCD = !UseEveryCD;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(AutoUseReload);
         isProcessing = false;
     }
 
     private void Update()
     {
+        if (isProcessing)
+        {
+            AutoToggleReload += Time.deltaTime;
+            AutoUseIndicator.fillAmount = AutoToggleReload / AutoUseReload;
+        }
+        else
+        {
+            if (AutoToggleReload != 0f)
+            {
+                AutoToggleReload = 0f;
+            }
+        }
         if (Input.GetKey(KeyCode.Z))
         {
             ToggleAutoUse();
@@ -69,6 +89,8 @@ public class AbilitiesController : MonoBehaviour
         {
             if (UseEveryCD)
             {
+
+                AutoUseIndicator.color = enabledColor;
                 foreach (var key in abilityKeyMap.Keys)
                 {
 
@@ -78,6 +100,7 @@ public class AbilitiesController : MonoBehaviour
             }
             else
             {
+                AutoUseIndicator.color = disabledColor;
                 foreach (var key in abilityKeyMap.Keys)
                 {
 

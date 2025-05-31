@@ -15,17 +15,13 @@ public class ColdWeapon : MonoBehaviour
     private void UpdateData(){
         Damage = SessionData.Damage;
         AnimationSpeed = SessionData.AttackSpeedMelee;
-        Debug.Log(gameObject.transform.localScale);
         anim.speed = AnimationSpeed;
     }
     private void Update()
     {   
         
         if(SessionData.NeedRefresh){
-            Debug.Log($"TEST = SessionData.NeedRefresh:{SessionData.NeedRefresh}");
             UpdateData();
-            
-            SessionData.ShowData();
         }
 
     }
@@ -52,20 +48,14 @@ public class ColdWeapon : MonoBehaviour
 
     }
     private bool TryOneShot(){
-        var Rand = Random.Range(0,SessionData.ProcenteScaleMax+1);
-        Debug.Log($"{Rand},{SessionData.OneShootChance}");
         if(Random.Range(0,SessionData.ProcenteScaleMax+1)<=SessionData.OneShootChance){
-            Debug.Log("ONESHOOT");
             return true;
         }
         else return false;
     }
 
     private bool TryCrit(){
-        var Rand = Random.Range(0,SessionData.ProcenteScaleMax+1);
-        Debug.Log($"{Rand},{SessionData.CritChance}");
         if(Random.Range(0,SessionData.ProcenteScaleMax+1)<=SessionData.CritChance){
-            Debug.Log("Crit");
             return true;
         }
         else return false;
