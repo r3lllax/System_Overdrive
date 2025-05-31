@@ -267,11 +267,11 @@ public class GunWeapon : MonoBehaviour
         {
             if (unlimitedAmmos)
             {
-                AmmoCountUI.text = "infinity";
+                AmmoCountUI.text = "Бесконечные";
             }
             else if (ReloadTime > 0 && (CurrentMagazineSize == 0 || CurrentMagazineSize == MagazineSize))
             {
-                AmmoCountUI.text = "Reload";
+                AmmoCountUI.text = "Перезарядка";
             }
             else
             {
