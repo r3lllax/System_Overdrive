@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.Burst.Intrinsics;
 using Unity.Cinemachine;
 using Unity.Mathematics;
@@ -16,6 +17,7 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private int Damage;
     [SerializeField] private int BypassesCount;
     private bool unlimitedAmmos = false;
+    private TextMeshProUGUI AmmoCountUI;
     private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
@@ -45,6 +47,7 @@ public class GunWeapon : MonoBehaviour
         Damage = CurrentWeapon.Damage;
         BulletLifeTime = CurrentWeapon.GunBulletLifeTime;
         CurrentMagazineSize = MagazineSize;
+        AmmoCountUI = GameObject.FindWithTag("AmmoCountUI").GetComponent<TextMeshProUGUI>();
 
     }
     public void ForcedReload()
@@ -234,7 +237,6 @@ public class GunWeapon : MonoBehaviour
     }
 
     private IEnumerator AnimReload(){
-        Debug.Log($"{ReloadTime} - {GetComponent<Animator>().speed}");
         if(ReloadTime<1){
             GetComponent<Animator>().speed +=1/ReloadTime;
         }
@@ -244,16 +246,55 @@ public class GunWeapon : MonoBehaviour
         GetComponent<Animator>().speed =1;
     }
 
+    private void DrawAmmos()
+    {
+        string CMST = "";
+        string MST = "";
+        if (CurrentMagazineSize.ToString().Length > 1) {
+            CMST = $"0{CurrentMagazineSize}";
+        }
+        else {
+            CMST = CurrentMagazineSize.ToString();
+        }
+        if (MagazineSize.ToString().Length > 1) {
+            MST = $"0{MagazineSize}";
+        }
+        else {
+            MST = MagazineSize.ToString();
+        }
+
+        if (AmmoCountUI)
+        {
+            if (unlimitedAmmos)
+            {
+                AmmoCountUI.text = "infinity";
+            }
+            else if (ReloadTime > 0 && (CurrentMagazineSize == 0 || CurrentMagazineSize == MagazineSize))
+            {
+                AmmoCountUI.text = "Reload";
+            }
+            else
+            {
+                AmmoCountUI.text = $"{CMST}/{MST}";
+            }
+            
+        }
+    }
+
     private void Update()
-    {   
-        if(SessionData.NeedRefresh){
+    {
+        DrawAmmos();
+        if (SessionData.NeedRefresh)
+        {
             UpdateData();
             // SessionData.NeedRefresh=false;
         }
-        if(ReloadTime>0){
-            ReloadTime-=Time.deltaTime;
+        if (ReloadTime > 0)
+        {
+            
+            ReloadTime -= Time.deltaTime;
         }
-        
+
     }
 
 }

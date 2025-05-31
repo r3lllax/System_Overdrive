@@ -55,6 +55,10 @@ public class LightningController : MonoBehaviour
                 //Проверка на жив враг или нет добавлять сюда
                 if (targetEnemy.gameObject.activeSelf)
                 {
+                    if ((int)currentDamage == 0)
+                    {
+                        yield return null;
+                    }
                     targetEnemy.TakeDamage((int)currentDamage, 0f,"Lightning");
                     affectedTargets.Add(currentTarget);
                 }

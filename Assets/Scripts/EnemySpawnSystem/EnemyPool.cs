@@ -35,9 +35,9 @@ public class EnemyPool : MonoBehaviour
         BossPrefab = BossPrefabLink;
         pools = new List<PoolSettings>
         {
-            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 170},
-            new PoolSettings{Type = "Elite", prefab = ScriptPrefab,poolSize = 170},
-            new PoolSettings{Type = "Ranged", prefab = BugPrefab,poolSize = 70},
+            new PoolSettings{Type = "Basic", prefab = VirusPrefab,poolSize = 230},
+            new PoolSettings{Type = "Elite", prefab = ScriptPrefab,poolSize = 230},
+            new PoolSettings{Type = "Ranged", prefab = BugPrefab,poolSize = 130},
             new PoolSettings{Type = "Boss", prefab = BossPrefab,poolSize = 1,Editable = false},
         };
         poolDict = new Dictionary<string, Queue<GameObject>>();

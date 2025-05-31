@@ -15,6 +15,7 @@ TagManager:
   - UpgradeCountUI
   - AutoUseIndicator
   - HPUI
+  - AmmoCountUI
   layers:
   - Default
   - TransparentFX

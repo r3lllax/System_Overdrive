@@ -10,6 +10,8 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected float activeTime = 0f;
     [SerializeField] protected float castTime = 0f;
     [SerializeField]protected float currentCooldown = 0f;
+    protected bool ActiveNow = false;
+    protected float ActiveTimer = 0f;
     protected bool PlayerIsOwner = true;
     [SerializeField] protected KeyCode hotkey = KeyCode.None;
 
@@ -46,6 +48,14 @@ public abstract class Ability : MonoBehaviour
             cooldown = SessionData.AbilityCooldown;
             activeTime = SessionData.AbilityActiveTime;
         }
+        if (ActiveNow)
+        {
+            ActiveTimer -= Time.deltaTime;
+        }
+        else
+        {
+            ActiveTimer = 0f;
+        }
         if (Reload)
         {
             currentCooldown -= Time.deltaTime;
@@ -54,7 +64,6 @@ public abstract class Ability : MonoBehaviour
         {
             currentCooldown = 0f;
         }
-        Debug.Log($"cooldown - {cooldown}");
 
     }
 
@@ -78,6 +87,14 @@ public abstract class Ability : MonoBehaviour
     {
         return isReady;
     }
+    public bool GetActive()
+    {
+        return ActiveNow;
+    }
+    public float GetActiveTimer()
+    {
+        return ActiveTimer;
+    }
      public bool TryActivate()
     {
         if (!isReady || !CanActivate()) return false;
@@ -94,7 +111,10 @@ public abstract class Ability : MonoBehaviour
         yield return new WaitForSeconds(castTime);
 
         ExecuteAbility();
+        ActiveTimer = activeTime;
+        ActiveNow = true;
         yield return new WaitForSeconds(activeTime);
+        ActiveNow = false;
         StartCoroutine(CooldownRoutine());
     }
 

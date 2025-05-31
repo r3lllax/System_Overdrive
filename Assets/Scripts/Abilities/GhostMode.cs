@@ -20,12 +20,16 @@ public class GhostMode : Ability
     protected override IEnumerator CastingRoutine()
     {
         isReady = false;
-        sp.color = new Color32(127,147,255,255);
+        sp.color = new Color32(127, 147, 255, 255);
         yield return new WaitForSeconds(castTime);
-        
+
         ExecuteAbility();
+        ActiveTimer = activeTime;
+        ActiveNow = true;
         yield return new WaitForSeconds(activeTime);
+        ActiveNow = false;
         StartCoroutine(CooldownRoutine());
+        
     }
     protected override void ExecuteAbility()
     {

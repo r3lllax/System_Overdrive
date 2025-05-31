@@ -45,10 +45,27 @@ public class AbilitySlot : MonoBehaviour
             cdImg.fillAmount = fillAmount;
             Button.text = KeyCodeToChar.KeyCodeToCharCalc(myAbility.GetHotkey()).ToString();
             cd.text = ((int)myAbility.GetCurrentCooldown()).ToString();
+
             if (fillAmount == 0f)
             {
                 cd.text = "";
             }
+            if (myAbility.GetActive())
+            {
+                if ((int)myAbility.GetActiveTimer()+1 > 0)
+                {
+                    cd.text = ((int)myAbility.GetActiveTimer()+1).ToString();
+                    cd.color = new Color32(235, 213, 52, 255);
+                }
+                else
+                {
+                    cd.color = new Color32(255, 255, 255, 255);
+                    cd.text = "";
+                }
+                
+            }
+            
+            
         }
     }
 }
