@@ -43,6 +43,7 @@ public class Upgrade : ScriptableObject
         LightningMaxJumps,
         offersCount,
         CritScale,
+        CanDestroyEnemyBullet,
         
 
     }

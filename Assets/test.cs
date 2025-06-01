@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("CANDESTROY")]
+    public void CANDESTROY(){
+        SessionData.SetBool(ref SessionData.CanDestroyEnemyBullet,true);
+        SessionData.ShowData();
+    }
     [ContextMenu("Add10")]
     public void jumpcount(){
         SessionData.AddValueInt(ref SessionData.LightningMaxJumps,10);
@@ -123,7 +128,7 @@ public class test : MonoBehaviour
     }
     [ContextMenu("AddMeleeSize")]
     public void AddMeleeSize(){
-        SessionData.AddValueV3(ref SessionData.MeleeSize,1f);
+            
         SessionData.ShowData();
     }
     [ContextMenu("AddMS")]

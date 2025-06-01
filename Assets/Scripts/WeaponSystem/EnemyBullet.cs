@@ -6,6 +6,7 @@ public class EnemyBullet : Bullet
 {
     private float speed=1;
     public bool CanBeMove = false;
+    public GameObject DestroyPrefab;
     private Vector2 targetPos;
     private void Start()
     {
@@ -51,22 +52,39 @@ public class EnemyBullet : Bullet
         catch(Exception){
             Debug.Log("ошибка в при стопе куротины");
         }
-    }    
-    public override void DamageRegTrigger(Collider2D collision){
+    }
+    public override void DamageRegTrigger(Collider2D collision)
+    {
         if (collision.gameObject.layer == targetLayerNum && collision.gameObject.tag == "Player")
         {
-            if(BypassesCount>0){
+            if (BypassesCount > 0)
+            {
                 collision.gameObject.GetComponent<Player>().TakeDamage(damage);
                 BypassesCount--;
             }
-            else{
+            else
+            {
                 collision.gameObject.GetComponent<Player>().TakeDamage(damage);
                 Destroy(gameObject);
             }
         }
+        if ((collision.gameObject.tag == "ActiveWeapon") && SessionData.CanDestroyEnemyBullet)
+        {
+            ForceDestroy();
+        }
+        else if ((collision.gameObject.layer == 11 && collision.gameObject.tag != "EnemuBullet")  && SessionData.CanDestroyEnemyBullet)
+        {
+            ForceDestroy();
+        }
 
 
     }
+    public void ForceDestroy()
+    {
+        Destroy(gameObject);
+        Instantiate(DestroyPrefab, transform.position, Quaternion.identity);
+    }
+
     public IEnumerator ReturnBulletAfterTimeEnemyBullet(GameObject bullet, float delay)
     {
         yield return new WaitForSeconds(delay);

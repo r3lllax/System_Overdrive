@@ -52,9 +52,15 @@ public class UIUpgradeCard : MonoBehaviour
         string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());
         string Debuff = CurrentUpgrate.HasDebuff?$@"<color=#FFFFFF>-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
         string NowCount = $"<color=#9e9e9e>сейчас:<color={ReadbleStatVar.Substring(7,7)}> {SessionData.GetValue(CurrentUpgrate.targerStat.ToString())}";
+        
         Now.text = NowCount;
         string body = 
         $@"<color=#FFFFFF>{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}, \n{Debuff}";
+        if (CurrentUpgrate.targerStat.ToString() == "CanDestroyEnemyBullet")
+        {
+            Now.text = "";
+            body = $@"<color=#FFFFFF>{ReadbleStatVar}{Debuff}";
+        }
         Body.text = body;
     }
 

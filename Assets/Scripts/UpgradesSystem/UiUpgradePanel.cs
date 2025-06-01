@@ -46,12 +46,15 @@ public class UiUpgradePanel : MonoBehaviour
         panelIsOpen = !panelIsOpen;
         GetComponent<Animator>().SetTrigger("toggle");
     }
-    public void StopTime(){
+    public void StopTime()
+    {
         //Доработать
         aimStatus = playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus;
         playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = false;
+
         timeBefore = Time.timeScale;
         Time.timeScale = 0;
+        playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().CheckVisual();
     }
     public void Knocback()
     {

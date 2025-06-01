@@ -15,7 +15,7 @@ public class DifficultyController : MonoBehaviour
     {
         ESC.ClearAvailableTypes();
         ESC.AddTypeToAvailble("Boss");
-        yield return new WaitForSecondsRealtime(4f);
+        yield return new WaitForSeconds(4f);
         ESC.AddTypeToAvailble("Basic");
         ESC.AddTypeToAvailble("Elite");
         ESC.AddTypeToAvailble("Ranged");
@@ -26,6 +26,7 @@ public class DifficultyController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > timeToIncreaseDifficulty)
         {
+            SessionData.AddValueFloat(ref SessionData.ExpMultiplier, 0.05f);
             if (timeToElite > 0)
             {
                 timeToElite--;

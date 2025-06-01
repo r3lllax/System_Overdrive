@@ -12,8 +12,8 @@ public class Enemy : MonoBehaviour
     public EnemyPool pool;
     private Knockback knockback;
     private Flash flash;
-    private int lowExpThreshold;
-    private int highExpThreshold;
+    private float lowExpThreshold;
+    private float highExpThreshold;
     private bool InCameraView;
     private LightningController lightningController;
     private SpriteRenderer sp;
@@ -25,10 +25,10 @@ public class Enemy : MonoBehaviour
         return InCameraView;
     }
 
-    public void SetLowExpTh(int Num){
+    public void SetLowExpTh(float Num){
         lowExpThreshold = Num;
     }
-    public void SetHighExpTh(int Num){
+    public void SetHighExpTh(float Num){
         highExpThreshold = Num;
     }
 

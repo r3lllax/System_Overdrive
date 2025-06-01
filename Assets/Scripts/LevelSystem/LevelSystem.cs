@@ -64,6 +64,7 @@ public class LevelSystem : MonoBehaviour
                 {
                     levelUpsCount++;
                     CurrentLevel++;
+                    Debug.Log($"CurrentLevel - {CurrentLevel}");
                 }
                 
             }

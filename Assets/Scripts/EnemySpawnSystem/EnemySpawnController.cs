@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Basic"};
+    private List<string> AvailbleTypes = new List<string>{"Ranged"};
     private int currentEnemies;
     private int MinBasicHP=3;
     private int MaxBasicHP=5;
@@ -69,29 +69,29 @@ public class EnemySpawnController : MonoBehaviour
             
             if (EnemyComponent.GetEnemyType() == "Basic"){
                 enemyHp = Random.Range(MinBasicHP,MaxBasicHP);
-                EnemyComponent.SetLowExpTh(10);
-                EnemyComponent.SetHighExpTh(20);
+                EnemyComponent.SetLowExpTh(10*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(20*SessionData.ExpMultiplier);
             }
             else if(EnemyComponent.GetEnemyType()=="Elite"){
                 enemyHp = Random.Range(MinEliteHP,MaxEliteHP);
-                EnemyComponent.SetLowExpTh(30);
-                EnemyComponent.SetHighExpTh(60);
+                EnemyComponent.SetLowExpTh(30*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(60*SessionData.ExpMultiplier);
 
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f,2f));
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Ranged"){
                 enemyHp = Random.Range(MinRangedHP,MaxRangedHP);
-                EnemyComponent.SetLowExpTh(10);
-                EnemyComponent.SetHighExpTh(20);
+                EnemyComponent.SetLowExpTh(10*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(20*SessionData.ExpMultiplier);
 
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(2f,3f));
                 
             }
             else if(EnemyComponent.GetEnemyType()=="Boss"){
-                enemyHp = 10000;
-                EnemyComponent.SetLowExpTh(1000);
-                EnemyComponent.SetHighExpTh(3000);
+                enemyHp = 5000;
+                EnemyComponent.SetLowExpTh(1000*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(3000*SessionData.ExpMultiplier);
 
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(1.5f,2f));
                 

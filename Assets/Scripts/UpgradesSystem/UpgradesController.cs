@@ -38,6 +38,9 @@ public class UpgradesController : MonoBehaviour
         {"LightningDelay","<color=#2cf5ee>Задержка меджу отскоками молнии<#2cf5ee>"},
         {"offersCount","<color=#ffd12b>Количество предлагаемых улучшений<#ffd12b>"},
         {"CritScale","<color=#ff4f4f>Урон критических попаданий<#ff4f4f>"},
+        {"CanDestroyEnemyBullet","<color=#ff29ad>Теперь вы можете ломать пули врагов<#ff29ad>"},
+
+        
         
     };
     
@@ -60,6 +63,14 @@ public class UpgradesController : MonoBehaviour
     {
         FilterUpgrades();
         GenerateOfferUpdates(3);
+    }
+    [ContextMenu("PlayerUpgrades")]
+    public void PlayerCollectedUpdates()
+    {
+        foreach (var obj in PlayerUpgrades)
+        {
+            Debug.Log($"Player upgrade - {obj.name}");
+        }
     }
 
     public static string GetReadableString(string param)
@@ -144,6 +155,7 @@ public class UpgradesController : MonoBehaviour
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },
         //Bool
         // { "BackFire", (isPercent, val) => ApplyToBoolField(ref SessionData.BackFire, isPercent, Convert.ToBoolean(val)) },
+        { "CanDestroyEnemyBullet", (isPercent, val) => ApplyToBoolField(ref SessionData.CanDestroyEnemyBullet, isPercent, Convert.ToBoolean(val)) }
         
     };
 
@@ -180,10 +192,11 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddValueChance(ref field, value);
     }
 
-     private static void ApplyToBoolField(ref bool field, bool isPercent, bool value)
+    private static void ApplyToBoolField(ref bool field, bool isPercent, bool value)
     {
 
         SessionData.SetBool(ref field, value);
+        Debug.Log(SessionData.CanDestroyEnemyBullet);
        
     }
 
@@ -277,7 +290,11 @@ public class UpgradesController : MonoBehaviour
         {
             if ((AllUpgrades.UpgradesList[i].Melee && PlayerType == "Melee") || (AllUpgrades.UpgradesList[i].Range && PlayerType == "Range"))
             {
-                if (SessionData.LightningProcChance== 0 && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningJumpRadius" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDamageMultiplier" ||AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDelay" ||AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningMaxJumps" ))
+                if (SessionData.CanDestroyEnemyBullet==true && AllUpgrades.UpgradesList[i].targerStat.ToString() == "CanDestroyEnemyBullet")
+                {
+                    continue;
+                }
+                if (SessionData.LightningProcChance == 0 && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningJumpRadius" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDamageMultiplier" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDelay" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningMaxJumps"))
                 {
                     continue;
                 }

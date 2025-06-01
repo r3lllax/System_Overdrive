@@ -15,13 +15,15 @@ public class SessionData
     public static float AttackSpeedMelee;//✓
     public static float CdBetweenFire;//✓
     public static float CdBetweenMagazine;//✓
-    public static float StartSpeedMultiplier;//✓
+    public static float ExpMultiplier = 1f;// - NotForUser
+
+    public static float StartSpeedMultiplier;// - NotForUser
     public static float SprintMultiplier;//✓
     public static int MagazineCapacity;//✓
     public static float OneShootChance;//✓
     public static float CritChance;//✓
     public static float CritScale = 2f;//✓
-    public static float EnemySpeedMultiplier = 1f;//✓
+    public static float EnemySpeedMultiplier = 1f;// - - NotForUser
     public static Vector3 MeleeSize;//✓
     public static Vector3 BulletSize;//✓
     public static float BulletSpeed;//✓
@@ -40,6 +42,7 @@ public class SessionData
     public static float LightningDelay = 0.15f;//✓
     public static bool NeedRefresh;
     // public static bool BackFire = false;
+    public static bool CanDestroyEnemyBullet = false;
     public static int BackFire = 0;
     public static float ProcenteScaleMax = 1000;
 
@@ -83,6 +86,7 @@ public class SessionData
         {"LightningDelay",new VariableReference(() => LightningDelay.ToString("0.00"))},
         {"offersCount",new VariableReference(() => offersCount)},
         {"CritScale",new VariableReference(() => (CritScale*100).ToString("0.00"))},
+        {"CanDestroyEnemyBullet",new VariableReference(() => CanDestroyEnemyBullet)},
 
     };
 
@@ -363,6 +367,6 @@ public class SessionData
     ///V3
     ///Bool
     public static void SetBool(ref bool variable,bool value){
-        variable = value;
+        variable = true;
     }
 }

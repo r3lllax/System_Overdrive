@@ -63,34 +63,46 @@ public class ColdWeapon : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 7 && anim.GetBool("Attack")){
-            if(!CollideEnemy.Contains(collision)){
+        
+        if (collision.gameObject.layer == 7 && anim.GetBool("Attack"))
+        {
+            if (!CollideEnemy.Contains(collision))
+            {
                 CollideEnemy.Add(collision);
-                if(TryOneShot()==true){
+                if (TryOneShot() == true)
+                {
                     collision.GetComponent<Enemy>().OneShot(20f);
                 }
-                else if(TryCrit()){
-                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f,"crit",tryLightning:true);
+                else if (TryCrit())
+                {
+                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f, "crit", tryLightning: true);
                 }
-                else{
-                    collision.GetComponent<Enemy>().TakeDamage(Damage, 15f,tryLightning:true);
+                else
+                {
+                    collision.GetComponent<Enemy>().TakeDamage(Damage, 15f, tryLightning: true);
                 }
             }
         }
     }
+    
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.gameObject.layer == 7 && anim.GetBool("Attack")){
-            if(!CollideEnemy.Contains(collision)){
+        if (collision.gameObject.layer == 7 && anim.GetBool("Attack"))
+        {
+            if (!CollideEnemy.Contains(collision))
+            {
                 CollideEnemy.Add(collision);
-                if(TryOneShot()==true){
+                if (TryOneShot() == true)
+                {
                     collision.GetComponent<Enemy>().OneShot(20f);
                 }
-                else if(TryCrit()){
-                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f,"crit",tryLightning:true);
+                else if (TryCrit())
+                {
+                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f, "crit", tryLightning: true);
                 }
-                else{
-                    collision.GetComponent<Enemy>().TakeDamage(Damage, 15f,tryLightning:true);
+                else
+                {
+                    collision.GetComponent<Enemy>().TakeDamage(Damage, 15f, tryLightning: true);
                 }
             }
         }

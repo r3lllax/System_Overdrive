@@ -11,6 +11,7 @@ public class GhostMode : Ability
     private Color32 newColor = new Color32(255, 255, 255, 60);
     private float PlayerSpeedBefore = 0;
     private float PlayerSpeedAfter = 0;
+    private float AmmoPlusChance = 0.2f;
     void Start()
     {
         PlayerColider = owner.GetComponent<CapsuleCollider2D>();
@@ -33,6 +34,20 @@ public class GhostMode : Ability
     }
     protected override void ExecuteAbility()
     {
+        if (UpgradesController.BulletType == "None")
+        {
+            if(Random.value <= AmmoPlusChance)
+            {
+                SessionData.AddValueV3(ref SessionData.MeleeSize,0.2f);
+            }
+        }
+        else
+        {
+            if(Random.value <= AmmoPlusChance)
+            {
+                SessionData.AddValueInt(ref SessionData.MagazineCapacity, 1);
+            }
+        }
         PlayerSpeedBefore = SessionData.MoveSpeed;
         PlayerSpeedAfter = PlayerSpeedBefore * 1.5f;
         StartCoroutine(AbilityRoutine());

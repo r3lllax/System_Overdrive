@@ -25,9 +25,7 @@ public class AutoAim : MonoBehaviour
         AutoAimIndicatorUI = GameObject.FindWithTag("AutoAimIndicatorUI").GetComponent<Image>();
     }
 
-
-
-    private void Update()
+    public void CheckVisual()
     {
         if (AutoAimStatus)
         {
@@ -36,29 +34,39 @@ public class AutoAim : MonoBehaviour
         }
         else
         {
+            Cursor.visible = true;
             AutoAimIndicatorUI.color = disabledColor;
         }
-        if (isProcessing)
+    }
+
+    private void Update()
+    {
+        if (Time.timeScale > 0)
         {
-            AutoAimTimer += Time.deltaTime;
-            AutoAimIndicatorUI.fillAmount = AutoAimTimer / AutoAimReload;
-        }
-        else
-        {
-            if (AutoAimTimer != 0f)
+            CheckVisual();
+            if (isProcessing)
             {
-                AutoAimTimer = 0f;
+                AutoAimTimer += Time.deltaTime;
+                AutoAimIndicatorUI.fillAmount = AutoAimTimer / AutoAimReload;
+            }
+            else
+            {
+                if (AutoAimTimer != 0f)
+                {
+                    AutoAimTimer = 0f;
+                }
+            }
+            if (Input.GetKey(KeyCode.Space))
+            {
+                ToggleAutoAim();
+            }
+            if (AutoAimStatus)
+            {
+                FindClosestTarget();
+                UpdateAimDirection();
             }
         }
-        if (Input.GetKey(KeyCode.Space))
-        {
-            ToggleAutoAim();
-        }
-        if (AutoAimStatus)
-        {
-            FindClosestTarget();
-            UpdateAimDirection();
-        }
+        
         
     }
     private void FindClosestTarget()
@@ -129,7 +137,6 @@ public class AutoAim : MonoBehaviour
         }
         else
         {
-            Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
 

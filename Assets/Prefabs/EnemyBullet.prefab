@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 2610031773342822356}
   m_Layer: 11
   m_Name: EnemyBullet
-  m_TagString: Untagged
+  m_TagString: EnemuBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,3 +257,4 @@ MonoBehaviour:
   BounceCount: 0
   targetLayerNum: 7
   CanBeMove: 0
+  DestroyPrefab: {fileID: 7448103889418554702, guid: 8f6d6f3662e088b4d8daf0e8e3b8869b, type: 3}
