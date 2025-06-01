@@ -38,9 +38,9 @@ public class KnockBackWPlayerDamage : MonoBehaviour
         }
     }
     
-    public void KnockBackClosestEnemy(){
+    public void KnockBackClosestEnemy(float strength){
         foreach(Collider2D enemy in CollideEnemies){
-            enemy.GetComponent<Knockback>().GetKnockBack(PlayerController.Instance.transform,30f);
+            enemy.GetComponent<Knockback>().GetKnockBack(PlayerController.Instance.transform,strength);
         }
     }
 }

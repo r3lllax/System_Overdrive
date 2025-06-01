@@ -15,7 +15,6 @@ public class LightningController : MonoBehaviour
     public void TryProcLightning(GameObject firstTarget, float damage)
     {
         startDamage = damage;
-        Debug.Log($"procChance - {procChance} Random.value - {Random.value} {Random.value <= procChance}");
         if (Random.value <= procChance)
         {
             ActualizeData();
@@ -57,10 +56,15 @@ public class LightningController : MonoBehaviour
                 {
                     if ((int)currentDamage == 0)
                     {
+                        jumpsLeft = 0;
                         yield return null;
                     }
-                    targetEnemy.TakeDamage((int)currentDamage, 0f,"Lightning");
-                    affectedTargets.Add(currentTarget);
+                    else
+                    {
+                        targetEnemy.TakeDamage((int)currentDamage, 0f,"Lightning");
+                        affectedTargets.Add(currentTarget);
+                    }
+                    
                 }
 
 

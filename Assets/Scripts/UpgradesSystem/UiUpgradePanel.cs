@@ -7,11 +7,16 @@ public class UiUpgradePanel : MonoBehaviour
     private GameObject UpgradeCounterUI;
     private LevelSystem playerLevelSystem;
     private GameObject Upgrades;
+    private bool panelIsOpen = false;
     public bool inAnim = false;
-    [ContextMenu("DELETETEST")]
-    public void DeleteCards(){
-        foreach (Transform child in Upgrades.transform){
-            if(child!=null && child.tag!="UpgradeCountUI"){
+    private bool aimStatus;
+    
+    public void DeleteCards()
+    {
+        foreach (Transform child in Upgrades.transform)
+        {
+            if (child != null && child.tag != "UpgradeCountUI")
+            {
                 Destroy(child.gameObject);
             }
         }
@@ -38,18 +43,32 @@ public class UiUpgradePanel : MonoBehaviour
     [ContextMenu("TogglePanel")]
     public void TogglePanel()
     {
+        panelIsOpen = !panelIsOpen;
         GetComponent<Animator>().SetTrigger("toggle");
-        playerLevelSystem.transform.gameObject.GetComponentInChildren<AutoAim>().AutoAimStatus = false;
     }
     public void StopTime(){
+        //Доработать
+        aimStatus = playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus;
+        playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = false;
         timeBefore = Time.timeScale;
         Time.timeScale = 0;
     }
-    public void StartTime(){
+    public void Knocback()
+    {
+        if (!panelIsOpen)
+        {
+            playerLevelSystem.transform.parent.gameObject.GetComponentInChildren<KnockBackWPlayerDamage>().KnockBackClosestEnemy(15f);
+        }
+    }
+    public void StartTime()
+    {
+        playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = aimStatus;
         Time.timeScale = timeBefore;
     }
-    public void AnimStart(){
-        inAnim=true;
+    public void AnimStart()
+    {
+        inAnim = true;
+        
     }
     public void AnimEnd(){
         inAnim=false;

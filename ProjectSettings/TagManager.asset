@@ -17,6 +17,7 @@ TagManager:
   - HPUI
   - AmmoCountUI
   - AutoAimIndicatorUI
+  - LevelUpObj
   layers:
   - Default
   - TransparentFX

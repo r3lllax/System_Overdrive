@@ -33,7 +33,7 @@ public class RevolverBullet : Bullet
     }
 
     public override void DamageRegCollision(Collision2D collision){
-        if (collision.gameObject.layer == targetLayerNum)
+        if (collision.gameObject.layer == targetLayerNum && collision.gameObject.activeSelf==true)
         {
             if (TryOneShot() == true && collision.gameObject.GetComponent<Enemy>().GetEnemyType() != "Boss")
             {

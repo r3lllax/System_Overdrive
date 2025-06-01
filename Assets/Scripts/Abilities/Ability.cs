@@ -120,7 +120,7 @@ public abstract class Ability : MonoBehaviour
 
     protected abstract void ExecuteAbility();
     
-    protected virtual bool CanActivate() => true;
+    protected virtual bool CanActivate() => Time.timeScale>0;
     
     protected virtual IEnumerator CooldownRoutine()
     {

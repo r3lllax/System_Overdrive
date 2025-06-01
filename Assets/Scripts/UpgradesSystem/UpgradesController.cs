@@ -40,6 +40,7 @@ public class UpgradesController : MonoBehaviour
         {"CritScale","<color=#ff4f4f>Урон критических попаданий<#ff4f4f>"},
         
     };
+    
     [SerializeField] private AllUpgrades AllUpgrades;
     private List<Upgrade> AvailableUpgrades;
     private List<Upgrade> NowSuggestedUpgrades;

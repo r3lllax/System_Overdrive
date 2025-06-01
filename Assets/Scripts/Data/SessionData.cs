@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -41,8 +43,95 @@ public class SessionData
     public static int BackFire = 0;
     public static float ProcenteScaleMax = 1000;
 
+    sealed class VariableReference
+    {
+        public Func<object> Get { get; private set; }
+        public VariableReference(Func<object> getter)
+        {
+            Get = getter;
+        }
+    }
+
+    private static Dictionary<string, VariableReference> UpgradeValue = new Dictionary<string, VariableReference>
+    {
+        {"Health",new VariableReference(() => Health)},
+        {"MoveSpeed",new VariableReference(() => MoveSpeed.ToString("0.00"))},
+        {"Damage",new VariableReference(() => Damage)},
+        {"ExpFinderRadius",new VariableReference(() => ExpFinderRadius.ToString("0.00"))},
+        {"AttackSpeedMelee",new VariableReference(() => AttackSpeedMelee.ToString("0.00"))},
+        {"CdBetweenFire",new VariableReference(() => ((int)(1f/CdBetweenFire)))},
+        {"CdBetweenMagazine",new VariableReference(() => CdBetweenMagazine.ToString("0.00"))},
+        {"StartSpeedMultiplier",new VariableReference(() => StartSpeedMultiplier)},
+        {"SprintMultiplier",new VariableReference(() => SprintMultiplier.ToString("0.00"))},
+        {"MagazineCapacity",new VariableReference(() => MagazineCapacity)},
+        {"OneShootChance",new VariableReference(() => ScaleValueToProcente(OneShootChance).ToString("0.00"))},
+        {"CritChance",new VariableReference(() => ScaleValueToProcente(CritChance).ToString("0.00"))},
+        {"EnemySpeedMultiplier",new VariableReference(() => EnemySpeedMultiplier.ToString("0.00"))},
+        {"MeleeSize",new VariableReference(() => MeleeSize.x.ToString("0.00"))},
+        {"BulletSize",new VariableReference(() => BulletSize.x.ToString("0.00"))},
+        {"BulletSpeed",new VariableReference(() => BulletSpeed.ToString("0.00"))},
+        {"BulletLifeTime",new VariableReference(() => BulletLifeTime.ToString("0.00"))},
+        {"BulletBypassCount",new VariableReference(() => BulletBypassCount)},
+        {"BulletRebonceCount",new VariableReference(() => BulletRebonceCount)},
+        {"AbilityActiveTime",new VariableReference(() => AbilityActiveTime.ToString("0.00"))},
+        {"AbilityCooldown",new VariableReference(() => AbilityCooldown.ToString("0.00"))},
+        {"BackFire",new VariableReference(() => BackFire)},
+        {"LightningProcChance",new VariableReference(() => ScaleValueToProcente(LightningProcChance).ToString("0.00"))},
+        {"LightningMaxJumps",new VariableReference(() => LightningMaxJumps)},
+        {"LightningJumpRadius",new VariableReference(() => LightningJumpRadius.ToString("0.00"))},
+        {"LightningDamageMultiplier",new VariableReference(() => LightningDamageMultiplier.ToString("0.00"))},
+        {"LightningDelay",new VariableReference(() => LightningDelay.ToString("0.00"))},
+        {"offersCount",new VariableReference(() => offersCount)},
+        {"CritScale",new VariableReference(() => (CritScale*100).ToString("0.00"))},
+
+    };
+
+    private static Dictionary<string[], string> PostfixDict = new Dictionary<string[], string>
+    {
+        {new string[]{"CritScale","LightningProcChance","CritChance","OneShootChance"},"%"},
+        {new string[]{"BulletLifeTime","AbilityActiveTime","AbilityCooldown"}," сек."},
+        {new string[]{"CdBetweenFire"}," в сек."},
+        {new string[]{"SprintMultiplier","EnemySpeedMultiplier","MeleeSize","BulletSize","LightningDamageMultiplier"},"x"},
+    };
+    public static string GetValue(string stat)
+    {
+        foreach (var key in PostfixDict)
+        {
+            if (key.Key.Contains(stat))
+            {
+                return $"{UpgradeValue[stat].Get()}{key.Value}";
+            }
+        }
+        return $"{UpgradeValue[stat].Get()}";
+
+        // if (stat == "CritScale" || stat == "LightningProcChance" || stat == "CritChance" || stat == "OneShootChance")
+        // {
+        //     return $"{UpgradeValue[stat].Get()}%";
+        // }
+        // else if (stat == "BulletLifeTime" || stat == "AbilityActiveTime" || stat == "AbilityCooldown")
+        // {
+        //     return $"{UpgradeValue[stat].Get()} сек.";
+        // }
+        // else if (stat == "CdBetweenFire")
+        // {
+        //     return $"{(int)(1 / (float)(UpgradeValue[stat].Get()))} в сек.";
+        // }
+        // else if (stat == "SprintMultiplier" || stat == "EnemySpeedMultiplier" || stat == "MeleeSize" || stat == "BulletSize" || stat == "LightningDamageMultiplier")
+        // {
+        //     return $"{UpgradeValue[stat].Get()}x";
+        // }
+        // else
+        // {
+        //     return $"{UpgradeValue[stat].Get()}";
+        // }
+
+    }
+    
+    
+  
     //test
-    public static void ShowData(){
+    public static void ShowData()
+    {
         string data = $@"
             ===========================================
                         Health = {Health}

@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("Add10")]
+    public void jumpcount(){
+        SessionData.AddValueInt(ref SessionData.LightningMaxJumps,10);
+        SessionData.ShowData();
+    }
     [ContextMenu("Add1000ToCritScale")]
     public void Add50ToCritScale(){
         SessionData.AddProcentesFloatScale(ref SessionData.CritScale,1000);

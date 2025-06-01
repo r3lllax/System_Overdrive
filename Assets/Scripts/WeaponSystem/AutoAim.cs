@@ -89,7 +89,7 @@ public class AutoAim : MonoBehaviour
     
     public void ToggleAutoAim()
     {
-        if (!isProcessing)
+        if (!isProcessing && Time.timeScale>0)
         {
             StartCoroutine(ToggleUseByCD());
         }
@@ -101,11 +101,12 @@ public class AutoAim : MonoBehaviour
         isProcessing = true;
         if (!AutoAimStatus)
         {
-            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = false;
             Cursor.SetCursor(AimCursor, new Vector2(AimCursor.width/2,AimCursor.height/2), CursorMode.Auto);
         }
         else
         {
+            Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             Cursor.SetCursor(null, new Vector2(AimCursor.width/2,AimCursor.height/2), CursorMode.Auto);
         }
@@ -118,11 +119,18 @@ public class AutoAim : MonoBehaviour
     {
         if (currentTarget != null)
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             Mouse.current.WarpCursorPosition(cam.WorldToScreenPoint(currentTarget.position));
 
             // Vector2 direction = (currentTarget.position - transform.position).normalized;
             // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             // transform.rotation = Quaternion.Euler(0f, 0f, angle);
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
 
     }

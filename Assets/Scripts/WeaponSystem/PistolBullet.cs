@@ -38,7 +38,7 @@ public class PistolBullet : Bullet
         }
     }    
     public override void DamageRegTrigger(Collider2D collision){
-        if (collision.gameObject.layer == targetLayerNum)
+        if (collision.gameObject.layer == targetLayerNum && collision.gameObject.activeSelf==true)
         {
             Debug.Log(SessionData.CritScale);
             if (TryOneShot() == true && collision.gameObject.GetComponent<Enemy>().GetEnemyType() != "Boss")

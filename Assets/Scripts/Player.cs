@@ -88,11 +88,11 @@ public class Player : MonoBehaviour
         {
             try
             {
-                transform.GetChild(transform.childCount - 1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+                transform.GetChild(transform.childCount - 1).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy(30f);
             }
             catch
             {
-                transform.GetChild(transform.childCount-2).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy();
+                transform.GetChild(transform.childCount-2).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy(30f);
             }
 
         }

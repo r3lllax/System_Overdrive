@@ -9,6 +9,7 @@ public class UIUpgradeCard : MonoBehaviour
     [SerializeField]private TextMeshProUGUI Title;
     [SerializeField]private Image image;
     [SerializeField]private TextMeshProUGUI Body;//Тут инфа о том сколько наносит итд
+    [SerializeField] private TextMeshProUGUI Now;
     private LevelSystem playerLevelSystem;
     private GameObject Panel;
     private float value;
@@ -36,9 +37,7 @@ public class UIUpgradeCard : MonoBehaviour
         {
             Panel.GetComponent<UiUpgradePanel>().inAnim = true;
             Panel.GetComponent<Animator>().SetTrigger("toggle");
-            Time.timeScale = 1;
         }
-        Debug.Log($"CurrentUpgrate,value:{CurrentUpgrate.targerStat},{value}");
         UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
         UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
         
@@ -52,9 +51,10 @@ public class UIUpgradeCard : MonoBehaviour
         string ReadbleStatVar = UpgradesController.GetReadableString(CurrentUpgrate.targerStat.ToString());
         string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());
         string Debuff = CurrentUpgrate.HasDebuff?$@"<color=#FFFFFF>-{CurrentUpgrate.DebufSize}{ProcenteDigit} у {ReadbleDebuffVar}":"";
-        
+        string NowCount = $"<color=#9e9e9e>сейчас:<color={ReadbleStatVar.Substring(7,7)}> {SessionData.GetValue(CurrentUpgrate.targerStat.ToString())}";
+        Now.text = NowCount;
         string body = 
-        $@"<color=#FFFFFF>{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}\n{Debuff}";
+        $@"<color=#FFFFFF>{Round(Convert.ToDecimal(value),2)}{ProcenteDigit} к {ReadbleStatVar}, \n{Debuff}";
         Body.text = body;
     }
 

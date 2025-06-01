@@ -18,12 +18,14 @@ public class LevelSystem : MonoBehaviour
     private bool canContinue = true;
     private float fillAmount = 0f;
     private int levelUpsCount = 0;
+    private GameObject LevelUpObj;
     private TextMeshProUGUI LevelTextUI;
     [SerializeField] private float IncreaseProcente = 0.1f;
 
     public void Awake()
     {
         Player = transform.parent.gameObject;
+        LevelUpObj = Player.transform.Find("LevelUP").gameObject;
         Tracker = GameObject.FindWithTag("ProgressTracker");
         Instance = this;
         Panel = GameObject.FindWithTag("Panel");
@@ -72,6 +74,7 @@ public class LevelSystem : MonoBehaviour
 
     private IEnumerator LevelUpsRoutine(int count)
     {
+        LevelUpObj.GetComponent<Animator>().SetTrigger("LevelUP");
         for (int i = 0; i < count; i++)
         {
 
