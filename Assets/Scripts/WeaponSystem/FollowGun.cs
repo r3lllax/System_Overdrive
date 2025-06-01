@@ -40,6 +40,7 @@ public class FollowGun : MonoBehaviour
             sp.flipY = false;
         }
         mousePosition.z = 0f;
+        
         Vector3 direction = mousePosition - player.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;

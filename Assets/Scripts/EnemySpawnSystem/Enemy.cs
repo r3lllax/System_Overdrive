@@ -55,7 +55,6 @@ public class Enemy : MonoBehaviour
         }
     }
     public void TakeDamage(int Damage, float strength, string modifier = "default",bool tryLightning = false) {
-        Debug.Log($"TAKEN - {lightningController}");
         health = health - Damage <= 0 ? 0 : health -= Damage;
         if (tryLightning)
         {

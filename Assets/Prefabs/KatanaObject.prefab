@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7697195874606728409}
   - component: {fileID: 1012977496281306382}
   - component: {fileID: 1300830265634474792}
+  - component: {fileID: 7173975353145049459}
   m_Layer: 10
   m_Name: KatanaObject
   m_TagString: Untagged
@@ -104,6 +105,24 @@ MonoBehaviour:
   currentWeapon: {fileID: 11400000, guid: de2a1e32cfc9f0f4cbb13db976dc1443, type: 2}
   player: {fileID: 0}
   distanceFromPlayer: 0.45
+--- !u!114 &7173975353145049459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830983953047547336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bba1a9c1aaac5b45a01d0b563fbc4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimCursor: {fileID: 2800000, guid: eb1df59e4fc8ae745a02d49d5fc06572, type: 3}
+  detectionRadius: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  AutoAimStatus: 0
 --- !u!1 &8089388541893481639
 GameObject:
   m_ObjectHideFlags: 0

@@ -36,8 +36,10 @@ public class UiUpgradePanel : MonoBehaviour
         card.GetComponent<UIUpgradeCard>().SetCurrentUpgrade(upgr);
     }
     [ContextMenu("TogglePanel")]
-    public void TogglePanel(){
+    public void TogglePanel()
+    {
         GetComponent<Animator>().SetTrigger("toggle");
+        playerLevelSystem.transform.gameObject.GetComponentInChildren<AutoAim>().AutoAimStatus = false;
     }
     public void StopTime(){
         timeBefore = Time.timeScale;

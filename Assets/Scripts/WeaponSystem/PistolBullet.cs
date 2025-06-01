@@ -40,30 +40,29 @@ public class PistolBullet : Bullet
     public override void DamageRegTrigger(Collider2D collision){
         if (collision.gameObject.layer == targetLayerNum)
         {
-            if(BypassesCount>0){
-                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
-                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
-                }
-                else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",true);
-                }
-                else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
-                }
+            Debug.Log(SessionData.CritScale);
+            if (TryOneShot() == true && collision.gameObject.GetComponent<Enemy>().GetEnemyType() != "Boss")
+            {
+                collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+            }
+            else if (TryCrit())
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage((int)(damage * SessionData.CritScale), 5f, "crit", true);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage, 5f, tryLightning: true);
+            }
+            if (BypassesCount > 0)
+            {
                 BypassesCount--;
             }
-            else{
-                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
-                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
-                }
-                else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",tryLightning:true);
-                }
-                else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
-                }
+            else
+            {
                 BulletPool.Instance.ReturnBullet(gameObject);
             }
+                
+        
         }
 
 

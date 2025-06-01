@@ -35,31 +35,27 @@ public class RevolverBullet : Bullet
     public override void DamageRegCollision(Collision2D collision){
         if (collision.gameObject.layer == targetLayerNum)
         {
-            // collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f);
-            if(BounceCount>0){
-                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
-                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
-                }
-                else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",tryLightning:true);
-                }
-                else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
-                }
+            if (TryOneShot() == true && collision.gameObject.GetComponent<Enemy>().GetEnemyType() != "Boss")
+            {
+                collision.gameObject.GetComponent<Enemy>().OneShot(10f);
+            }
+            else if (TryCrit())
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage((int)(damage * SessionData.CritScale), 5f, "crit", tryLightning: true);
+            }
+            else
+            {
+                collision.gameObject.GetComponent<Enemy>().TakeDamage(damage, 5f, tryLightning: true);
+            }
+            if (BounceCount > 0)
+            {
                 BounceCount--;
             }
-            else{
-                if(TryOneShot()==true && collision.gameObject.GetComponent<Enemy>().GetEnemyType()!="Boss"){
-                    collision.gameObject.GetComponent<Enemy>().OneShot(10f);
-                }
-                else if(TryCrit()){
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage*2,5f,"crit",tryLightning:true);
-                }
-                else{
-                    collision.gameObject.GetComponent<Enemy>().TakeDamage(damage,5f,tryLightning:true);
-                }
+            else
+            {
                 BulletPool.Instance.ReturnBullet(gameObject);
             }
+            
         }
 
     }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7497331517947272206}
   - component: {fileID: 1131397016561073637}
+  - component: {fileID: -490252819550730098}
   m_Layer: 6
   m_Name: Revolver
   m_TagString: Untagged
@@ -48,6 +49,24 @@ MonoBehaviour:
   currentWeapon: {fileID: 11400000, guid: ebb2d4a9b936dc74da48e3c85ca5dda4, type: 2}
   player: {fileID: 0}
   distanceFromPlayer: 1
+--- !u!114 &-490252819550730098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338107766108008468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bba1a9c1aaac5b45a01d0b563fbc4f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimCursor: {fileID: 2800000, guid: eb1df59e4fc8ae745a02d49d5fc06572, type: 3}
+  detectionRadius: 20
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  AutoAimStatus: 0
 --- !u!1 &3335012455549896643
 GameObject:
   m_ObjectHideFlags: 0

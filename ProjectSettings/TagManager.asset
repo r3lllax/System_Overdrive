@@ -16,6 +16,7 @@ TagManager:
   - AutoUseIndicator
   - HPUI
   - AmmoCountUI
+  - AutoAimIndicatorUI
   layers:
   - Default
   - TransparentFX

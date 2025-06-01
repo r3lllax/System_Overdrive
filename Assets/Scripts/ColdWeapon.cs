@@ -70,7 +70,7 @@ public class ColdWeapon : MonoBehaviour
                     collision.GetComponent<Enemy>().OneShot(20f);
                 }
                 else if(TryCrit()){
-                    collision.GetComponent<Enemy>().TakeDamage(Damage*2, 15f,"crit",tryLightning:true);
+                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f,"crit",tryLightning:true);
                 }
                 else{
                     collision.GetComponent<Enemy>().TakeDamage(Damage, 15f,tryLightning:true);
@@ -87,7 +87,7 @@ public class ColdWeapon : MonoBehaviour
                     collision.GetComponent<Enemy>().OneShot(20f);
                 }
                 else if(TryCrit()){
-                    collision.GetComponent<Enemy>().TakeDamage(Damage*2, 15f,"crit",tryLightning:true);
+                    collision.GetComponent<Enemy>().TakeDamage((int)((float)Damage * SessionData.CritScale), 15f,"crit",tryLightning:true);
                 }
                 else{
                     collision.GetComponent<Enemy>().TakeDamage(Damage, 15f,tryLightning:true);

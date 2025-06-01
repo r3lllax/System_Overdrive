@@ -18,6 +18,7 @@ public class SessionData
     public static int MagazineCapacity;//✓
     public static float OneShootChance;//✓
     public static float CritChance;//✓
+    public static float CritScale = 2f;//✓
     public static float EnemySpeedMultiplier = 1f;//✓
     public static Vector3 MeleeSize;//✓
     public static Vector3 BulletSize;//✓
@@ -178,15 +179,18 @@ public class SessionData
     ///FLOAT
     public static void AddProcentesFloat(ref float variable,float procente){
         if(variable==0){return;}
-        Debug.Log($"Переменная:{variable}");
         float Add = variable/100*procente;
-        Debug.Log($"Добавка:{Add}");
         variable += Add;
-        Debug.Log($"Переменная:{variable}");
         NeedRefresh = true;
     }
-    public static void AddValueFloat(ref float variable,float addValue){
-        variable = variable+addValue<=0?0.1f:variable+addValue;
+    public static void AddProcentesFloatScale(ref float variable,float procente){
+        if(variable==0){return;}
+        variable += procente/100;
+        NeedRefresh = true;
+    }
+    public static void AddValueFloat(ref float variable, float addValue)
+    {
+        variable = variable + addValue <= 0 ? 0.1f : variable + addValue;
         NeedRefresh = true;
     }
     public static void DecreaseProcentesFloat(ref float variable,float procente){

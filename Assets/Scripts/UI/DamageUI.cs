@@ -70,9 +70,10 @@ public class DamageUI : MonoBehaviour
         }
     }
 
-    public void AddText(int amt,Vector3 Pos,string modifier="default"){
+    public void AddText(int amt, Vector3 Pos, string modifier = "default"){
         var t = TextPool.Dequeue();
         if(modifier=="crit"){
+            
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255,60,60,91);
             t.text = amt.ToString();
         }

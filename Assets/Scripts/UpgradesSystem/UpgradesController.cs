@@ -37,6 +37,7 @@ public class UpgradesController : MonoBehaviour
         {"LightningDamageMultiplier","<color=#2cf5ee>Множитель урона за отскок молнии<#2cf5ee>"},
         {"LightningDelay","<color=#2cf5ee>Задержка меджу отскоками молнии<#2cf5ee>"},
         {"offersCount","<color=#ffd12b>Количество предлагаемых улучшений<#ffd12b>"},
+        {"CritScale","<color=#ff4f4f>Урон критических попаданий<#ff4f4f>"},
         
     };
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -121,6 +122,7 @@ public class UpgradesController : MonoBehaviour
         { "LightningJumpRadius", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningJumpRadius, isPercent, val) },
         { "LightningDamageMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDamageMultiplier, isPercent, val) },
         { "LightningDelay", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDelay, isPercent, val) },
+        { "CritScale", (isPercent, val) => ApplyToFloatScaleField(ref SessionData.CritScale, isPercent, val) },
  
         //Chances
         { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
@@ -183,7 +185,15 @@ public class UpgradesController : MonoBehaviour
         SessionData.SetBool(ref field, value);
        
     }
-    
+
+
+    private static void ApplyToFloatScaleField(ref float field, bool isPercent, float value)
+    {
+        if (isPercent)
+            SessionData.AddProcentesFloatScale(ref field, value);
+        else
+            SessionData.AddValueFloat(ref field, value);
+    }
 
     private static void ApplyToIntField(ref int field, bool isPercent, int value)
     {

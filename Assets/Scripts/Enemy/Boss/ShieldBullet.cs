@@ -46,7 +46,7 @@ public class ShieldBullet : MonoBehaviour
         }
         if ((collision.tag == "Enemy" || collision.tag == "Boss") && owner.tag == "Player")
         {
-            collision.GetComponent<Enemy>().TakeDamage(SessionData.Damage * 2, 5f, "crit");
+            collision.GetComponent<Enemy>().TakeDamage((int)(SessionData.Damage * SessionData.CritScale), 5f, "crit");
         }
     }
     

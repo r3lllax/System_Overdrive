@@ -2,6 +2,11 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("Add1000ToCritScale")]
+    public void Add50ToCritScale(){
+        SessionData.AddProcentesFloatScale(ref SessionData.CritScale,1000);
+        SessionData.ShowData();
+    }
     [ContextMenu("AddBackFire")]
     public void AddBackFire(){
         SessionData.AddValueInt(ref SessionData.BackFire,1);

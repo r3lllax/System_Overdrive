@@ -42,7 +42,6 @@ public class BossAI : MonoBehaviour
             var AbilityInPlayerContoller = Instantiate(RewardSpell, playerSpellsController.transform);
             playerSpellsController.abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
             playerSpellsController.CalculateAbilities();
-            Debug.Log("Игрок получает способность босса");
 
             AbiilityPanel.NeedRefreshAbilityPanel = true;
             SpellWasGivenToPlayer = true;
@@ -54,11 +53,6 @@ public class BossAI : MonoBehaviour
         if (collision.name == "RadiusToKnockBack")
         {
             SpellController.UseRandomSpell();
-            // if (SpellController.CanUseSpell())
-            // {
-
-            // }
-
         }
 
     }
