@@ -61,6 +61,11 @@ public class UIUpgradeCard : MonoBehaviour
             Now.text = "";
             body = $@"<color=#FFFFFF>{ReadbleStatVar}{Debuff}";
         }
+        if (CurrentUpgrate.targerStat.ToString() == "CanLifeSteal")
+        {
+            Now.text = "";
+            body = $@"<color=#FFFFFF>{ReadbleStatVar}{Debuff}";
+        }
         Body.text = body;
     }
 

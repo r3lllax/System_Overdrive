@@ -13,7 +13,9 @@ public class Player : MonoBehaviour
     private float PlayerSpeedMultiplier;
     private GameObject HPUI;
     [SerializeField] private GameObject HPUIprefab;
+    [SerializeField] private GameObject LifeStealHPUIprefab;
     private bool DrawUIHPFlag = true;
+    private bool LifeStealDrawed = false;
     private void SetPlayerMSWithMultiplier(float speed)
     {
         this.MoveSpeed *= speed;
@@ -42,12 +44,18 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (SessionData.CanLifeSteal && LifeStealDrawed == false)
+        {
+            drawUIHP();
+            LifeStealDrawed = true;
+        }
         UpdateData();
         if (DrawUIHPFlag)
         {
             drawUIHP();
             DrawUIHPFlag = false;
         }
+        
             // SessionData.NeedRefresh = false;
 
 
@@ -58,10 +66,14 @@ public class Player : MonoBehaviour
         {
             Destroy(HPUI.transform.GetChild(i).gameObject);
         }
-    
+
         for (int i = 0; i < Health; i++)
         {
             Instantiate(HPUIprefab, HPUI.transform);
+        }
+        if (SessionData.CanLifeSteal)
+        {
+            Instantiate(LifeStealHPUIprefab, HPUI.transform);
         }
     }
     private void Start()
@@ -73,16 +85,25 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.layer == 7)
         {
-            
-            TakeDamage(1);
-            
+            TryTakeDamage(1);
         }
     }
 
-    public void TakeDamage(int Damage, bool knock = true){
-        SessionData.Health = Health-Damage<0?0:Health-Damage;
+    public bool TryTakeDamage(int Damage, bool knock = true)
+    {
+        if (Random.value <= SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance)/100)
+        {
+            return false;
+        }
+        TakeDamage(Damage, knock);
+        return true;
+    }
+
+    private void TakeDamage(int Damage, bool knock = true)
+    {
+        SessionData.Health = Health - Damage < 0 ? 0 : Health - Damage;
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
-        Instantiate(DamagePrefab,transform.position,Quaternion.identity);
+        Instantiate(DamagePrefab, transform.position, Quaternion.identity);
         StartCoroutine(DamageRoutine());
         if (knock)
         {
@@ -92,11 +113,12 @@ public class Player : MonoBehaviour
             }
             catch
             {
-                transform.GetChild(transform.childCount-2).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy(30f);
+                transform.GetChild(transform.childCount - 2).GetComponent<KnockBackWPlayerDamage>().KnockBackClosestEnemy(30f);
             }
 
         }
-        if(CheckDeath()){
+        if (CheckDeath())
+        {
             Death();
         }
     }

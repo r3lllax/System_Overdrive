@@ -39,9 +39,9 @@ public class UpgradesController : MonoBehaviour
         {"offersCount","<color=#ffd12b>Количество предлагаемых улучшений<#ffd12b>"},
         {"CritScale","<color=#ff4f4f>Урон критических попаданий<#ff4f4f>"},
         {"CanDestroyEnemyBullet","<color=#ff29ad>Теперь вы можете ломать пули врагов<#ff29ad>"},
-
-        
-        
+        {"CanLifeSteal","<color=#ff29ad>Каждый убитый враг заполняет новое очко здоровья, при заполнении дается +1 здоровье<#ff29ad>"},
+        {"LifeStealStrength","<color=#ff29ad>Восстанавливаемому здоровью<#ff29ad>"},
+        {"DamageEvadeChance","<color=#ff29ad>Шанс избежать урон<#ff29ad>"},
     };
     
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -135,11 +135,14 @@ public class UpgradesController : MonoBehaviour
         { "LightningDamageMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDamageMultiplier, isPercent, val) },
         { "LightningDelay", (isPercent, val) => ApplyToFloatField(ref SessionData.LightningDelay, isPercent, val) },
         { "CritScale", (isPercent, val) => ApplyToFloatScaleField(ref SessionData.CritScale, isPercent, val) },
+        { "LifeStealStrength", (isPercent, val) => ApplyToFloatScaleField(ref SessionData.CritScale, isPercent, val) },
  
         //Chances
         { "OneShootChance", (isPercent, val) => ApplyToChanceField(ref SessionData.OneShootChance, isPercent, val) },
         { "CritChance", (isPercent, val) => ApplyToChanceField(ref SessionData.CritChance, isPercent, val) },
         { "LightningProcChance", (isPercent, val) => ApplyToChanceField(ref SessionData.LightningProcChance, isPercent, val) },
+        { "DamageEvadeChance", (isPercent, val) => ApplyToChanceField(ref SessionData.DamageEvadeChance, isPercent, val) },
+
 
         // Int 
         { "Damage", (isPercent, val) => ApplyToIntField(ref SessionData.Damage, isPercent, Mathf.RoundToInt(val)) },
@@ -155,7 +158,9 @@ public class UpgradesController : MonoBehaviour
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },
         //Bool
         // { "BackFire", (isPercent, val) => ApplyToBoolField(ref SessionData.BackFire, isPercent, Convert.ToBoolean(val)) },
-        { "CanDestroyEnemyBullet", (isPercent, val) => ApplyToBoolField(ref SessionData.CanDestroyEnemyBullet, isPercent, Convert.ToBoolean(val)) }
+        { "CanDestroyEnemyBullet", (isPercent, val) => ApplyToBoolField(ref SessionData.CanDestroyEnemyBullet, isPercent, Convert.ToBoolean(val)) },
+        { "CanLifeSteal", (isPercent, val) => ApplyToBoolField(ref SessionData.CanLifeSteal, isPercent, Convert.ToBoolean(val)) }
+
         
     };
 
@@ -166,7 +171,7 @@ public class UpgradesController : MonoBehaviour
         
         if (_fieldHandlers.TryGetValue(stat, out var handler))
         {
-            
+            Debug.Log($"value - {value}");
             handler(upg.Procente, value);
             
             
@@ -290,7 +295,15 @@ public class UpgradesController : MonoBehaviour
         {
             if ((AllUpgrades.UpgradesList[i].Melee && PlayerType == "Melee") || (AllUpgrades.UpgradesList[i].Range && PlayerType == "Range"))
             {
-                if (SessionData.CanDestroyEnemyBullet==true && AllUpgrades.UpgradesList[i].targerStat.ToString() == "CanDestroyEnemyBullet")
+                if (SessionData.CanLifeSteal==true && AllUpgrades.UpgradesList[i].targerStat.ToString() == "CanLifeSteal")
+                {
+                    continue;
+                }
+                if (SessionData.CanDestroyEnemyBullet == true && AllUpgrades.UpgradesList[i].targerStat.ToString() == "CanDestroyEnemyBullet")
+                {
+                    continue;
+                }
+                if (SessionData.CanLifeSteal == false && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "LifeStealStrength"))
                 {
                     continue;
                 }

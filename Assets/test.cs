@@ -2,6 +2,16 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("EVADE50%")]
+    public void EVADE50(){
+        SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,1);
+        SessionData.ShowData();
+    }
+    [ContextMenu("EVADE100%")]
+    public void EVADE100(){
+        SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,1);
+        SessionData.ShowData();
+    }
     [ContextMenu("CANDESTROY")]
     public void CANDESTROY(){
         SessionData.SetBool(ref SessionData.CanDestroyEnemyBullet,true);

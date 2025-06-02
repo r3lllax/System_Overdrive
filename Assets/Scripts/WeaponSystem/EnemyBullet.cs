@@ -59,13 +59,19 @@ public class EnemyBullet : Bullet
         {
             if (BypassesCount > 0)
             {
-                collision.gameObject.GetComponent<Player>().TakeDamage(damage);
-                BypassesCount--;
+                if (collision.gameObject.GetComponent<Player>().TryTakeDamage(damage))
+                {
+                    BypassesCount--;
+                }
+                
             }
             else
             {
-                collision.gameObject.GetComponent<Player>().TakeDamage(damage);
-                Destroy(gameObject);
+                if (collision.gameObject.GetComponent<Player>().TryTakeDamage(damage))
+                {
+                    Destroy(gameObject);
+                }
+                
             }
         }
         if ((collision.gameObject.tag == "ActiveWeapon") && SessionData.CanDestroyEnemyBullet)

@@ -42,7 +42,7 @@ public class ShieldBullet : MonoBehaviour
 
         if (collision.tag == "Player" && owner.tag != "Player")
         {
-            collision.GetComponent<Player>().TakeDamage(1);
+            collision.GetComponent<Player>().TryTakeDamage(1);
         }
         if ((collision.tag == "Enemy" || collision.tag == "Boss") && owner.tag == "Player")
         {

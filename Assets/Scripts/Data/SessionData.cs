@@ -35,11 +35,16 @@ public class SessionData
     /// <summary>
     /// 
     /// </summary>
+
+    public static float DamageEvadeChance = 0;//✓
     public static float LightningProcChance = 0;//✓
     public static int LightningMaxJumps = 3;//✓
     public static float LightningJumpRadius = 5;//✓
     public static float LightningDamageMultiplier = 0.7f;//✓
     public static float LightningDelay = 0.15f;//✓
+    public static float LifeStealStrength = 0.01f;//✓
+    public static float LifeStealCurrentValue = 0f;//✓
+    public static bool CanLifeSteal = false;
     public static bool NeedRefresh;
     // public static bool BackFire = false;
     public static bool CanDestroyEnemyBullet = false;
@@ -87,12 +92,17 @@ public class SessionData
         {"offersCount",new VariableReference(() => offersCount)},
         {"CritScale",new VariableReference(() => (CritScale*100).ToString("0.00"))},
         {"CanDestroyEnemyBullet",new VariableReference(() => CanDestroyEnemyBullet)},
+        {"LifeStealStrength",new VariableReference(() => ScaleValueToProcente(LifeStealStrength).ToString("0.000"))},
+        {"LifeStealCurrentValue",new VariableReference(() => LifeStealCurrentValue)},
+        {"CanLifeSteal",new VariableReference(() => CanLifeSteal)},
+        {"DamageEvadeChance",new VariableReference(() => ScaleValueToProcente(DamageEvadeChance).ToString("0.00"))},
+
 
     };
 
     private static Dictionary<string[], string> PostfixDict = new Dictionary<string[], string>
     {
-        {new string[]{"CritScale","LightningProcChance","CritChance","OneShootChance"},"%"},
+        {new string[]{"CritScale","LightningProcChance","DamageEvadeChance","CritChance","OneShootChance","LifeStealStrength"},"%"},
         {new string[]{"BulletLifeTime","AbilityActiveTime","AbilityCooldown"}," сек."},
         {new string[]{"CdBetweenFire"}," в сек."},
         {new string[]{"SprintMultiplier","EnemySpeedMultiplier","MeleeSize","BulletSize","LightningDamageMultiplier"},"x"},
@@ -108,26 +118,7 @@ public class SessionData
         }
         return $"{UpgradeValue[stat].Get()}";
 
-        // if (stat == "CritScale" || stat == "LightningProcChance" || stat == "CritChance" || stat == "OneShootChance")
-        // {
-        //     return $"{UpgradeValue[stat].Get()}%";
-        // }
-        // else if (stat == "BulletLifeTime" || stat == "AbilityActiveTime" || stat == "AbilityCooldown")
-        // {
-        //     return $"{UpgradeValue[stat].Get()} сек.";
-        // }
-        // else if (stat == "CdBetweenFire")
-        // {
-        //     return $"{(int)(1 / (float)(UpgradeValue[stat].Get()))} в сек.";
-        // }
-        // else if (stat == "SprintMultiplier" || stat == "EnemySpeedMultiplier" || stat == "MeleeSize" || stat == "BulletSize" || stat == "LightningDamageMultiplier")
-        // {
-        //     return $"{UpgradeValue[stat].Get()}x";
-        // }
-        // else
-        // {
-        //     return $"{UpgradeValue[stat].Get()}";
-        // }
+    
 
     }
     
@@ -196,7 +187,8 @@ public class SessionData
     ///Chances
     public static void AddProcentesChance(ref float variable,float procente){
         float add = ProcenteToScaleValue(procente);
-        variable+=add;
+        Debug.Log(add);
+        variable +=add;
         NeedRefresh = true;
     }
     public static void AddValueChance(ref float variable,float value){

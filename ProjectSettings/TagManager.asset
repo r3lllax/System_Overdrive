@@ -18,6 +18,7 @@ TagManager:
   - AmmoCountUI
   - AutoAimIndicatorUI
   - LevelUpObj
+  - EnemuBullet
   layers:
   - Default
   - TransparentFX

@@ -44,6 +44,10 @@ public class Upgrade : ScriptableObject
         offersCount,
         CritScale,
         CanDestroyEnemyBullet,
+        LifeStealStrength,
+        LifeStealCurrentValue,
+        CanLifeSteal,
+        DamageEvadeChance
         
 
     }

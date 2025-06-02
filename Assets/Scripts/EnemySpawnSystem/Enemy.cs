@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public EnemyPool pool;
     private Knockback knockback;
     private Flash flash;
+    private GameObject Player;
     private float lowExpThreshold;
     private float highExpThreshold;
     private bool InCameraView;
@@ -38,6 +39,7 @@ public class Enemy : MonoBehaviour
         flash = GetComponent<Flash>();
         sp = GetComponent<SpriteRenderer>();
         lightningController = GameObject.FindWithTag("Player").GetComponentInChildren<LightningController>();
+        Player = lightningController.transform.parent.gameObject;
     }
     public void SetHealth(int HP){
         health = HP;
@@ -88,10 +90,18 @@ public class Enemy : MonoBehaviour
     }
     [ContextMenu("Die")]
     public void Die(){
-        //Оюбращение к контроллеру с сообщением о смерти
-
         //Добавить настройку эффекта
         // Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        if (SessionData.CanLifeSteal)
+        {
+            SessionData.AddValueFloat(ref SessionData.LifeStealCurrentValue, SessionData.LifeStealStrength);
+            if (SessionData.LifeStealCurrentValue >= 1)
+            {
+                SessionData.LifeStealCurrentValue = 0;
+                SessionData.AddValueInt(ref SessionData.Health, 1);
+                
+            }
+        }
         DropEXP();
         pool.ReturnEnemy(gameObject);
         ESC.OnEnemyDeath();
