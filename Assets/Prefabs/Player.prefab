@@ -5529,6 +5529,7 @@ MonoBehaviour:
   Health: 0
   HPUIprefab: {fileID: 2739943070878531251, guid: 5a7c481162f57a44a8897a3fe5b1edc0, type: 3}
   LifeStealHPUIprefab: {fileID: 7555916093850833385, guid: 01189b022b241e149a2a131e4792dcf7, type: 3}
+  EvadeEffect: {fileID: 5110242636623111099, guid: 0980e895e992d3c4197670d890fc7521, type: 3}
 --- !u!114 &-5739710115371541645
 MonoBehaviour:
   m_ObjectHideFlags: 0

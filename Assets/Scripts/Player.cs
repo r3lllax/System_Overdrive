@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     private GameObject HPUI;
     [SerializeField] private GameObject HPUIprefab;
     [SerializeField] private GameObject LifeStealHPUIprefab;
+    [SerializeField] private GameObject EvadeEffect;
+
     private bool DrawUIHPFlag = true;
     private bool LifeStealDrawed = false;
     private void SetPlayerMSWithMultiplier(float speed)
@@ -93,6 +95,7 @@ public class Player : MonoBehaviour
     {
         if (Random.value <= SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance)/100)
         {
+            Instantiate(EvadeEffect, transform.position,Quaternion.identity);
             return false;
         }
         TakeDamage(Damage, knock);
