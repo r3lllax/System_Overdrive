@@ -6,7 +6,7 @@ public class BossAI : MonoBehaviour
     private CircleCollider2D Trigger;
     private int Health;
     private bool SpellWasGivenToPlayer = false;
-    [SerializeField]private GameObject RewardSpell;
+    private GameObject RewardSpell;
 
     private void Awake()
     {

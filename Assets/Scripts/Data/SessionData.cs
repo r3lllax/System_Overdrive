@@ -39,6 +39,7 @@ public class SessionData
     public static float DamageEvadeChance = 0;//✓
     public static float LightningProcChance = 0;//✓
     public static int LightningMaxJumps = 3;//✓
+    public static int ChooseUpgradesCount = 1;//✓
     public static float LightningJumpRadius = 5;//✓
     public static float LightningDamageMultiplier = 0.7f;//✓
     public static float LightningDelay = 0.15f;//✓
@@ -96,6 +97,8 @@ public class SessionData
         {"LifeStealCurrentValue",new VariableReference(() => LifeStealCurrentValue)},
         {"CanLifeSteal",new VariableReference(() => CanLifeSteal)},
         {"DamageEvadeChance",new VariableReference(() => ScaleValueToProcente(DamageEvadeChance).ToString("0.00"))},
+        {"ChooseUpgradesCount",new VariableReference(() => ChooseUpgradesCount)},
+
 
 
     };

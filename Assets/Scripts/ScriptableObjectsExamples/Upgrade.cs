@@ -47,7 +47,8 @@ public class Upgrade : ScriptableObject
         LifeStealStrength,
         LifeStealCurrentValue,
         CanLifeSteal,
-        DamageEvadeChance
+        DamageEvadeChance,
+        ChooseUpgradesCount
         
 
     }

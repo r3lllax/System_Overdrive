@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class test : MonoBehaviour
 {
+    [ContextMenu("Add1Choose")]
+    public void Add1Choose(){
+        SessionData.AddValueInt(ref SessionData.ChooseUpgradesCount,1);
+    }
     [ContextMenu("EVADE50%")]
     public void EVADE50(){
         SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,1);

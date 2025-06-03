@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Ranged"};
+    private List<string> AvailbleTypes = new List<string>{"Ranged","Elite","Ranged"};
     private int currentEnemies;
     private int MinBasicHP=3;
     private int MaxBasicHP=5;
@@ -69,8 +69,8 @@ public class EnemySpawnController : MonoBehaviour
             
             if (EnemyComponent.GetEnemyType() == "Basic"){
                 enemyHp = Random.Range(MinBasicHP,MaxBasicHP);
-                EnemyComponent.SetLowExpTh(10*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(20*SessionData.ExpMultiplier);
+                EnemyComponent.SetLowExpTh(20*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(30*SessionData.ExpMultiplier);
             }
             else if(EnemyComponent.GetEnemyType()=="Elite"){
                 enemyHp = Random.Range(MinEliteHP,MaxEliteHP);
@@ -82,8 +82,8 @@ public class EnemySpawnController : MonoBehaviour
             }
             else if(EnemyComponent.GetEnemyType()=="Ranged"){
                 enemyHp = Random.Range(MinRangedHP,MaxRangedHP);
-                EnemyComponent.SetLowExpTh(10*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(20*SessionData.ExpMultiplier);
+                EnemyComponent.SetLowExpTh(20*SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(30*SessionData.ExpMultiplier);
 
                 enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(2f,3f));
                 

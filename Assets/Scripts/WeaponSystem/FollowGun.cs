@@ -8,7 +8,7 @@ public class FollowGun : MonoBehaviour
     
     private Camera mainCamera;
     private SpriteRenderer sp;
-    private float Reload;
+    public float Reload;
     private GunWeapon Gun;
 
     private void Start() {

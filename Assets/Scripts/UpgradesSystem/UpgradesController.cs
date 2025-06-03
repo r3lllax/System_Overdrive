@@ -42,6 +42,8 @@ public class UpgradesController : MonoBehaviour
         {"CanLifeSteal","<color=#ff29ad>Каждый убитый враг заполняет новое очко здоровья, при заполнении дается +1 здоровье<#ff29ad>"},
         {"LifeStealStrength","<color=#ff29ad>Восстанавливаемому здоровью<#ff29ad>"},
         {"DamageEvadeChance","<color=#ff29ad>Шанс избежать урон<#ff29ad>"},
+        {"ChooseUpgradesCount","<color=#ffd12b>Количество выбираемых улучшений за уровень<#ffd12b>"},
+
     };
     
     [SerializeField] private AllUpgrades AllUpgrades;
@@ -112,6 +114,9 @@ public class UpgradesController : MonoBehaviour
             case "BackFire":
                 return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
                 break;
+             case "ChooseUpgradesCount":
+                return UnityEngine.Random.Range((int)upg.minVal, (int)upg.maxVal);
+                break;
         }
         return UnityEngine.Random.Range(upg.minVal, upg.maxVal);
     }
@@ -153,6 +158,8 @@ public class UpgradesController : MonoBehaviour
         { "BackFire", (isPercent, val) => ApplyToIntField(ref SessionData.BackFire, isPercent, Mathf.RoundToInt(val)) },
         { "LightningMaxJumps", (isPercent, val) => ApplyToIntField(ref SessionData.LightningMaxJumps, isPercent, Mathf.RoundToInt(val)) },
         { "offersCount", (isPercent, val) => ApplyToIntField(ref SessionData.offersCount, isPercent, Mathf.RoundToInt(val)) },
+        { "ChooseUpgradesCount", (isPercent, val) => ApplyToIntField(ref SessionData.ChooseUpgradesCount, isPercent, Mathf.RoundToInt(val)) },
+
         // V3
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },

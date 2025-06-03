@@ -13,7 +13,7 @@ public class UIUpgradeCard : MonoBehaviour
     private LevelSystem playerLevelSystem;
     private GameObject Panel;
     private float value;
-    
+    private static int CurrentChoosenUpgradesCount = 0;
     
     public void SetCurrentUpgrade(Upgrade NEW)
     {
@@ -28,7 +28,19 @@ public class UIUpgradeCard : MonoBehaviour
     public void Choose()
     {
         if (Panel.GetComponent<UiUpgradePanel>().inAnim) { return; }
-
+        CurrentChoosenUpgradesCount++;
+        UpgradesController.DefineAndApplyVariable(CurrentUpgrate, value);
+        UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
+        if (CurrentChoosenUpgradesCount < SessionData.ChooseUpgradesCount &&(CurrentChoosenUpgradesCount!=0) && (CurrentUpgrate.targerStat.ToString() !="ChooseUpgradesCount"
+        && CurrentUpgrate.targerStat.ToString() !="CanLifeSteal" && CurrentUpgrate.targerStat.ToString() !="CanDestroyEnemyBullet"))
+        {
+            RenderUpgrate();
+            return;
+        }
+        else
+        {
+            CurrentChoosenUpgradesCount = 0;
+        }
         if (playerLevelSystem.GetLevelUpsCount() > 1)
         {
             playerLevelSystem.Continue(true);
@@ -38,15 +50,16 @@ public class UIUpgradeCard : MonoBehaviour
             Panel.GetComponent<UiUpgradePanel>().inAnim = true;
             Panel.GetComponent<Animator>().SetTrigger("toggle");
         }
-        UpgradesController.DefineAndApplyVariable(CurrentUpgrate,value);
-        UpgradesController.PlayerUpgrades.Add(CurrentUpgrate);
         
         
     }
-    private void RenderUpgrate(){
+    private void RenderUpgrate(bool fullRerender = true){
         Title.text = CurrentUpgrate.Name;
         image.sprite = CurrentUpgrate.Image;
-        value = UpgradesController.CalculateUpgradeValue(CurrentUpgrate);
+        if (fullRerender)
+        {
+            value = UpgradesController.CalculateUpgradeValue(CurrentUpgrate);
+        }
         string ProcenteDigit = CurrentUpgrate.Procente?"%":"";
         string ReadbleStatVar = UpgradesController.GetReadableString(CurrentUpgrate.targerStat.ToString());
         string ReadbleDebuffVar = UpgradesController.GetReadableString(CurrentUpgrate.debuffStat.ToString());

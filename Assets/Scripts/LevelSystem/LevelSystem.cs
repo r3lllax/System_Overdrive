@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,6 +23,8 @@ public class LevelSystem : MonoBehaviour
     private TextMeshProUGUI LevelTextUI;
     [SerializeField] private float IncreaseProcente = 0.1f;
 
+    private Queue<float> expQueue = new Queue<float>();
+
     public void Awake()
     {
         Player = transform.parent.gameObject;
@@ -30,11 +33,14 @@ public class LevelSystem : MonoBehaviour
         Instance = this;
         Panel = GameObject.FindWithTag("Panel");
         LevelTextUI = Tracker.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
-        LevelTextUI.text = $"Level {CurrentLevel+1}";
+        LevelTextUI.text = $"Level {CurrentLevel + 1}";
+    }
+    private void Start() {
+        StartCoroutine(levelCheckV3());
     }
     public void Continue(bool newState)
     {
-         canContinue = newState;
+        canContinue = newState;
     }
     public float GetFillAmount()
     {
@@ -46,8 +52,10 @@ public class LevelSystem : MonoBehaviour
     }
     public void AddCurrentExp(float Num)
     {
-        CurrentExpCount += Num;
-        CheckLevelUpdate();
+        AddExp(Num);
+    }
+    private void Update() {
+        //CheckLevelUpdateV2();
     }
     [ContextMenu("LEVELUP")]
     public void LevelUP(){
@@ -64,17 +72,53 @@ public class LevelSystem : MonoBehaviour
                 {
                     levelUpsCount++;
                     CurrentLevel++;
-                    Debug.Log($"CurrentLevel - {CurrentLevel}");
                 }
-                
             }
-        
         }
+        
         StartCoroutine(LevelUpsRoutine(levelUpsCount));
     }
 
+    public void AddExp(float amt)
+    {
+        expQueue.Enqueue(amt);
+    }
+
+    private float CalculateExpDelay(float expChunk, int currentLevel, float expRequired)
+    {
+        float baseDelay = 0.5f;
+        float levelRedFac = 0.6f;
+        float chunkSizeFactor = 0.002f;
+        float leveldelay = baseDelay * Mathf.Pow(levelRedFac, currentLevel - 1);
+        float chunkMP = 1 + (chunkSizeFactor * expChunk);
+        return leveldelay * chunkMP;
+    }
+
+    private IEnumerator levelCheckV3()
+    {
+        while (true)
+        {
+            if (expQueue.Count > 0)
+            {
+                var exp = expQueue.Dequeue();
+                CurrentExpCount += exp;
+                CheckLevelUpdate();
+                yield return new WaitForSeconds(CalculateExpDelay(exp, CurrentLevel, ExpCountToNextLevel));
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.5f);
+            }
+
+
+
+
+        }
+    }
+   
     private IEnumerator LevelUpsRoutine(int count)
     {
+        Debug.Log(count);
         LevelUpObj.GetComponent<Animator>().SetTrigger("LevelUP");
         for (int i = 0; i < count; i++)
         {
@@ -89,18 +133,23 @@ public class LevelSystem : MonoBehaviour
             }
 
             yield return new WaitUntil(() => canContinue);
-            levelUpsCount--;
 
         }
     }
+    
+
+   
+
     private void CheckLevelUpdate()
     {
+
         if (CurrentExpCount >= ExpCountToNextLevel)
         {
+
             LevelUP();
         }
         fillAmount = CurrentExpCount / ExpCountToNextLevel;
-        LevelTextUI.text = $"Level {CurrentLevel+1}";
+        LevelTextUI.text = $"Level {CurrentLevel + 1}";
         Tracker.GetComponent<Image>().fillAmount = fillAmount;
     }
 }

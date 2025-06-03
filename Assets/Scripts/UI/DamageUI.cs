@@ -25,7 +25,7 @@ public class DamageUI : MonoBehaviour
     }
  
     public TextMeshProUGUI TextPrefab;
-    const int PoolSize = 256;
+    const int PoolSize = 1000;
 
     Queue<TextMeshProUGUI> TextPool = new Queue<TextMeshProUGUI>();
     List<ActiveText> ActiveTexts = new List<ActiveText>(); 
@@ -71,26 +71,40 @@ public class DamageUI : MonoBehaviour
     }
 
     public void AddText(int amt, Vector3 Pos, string modifier = "default"){
-        var t = TextPool.Dequeue();
-        if(modifier=="crit"){
-            
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(255,60,60,91);
+        TextMeshProUGUI t;
+        if (TextPool.Count > 0)
+        {
+            t = TextPool.Dequeue();
+        }
+        else
+        {
+            t = Instantiate(TextPrefab,m_transform);
+        }
+        
+        if (modifier == "crit")
+        {
+
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 60, 60, 91);
             t.text = amt.ToString();
         }
-        else if(modifier=="oneshoot"){
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(238, 130, 238,91);
+        else if (modifier == "oneshoot")
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(238, 130, 238, 91);
             t.text = "Execute!";
         }
-        else if(modifier=="LevelUP"){
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 255,255);
+        else if (modifier == "LevelUP")
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 255, 255);
             t.text = "LEVEL UP!";
         }
-        else if(modifier=="GhostMode"){
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255,255);
+        else if (modifier == "GhostMode")
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255);
             t.text = "GhostMode!";
         }
-        else if(modifier=="Lightning"){
-            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 234,255);
+        else if (modifier == "Lightning")
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 234, 255);
             t.text = amt.ToString();
         }
         else

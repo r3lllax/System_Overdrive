@@ -19,7 +19,7 @@ public class widthViewController : MonoBehaviour
             if (needResize)
             {
                 float offset = 0f;
-                for (int i = 0; i < transform.childCount - 4; i++)
+                for (int i = 0; i < SessionData.offersCount - 4; i++)
                 {
                     offset += 130f;
                 }

@@ -8,13 +8,13 @@ public class BulletPool : MonoBehaviour
     public int poolSize = 500;
 
     private Queue<GameObject> bullets = new Queue<GameObject>();
+    
 
     void Awake()
     {
         Instance = this;
         bulletPrefab = TempData.ChoosenWeapon.BulletPrefab;
         UpgradesController.BulletType = bulletPrefab.name;
-        //Добавить отсылку типа в апгрейд контроллер
         InitializePool();
     }
 
@@ -28,6 +28,11 @@ public class BulletPool : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        Debug.Log($"BulletPoolSize - {bullets.Count}");
+    }
+
     public GameObject GetBullet()
     {
         if (bullets.Count > 0)
@@ -39,7 +44,7 @@ public class BulletPool : MonoBehaviour
         else
         {
             GameObject bullet = Instantiate(bulletPrefab);
-            bullets.Enqueue(bullet);
+            //bullets.Enqueue(bullet);
             bullet.SetActive(true);
             return bullet;
         }

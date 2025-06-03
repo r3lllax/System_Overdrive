@@ -18,10 +18,10 @@ public class GunWeapon : MonoBehaviour
     [SerializeField] private int BypassesCount;
     private bool unlimitedAmmos = false;
     private TextMeshProUGUI AmmoCountUI;
-    private Timer timer;
     private float CurrentMagazineSize;
     public float ReloadTime;
     private bool backFireProcessing = false;
+    private Vector3 bulletPos;
     public void SetUnlimitedAmmo(bool newState)
     {
         unlimitedAmmos = newState;
@@ -48,6 +48,7 @@ public class GunWeapon : MonoBehaviour
         BulletLifeTime = CurrentWeapon.GunBulletLifeTime;
         CurrentMagazineSize = MagazineSize;
         AmmoCountUI = GameObject.FindWithTag("AmmoCountUI").GetComponent<TextMeshProUGUI>();
+        
 
     }
     public void ForcedReload()
@@ -88,14 +89,15 @@ public class GunWeapon : MonoBehaviour
 
     }
 
+
     private IEnumerator BackAttack()
     {
         backFireProcessing = true;
         for (int i = 0; i < SessionData.BackFire + 1; i++)
         {
-            if (i > 0 )
+            if (i > 0)
             {
-                yield return new WaitForSeconds(SessionData.CdBetweenFire/2f / SessionData.BackFire);
+                yield return new WaitForSeconds(SessionData.CdBetweenFire / 2f / SessionData.BackFire);
             }
             if (!unlimitedAmmos)
             {
@@ -106,8 +108,7 @@ public class GunWeapon : MonoBehaviour
                 }
             }
 
-            Debug.Log($"Итерация:{i}");
-            
+
             GameObject bullet = BulletPool.Instance.GetBullet();
             bullet.GetComponent<Bullet>().SetDamage(Damage);
             bullet.GetComponent<Bullet>().SetBulletLifeTime(BulletLifeTime);
@@ -144,58 +145,7 @@ public class GunWeapon : MonoBehaviour
         backFireProcessing = false;
     }
 
-    //Убрать при чистке
-    private void CircleAttack()
-    {
-        for (int i = 0; i < SessionData.BackFire + 1; i++)
-        {
-            if (!unlimitedAmmos)
-            {
-                if (i == 0)
-                {
-                    CurrentMagazineSize -= 1;
-                    GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
-                }
-            }
-
-
-
-            GameObject bullet = BulletPool.Instance.GetBullet();
-            bullet.GetComponent<Bullet>().SetDamage(Damage);
-            bullet.GetComponent<Bullet>().SetBulletLifeTime(BulletLifeTime);
-            Vector3 pos = transform.position;
-            pos.y += 0.1f;
-
-            if (i >= 1)
-            {
-                Vector3 diff = PlayerController.Instance.transform.position - pos;
-                pos += diff * 2;
-
-            }
-            bullet.transform.position = pos;
-            bullet.transform.rotation = transform.rotation;
-
-            Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-            if (i == 0)
-            {
-                rb.linearVelocity = transform.right * BulletSpeed;
-            }
-            else
-            {
-                rb.linearVelocity = -transform.right * BulletSpeed;
-            }
-
-            bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
-            if (i == 0)
-            {
-                AttackStart();
-            }
-
-        }
-        
-        Reload();
-    }
-
+   
     private void Fire()
     {
         if (!unlimitedAmmos)
@@ -291,9 +241,10 @@ public class GunWeapon : MonoBehaviour
         }
         if (ReloadTime > 0)
         {
-            
+
             ReloadTime -= Time.deltaTime;
         }
+        
 
     }
 

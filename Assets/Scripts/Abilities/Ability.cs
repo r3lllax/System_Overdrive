@@ -13,6 +13,7 @@ public abstract class Ability : MonoBehaviour
     protected bool ActiveNow = false;
     protected float ActiveTimer = 0f;
     protected bool PlayerIsOwner = true;
+    [SerializeField]protected bool TakeStatFromSessionData = true;
     [SerializeField] protected KeyCode hotkey = KeyCode.None;
 
     protected bool Reload = false;
@@ -20,16 +21,21 @@ public abstract class Ability : MonoBehaviour
     protected bool isReady = true;
     protected GameObject owner;
 
+    
+
     private void Awake()
     {
         //Скорее всего придется искать через родителя или на подобии
         owner = transform.parent.transform.parent.gameObject;
         if (PlayerIsOwner)
         {
-            SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
-            SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
+            if (TakeStatFromSessionData) {
+                SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
+                SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
+            }
+            
         }
-        
+
     }
     private void Start()
     {
@@ -45,8 +51,13 @@ public abstract class Ability : MonoBehaviour
 
         if (PlayerIsOwner)
         {
-            cooldown = SessionData.AbilityCooldown;
-            activeTime = SessionData.AbilityActiveTime;
+            if (TakeStatFromSessionData)
+            {
+                cooldown = SessionData.AbilityCooldown;
+                activeTime = SessionData.AbilityActiveTime;
+            }
+           
+            
         }
         if (ActiveNow)
         {
@@ -109,10 +120,9 @@ public abstract class Ability : MonoBehaviour
     {
         isReady = false;
         yield return new WaitForSeconds(castTime);
-
-        ExecuteAbility();
         ActiveTimer = activeTime;
         ActiveNow = true;
+        ExecuteAbility();
         yield return new WaitForSeconds(activeTime);
         ActiveNow = false;
         StartCoroutine(CooldownRoutine());

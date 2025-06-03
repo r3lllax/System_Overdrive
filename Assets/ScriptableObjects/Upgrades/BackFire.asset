@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12cec3787b9cd7c4193fd2781fef0c54, type: 3}
   m_Name: BackFire
   m_EditorClassIdentifier: 
-  Name: "\u0410\u0442\u0430\u043A\u0430 \u0441\u0437\u0430\u0434\u0438"
-  Image: {fileID: 687318203165001789, guid: fa7e3c3852c374148a3c5c259be29aee, type: 3}
+  Name: "\u0411\u044B\u0441\u0442\u0440\u044B\u0435 \u0440\u0443\u043A\u0438"
+  Image: {fileID: -9199796127369036963, guid: 4d9763642ddd27345a25ef01b91f460d, type: 3}
   Description: 
-  minVal: 1
-  maxVal: 3
+  minVal: -0.7
+  maxVal: -0.5
   Melee: 0
   Range: 1
   Procente: 0
   HasDebuff: 0
-  targerStat: 21
+  targerStat: 6
   debuffStat: 0
   DebufSize: 0
