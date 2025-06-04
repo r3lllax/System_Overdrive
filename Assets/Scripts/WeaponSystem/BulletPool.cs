@@ -35,19 +35,21 @@ public class BulletPool : MonoBehaviour
 
     public GameObject GetBullet()
     {
-        if (bullets.Count > 0)
-        {
-            GameObject bullet = bullets.Dequeue();
-            bullet.SetActive(true);
-            return bullet;
-        }
-        else
-        {
+        
+        // if (bullets.Count > 0)
+        // {
+        //     Debug.Log("Пуля из пула");
+        //     GameObject bullet = bullets.Dequeue();
+        //     bullet.SetActive(true);
+        //     return bullet;
+        // }
+        // else
+        // {
             GameObject bullet = Instantiate(bulletPrefab);
             //bullets.Enqueue(bullet);
             bullet.SetActive(true);
             return bullet;
-        }
+        // }
     }
 
     public void ReturnBullet(GameObject bullet)

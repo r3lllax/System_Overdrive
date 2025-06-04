@@ -26,7 +26,7 @@ public class DifficultyController : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > timeToIncreaseDifficulty)
         {
-            SessionData.AddValueFloat(ref SessionData.ExpMultiplier, 0.05f);
+            SessionData.AddValueFloat(ref SessionData.ExpMultiplier, 0.2f);
             if (timeToElite > 0)
             {
                 timeToElite--;
