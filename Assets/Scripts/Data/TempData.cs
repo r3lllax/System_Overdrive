@@ -5,4 +5,5 @@ public class TempData
     public static GameCharacter ChoosenCharacter;
     public static Weapon ChoosenWeapon;
     public static GameObject ExpPrefab;
+    public static bool isLocked = false;
 }

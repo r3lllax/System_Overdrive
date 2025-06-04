@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CharacterCardInGrid : MonoBehaviour
 {
     public GameCharacter character;
+    public bool isLocked;
     private Image img;
     void Awake()
     {
@@ -20,6 +21,7 @@ public class CharacterCardInGrid : MonoBehaviour
     public void SetChosenCharacter()
     {
         TempData.ChoosenCharacter = character;
+        TempData.isLocked = isLocked;
         SessionData.Health = character.Health;
         SessionData.MoveSpeed = character.MoveSpeed;
 

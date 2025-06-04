@@ -18,7 +18,7 @@ public static class DataManager
         }
         return true;
     }
-    private static UserProfile GetUserProfile(string path)
+    public static UserProfile GetUserProfile(string path)
     {
         if (!Directory.Exists(gameFolder))
         {
@@ -64,7 +64,7 @@ public class UserProfile
     public string ProfileName = "Default";
     public int Coins = 0;
     public string[] UnlockedWeapon = new string[]{};
-    public string[] UnlockedCharacters = new string[]{};
+    public string[] UnlockedCharacters = new string[]{"Char1"};
     public Settings Settings = new Settings();
     public void ShowInfo()
     {

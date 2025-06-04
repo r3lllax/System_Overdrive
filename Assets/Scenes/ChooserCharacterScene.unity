@@ -2074,9 +2074,9 @@ RectTransform:
   - {fileID: 1759570388}
   m_Father: {fileID: 1779737754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 598, y: 227.44}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1114851989
@@ -2478,6 +2478,7 @@ GameObject:
   - component: {fileID: 1698213207}
   - component: {fileID: 1698213206}
   - component: {fileID: 1698213209}
+  - component: {fileID: 1698213210}
   m_Layer: 5
   m_Name: NextStepButton
   m_TagString: Untagged
@@ -2549,10 +2550,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1698213209}
-        m_TargetAssemblyTypeName: ScenesController, Assembly-CSharp
-        m_MethodName: TryLoadWeaponScene
-        m_Mode: 5
+      - m_Target: {fileID: 1698213210}
+        m_TargetAssemblyTypeName: ChooseCharacterButton, Assembly-CSharp
+        m_MethodName: tryPickCharacter
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2609,6 +2610,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ed08b5e51b35134e9af069146701634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1698213210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1698213204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93b81acc0787f6f4493df9aab311abed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1723827832
@@ -3023,9 +3036,9 @@ RectTransform:
   - {fileID: 1897879770}
   m_Father: {fileID: 1779737754}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 304, y: -465.02002}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 598, y: 450.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1895383280
