@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private float MoveSpeed;
     private float sprintMultiplier;
     private float PlayerSpeedMultiplier;
+    private bool isBlockingNow = false;
+    private bool isBlockingProcessing = false;
     private GameObject HPUI;
     [SerializeField] private GameObject HPUIprefab;
     [SerializeField] private GameObject LifeStealHPUIprefab;
@@ -44,8 +46,29 @@ public class Player : MonoBehaviour
         HPUI = GameObject.FindWithTag("HPUI");
         UpdateData();
     }
+
+    private IEnumerator blockingRoutine()
+    {
+        if (isBlockingProcessing)
+        {
+            yield return null;
+        }
+        isBlockingProcessing = true;
+        isBlockingNow = true;
+        yield return new WaitForSeconds(0.2f);
+        isBlockingNow = false;
+        isBlockingProcessing = false;
+    }
+
     private void Update()
     {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            if (!isBlockingProcessing)
+            {
+                StartCoroutine(blockingRoutine());
+            }
+        }
         if (SessionData.CanLifeSteal && LifeStealDrawed == false)
         {
             drawUIHP();
@@ -57,8 +80,8 @@ public class Player : MonoBehaviour
             drawUIHP();
             DrawUIHPFlag = false;
         }
-        
-            // SessionData.NeedRefresh = false;
+
+        // SessionData.NeedRefresh = false;
 
 
     }
@@ -95,6 +118,22 @@ public class Player : MonoBehaviour
     {
         if (Random.value <= SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance)/100)
         {
+            Instantiate(EvadeEffect, transform.position,Quaternion.identity);
+            return false;
+        }
+        TakeDamage(Damage, knock);
+        return true;
+    }
+    public bool TryShash(int Damage, bool knock = true)
+    {
+        if (Random.value <= SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance)/100)
+        {
+            Instantiate(EvadeEffect, transform.position,Quaternion.identity);
+            return false;
+        }
+        if (isBlockingNow)
+        {
+            DamageUI.Instance.AddText(1, transform.position,"Evade");
             Instantiate(EvadeEffect, transform.position,Quaternion.identity);
             return false;
         }

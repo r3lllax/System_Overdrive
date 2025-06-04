@@ -107,6 +107,11 @@ public class DamageUI : MonoBehaviour
             t.GetComponent<TextMeshProUGUI>().color = new Color32(0, 255, 234, 255);
             t.text = amt.ToString();
         }
+        else if (modifier == "Evade")
+        {
+            t.GetComponent<TextMeshProUGUI>().color = new Color32(145, 145, 145, 255);
+            t.text = "Blocked!";
+        }
         else
         {
             t.GetComponent<TextMeshProUGUI>().color = new Color32(255, 255, 255, 255);

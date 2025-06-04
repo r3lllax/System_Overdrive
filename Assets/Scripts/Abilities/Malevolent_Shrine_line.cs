@@ -30,7 +30,7 @@ public class Malevolent_Shrine_line : MonoBehaviour
         {
             try
             {
-                collision.GetComponent<Player>().TryTakeDamage(1);
+                collision.GetComponent<Player>().TryShash(1);
             }
             catch
             {

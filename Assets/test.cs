@@ -6,6 +6,11 @@ public class test : MonoBehaviour
     public void Add1Choose(){
         SessionData.AddValueInt(ref SessionData.ChooseUpgradesCount,1);
     }
+    [ContextMenu("15hp")]
+    public void hp15(){
+        SessionData.SetValueInt(ref SessionData.Health,15);
+        SessionData.ShowData();
+    }
     [ContextMenu("EVADE50%")]
     public void EVADE50(){
         SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,500);
