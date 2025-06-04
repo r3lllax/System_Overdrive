@@ -9,8 +9,7 @@ public class LightningVFX : MonoBehaviour
         LineRenderer lr = lightning.AddComponent<LineRenderer>();
         if (useCollider)
         {
-            // lr.startColor = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
-            // lr.endColor = new Color(Random.Range(0F,1F), Random.Range(0, 1F), Random.Range(0, 1F));
+
             
             List<Vector2> Points = new List<Vector2>() { start, end};
             EdgeCollider2D ec = lightning.AddComponent<EdgeCollider2D>();
@@ -33,8 +32,17 @@ public class LightningVFX : MonoBehaviour
                 if (owner.tag == "Player" && Random.Range(0, SessionData.ProcenteScaleMax + 1) <= SessionData.CritChance)
                 {
                     ml.Type = "Crit";
-                    lr.startColor = new Color32(255, 0, 0, 1);
-                    lr.endColor = new Color32(255, 0, 0, 1);
+                    if (Random.value <= 0.5)
+                    {
+                        lr.startColor = new Color32(255, 0, 0, 1);
+                        lr.endColor = new Color32(255, 0, 0, 1);
+                    }
+                    else
+                    {
+                        lr.startColor = new Color32(255, 255, 255, 1);
+                    lr.endColor = new Color32(255, 255, 255, 1);
+                    }
+                    
                 }
                  
                 

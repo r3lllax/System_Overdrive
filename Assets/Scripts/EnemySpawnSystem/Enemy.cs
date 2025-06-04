@@ -91,7 +91,10 @@ public class Enemy : MonoBehaviour
     [ContextMenu("Die")]
     public void Die(){
         //Добавить настройку эффекта
-        // Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        if (DataManager.CurrentUser.Settings.EnableEnemyDeathEffect)
+        {
+            Instantiate(DeathEffect,transform.position,Quaternion.identity);
+        }
         if (SessionData.CanLifeSteal)
         {
             SessionData.AddValueFloat(ref SessionData.LifeStealCurrentValue, SessionData.LifeStealStrength);

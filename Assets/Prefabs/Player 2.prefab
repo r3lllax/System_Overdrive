@@ -5260,57 +5260,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &3890450081865419991
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2898384018127904268}
-  - component: {fileID: 3114944683132177247}
-  m_Layer: 0
-  m_Name: MS
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2898384018127904268
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890450081865419991}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3548209360607749659}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3114944683132177247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3890450081865419991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac1a0d5dbcd4f03419a8c5a3a13005d0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 60
-  Image: {fileID: 4774920751113723945, guid: 19e1d0f06c8566d4581df91f113e9d2e, type: 3}
-  activeTime: 10
-  castTime: 5
-  currentCooldown: 0
-  TakeStatFromSessionData: 0
-  hotkey: 51
 --- !u!1 &6399863734525256661
 GameObject:
   m_ObjectHideFlags: 0
@@ -5700,7 +5649,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2898384018127904268}
   - {fileID: 3201119605991960249}
   m_Father: {fileID: 2243572897196382321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5718,7 +5666,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 8860256072873949742}
-  - {fileID: 3114944683132177247}
   isPlayerOwner: 1
 --- !u!1 &8829109453137204986
 GameObject:

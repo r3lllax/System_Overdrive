@@ -30,11 +30,14 @@ public class PistolBullet : Bullet
 
     private void OnDisable()
     {
-        try{
+        try
+        {
             StopAllCoroutines();
         }
-        catch(Exception){
+        catch (Exception)
+        {
             Debug.Log("ошибка в при стопе куротины");
+            
         }
     }    
     public override void DamageRegTrigger(Collider2D collision){

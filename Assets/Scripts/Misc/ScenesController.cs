@@ -5,17 +5,31 @@ using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class ScenesController : MonoBehaviour
-{
-    public void LoadGameScene(){
-        SceneManager.LoadScene("SampleScene");
+{   
+    
+    public void LoadGameScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
-    public void TryLoadGameScene(){
-        if(TempData.ChoosenCharacter == null ||TempData.ChoosenWeapon == null){
+    public void TryLoadWeaponScene(string name = "ChooseEquipmentScene"){
+        if(TempData.ChoosenCharacter == null ){
             StartCoroutine(BadChoice());
         }
         else{
             gameObject.GetComponent<Image>().color = new Color32(255,255,255,255);
-            LoadGameScene();
+            LoadGameScene(name);
+        }
+    }
+    public void TryLoadGameScene(string name = "SampleScene")
+    {
+        if (TempData.ChoosenCharacter == null || TempData.ChoosenWeapon == null)
+        {
+            StartCoroutine(BadChoice());
+        }
+        else
+        {
+            gameObject.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            LoadGameScene(name);
         }
     }
     private IEnumerator BadChoice(){

@@ -39,7 +39,7 @@ public class BossAI : MonoBehaviour
             RewardSpell = BossSpellController.transform.GetChild(Random.Range(0, childsCount)).gameObject;
 
             //Перекидываем спелл
-            var AbilityInPlayerContoller = Instantiate(RewardSpell, playerSpellsController.transform);
+            var AbilityInPlayerContoller = Instantiate(RewardSpell, playerSpellsController.transform);            
             playerSpellsController.abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
             playerSpellsController.CalculateAbilities();
 

@@ -21,6 +21,19 @@ public abstract class Ability : MonoBehaviour
     protected bool isReady = true;
     protected GameObject owner;
 
+
+    public void SetActiveTime(float tm)
+    {
+        activeTime = tm;
+    }
+    public void SetCooldown(float tm)
+    {
+        cooldown = tm;
+    }
+    public void SetCastTime(float tm)
+    {
+        castTime = tm;
+    }
     
 
     private void Awake()
@@ -29,11 +42,12 @@ public abstract class Ability : MonoBehaviour
         owner = transform.parent.transform.parent.gameObject;
         if (PlayerIsOwner)
         {
-            if (TakeStatFromSessionData) {
+            if (TakeStatFromSessionData)
+            {
                 SessionData.SetValueFloat(ref SessionData.AbilityCooldown, cooldown);
                 SessionData.SetValueFloat(ref SessionData.AbilityActiveTime, activeTime);
             }
-            
+
         }
 
     }
