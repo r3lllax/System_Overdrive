@@ -59,7 +59,9 @@ public class PistolBullet : Bullet
             }
             else
             {
+                StopAllCoroutines();
                 BulletPool.Instance.ReturnBullet(gameObject);
+                
             }
                 
         

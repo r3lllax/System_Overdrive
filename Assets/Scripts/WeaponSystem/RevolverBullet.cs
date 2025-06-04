@@ -53,6 +53,7 @@ public class RevolverBullet : Bullet
             }
             else
             {
+                StopAllCoroutines();
                 BulletPool.Instance.ReturnBullet(gameObject);
             }
             
