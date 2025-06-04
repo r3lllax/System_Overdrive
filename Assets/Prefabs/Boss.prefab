@@ -369,6 +369,59 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: -1.04}
   m_Size: {x: 3.13, y: 3.91}
   m_Direction: 1
+--- !u!1 &4491491652713936989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5837808556328748070}
+  - component: {fileID: 3109035943917412638}
+  m_Layer: 0
+  m_Name: MS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5837808556328748070
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491491652713936989}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.1714287, y: -2.3000002, z: 0}
+  m_LocalScale: {x: 0.71428573, y: 0.71428573, z: 0.71428573}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7557273059989636672}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3109035943917412638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4491491652713936989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1a0d5dbcd4f03419a8c5a3a13005d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 15
+  Image: {fileID: 4774920751113723945, guid: 19e1d0f06c8566d4581df91f113e9d2e, type: 3}
+  activeTime: 5
+  castTime: 1
+  currentCooldown: 0
+  TakeStatFromSessionData: 0
+  hotkey: 51
+  targetOrt: 12
+  transitionSpeed: 1
 --- !u!1001 &2340844397900421222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -483,9 +536,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8386352615096764978, guid: 86fbe268a59031a43bd2d41a684b33a4, type: 3}
+      propertyPath: abilities.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8386352615096764978, guid: 86fbe268a59031a43bd2d41a684b33a4, type: 3}
+      propertyPath: 'abilities.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3109035943917412638}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2237402486045680032, guid: 86fbe268a59031a43bd2d41a684b33a4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5837808556328748070}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86fbe268a59031a43bd2d41a684b33a4, type: 3}
 --- !u!4 &7557273059989636672 stripped

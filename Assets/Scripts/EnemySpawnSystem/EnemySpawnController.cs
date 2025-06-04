@@ -9,7 +9,7 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Ranged","Elite","Ranged"};
+    private List<string> AvailbleTypes = new List<string>{"Boss"};
     private int currentEnemies;
     private int MinBasicHP=3;
     private int MaxBasicHP=5;

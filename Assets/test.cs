@@ -8,7 +8,7 @@ public class test : MonoBehaviour
     }
     [ContextMenu("EVADE50%")]
     public void EVADE50(){
-        SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,1);
+        SessionData.SetValueFloat(ref SessionData.DamageEvadeChance,500);
         SessionData.ShowData();
     }
     [ContextMenu("EVADE100%")]

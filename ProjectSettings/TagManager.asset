@@ -19,6 +19,7 @@ TagManager:
   - AutoAimIndicatorUI
   - LevelUpObj
   - EnemuBullet
+  - CinemachineVirtualCamera
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - bullets
   - Exp
   - radiusToRangedEnemies
-  - 
+  - Slashes
   - 
   - 
   - 
