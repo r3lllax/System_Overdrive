@@ -43,6 +43,7 @@ public class UpgradesController : MonoBehaviour
         {"LifeStealStrength","<color=#ff29ad>Восстанавливаемому здоровью<#ff29ad>"},
         {"DamageEvadeChance","<color=#ff29ad>Шанс избежать урон<#ff29ad>"},
         {"ChooseUpgradesCount","<color=#ffd12b>Количество выбираемых улучшений за уровень<#ffd12b>"},
+        {"ExpMultiplier","<color=#31de5f>Множитель получаемого опыта<#31de5f>"},
 
     };
     
@@ -131,6 +132,7 @@ public class UpgradesController : MonoBehaviour
         { "CdBetweenFire", (isPercent, val) => ApplyToFloatField(ref SessionData.CdBetweenFire, isPercent, val) },
         { "CdBetweenMagazine", (isPercent, val) => ApplyToFloatField(ref SessionData.CdBetweenMagazine, isPercent, val) },
         { "StartSpeedMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.StartSpeedMultiplier, isPercent, val) },
+        { "ExpMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.ExpMultiplier, isPercent, val) },
         { "SprintMultiplier", (isPercent, val) => ApplyToFloatField(ref SessionData.SprintMultiplier, isPercent, val) },
         { "BulletSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletSpeed, isPercent, val) },
         { "BulletLifeTime", (isPercent, val) => ApplyToFloatField(ref SessionData.BulletLifeTime, isPercent, val) },

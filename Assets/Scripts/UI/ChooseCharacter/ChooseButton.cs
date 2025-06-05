@@ -7,6 +7,7 @@ public class ChooseButton : MonoBehaviour
     private ScenesController controller;
     [SerializeField] private GameObject weaponSelectPage;
     [SerializeField] private GameObject characterSelectPage;
+    private bool needBuy = false;
     void Awake()
     {
         controller = GetComponent<ScenesController>();
@@ -14,7 +15,29 @@ public class ChooseButton : MonoBehaviour
 
     public void tryPickCharacter()
     {
-        if (TempData.CharacterIsLocked || TempData.ChoosenCharacter == null) { return; }
+
+        if (needBuy)
+        {
+            if (TempData.ActivePage == 0)
+            {
+                bool OperationStatus = DataManager.TryBuyCharacter(TempData.ChoosenCharacter);
+                if(OperationStatus){
+                    needBuy = OperationStatus;
+                    TempData.CharacterIsLocked = !OperationStatus;
+                };
+            }
+            else
+            {
+                bool OperationStatus = DataManager.TryBuyWeapon(TempData.ChoosenWeapon);
+                if(OperationStatus){
+                    needBuy = OperationStatus;
+                    TempData.WeaponIsLocked = !OperationStatus;
+                };
+            }
+            return;
+            
+        }
+        
         if (TempData.ChoosenCharacter && !TempData.CharIsPicked)
         {
             TempData.CharIsPicked = true;
@@ -24,11 +47,11 @@ public class ChooseButton : MonoBehaviour
         }
         else
         {
-            if (TempData.WeaponIsLocked || TempData.ChoosenWeapon == null){ return; }
+            if (TempData.WeaponIsLocked || TempData.ChoosenWeapon == null) { return; }
             TempData.WeaponIsPicked = true;
             SetChosenWeaponAndDefaultData();
             SceneManager.LoadScene("SampleScene");
-            
+
         }
         
     }
@@ -51,10 +74,14 @@ public class ChooseButton : MonoBehaviour
     {
         if (TempData.CharacterIsLocked || TempData.WeaponIsLocked)
         {
-            transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "Купить";
+            int price = TempData.WeaponIsLocked ? TempData.ChoosenWeapon.Price : TempData.ChoosenCharacter.Price;
+            string priceColor = price <= DataManager.CurrentUser.Coins ? "<color=#00ff44>" : "<color=#ff0000>";
+            transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = $"{priceColor}{price}";
+            needBuy = true;
         }
         else
         {
+            needBuy = false;
             transform.GetChild(0).transform.GetComponent<TextMeshProUGUI>().text = "Выбрать";
         }
     }

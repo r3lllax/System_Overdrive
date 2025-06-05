@@ -11,10 +11,17 @@ public class AllCharactersScropt : MonoBehaviour
     void Awake()
     {
         DataManager.LoadUserProfile();
+        LoadCharacters();
+
+    }
+    public void LoadCharacters()
+    {
+        for (int i =0;i<transform.childCount;i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
         foreach (var character in chars.CharacterList)
         {
-            Debug.Log(character.name);
-
             GameObject card = Instantiate(characterCardPrefab, transform);
             if (DataManager.CurrentUser.UnlockedCharacters.Contains(character.name))
             {
@@ -25,6 +32,13 @@ public class AllCharactersScropt : MonoBehaviour
                 card.GetComponent<CharacterCardInGrid>().isLocked = true;
             }
             card.GetComponent<CharacterCardInGrid>().character = character;
+        }
+    }
+    void Update()
+    {
+        if (TempData.needRefreshData)
+        {
+            LoadCharacters();
         }
     }
 }

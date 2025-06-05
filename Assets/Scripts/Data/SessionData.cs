@@ -15,7 +15,7 @@ public class SessionData
     public static float AttackSpeedMelee;//✓
     public static float CdBetweenFire;//✓
     public static float CdBetweenMagazine;//✓
-    public static float ExpMultiplier = 1f;// - NotForUser
+    public static float ExpMultiplier = 1f;//
 
     public static float StartSpeedMultiplier;// - NotForUser
     public static float SprintMultiplier;//✓

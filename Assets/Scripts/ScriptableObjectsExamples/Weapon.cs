@@ -13,6 +13,7 @@ public class Weapon : ScriptableObject
     public float GunMagazineReloadTime;
     public float PlayerSpeedMultiplier;
     public int Damage;
+    public int Price;
 
     public GameObject WeaponPrefab;
     public GameObject BulletPrefab;

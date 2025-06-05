@@ -9,13 +9,13 @@ public class WeaponPage : MonoBehaviour
         GetComponentInChildren<CurrentWeaponCard>().RenderCurrentWeapon();
         Sequence sq = DOTween.Sequence();
         sq
-        .Append(transform.DOScale(1f, 0.5f).From(0)).SetEase(Ease.InOutCubic).Play();
+        .Append(transform.DOScale(1f, 0.5f).From(0)).SetEase(Ease.InOutCubic).Play().OnComplete(()=>TempData.ActivePage=1);;
     }
     public void Close()
     {
         Sequence sq = DOTween.Sequence();
         sq
-        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play();
+        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play().OnComplete(()=>TempData.ActivePage=0);;
     }
     public void CloseAndOpenCharacterPage()
     {

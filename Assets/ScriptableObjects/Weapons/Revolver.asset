@@ -19,9 +19,10 @@ MonoBehaviour:
   GunMagazineSize: 6
   GunBulletSpeed: 15
   GunBulletLifeTime: 8
-  GunMagazineReloadTime: 1.1
-  PlayerSpeedMultiplier: 5
+  GunMagazineReloadTime: 4
+  PlayerSpeedMultiplier: 1.1
   Damage: 4
+  Price: 8000
   WeaponPrefab: {fileID: 338107766108008468, guid: 62a2522860785bf419d08205de042966, type: 3}
   BulletPrefab: {fileID: 4592471241390496346, guid: d08cec6b4a4c03649b5a3671f13a8d7e, type: 3}
   AttackParticles: {fileID: 3636966496708500094, guid: 95170c00dd08129429ec03541c9efd23, type: 3}

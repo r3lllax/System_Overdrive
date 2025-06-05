@@ -7,6 +7,10 @@ public class topBar : MonoBehaviour
 {
     void Awake()
     {
+        LoadData();
+    }
+    public void LoadData()
+    {
         DataManager.LoadUserProfile();
         try
         {
@@ -15,7 +19,13 @@ public class topBar : MonoBehaviour
         }
         catch { }
         
-        
+    }
+    void Update()
+    {
+        if (TempData.needRefreshData)
+        {
+            LoadData();
+        }   
     }
     void OnEnable()
     {

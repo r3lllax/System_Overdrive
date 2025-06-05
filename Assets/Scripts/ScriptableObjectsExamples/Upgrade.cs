@@ -49,7 +49,6 @@ public class Upgrade : ScriptableObject
         CanLifeSteal,
         DamageEvadeChance,
         ChooseUpgradesCount
-        
 
     }
     public Stats targerStat = Stats.Health;

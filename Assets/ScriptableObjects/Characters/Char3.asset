@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Char3
   m_EditorClassIdentifier: 
   CharacterName: Test
+  Price: 15000
   Health: 3
   MoveSpeed: 5
   CharacterPrefab: {fileID: 6877538638454522250, guid: 4d308932bb7c05747ba5b3a22f73c386, type: 3}

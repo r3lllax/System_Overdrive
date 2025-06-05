@@ -2,6 +2,7 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System;
 using System.IO;
+using System.Collections.Generic;
 
 public static class DataManager
 {
@@ -10,6 +11,66 @@ public static class DataManager
     private static string savePath = $"{gameFolder}\\Profile.json";
 
     public static UserProfile CurrentUser;
+    public static bool TryBuyCharacter(GameCharacter product)
+    {
+
+        if (CurrentUser.Coins < product.Price)
+        {
+            Debug.Log("Ошибка покупки");
+        }
+        else
+        {
+            Debug.Log(product.name);
+            CurrentUser.Coins -= product.Price;
+            CurrentUser.UnlockedCharacters.Add(product.name);
+            SaveUserProfile();
+            TempData.needRefreshData = true;
+            return true;
+        }
+        
+        
+        return false;
+    }
+    public static bool TryBuyWeapon(Weapon product)
+    {
+        if (CurrentUser.Coins < product.Price)
+        {
+            Debug.Log("Ошибка покупки");
+        }
+        else
+        {
+            Debug.Log(product.name);
+            CurrentUser.Coins -= product.Price;
+            CurrentUser.UnlockedWeapon.Add(product.name);
+            SaveUserProfile();
+            TempData.needRefreshData = true;
+            return true;
+            
+        }
+
+        
+        return false;
+    }
+    public static bool TryBuyEthernalSkill(Weapon product)
+    {
+        if (CurrentUser.Coins < product.Price)
+        {
+            Debug.Log("Ошибка покупки");
+        }
+        else
+        {
+            Debug.Log(product.name);
+            CurrentUser.Coins -= product.Price;
+            CurrentUser.UnlockedWeapon.Add(product.name);
+            SaveUserProfile();
+            TempData.needRefreshData = true;
+            return true;
+            
+        }
+
+        
+        return false;
+    }
     public static bool SaveFileExists()
     {
         if (!File.Exists(savePath))
@@ -26,7 +87,7 @@ public static class DataManager
         }
         if (SaveFileExists())
         {
-            return JsonConvert.DeserializeObject<UserProfile>(File.ReadAllText(savePath));
+            return JsonConvert.DeserializeObject<UserProfile>(File.ReadAllText(savePath),new JsonSerializerSettings{ObjectCreationHandling=ObjectCreationHandling.Replace});
         }
         return null;
     }
@@ -63,14 +124,26 @@ public class UserProfile
 {
     public string ProfileName = "Default";
     public int Coins = 0;
-    public string[] UnlockedWeapon = new string[]{"Pistol"};
-    public string[] UnlockedCharacters = new string[]{"Char1"};
+    public List<string> UnlockedWeapon = new List<string> { "Pistol" };
+    public List<string> UnlockedCharacters = new List<string> { "Char1" };
+    public List<EthernalUpgrade> EthernalUpdates = new List<EthernalUpgrade>
+    {
+        new EthernalUpgrade("Ученый","Увеличивает",EthernalUpgrade.Stats.ExpMultiplier,false,0.01f,0.3f,1,3000),
+        new EthernalUpgrade("Уклонист","Увеличивает",EthernalUpgrade.Stats.DamageEvadeChance,true,1f,0.3f,1,6000),
+        new EthernalUpgrade("Критическое мышление","Увеличивает",EthernalUpgrade.Stats.CritChance,true,1f,0.3f,1,8000),
+        new EthernalUpgrade("Зоркий глаз","Увеличивает",EthernalUpgrade.Stats.ExpFinderRadius,false,0.05f,0.3f,1,1000),
+    };
     public Settings Settings = new Settings();
     public void ShowInfo()
     {
-        Debug.Log($"ProfileName:{ProfileName},Coins:{Coins},UnlockedWeapon:{UnlockedWeapon.ToString()},UnlockedCharacters{UnlockedCharacters.ToString()},Settings{Settings.MusicVolume}");
+        Debug.Log($"ProfileName:{ProfileName},Coins:{Coins},EUCount {EthernalUpdates.Count}");
+        foreach (var item in EthernalUpdates)
+        {
+            Debug.Log(item.Title);
+        }
     }
 }
+
 public class Settings
 {
     public bool EnableEnemyDeathEffect = false;

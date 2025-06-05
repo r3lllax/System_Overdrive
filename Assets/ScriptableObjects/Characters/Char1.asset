@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Char1
   m_EditorClassIdentifier: 
   CharacterName: Neon
+  Price: 5000
   Health: 4
   MoveSpeed: 4
   CharacterPrefab: {fileID: 6877538638454522250, guid: de86ca0d9d5ece24a9a67d624a577ca0, type: 3}
