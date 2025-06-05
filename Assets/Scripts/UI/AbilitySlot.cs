@@ -52,17 +52,23 @@ public class AbilitySlot : MonoBehaviour
             }
             if (myAbility.GetActive())
             {
-                if ((int)myAbility.GetActiveTimer()+1 > 0)
+                if ((int)myAbility.GetActiveTimer() + 1 > 0)
                 {
-                    cd.text = ((int)myAbility.GetActiveTimer()+1).ToString();
-                    cd.color = new Color32(235, 213, 52, 255);
+                    cd.text = ((int)myAbility.GetActiveTimer() + 1).ToString();
                 }
                 else
                 {
-                    cd.color = new Color32(255, 255, 255, 255);
                     cd.text = "";
                 }
-                
+
+            }
+            if (myAbility.GetActive())
+            {
+                cd.color = new Color32(255, 255, 255, 255);
+            }
+            else
+            {
+                cd.color = new Color32(255, 0, 0, 255);
             }
             
             

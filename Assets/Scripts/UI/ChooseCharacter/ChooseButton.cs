@@ -69,6 +69,10 @@ public class ChooseButton : MonoBehaviour
         SessionData.BulletLifeTime = TempData.ChoosenWeapon.GunBulletLifeTime;
         SessionData.MeleeSize = TempData.ChoosenWeapon.WeaponPrefab.transform.localScale;
         SessionData.BulletSize = new Vector3(1,1,1);
+        foreach (EthernalUpgrade upg in DataManager.CurrentUser.EthernalUpdates)
+        {
+            UpgradesController.DefineAndApplyEthernalUpgrade(upg,upg.Count*upg.AddStrength);
+        }
     }
     void Update()
     {

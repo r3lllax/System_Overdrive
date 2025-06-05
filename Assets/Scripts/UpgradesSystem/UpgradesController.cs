@@ -197,6 +197,17 @@ public class UpgradesController : MonoBehaviour
         }
 
     }
+    public static void DefineAndApplyEthernalUpgrade(EthernalUpgrade upg, float value)
+    {
+        string stat = upg.targetStat.ToString();
+        
+        if (_fieldHandlers.TryGetValue(stat, out var handler))
+        {
+            handler(upg.isPercent, value);
+            Debug.Log($"Стартовое улучшение {stat} на {value}(Procente - {upg.isPercent})");   
+        }
+
+    }
 
     private static void ApplyToChanceField(ref float field, bool isPercent, float value)
     {
@@ -204,13 +215,15 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesChance(ref field, value);
         else
             SessionData.AddValueChance(ref field, value);
+            Debug.Log(field);
+
     }
 
     private static void ApplyToBoolField(ref bool field, bool isPercent, bool value)
     {
 
         SessionData.SetBool(ref field, value);
-        Debug.Log(SessionData.CanDestroyEnemyBullet);
+        Debug.Log(field);
        
     }
 
@@ -221,6 +234,8 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesFloatScale(ref field, value);
         else
             SessionData.AddValueFloat(ref field, value);
+            Debug.Log(field);
+
     }
 
     private static void ApplyToIntField(ref int field, bool isPercent, int value)
@@ -229,6 +244,8 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesInt(ref field, value);
         else
             SessionData.AddValueInt(ref field, value);
+            Debug.Log(field);
+
     }
 
     private static void ApplyToFloatField(ref float field, bool isPercent, float value)
@@ -237,6 +254,8 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesFloat(ref field, value);
         else
             SessionData.AddValueFloat(ref field, value);
+            Debug.Log(field);
+
     }
 
     private static void ApplyToVector3Field(ref Vector3 field, bool isPercent, float value)
@@ -245,6 +264,8 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesV3(ref field, value);
         else
             SessionData.AddValueV3(ref field, value);
+            Debug.Log(field);
+
     }
 
     /// 

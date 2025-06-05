@@ -173,6 +173,18 @@ public class SessionData
             ===========================================
                     BulletRebonceCount = {BulletRebonceCount}
             ===========================================
+            ===========================================
+                    DamageEvade = {ScaleValueToProcente(DamageEvadeChance)}
+            ===========================================
+            ===========================================
+                    ExpFinderRadius = {ExpFinderRadius}
+            ===========================================
+            ===========================================
+                    CritChance = {ScaleValueToProcente(CritChance)}
+            ===========================================
+            ===========================================
+                    ExpMultiplier = {ExpMultiplier}
+            ===========================================
             
         ";
         Debug.Log(data);

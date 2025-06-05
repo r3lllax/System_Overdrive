@@ -3,7 +3,7 @@ using UnityEngine;
 public class EthernalUpgrade
 {
     public string Title = "Название";
-    public string Description = "Описание того что увеличивает и на сколько";
+    public string Description = "Увеличивает";
     public enum Stats
     {
         Health,
@@ -63,6 +63,6 @@ public class EthernalUpgrade
     }
     public int CalculateCurrentPrice()
     {
-        return (int)(StartPrice * PriceInflationMultiplier) * Count;
+        return StartPrice + ((int)(StartPrice * PriceInflationMultiplier) * Count);
     }
 }

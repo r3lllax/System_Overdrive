@@ -18,6 +18,7 @@ public class SkillItemUI : MonoBehaviour
     }
     public void SetData()
     {
+        currentUpgrade = DataManager.CurrentUser.EthernalUpdates.Find(obj => obj.targetStat == currentUpgrade.targetStat);
         Title.text = $"{currentUpgrade.Title}";
         CurrentCount.text = $"Текущее {currentUpgrade.Count} шт.";
         string procente = currentUpgrade.isPercent ? "%" : "";
@@ -30,9 +31,19 @@ public class SkillItemUI : MonoBehaviour
     {
         if (TempData.needRefreshData)
         {
-            int price = currentUpgrade.CalculateCurrentPrice();
-            string priceColor = price <= DataManager.CurrentUser.Coins ? "<color=#00ff44>" : "<color=#ff0000>";
-            Price.text = $"{priceColor}{currentUpgrade.CalculateCurrentPrice()}";
+            SetData();
+        }
+    }
+    public void buy()
+    {
+        bool operationStatus = DataManager.TryBuyEthernalSkill(currentUpgrade);
+        if (operationStatus)
+        {
+            Debug.Log("Вечная способность куплена");
+        }
+        else
+        {
+            Debug.Log("Ошибка покупки вечной способности");
         }
     }
 }

@@ -51,19 +51,24 @@ public static class DataManager
         
         return false;
     }
-    public static bool TryBuyEthernalSkill(Weapon product)
+    public static bool TryBuyEthernalSkill(EthernalUpgrade upgrade)
     {
-        if (CurrentUser.Coins < product.Price)
+        if (CurrentUser.Coins < upgrade.CalculateCurrentPrice())
         {
             Debug.Log("Ошибка покупки");
         }
         else
         {
-            Debug.Log(product.name);
-            CurrentUser.Coins -= product.Price;
-            CurrentUser.UnlockedWeapon.Add(product.name);
-            SaveUserProfile();
-            TempData.needRefreshData = true;
+            EthernalUpgrade foundObject = CurrentUser.EthernalUpdates.Find(obj => obj.targetStat == upgrade.targetStat);
+            if (foundObject != null)
+            {
+                CurrentUser.Coins -= upgrade.CalculateCurrentPrice();
+                foundObject.Count++;
+                SaveUserProfile();
+                TempData.needRefreshData = true;
+            }
+            
+            
             return true;
             
         }
