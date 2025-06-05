@@ -1,3 +1,4 @@
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,18 @@ public class MainMenu : MonoBehaviour
             }
             
         }
+    }
+    public void OpenSettings(Transform transformObj)
+    {
+        Sequence sq = DOTween.Sequence();
+        sq
+        .Append(transformObj.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play().OnComplete(()=>OpenChildById(1));   
+    }
+    public void CloseSettings(Transform transformObj)
+    {
+        Sequence sq = DOTween.Sequence();
+        sq
+        .Append(transformObj.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play().OnComplete(() => OpenChildById(0));
     }
     public void Quit()
     {

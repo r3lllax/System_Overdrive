@@ -67,7 +67,7 @@ public class Malevolent_Shrine : Ability
         {
             currentCooldown = 0f;
         }
-        if (isTransitioning)
+        if (isTransitioning )
         {
             if (currentOrt < 8f)
             {

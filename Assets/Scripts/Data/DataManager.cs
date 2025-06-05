@@ -63,7 +63,7 @@ public class UserProfile
 {
     public string ProfileName = "Default";
     public int Coins = 0;
-    public string[] UnlockedWeapon = new string[]{};
+    public string[] UnlockedWeapon = new string[]{"Pistol"};
     public string[] UnlockedCharacters = new string[]{"Char1"};
     public Settings Settings = new Settings();
     public void ShowInfo()

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9cf5d553f85ed4f9bfd2b03943f5e0, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  WeaponName: Pistol
+  WeaponName: "\u041F\u0438\u0441\u0442\u043E\u043B\u0435\u0442"
   distanceFromPlayer: 1
   AnimationSpeed: 1
   GunAttackSpeed: 0.5

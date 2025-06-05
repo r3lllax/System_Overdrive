@@ -23,14 +23,18 @@ public class AbilitiesController : MonoBehaviour
 
     private void Awake()
     {
-        var AbilityInPlayerContoller = Instantiate(TempData.ChoosenCharacter.AbilityPrefab, transform);
-        AbilityInPlayerContoller.GetComponent<Ability>().SetActiveTime(TempData.ChoosenCharacter.ActiveTime);
-        AbilityInPlayerContoller.GetComponent<Ability>().SetCooldown(TempData.ChoosenCharacter.CooldownTime);
-        AbilityInPlayerContoller.GetComponent<Ability>().SetCastTime(TempData.ChoosenCharacter.CastTime);
+        if (isPlayerOwner)
+        {
+            var AbilityInPlayerContoller = Instantiate(TempData.ChoosenCharacter.AbilityPrefab, transform);
+            AbilityInPlayerContoller.GetComponent<Ability>().SetActiveTime(TempData.ChoosenCharacter.ActiveTime);
+            AbilityInPlayerContoller.GetComponent<Ability>().SetCooldown(TempData.ChoosenCharacter.CooldownTime);
+            AbilityInPlayerContoller.GetComponent<Ability>().SetCastTime(TempData.ChoosenCharacter.CastTime);
 
-        abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
-        AbiilityPanel.NeedRefreshAbilityPanel = true;
-        AutoUseIndicator = GameObject.FindWithTag("AutoUseIndicator").GetComponent<Image>();
+            abilities.Add(AbilityInPlayerContoller.GetComponent<Ability>());
+            AbiilityPanel.NeedRefreshAbilityPanel = true;
+            AutoUseIndicator = GameObject.FindWithTag("AutoUseIndicator").GetComponent<Image>();
+
+        }
         CalculateAbilities();
     }
 

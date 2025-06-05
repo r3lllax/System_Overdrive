@@ -747,11 +747,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1489626850}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OpenChildById
-        m_Mode: 3
+        m_MethodName: OpenSettings
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 211811534}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
@@ -805,6 +805,7 @@ GameObject:
   m_Component:
   - component: {fileID: 211811534}
   - component: {fileID: 211811535}
+  - component: {fileID: 211811536}
   m_Layer: 5
   m_Name: ProfileExists
   m_TagString: Untagged
@@ -860,6 +861,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &211811536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211811533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0f1b7fb3cc2174091b98b5a90bc5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 399381657}
 --- !u!1 &220576206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,6 +1272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 270509352}
   - component: {fileID: 270509353}
+  - component: {fileID: 270509354}
   m_Layer: 5
   m_Name: ProfileDoesntExists
   m_TagString: Untagged
@@ -1312,6 +1327,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &270509354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 270509351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c0f1b7fb3cc2174091b98b5a90bc5b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 399381657}
 --- !u!1 &324167210
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,11 +4088,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1489626850}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: OpenChildById
-        m_Mode: 3
+        m_MethodName: CloseSettings
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2072193563}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4836,6 +4864,7 @@ GameObject:
   - component: {fileID: 2072193563}
   - component: {fileID: 2072193565}
   - component: {fileID: 2072193564}
+  - component: {fileID: 2072193566}
   m_Layer: 5
   m_Name: Settings
   m_TagString: Untagged
@@ -4901,6 +4930,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072193562}
   m_CullTransparentMesh: 1
+--- !u!114 &2072193566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2072193562}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5c4fbf584eb0c04088372c2f7d420af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2081706074
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9cf5d553f85ed4f9bfd2b03943f5e0, type: 3}
   m_Name: GreatSword
   m_EditorClassIdentifier: 
-  WeaponName: GreatSword
+  WeaponName: "\u0414\u0432\u0443\u0440\u0443\u0447\u043D\u0438\u043A"
   distanceFromPlayer: 0.2
   AnimationSpeed: 0.2
   GunAttackSpeed: 0
   GunMagazineSize: 0
   GunBulletSpeed: 0
+  GunBulletLifeTime: 0
   GunMagazineReloadTime: 0
   PlayerSpeedMultiplier: 0.5
   Damage: 6

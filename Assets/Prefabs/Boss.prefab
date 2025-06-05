@@ -420,8 +420,6 @@ MonoBehaviour:
   currentCooldown: 0
   TakeStatFromSessionData: 0
   hotkey: 51
-  targetOrt: 12
-  transitionSpeed: 1
 --- !u!1001 &2340844397900421222
 PrefabInstance:
   m_ObjectHideFlags: 0

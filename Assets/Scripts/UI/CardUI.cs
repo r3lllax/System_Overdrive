@@ -6,7 +6,7 @@ public class CardUI : MonoBehaviour
     [SerializeField] private GameCharacter character;
 
 
-    public void SetChosenWeapon(){
+    public void SetChosenWeaponAndDefaultData(){
         TempData.ChoosenWeapon = WeaponData;
         SessionData.Damage = WeaponData.Damage;
         SessionData.AttackSpeedMelee = WeaponData.AnimationSpeed;
@@ -24,7 +24,5 @@ public class CardUI : MonoBehaviour
     }
     public void SetChosenCharacter(){
         TempData.ChoosenCharacter = character;
-        SessionData.Health = character.Health;
-        SessionData.MoveSpeed = character.MoveSpeed;
     }
 }

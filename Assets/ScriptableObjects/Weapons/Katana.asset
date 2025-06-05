@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9cf5d553f85ed4f9bfd2b03943f5e0, type: 3}
   m_Name: Katana
   m_EditorClassIdentifier: 
-  WeaponName: Katana
+  WeaponName: "\u041A\u0430\u0442\u0430\u043D\u0430"
   distanceFromPlayer: 0.45
   AnimationSpeed: 1
   GunAttackSpeed: 0
   GunMagazineSize: 0
   GunBulletSpeed: 0
+  GunBulletLifeTime: 0
   GunMagazineReloadTime: 0
   PlayerSpeedMultiplier: 1
   Damage: 2
