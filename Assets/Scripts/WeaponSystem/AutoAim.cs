@@ -56,7 +56,7 @@ public class AutoAim : MonoBehaviour
                     AutoAimTimer = 0f;
                 }
             }
-            if (Input.GetKey(KeyCode.Space))
+            if (PlayerController.Instance.playerControls.Battle.AutoAim.IsPressed())
             {
                 ToggleAutoAim();
             }

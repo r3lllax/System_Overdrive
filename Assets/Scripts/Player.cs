@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (PlayerController.Instance.playerControls.Battle.Block.IsPressed())
         {
             if (!isBlockingProcessing)
             {
@@ -174,6 +174,7 @@ public class Player : MonoBehaviour
     }
     public void Death(){
         ///Парткиклы, выключение управления, скрипт запуска экрана результата
+        
     }
     public float GetMoveSpeed(){
         return MoveSpeed;

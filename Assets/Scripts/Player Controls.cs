@@ -100,10 +100,10 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""id"": ""1a7b9d5a-0c4d-49fa-8de8-1391d3d31d02"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""AutoUse"",
                     ""type"": ""Button"",
-                    ""id"": ""4fce834d-602e-43fa-bc60-d3d37010725d"",
-                    ""expectedControlType"": ""Button"",
+                    ""id"": ""13ac65f8-1c23-43b9-b752-11c25f1f82f5"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -112,12 +112,128 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""9af6fa00-3d3f-4ca5-a1b2-87397ee3bff5"",
-                    ""path"": """",
+                    ""id"": ""6ddd89fe-531c-4869-bccf-c1a4eb70fb94"",
+                    ""path"": ""<Keyboard>/z"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""AutoUse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Battle"",
+            ""id"": ""3742514a-e9da-47b9-af49-9a4432f42e38"",
+            ""actions"": [
+                {
+                    ""name"": ""AutoAim"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c01559b-7829-4bbc-b79e-19951d7ef18d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""8959d967-b283-4827-87a7-dab7612e3983"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""03de216a-4188-4cb1-a44c-c2359c486e32"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Block"",
+                    ""type"": ""Button"",
+                    ""id"": ""ef88f737-b0b9-4a2a-91d5-9c847c4b2503"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""53117623-b013-41af-88aa-368f395b1385"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AutoAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b753872d-1573-4df2-98bc-6aa067467239"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""51f10b9b-8d57-4891-89fd-a5146165e331"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa561e40-d601-4586-b8ad-75279ac922b8"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Block"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""b44a306a-ccda-4937-9527-6ba413a85ac0"",
+            ""actions"": [
+                {
+                    ""name"": ""ToggleGameMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""984f5dd0-9644-4060-95fc-5d0720b50089"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""b752bdb8-8bb9-427b-9821-423aced47efe"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleGameMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -131,13 +247,24 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         // Abilities
         m_Abilities = asset.FindActionMap("Abilities", throwIfNotFound: true);
-        m_Abilities_Newaction = m_Abilities.FindAction("New action", throwIfNotFound: true);
+        m_Abilities_AutoUse = m_Abilities.FindAction("AutoUse", throwIfNotFound: true);
+        // Battle
+        m_Battle = asset.FindActionMap("Battle", throwIfNotFound: true);
+        m_Battle_AutoAim = m_Battle.FindAction("AutoAim", throwIfNotFound: true);
+        m_Battle_Attack = m_Battle.FindAction("Attack", throwIfNotFound: true);
+        m_Battle_Reload = m_Battle.FindAction("Reload", throwIfNotFound: true);
+        m_Battle_Block = m_Battle.FindAction("Block", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_ToggleGameMenu = m_UI.FindAction("ToggleGameMenu", throwIfNotFound: true);
     }
 
     ~@PlayerControls()
     {
         UnityEngine.Debug.Assert(!m_Movement.enabled, "This will cause a leak and performance issues, PlayerControls.Movement.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Abilities.enabled, "This will cause a leak and performance issues, PlayerControls.Abilities.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_Battle.enabled, "This will cause a leak and performance issues, PlayerControls.Battle.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, PlayerControls.UI.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -245,12 +372,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Abilities
     private readonly InputActionMap m_Abilities;
     private List<IAbilitiesActions> m_AbilitiesActionsCallbackInterfaces = new List<IAbilitiesActions>();
-    private readonly InputAction m_Abilities_Newaction;
+    private readonly InputAction m_Abilities_AutoUse;
     public struct AbilitiesActions
     {
         private @PlayerControls m_Wrapper;
         public AbilitiesActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Abilities_Newaction;
+        public InputAction @AutoUse => m_Wrapper.m_Abilities_AutoUse;
         public InputActionMap Get() { return m_Wrapper.m_Abilities; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -260,16 +387,16 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_AbilitiesActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_AbilitiesActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @AutoUse.started += instance.OnAutoUse;
+            @AutoUse.performed += instance.OnAutoUse;
+            @AutoUse.canceled += instance.OnAutoUse;
         }
 
         private void UnregisterCallbacks(IAbilitiesActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @AutoUse.started -= instance.OnAutoUse;
+            @AutoUse.performed -= instance.OnAutoUse;
+            @AutoUse.canceled -= instance.OnAutoUse;
         }
 
         public void RemoveCallbacks(IAbilitiesActions instance)
@@ -287,12 +414,139 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public AbilitiesActions @Abilities => new AbilitiesActions(this);
+
+    // Battle
+    private readonly InputActionMap m_Battle;
+    private List<IBattleActions> m_BattleActionsCallbackInterfaces = new List<IBattleActions>();
+    private readonly InputAction m_Battle_AutoAim;
+    private readonly InputAction m_Battle_Attack;
+    private readonly InputAction m_Battle_Reload;
+    private readonly InputAction m_Battle_Block;
+    public struct BattleActions
+    {
+        private @PlayerControls m_Wrapper;
+        public BattleActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AutoAim => m_Wrapper.m_Battle_AutoAim;
+        public InputAction @Attack => m_Wrapper.m_Battle_Attack;
+        public InputAction @Reload => m_Wrapper.m_Battle_Reload;
+        public InputAction @Block => m_Wrapper.m_Battle_Block;
+        public InputActionMap Get() { return m_Wrapper.m_Battle; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(BattleActions set) { return set.Get(); }
+        public void AddCallbacks(IBattleActions instance)
+        {
+            if (instance == null || m_Wrapper.m_BattleActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Add(instance);
+            @AutoAim.started += instance.OnAutoAim;
+            @AutoAim.performed += instance.OnAutoAim;
+            @AutoAim.canceled += instance.OnAutoAim;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
+            @Block.started += instance.OnBlock;
+            @Block.performed += instance.OnBlock;
+            @Block.canceled += instance.OnBlock;
+        }
+
+        private void UnregisterCallbacks(IBattleActions instance)
+        {
+            @AutoAim.started -= instance.OnAutoAim;
+            @AutoAim.performed -= instance.OnAutoAim;
+            @AutoAim.canceled -= instance.OnAutoAim;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
+            @Block.started -= instance.OnBlock;
+            @Block.performed -= instance.OnBlock;
+            @Block.canceled -= instance.OnBlock;
+        }
+
+        public void RemoveCallbacks(IBattleActions instance)
+        {
+            if (m_Wrapper.m_BattleActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IBattleActions instance)
+        {
+            foreach (var item in m_Wrapper.m_BattleActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_BattleActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public BattleActions @Battle => new BattleActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_ToggleGameMenu;
+    public struct UIActions
+    {
+        private @PlayerControls m_Wrapper;
+        public UIActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @ToggleGameMenu => m_Wrapper.m_UI_ToggleGameMenu;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @ToggleGameMenu.started += instance.OnToggleGameMenu;
+            @ToggleGameMenu.performed += instance.OnToggleGameMenu;
+            @ToggleGameMenu.canceled += instance.OnToggleGameMenu;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @ToggleGameMenu.started -= instance.OnToggleGameMenu;
+            @ToggleGameMenu.performed -= instance.OnToggleGameMenu;
+            @ToggleGameMenu.canceled -= instance.OnToggleGameMenu;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
     }
     public interface IAbilitiesActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnAutoUse(InputAction.CallbackContext context);
+    }
+    public interface IBattleActions
+    {
+        void OnAutoAim(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
+        void OnBlock(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnToggleGameMenu(InputAction.CallbackContext context);
     }
 }

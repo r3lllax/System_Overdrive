@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class ChooseButton : MonoBehaviour
     [SerializeField] private GameObject weaponSelectPage;
     [SerializeField] private GameObject characterSelectPage;
     private bool needBuy = false;
+    private bool ButtonIsShaking = false;
     void Awake()
     {
         controller = GetComponent<ScenesController>();
@@ -21,18 +23,30 @@ public class ChooseButton : MonoBehaviour
             if (TempData.ActivePage == 0)
             {
                 bool OperationStatus = DataManager.TryBuyCharacter(TempData.ChoosenCharacter);
-                if(OperationStatus){
+                if (OperationStatus)
+                {
                     needBuy = OperationStatus;
                     TempData.CharacterIsLocked = !OperationStatus;
-                };
+                }
+                else
+                {
+                    if(ButtonIsShaking){ return; }
+                    ShakeButton(gameObject);
+                }
+                
             }
             else
             {
                 bool OperationStatus = DataManager.TryBuyWeapon(TempData.ChoosenWeapon);
-                if(OperationStatus){
+                if (OperationStatus)
+                {
                     needBuy = OperationStatus;
                     TempData.WeaponIsLocked = !OperationStatus;
-                };
+                }
+                else
+                {
+                    ShakeButton(gameObject);
+                }
             }
             return;
             
@@ -73,6 +87,15 @@ public class ChooseButton : MonoBehaviour
         {
             UpgradesController.DefineAndApplyEthernalUpgrade(upg,upg.Count*upg.AddStrength);
         }
+    }
+    private void ShakeButton(GameObject obj)
+    {
+        Vector2 objPos = obj.GetComponent<RectTransform>().anchoredPosition;
+        Sequence sq = DOTween.Sequence();
+        sq
+        .Append(obj.GetComponent<RectTransform>().DOShakeAnchorPos(0.5f, 5).OnPlay(() => { ButtonIsShaking = true; }))
+        .OnComplete(()=>{ obj.GetComponent<RectTransform>().anchoredPosition = objPos;ButtonIsShaking = false; })
+        .Play();
     }
     void Update()
     {

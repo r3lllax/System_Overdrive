@@ -93,7 +93,7 @@ public class AbilitiesController : MonoBehaviour
                 AutoToggleReload = 0f;
             }
         }
-        if (Input.GetKey(KeyCode.Z))
+        if (PlayerController.Instance.playerControls.Abilities.AutoUse.IsPressed())
         {
             ToggleAutoUse();
         }

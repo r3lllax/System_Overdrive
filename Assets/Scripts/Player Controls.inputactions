@@ -78,10 +78,10 @@
             "id": "1a7b9d5a-0c4d-49fa-8de8-1391d3d31d02",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "AutoUse",
                     "type": "Button",
-                    "id": "4fce834d-602e-43fa-bc60-d3d37010725d",
-                    "expectedControlType": "Button",
+                    "id": "13ac65f8-1c23-43b9-b752-11c25f1f82f5",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -90,12 +90,128 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "9af6fa00-3d3f-4ca5-a1b2-87397ee3bff5",
-                    "path": "",
+                    "id": "6ddd89fe-531c-4869-bccf-c1a4eb70fb94",
+                    "path": "<Keyboard>/z",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "AutoUse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Battle",
+            "id": "3742514a-e9da-47b9-af49-9a4432f42e38",
+            "actions": [
+                {
+                    "name": "AutoAim",
+                    "type": "Button",
+                    "id": "6c01559b-7829-4bbc-b79e-19951d7ef18d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "8959d967-b283-4827-87a7-dab7612e3983",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "03de216a-4188-4cb1-a44c-c2359c486e32",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Block",
+                    "type": "Button",
+                    "id": "ef88f737-b0b9-4a2a-91d5-9c847c4b2503",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "53117623-b013-41af-88aa-368f395b1385",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AutoAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b753872d-1573-4df2-98bc-6aa067467239",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "51f10b9b-8d57-4891-89fd-a5146165e331",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa561e40-d601-4586-b8ad-75279ac922b8",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Block",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "b44a306a-ccda-4937-9527-6ba413a85ac0",
+            "actions": [
+                {
+                    "name": "ToggleGameMenu",
+                    "type": "Button",
+                    "id": "984f5dd0-9644-4060-95fc-5d0720b50089",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b752bdb8-8bb9-427b-9821-423aced47efe",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGameMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

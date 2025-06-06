@@ -43,7 +43,7 @@ public class WeaponFollow : MonoBehaviour
         }
 
         //Переделать через инпут систем(Перенести в плеер контроллер)
-        if(Input.GetMouseButton(0) && AnimEnd && Time.timeScale>0){
+        if(PlayerController.Instance.playerControls.Battle.Attack.IsPressed() && AnimEnd && Time.timeScale>0){
             AnimEnd = false;
             Anim.SetBool("Attack",true);
             

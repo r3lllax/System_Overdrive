@@ -48,7 +48,6 @@ public class UiUpgradePanel : MonoBehaviour
     }
     public void StopTime()
     {
-        //Доработать
         aimStatus = playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus;
         playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = false;
 

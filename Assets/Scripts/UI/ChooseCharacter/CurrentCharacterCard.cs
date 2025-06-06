@@ -1,6 +1,7 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ public class CurrentCharacterCard : MonoBehaviour
         AbilityDescription = transform.GetChild(1).transform.GetChild(3).gameObject.GetComponent<TextMeshProUGUI>();
         AbilityStatsTitle = transform.GetChild(1).transform.GetChild(4).gameObject.GetComponent<TextMeshProUGUI>();
         AbilityStats = transform.GetChild(1).transform.GetChild(5).gameObject.GetComponent<TextMeshProUGUI>();
+        RenderCurrentCharacter();
+        
     }
 
     public void RenderCurrentCharacter()
@@ -50,8 +53,8 @@ public class CurrentCharacterCard : MonoBehaviour
         if (TempData.ChoosenCharacter)
         {
             choosenChar.sprite = TempData.ChoosenCharacter.CharacterPrefab.GetComponent<SpriteRenderer>().sprite;
-            health.text = $"Здоровье: {TempData.ChoosenCharacter.Health}";
-            moveSpeed.text = $"Скорость передвижения: {TempData.ChoosenCharacter.MoveSpeed}";
+            health.text = $"<color=#ff6257>Здоровье: <color=#FFF>{TempData.ChoosenCharacter.Health}";
+            moveSpeed.text = $"Скорость передвижения: <color=#FFF>{TempData.ChoosenCharacter.MoveSpeed}";
             AbilityDescription.text = $"{TempData.ChoosenCharacter.AbilityDescription}";
             AbilityStatsTitle.text = "Характеристики способности";
             AbilityTitle.text = "Способность";

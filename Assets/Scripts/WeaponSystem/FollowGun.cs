@@ -48,13 +48,13 @@ public class FollowGun : MonoBehaviour
         transform.position = player.position + direction * distanceFromPlayer;
 
         //Переделать через инпут систем(Перенести в плеер контроллер)
-        if (Input.GetMouseButton(0) && Reload <= 0)
+        if (PlayerController.Instance.playerControls.Battle.Attack.IsPressed()  && Reload <= 0)
         {
             //Тут вызов функции в которой проверяется количество патрон в магазине, все кд, и только после создания снаряда спавнится эффект
             Gun.TryFire();
 
         }
-        if (Input.GetKey(KeyCode.R))
+        if (PlayerController.Instance.playerControls.Battle.Reload.IsPressed())
         {
             Gun.ForcedReload();
         }

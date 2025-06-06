@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     public static PlayerController Instance;
 
-    private PlayerControls playerControls;
+    public PlayerControls playerControls;
     private Vector2 movement;
     private Rigidbody2D rb;
     private Transform transform;
@@ -90,5 +90,9 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+    void OnDestroy()
+    {
+        playerControls.Disable();
     
+    }
 }

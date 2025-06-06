@@ -133,10 +133,11 @@ public class UserProfile
     public List<string> UnlockedCharacters = new List<string> { "Char1" };
     public List<EthernalUpgrade> EthernalUpdates = new List<EthernalUpgrade>
     {
-        new EthernalUpgrade("Ученый","Увеличивает",EthernalUpgrade.Stats.ExpMultiplier,false,0.01f,0.3f,1,3000),
-        new EthernalUpgrade("Уклонист","Увеличивает",EthernalUpgrade.Stats.DamageEvadeChance,true,1f,0.3f,1,6000),
-        new EthernalUpgrade("Критическое мышление","Увеличивает",EthernalUpgrade.Stats.CritChance,true,1f,0.3f,1,8000),
-        new EthernalUpgrade("Зоркий глаз","Увеличивает",EthernalUpgrade.Stats.ExpFinderRadius,false,0.05f,0.3f,1,1000),
+        new EthernalUpgrade("Ученый","Увеличивает",EthernalUpgrade.Stats.ExpMultiplier,false,0.01f,0.3f,0,3000),
+        new EthernalUpgrade("Уклонист","Увеличивает",EthernalUpgrade.Stats.DamageEvadeChance,true,1f,0.3f,0,6000),
+        new EthernalUpgrade("Критическое мышление","Увеличивает",EthernalUpgrade.Stats.CritChance,true,1f,0.3f,0,8000),
+        new EthernalUpgrade("Зоркий глаз","Увеличивает",EthernalUpgrade.Stats.ExpFinderRadius,false,0.05f,0.3f,0,1000),
+        new EthernalUpgrade("Будда","Увеличивает",EthernalUpgrade.Stats.BackFire,false,1,1f,0,10000),
     };
     public Settings Settings = new Settings();
     public void ShowInfo()
@@ -152,6 +153,7 @@ public class UserProfile
 public class Settings
 {
     public bool EnableEnemyDeathEffect = false;
+    public bool EnablePostProcessing = true;
     public float MusicVolume = 1f;
     public float EffectsVolume = 1f;
 }

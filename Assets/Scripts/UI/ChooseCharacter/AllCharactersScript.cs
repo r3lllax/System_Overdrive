@@ -31,7 +31,9 @@ public class AllCharactersScropt : MonoBehaviour
             {
                 card.GetComponent<CharacterCardInGrid>().isLocked = true;
             }
+            card.GetComponent<CharacterCardInGrid>().characterName = character.CharacterName;
             card.GetComponent<CharacterCardInGrid>().character = character;
+            
         }
     }
     void Update()

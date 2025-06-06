@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
@@ -11,10 +12,14 @@ public class CharacterCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointer
     public GameCharacter character;
     public bool isLocked;
     private Image img;
+    public string characterName;
+    [SerializeField] private TextMeshProUGUI CharacterName;
+    [SerializeField] private Image Background;
+    private Color32 lockedColor = new Color32(255, 0, 0, 94);
+    private Color32 unlockedColor = new Color32(79, 255, 0, 94);
     void Awake()
     {
-        img = transform.GetChild(0).gameObject.GetComponent<Image>();
-        
+        img = transform.GetChild(1).gameObject.GetComponent<Image>();
     }
     void Start()
     {
@@ -23,7 +28,7 @@ public class CharacterCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointer
     [ContextMenu("PickChar")]
     public void SetChosenCharacter()
     {
-        if(TempData.ChoosenCharacter == character){ return; }
+        if (TempData.ChoosenCharacter == character) { return; }
         TempData.ChoosenCharacter = character;
         TempData.CharacterIsLocked = isLocked;
         TempData.updateUI = true;
@@ -40,7 +45,7 @@ public class CharacterCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointer
         Sequence sq = DOTween.Sequence();
         sq
         .Append(transform.DOScale(new Vector3(1.2f, 1.2f, 1.2f), 0.2f).From(transform.localScale).SetEase(Ease.InBack))
-        .Join(transform.DORotate(new Vector3(0, 0, Random.Range(-20,20)), 0.2f))
+        .Join(transform.DORotate(new Vector3(0, 0, Random.Range(-20, 20)), 0.2f))
         .Play();
     }
 
@@ -51,5 +56,16 @@ public class CharacterCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointer
         .Append(transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f).From(transform.localScale).SetEase(Ease.OutBack))
         .Join(transform.DORotate(new Vector3(0, 0, 0), 0.2f))
         .Play();
+    }
+    private void Update() {
+        CharacterName.text = characterName;
+        if (isLocked)
+        {
+            Background.color = lockedColor;
+        }
+        else
+        {
+            Background.color = unlockedColor;
+        }
     }
 }

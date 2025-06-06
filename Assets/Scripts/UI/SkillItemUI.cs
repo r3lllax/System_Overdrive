@@ -1,3 +1,5 @@
+using System.Runtime.Serialization;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +11,7 @@ public class SkillItemUI : MonoBehaviour
     private TextMeshProUGUI CurrentCount;
     private TextMeshProUGUI Description;
     private TextMeshProUGUI Price;
+    private bool ButtonIsShaking = false;
     void Awake()
     {
         Title = transform.GetChild(0).gameObject.GetComponent<TextMeshProUGUI>();
@@ -34,8 +37,9 @@ public class SkillItemUI : MonoBehaviour
             SetData();
         }
     }
-    public void buy()
+    public void buy(GameObject obj)
     {
+        if(ButtonIsShaking){ return; }
         bool operationStatus = DataManager.TryBuyEthernalSkill(currentUpgrade);
         if (operationStatus)
         {
@@ -43,7 +47,17 @@ public class SkillItemUI : MonoBehaviour
         }
         else
         {
+            ShakeButton(obj);
             Debug.Log("Ошибка покупки вечной способности");
         }
+    }
+    private void ShakeButton(GameObject obj)
+    {
+        Vector2 objPos = obj.GetComponent<RectTransform>().anchoredPosition;
+        Sequence sq = DOTween.Sequence();
+        sq
+        .Append(obj.GetComponent<RectTransform>().DOShakeAnchorPos(0.5f, 5).OnPlay(() => { ButtonIsShaking = true; }))
+        .OnComplete(()=>{ obj.GetComponent<RectTransform>().anchoredPosition = objPos;ButtonIsShaking = false; })
+        .Play();
     }
 }

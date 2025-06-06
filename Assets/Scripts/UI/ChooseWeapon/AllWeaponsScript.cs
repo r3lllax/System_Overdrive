@@ -29,6 +29,7 @@ public class AllWeaponsScript : MonoBehaviour
             {
                 card.GetComponent<WeaponCardInGrid>().isLocked = true;
             }
+            card.GetComponent<WeaponCardInGrid>().weaponName = weapon.WeaponName;
             card.GetComponent<WeaponCardInGrid>().weapon = weapon;
         }
     }
