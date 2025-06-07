@@ -8,7 +8,7 @@ public class test : MonoBehaviour
     }
     [ContextMenu("15hp")]
     public void hp15(){
-        SessionData.SetValueInt(ref SessionData.Health,15);
+        SessionData.AddValueInt(ref SessionData.Health,15);
         SessionData.ShowData();
     }
     [ContextMenu("EVADE50%")]

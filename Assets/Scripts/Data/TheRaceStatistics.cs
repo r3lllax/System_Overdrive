@@ -26,27 +26,6 @@ public static class TheRaceStatistics
         PlayerLevel = 0;
         BlockedBossUltiSlashes = 0;
     }
-    public static int GetScore()
-    {
-        int GarantedScore = 500 + ((PlayerLevel+1) * 200);
-        int TimeScore = (int)(Mathf.Pow(TimeAlive, 1.5f) * 0.8f);
-        int KillsScore = (KilledBasicEnemies * 10) + (KilledEliteEnemies * 50) + (KilledRangedEnemies * 30) + (KilledBoss * 300);
-        int AbilityScore = (AbilityUsages * 500) + (TimeInAbilities * 50);
-        float HeartsMultiplier;
-        if (LostHearts < 1)
-        {
-            HeartsMultiplier = 1.2f;
-        }
-        else
-        {
-            HeartsMultiplier = 1.2f - (float)LostHearts / 15;
-        }
-        HeartsMultiplier = Mathf.Round(HeartsMultiplier * 100f) / 100f;
-        int BlockedScore = BlockedBossUltiSlashes * 500;
-        int FinalScore = (int)((GarantedScore + TimeScore + KillsScore + AbilityScore + BlockedScore) * HeartsMultiplier);
-        GetDetails(GarantedScore,TimeScore,KillsScore,AbilityScore,BlockedScore,HeartsMultiplier,FinalScore);
-        return FinalScore;
-    }
     public static Statistics GetStatistics()
     {
         ////
@@ -64,6 +43,7 @@ public static class TheRaceStatistics
             HeartsMultiplier = 1.2f - (float)LostHearts / 15;
         }
         HeartsMultiplier = Mathf.Round(HeartsMultiplier * 100f) / 100f;
+        HeartsMultiplier = HeartsMultiplier < 0.5 ? 0.5f : HeartsMultiplier;
         int BlockedScore = BlockedBossUltiSlashes * 500;
         int FinalScore = (int)((GarantedScore + TimeScore + KillsScore + AbilityScore + BlockedScore) * HeartsMultiplier);
         ////

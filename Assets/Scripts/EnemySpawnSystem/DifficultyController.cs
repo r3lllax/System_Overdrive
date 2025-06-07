@@ -25,7 +25,6 @@ public class DifficultyController : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        TheRaceStatistics.TimeAlive = (int)timer;
         if (timer > timeToIncreaseDifficulty)
         {
             SessionData.AddValueFloat(ref SessionData.ExpMultiplier, 0.2f);

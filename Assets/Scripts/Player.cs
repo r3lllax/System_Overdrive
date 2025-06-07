@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private int Health;
     private float MoveSpeed;
+    private float liveTime;
     private float sprintMultiplier;
     private float PlayerSpeedMultiplier;
     private bool isBlockingNow = false;
@@ -66,6 +67,8 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        liveTime += Time.deltaTime;
+        TheRaceStatistics.TimeAlive = (int)liveTime;
         if (PlayerController.Instance.playerControls.Battle.Block.IsPressed())
         {
             if (!isBlockingProcessing)
@@ -184,7 +187,7 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
     }
     private bool CheckDeath(){
-        return Health>0?false:true;
+        return SessionData.Health<=0?true:false;
     }
     public void Death(){
         ///Парткиклы, выключение управления, скрипт запуска экрана результата

@@ -11,13 +11,19 @@ public class WeaponFollow : MonoBehaviour
     private Animator Anim;
     public static bool AnimEnd = true;
 
-    private void Start() {
+    void OnEnable()
+    {
+        AnimEnd = true;
+    }
+
+    private void Start()
+    {
         mainCamera = Camera.main;
         player = PlayerController.Instance.transform;
         sp = GetComponentInChildren<Transform>().GetChild(0).GetComponent<SpriteRenderer>();
         Anim = GetComponentInChildren<Transform>().GetChild(0).GetComponent<Animator>();
         distanceFromPlayer = currentWeapon.distanceFromPlayer;
-        Instantiate(currentWeapon.AttackParticles,GetComponentInChildren<Transform>().GetChild(0).transform.position,Quaternion.identity);
+        Instantiate(currentWeapon.AttackParticles, GetComponentInChildren<Transform>().GetChild(0).transform.position, Quaternion.identity);
 
     }
     private void Awake()

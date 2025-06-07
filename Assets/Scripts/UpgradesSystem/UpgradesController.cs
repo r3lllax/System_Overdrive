@@ -337,6 +337,10 @@ public class UpgradesController : MonoBehaviour
                 {
                     continue;
                 }
+                if (SessionData.CritChance == 0 && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "CritScale"))
+                {
+                    continue;
+                }
                 if (SessionData.LightningProcChance == 0 && (AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningJumpRadius" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDamageMultiplier" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningDelay" || AllUpgrades.UpgradesList[i].targerStat.ToString() == "LightningMaxJumps"))
                 {
                     continue;
