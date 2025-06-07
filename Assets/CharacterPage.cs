@@ -1,9 +1,11 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterPage : MonoBehaviour
 {
     [SerializeField] private GameObject WeaponPage;
+    private PlayerControls playerControls;
     public void Open()
     {
         Sequence sq = DOTween.Sequence();
@@ -26,9 +28,26 @@ public class CharacterPage : MonoBehaviour
     }
     void Awake()
     {
+
+        playerControls = new PlayerControls();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        Cursor.SetCursor(null, new Vector2(Screen.width/2,Screen.height/2), CursorMode.Auto);
+        Cursor.SetCursor(null, new Vector2(Screen.width / 2, Screen.height / 2), CursorMode.Auto);
+    }
+    void OnEnable()
+    {
+        playerControls.Enable();
+    }
+    void Update()
+    {
+        if (playerControls.UI.ToggleGameMenu.IsPressed())
+        {
+            SceneManager.LoadScene("MainMenuScene");
+        }
+    }
+    void OnDisable()
+    {
+        playerControls.Disable();
     }
 
 }

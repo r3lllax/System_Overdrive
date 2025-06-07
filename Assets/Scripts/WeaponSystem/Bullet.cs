@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -8,11 +9,17 @@ public class Bullet : MonoBehaviour
     [SerializeField]protected int MaxBounceCount;
     [SerializeField]protected int BounceCount;
     [SerializeField]protected int targetLayerNum = 7;
+    [SerializeField] protected List<Collider2D> AffectedEnemies;
     protected int damage = 0;
     protected float BulletLifeTIme;
 
+    public void Awake()
+    {
+        AffectedEnemies = new List<Collider2D>();
+    }
 
-    public void SetDamage(int Num){
+    public void SetDamage(int Num)
+    {
         damage = Num;
     }
     public void SetTargetLayer(int Num){

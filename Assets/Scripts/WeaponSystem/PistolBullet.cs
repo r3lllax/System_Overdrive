@@ -5,7 +5,7 @@ public class PistolBullet : Bullet
 {
     private void Start()
     {
-        
+        AffectedEnemies.Clear();
         MaxBypassesCount = SessionData.BulletBypassCount;
         BypassesCount = MaxBypassesCount;
     }
@@ -43,7 +43,14 @@ public class PistolBullet : Bullet
     public override void DamageRegTrigger(Collider2D collision){
         if (collision.gameObject.layer == targetLayerNum && collision.gameObject.activeSelf==true)
         {
-            Debug.Log(SessionData.BulletBypassCount);
+            if (AffectedEnemies.Contains(collision))
+            {
+                return;
+            }
+            else
+            {
+                AffectedEnemies.Add(collision);
+            }
             if (TryOneShot() == true && collision.gameObject.GetComponent<Enemy>().GetEnemyType() != "Boss")
             {
                 collision.gameObject.GetComponent<Enemy>().OneShot(10f);

@@ -47,10 +47,8 @@ public class FollowGun : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, angle);
         transform.position = player.position + direction * distanceFromPlayer;
 
-        //Переделать через инпут систем(Перенести в плеер контроллер)
         if (PlayerController.Instance.playerControls.Battle.Attack.IsPressed()  && Reload <= 0)
         {
-            //Тут вызов функции в которой проверяется количество патрон в магазине, все кд, и только после создания снаряда спавнится эффект
             Gun.TryFire();
 
         }

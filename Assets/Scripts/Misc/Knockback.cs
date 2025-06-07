@@ -27,7 +27,9 @@ public class Knockback : MonoBehaviour
     }
     
     private IEnumerator KnockRoutine(){
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         yield return new WaitForSeconds(knockBackTime);
+        gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         rb.linearVelocity = Vector2.zero;
         KnockedBack = false;
     }

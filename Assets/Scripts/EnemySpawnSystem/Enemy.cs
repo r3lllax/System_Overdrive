@@ -33,6 +33,11 @@ public class Enemy : MonoBehaviour
         highExpThreshold = Num;
     }
 
+    void OnEnable()
+    {
+        GetComponent<CapsuleCollider2D>().enabled = true;
+    }
+
     private void Awake()
     {
         knockback = GetComponent<Knockback>();

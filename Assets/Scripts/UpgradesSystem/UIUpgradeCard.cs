@@ -13,7 +13,7 @@ public class UIUpgradeCard : MonoBehaviour
     private LevelSystem playerLevelSystem;
     private GameObject Panel;
     private float value;
-    private static int CurrentChoosenUpgradesCount = 0;
+    public static int CurrentChoosenUpgradesCount = 0;
     
     public void SetCurrentUpgrade(Upgrade NEW)
     {
@@ -37,10 +37,7 @@ public class UIUpgradeCard : MonoBehaviour
             RenderUpgrate();
             return;
         }
-        else
-        {
-            CurrentChoosenUpgradesCount = 0;
-        }
+        
         if (playerLevelSystem.GetLevelUpsCount() > 1)
         {
             playerLevelSystem.Continue(true);
@@ -54,6 +51,7 @@ public class UIUpgradeCard : MonoBehaviour
         
     }
     private void RenderUpgrate(bool fullRerender = true){
+        
         Title.text = CurrentUpgrate.Name;
         image.sprite = CurrentUpgrate.Image;
         if (fullRerender)

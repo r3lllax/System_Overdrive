@@ -110,17 +110,18 @@ public static class DataManager
     {
         File.WriteAllText(savePath, JsonConvert.SerializeObject(CurrentUser));
     }
-    public static void CreateNewProfile()
+    public static void CreateNewProfile(string us = "Default")
     {
         if (!Directory.Exists(gameFolder))
         {
             Directory.CreateDirectory(gameFolder);
         }
-        NewProfile(gameFolder);
+        NewProfile(gameFolder,us);
     }
-    private static void NewProfile(string path)
+    private static void NewProfile(string path,string username="Default")
     {
         UserProfile newUser = new UserProfile();
+        newUser.ProfileName = username;
         File.WriteAllText(savePath, JsonConvert.SerializeObject(newUser));
     }
 }
