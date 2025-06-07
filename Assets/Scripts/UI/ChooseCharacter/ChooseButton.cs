@@ -55,14 +55,13 @@ public class ChooseButton : MonoBehaviour
         if (TempData.ChoosenCharacter && !TempData.CharIsPicked)
         {
             TempData.CharIsPicked = true;
-            SessionData.Health = TempData.ChoosenCharacter.Health;
-            SessionData.MoveSpeed = TempData.ChoosenCharacter.MoveSpeed;
             characterSelectPage.GetComponent<CharacterPage>().CloseAndOpenWeaponPage();
         }
         else
         {
             if (TempData.WeaponIsLocked || TempData.ChoosenWeapon == null) { return; }
             TempData.WeaponIsPicked = true;
+            SessionData.Reset();
             SetChosenWeaponAndDefaultData();
             SceneManager.LoadScene("SampleScene");
 
@@ -70,6 +69,8 @@ public class ChooseButton : MonoBehaviour
         
     }
     public void SetChosenWeaponAndDefaultData(){
+        SessionData.Health = TempData.ChoosenCharacter.Health;
+        SessionData.MoveSpeed = TempData.ChoosenCharacter.MoveSpeed;
         SessionData.Damage = TempData.ChoosenWeapon.Damage;
         SessionData.AttackSpeedMelee = TempData.ChoosenWeapon.AnimationSpeed;
         SessionData.CdBetweenFire = TempData.ChoosenWeapon.GunAttackSpeed;

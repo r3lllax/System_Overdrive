@@ -59,7 +59,16 @@ public class InGameMenu : MonoBehaviour
         TempData.CharIsPicked = false;
         TempData.WeaponIsPicked = false;
         TempData.needRefreshData = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.SetCursor(null, new Vector2(Screen.width/2,Screen.height/2), CursorMode.Auto);
+        TheRaceStatistics.Reset();
         SceneManager.LoadScene("ChooserCharacterScene");
+    }
+    [ContextMenu("Statistics")]
+    public void GetStatistics()
+    {
+        TheRaceStatistics.GetScore();
     }
     public void Close()
     {

@@ -54,7 +54,7 @@ public class LevelSystem : MonoBehaviour
         AddExp(Num);
     }
     private void Update() {
-        //CheckLevelUpdateV2();
+        TheRaceStatistics.PlayerLevel = CurrentLevel;
     }
     [ContextMenu("LEVELUP")]
     public void LevelUP(){

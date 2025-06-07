@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         }
         if (isBlockingNow)
         {
+            TheRaceStatistics.BlockedBossUltiSlashes++;
             DamageUI.Instance.AddText(1, transform.position,"Evade");
             Instantiate(EvadeEffect, transform.position,Quaternion.identity);
             return false;
@@ -162,6 +163,10 @@ public class Player : MonoBehaviour
         if (CheckDeath())
         {
             Death();
+        }
+        else
+        {
+            TheRaceStatistics.LostHearts++;
         }
     }
     private IEnumerator DamageRoutine(){

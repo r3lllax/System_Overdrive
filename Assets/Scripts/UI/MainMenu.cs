@@ -8,6 +8,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject NoProfileBlock;
     void Awake()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.SetCursor(null, new Vector2(Screen.width/2,Screen.height/2), CursorMode.Auto);
         Render();
     }
     [ContextMenu("CreateUser")]

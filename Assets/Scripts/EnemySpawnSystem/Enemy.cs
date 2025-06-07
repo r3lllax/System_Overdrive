@@ -90,10 +90,10 @@ public class Enemy : MonoBehaviour
     }
     [ContextMenu("Die")]
     public void Die(){
-        //Добавить настройку эффекта
+        AddStatistics();
         if (DataManager.CurrentUser.Settings.EnableEnemyDeathEffect)
         {
-            Instantiate(DeathEffect,transform.position,Quaternion.identity);
+            Instantiate(DeathEffect, transform.position, Quaternion.identity);
         }
         if (SessionData.CanLifeSteal)
         {
@@ -110,9 +110,29 @@ public class Enemy : MonoBehaviour
         ESC.OnEnemyDeath();
         
     }
-    public void DropEXP(){
+    private void AddStatistics()
+    {
+        switch (Type)
+        {
+            case "Basic":
+                TheRaceStatistics.KilledBasicEnemies++;
+                break;
+            case "Elite":
+                TheRaceStatistics.KilledEliteEnemies++;
+                break;
+            case "Ranged":
+                TheRaceStatistics.KilledRangedEnemies++;
+                break;
+            case "Boss":
+                TheRaceStatistics.KilledBoss++;
+                break;
+            
+        }
+    }
+    public void DropEXP()
+    {
         GameObject Exp = ExpPool.Instance.GetExp();
-        Exp.GetComponent<Exp>().SetExpCount(Random.Range(lowExpThreshold,highExpThreshold));
+        Exp.GetComponent<Exp>().SetExpCount(Random.Range(lowExpThreshold, highExpThreshold));
         Vector2 pos = transform.position;
         pos.y += 0.1f;
         Exp.transform.position = pos;

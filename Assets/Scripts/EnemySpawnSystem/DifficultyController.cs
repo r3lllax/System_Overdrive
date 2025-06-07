@@ -24,6 +24,7 @@ public class DifficultyController : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
+        TheRaceStatistics.TimeAlive = (int)timer;
         if (timer > timeToIncreaseDifficulty)
         {
             SessionData.AddValueFloat(ref SessionData.ExpMultiplier, 0.2f);
@@ -53,8 +54,8 @@ public class DifficultyController : MonoBehaviour
             {
                 StopAllCoroutines();
                 StartCoroutine(Boss());
-            } 
-            
+            }
+
             SessionData.AddProcentesFloat(ref SessionData.EnemySpeedMultiplier, 3.5f);
             ESC.IncreaseHpStats();
             ESC.IncreaseMaxEnemies(enemyInIncrease);

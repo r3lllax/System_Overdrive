@@ -102,7 +102,45 @@ public class SessionData
 
 
     };
-
+    public static void Reset()
+    {
+        Health=0;
+        MoveSpeed=0;
+        Damage=0;
+        offersCount=3;
+        ExpFinderRadius=3;
+        AttackSpeedMelee=0;
+        CdBetweenFire=0;
+        CdBetweenMagazine=0;
+        ExpMultiplier=1;
+        StartSpeedMultiplier=0;
+        SprintMultiplier=0;
+        MagazineCapacity=0;
+        OneShootChance=0;
+        CritChance=0;
+        CritScale=2;
+        EnemySpeedMultiplier=1;
+        MeleeSize=Vector3.zero;
+        BulletSize=Vector3.zero;
+        BulletSpeed=0;
+        BulletLifeTime=0;
+        AbilityCooldown=0;
+        AbilityActiveTime=0;
+        BulletBypassCount=1;
+        BulletRebonceCount=1;
+        DamageEvadeChance=0;
+        LightningProcChance=0;
+        LightningMaxJumps=3;
+        ChooseUpgradesCount=1;
+        LightningJumpRadius=5;
+        LightningDamageMultiplier=0.7f;
+        LightningDelay=0.15f;
+        LifeStealStrength=0.01f;
+        LifeStealCurrentValue=0;
+        CanLifeSteal=false;
+        CanDestroyEnemyBullet=false;
+        BackFire=0;
+    }
     private static Dictionary<string[], string> PostfixDict = new Dictionary<string[], string>
     {
         {new string[]{"CritScale","LightningProcChance","DamageEvadeChance","CritChance","OneShootChance","LifeStealStrength"},"%"},

@@ -23,11 +23,18 @@ public class GhostMode : Ability
         isReady = false;
         sp.color = new Color32(127, 147, 255, 255);
         yield return new WaitForSeconds(castTime);
-
+        if (PlayerIsOwner)
+        {
+            TheRaceStatistics.AbilityUsages++;
+        }
         ExecuteAbility();
         ActiveTimer = activeTime;
         ActiveNow = true;
         yield return new WaitForSeconds(activeTime);
+        if (PlayerIsOwner)
+        {
+            TheRaceStatistics.TimeInAbilities += (int)activeTime;
+        }
         ActiveNow = false;
         StartCoroutine(CooldownRoutine());
         

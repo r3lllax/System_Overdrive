@@ -136,8 +136,16 @@ public abstract class Ability : MonoBehaviour
         yield return new WaitForSeconds(castTime);
         ActiveTimer = activeTime;
         ActiveNow = true;
+        if (PlayerIsOwner)
+        {
+            TheRaceStatistics.AbilityUsages++;
+        }
         ExecuteAbility();
         yield return new WaitForSeconds(activeTime);
+        if (PlayerIsOwner)
+        {
+            TheRaceStatistics.TimeInAbilities += (int)activeTime;
+        }
         ActiveNow = false;
         StartCoroutine(CooldownRoutine());
     }
