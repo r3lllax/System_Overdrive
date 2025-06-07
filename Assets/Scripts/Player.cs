@@ -118,6 +118,11 @@ public class Player : MonoBehaviour
     {
         if (Random.value <= SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance)/100)
         {
+            if (SessionData.ScaleValueToProcente(SessionData.DamageEvadeChance) > 0)
+            {
+
+                var temp = SessionData.DamageEvadeChance < 0 ? SessionData.DamageEvadeChance = 0 : SessionData.DamageEvadeChance -= SessionData.ProcenteToScaleValue(2);
+            }
             Instantiate(EvadeEffect, transform.position,Quaternion.identity);
             return false;
         }

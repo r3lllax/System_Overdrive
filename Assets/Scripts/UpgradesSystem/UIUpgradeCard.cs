@@ -79,6 +79,10 @@ public class UIUpgradeCard : MonoBehaviour
             Now.text = "";
             body = $@"<color=#FFFFFF>{ReadbleStatVar}{Debuff}";
         }
+        if (CurrentUpgrate.targerStat.ToString() == "DamageEvadeChance")
+        {
+            body += $"\n<color=#FFFFFF>Каждое уклонение расходует 2%";
+        }
         Body.text = body;
     }
 

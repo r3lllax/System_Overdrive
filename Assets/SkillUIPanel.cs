@@ -10,7 +10,7 @@ public class SkillUIPanel : MonoBehaviour
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
-        outOfScreen = new Vector2(GetComponent<RectTransform>().anchoredPosition.x, Screen.height * 2);
+        outOfScreen = new Vector2(GetComponent<RectTransform>().anchoredPosition.x, Screen.height * 3);
         rectTransform.anchoredPosition = outOfScreen;
     }
     [ContextMenu("Toggle")]
