@@ -45,6 +45,7 @@ public class ChooseButton : MonoBehaviour
                 }
                 else
                 {
+                    if(ButtonIsShaking){ return; }
                     ShakeButton(gameObject);
                 }
             }

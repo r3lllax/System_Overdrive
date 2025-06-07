@@ -20,6 +20,7 @@ TagManager:
   - LevelUpObj
   - EnemuBullet
   - CinemachineVirtualCamera
+  - Statistics
   layers:
   - Default
   - TransparentFX

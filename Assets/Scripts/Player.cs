@@ -7,12 +7,15 @@ public class Player : MonoBehaviour
     //Обращаемся к классу TEMPDATA и в переменную SpeedMultiply получаем множитель скорости с оружием
     private Weapon Data;
     [SerializeField] private GameObject DamagePrefab;
-    [SerializeField]private int Health;
+    [SerializeField] private GameObject DeathPrefab;
+
+    [SerializeField] private int Health;
     private float MoveSpeed;
     private float sprintMultiplier;
     private float PlayerSpeedMultiplier;
     private bool isBlockingNow = false;
     private bool isBlockingProcessing = false;
+    private StatisticWindow sw;
     private GameObject HPUI;
     [SerializeField] private GameObject HPUIprefab;
     [SerializeField] private GameObject LifeStealHPUIprefab;
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
     }
     private void Awake()
     {
+        sw = GameObject.FindWithTag("Statistics").GetComponent<StatisticWindow>();
         HPUI = GameObject.FindWithTag("HPUI");
         UpdateData();
     }
@@ -184,7 +188,8 @@ public class Player : MonoBehaviour
     }
     public void Death(){
         ///Парткиклы, выключение управления, скрипт запуска экрана результата
-        
+        Instantiate(DeathPrefab, transform.position,Quaternion.identity);
+        sw.Title("Вы погибли");
     }
     public float GetMoveSpeed(){
         return MoveSpeed;

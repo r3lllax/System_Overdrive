@@ -47,6 +47,45 @@ public static class TheRaceStatistics
         GetDetails(GarantedScore,TimeScore,KillsScore,AbilityScore,BlockedScore,HeartsMultiplier,FinalScore);
         return FinalScore;
     }
+    public static Statistics GetStatistics()
+    {
+        ////
+        int GarantedScore = 500 + ((PlayerLevel + 1) * 200);
+        int TimeScore = (int)(Mathf.Pow(TimeAlive, 1.5f) * 0.8f);
+        int KillsScore = (KilledBasicEnemies * 10) + (KilledEliteEnemies * 50) + (KilledRangedEnemies * 30) + (KilledBoss * 300);
+        int AbilityScore = (AbilityUsages * 500) + (TimeInAbilities * 50);
+        float HeartsMultiplier;
+        if (LostHearts < 1)
+        {
+            HeartsMultiplier = 1.2f;
+        }
+        else
+        {
+            HeartsMultiplier = 1.2f - (float)LostHearts / 15;
+        }
+        HeartsMultiplier = Mathf.Round(HeartsMultiplier * 100f) / 100f;
+        int BlockedScore = BlockedBossUltiSlashes * 500;
+        int FinalScore = (int)((GarantedScore + TimeScore + KillsScore + AbilityScore + BlockedScore) * HeartsMultiplier);
+        ////
+        Statistics gameStat = new Statistics();
+        gameStat.GarantedScore = new string[] { $"{PlayerLevel + 1}", $"{PlayerLevel+1} x200 + 500", GarantedScore.ToString() };
+        gameStat.BasicKills = new string[] { $"{KilledBasicEnemies}", $"{KilledBasicEnemies} x10", (KilledBasicEnemies * 10).ToString() };
+        gameStat.RangedKills = new string[] { $"{KilledRangedEnemies}", $"{KilledRangedEnemies} x30", (KilledRangedEnemies * 30).ToString() };
+        gameStat.EliteKills = new string[] { $"{KilledEliteEnemies}", $"{KilledEliteEnemies} x50", (KilledEliteEnemies * 50).ToString() };
+        gameStat.BossKills = new string[] { $"{KilledBoss}", $"{KilledBoss} x300", (KilledBoss * 300).ToString() };
+        gameStat.KillsSummary = $"{KillsScore}";
+        gameStat.TimeScore = new string[] { $"{TimeAlive}", $"{TimeAlive}^1.5*0.8", ((int)(Mathf.Pow(TimeAlive, 1.5f) * 0.8f)).ToString() };
+        gameStat.AbilitiesUsage = new string[] { $"{AbilityUsages}", $"{AbilityUsages} x500", (AbilityUsages * 500).ToString() };
+        gameStat.AbilitiesTime = new string[] { $"{TimeInAbilities}", $"{TimeInAbilities} x50", (TimeInAbilities * 50).ToString() };
+        gameStat.AbilitiesSummary = $"{AbilityScore}";
+        gameStat.BossFight = new string[] { $"{BlockedBossUltiSlashes}", $"{BlockedBossUltiSlashes} x500", (BlockedBossUltiSlashes * 500).ToString() };
+        gameStat.Defence = new string[] { $"{LostHearts}", $"1.2-{LostHearts}/15", (HeartsMultiplier).ToString() };
+        gameStat.ClearExp = new string[] { "", "", (GarantedScore + TimeScore + KillsScore + AbilityScore + BlockedScore).ToString() };
+        gameStat.ExpMultiplier = HeartsMultiplier.ToString();
+        gameStat.CalculatedExp = new string[] { "", "", (FinalScore).ToString() };
+        gameStat.Money = FinalScore / 10;
+        return gameStat;
+    }
     public static void GetDetails(int GarantedScore, int TimeScore, int KillsScore, int AbilityScore, int BlockedScore, float HeartsMultiplier, int FinalScore)
     {
         string result = $@"
@@ -54,7 +93,7 @@ public static class TheRaceStatistics
 
         Гарантированные очки
         =======================================================
-        Уровень                    {PlayerLevel+1} x200 + 500  - {500 + ((PlayerLevel+1) * 200)} оч.
+        Уровень                    {PlayerLevel + 1} x200 + 500  - {500 + ((PlayerLevel + 1) * 200)} оч.
 
         Убийства
         =======================================================

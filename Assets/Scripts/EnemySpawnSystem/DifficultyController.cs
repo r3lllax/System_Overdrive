@@ -6,6 +6,7 @@ public class DifficultyController : MonoBehaviour
     [SerializeField] private EnemySpawnController ESC;
     [SerializeField] private float timeToIncreaseDifficulty = 30f;
     [SerializeField] private int enemyInIncrease = 5;
+    [SerializeField] private AnimationCurve difficulty;
     private float timeToElite = 3;
     private float timeToRanged = 5;
     private float timeToBoss = 20/**1*/;

@@ -472,7 +472,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_0: 3761671485956695234
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_1: 5020635089767371482
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_10: 4188444095460167739
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_11: -3838431245908527979
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_12: -7708582004588508920
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_13: -6009522690695569914
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_2: -4302087762286988959
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_3: 7200298926624850861
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_4: -6283746390169472038
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_5: 2121358900425293612
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_6: 8581994205335342489
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_7: 6898399911888202585
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_8: -2934006428036912017
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview 1_9: 5033229311815357591
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

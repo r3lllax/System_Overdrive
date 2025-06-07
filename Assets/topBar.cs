@@ -1,6 +1,5 @@
 using DG.Tweening;
 using TMPro;
-using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class topBar : MonoBehaviour

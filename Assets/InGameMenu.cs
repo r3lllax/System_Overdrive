@@ -65,11 +65,7 @@ public class InGameMenu : MonoBehaviour
         TheRaceStatistics.Reset();
         SceneManager.LoadScene("ChooserCharacterScene");
     }
-    [ContextMenu("Statistics")]
-    public void GetStatistics()
-    {
-        TheRaceStatistics.GetScore();
-    }
+
     public void Close()
     {
         Sequence sq = DOTween.Sequence();

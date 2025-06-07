@@ -472,7 +472,21 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_0: 1600635168008686236
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_1: 1997079736058861855
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_10: -3496985461060789270
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_11: -3847624820093299919
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_12: -3865016001426580246
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_13: 2834960652668145266
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_2: 3690737236237134405
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_3: 6106428628553852109
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_4: -2258208736604027012
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_5: 7381062773386427193
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_6: -8949283562887733474
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_7: 1636983576318470141
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_8: -4389945705090334045
+      b7fc7cc5-fe3b-46c2-92f1-1781c4f56378_removalai_preview_9: 3206389612008533327
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
