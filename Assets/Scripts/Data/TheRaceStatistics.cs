@@ -43,7 +43,7 @@ public static class TheRaceStatistics
             HeartsMultiplier = 1.2f - (float)LostHearts / 15;
         }
         HeartsMultiplier = Mathf.Round(HeartsMultiplier * 100f) / 100f;
-        HeartsMultiplier = HeartsMultiplier < 0.5 ? 0.5f : HeartsMultiplier;
+        HeartsMultiplier = HeartsMultiplier < 1 ? 1 : HeartsMultiplier;
         int BlockedScore = BlockedBossUltiSlashes * 500;
         int FinalScore = (int)((GarantedScore + TimeScore + KillsScore + AbilityScore + BlockedScore) * HeartsMultiplier);
         ////
