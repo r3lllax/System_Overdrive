@@ -3,12 +3,22 @@ using UnityEngine;
 
 public class ExpPool : MonoBehaviour
 {
+    public AnimationCurve expScaler;
     public static ExpPool Instance;
     public GameObject ExpPrefab;
     public int poolSize = 300;
+    private float timer;
 
     private Queue<GameObject> Exps = new Queue<GameObject>();
 
+    public float GetExpScaler()
+    {
+        return Mathf.Clamp(expScaler.Evaluate(timer / SessionData.totalGameTime), 1f, 999f);
+    }
+    void Update()
+    {
+        timer += Time.deltaTime;
+    }
     void Awake()
     {
         Instance = this;

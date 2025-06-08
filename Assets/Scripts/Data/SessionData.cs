@@ -20,6 +20,7 @@ public class SessionData
     public static float SprintMultiplier;//✓
     public static int MagazineCapacity;//✓
     public static float OneShootChance;//✓
+    public static float totalGameTime = 650f;//✓
     public static float CritChance;//✓
     public static float CritScale = 2f;//✓
     public static float EnemySpeedMultiplier = 1f;// - - NotForUser

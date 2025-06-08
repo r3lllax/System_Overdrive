@@ -20,7 +20,7 @@ MonoBehaviour:
   GunBulletSpeed: 0
   GunBulletLifeTime: 0
   GunMagazineReloadTime: 0
-  PlayerSpeedMultiplier: 0.5
+  PlayerSpeedMultiplier: 0.7
   Damage: 6
   Price: 600
   WeaponPrefab: {fileID: 6801085675323255941, guid: dd23154cc8cde454886af5749fad8fc3, type: 3}

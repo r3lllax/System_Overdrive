@@ -55,6 +55,10 @@ public class test : MonoBehaviour
     public void GAMESPEED(){
         Time.timeScale =5;
     }
+    [ContextMenu("GAMESPEEDX10")]
+    public void GAMESPEEDX10(){
+        Time.timeScale =10;
+    }
     [ContextMenu("GAMESPEED1/2")]
     public void GAMESPEEDhalf(){
         Time.timeScale =0.5f;

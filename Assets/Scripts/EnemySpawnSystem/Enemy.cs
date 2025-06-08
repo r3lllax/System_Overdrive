@@ -137,7 +137,8 @@ public class Enemy : MonoBehaviour
     public void DropEXP()
     {
         GameObject Exp = ExpPool.Instance.GetExp();
-        Exp.GetComponent<Exp>().SetExpCount(Random.Range(lowExpThreshold, highExpThreshold));
+        
+        Exp.GetComponent<Exp>().SetExpCount(Random.Range(lowExpThreshold, highExpThreshold)*ExpPool.Instance.GetExpScaler() );
         Vector2 pos = transform.position;
         pos.y += 0.1f;
         Exp.transform.position = pos;

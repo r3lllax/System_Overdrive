@@ -9,14 +9,14 @@ public class EnemySpawnController : MonoBehaviour
     [SerializeField] private float spawnDistance = 10f;
 
     [SerializeField] private int maxEnemies;
-    private List<string> AvailbleTypes = new List<string>{"Basic"};
+    private List<string> AvailbleTypes = new List<string> { "Basic" };
     private int currentEnemies;
-    private int MinBasicHP=3;
-    private int MaxBasicHP=5;
-    private int MinRangedHP=2;
-    private int MaxRangedHP=3;
-    private int MinEliteHP=10;
-    private int MaxEliteHP=20;
+    private int MinBasicHP = 3;
+    private int MaxBasicHP = 5;
+    private int MinRangedHP = 2;
+    private int MaxRangedHP = 3;
+    private int MinEliteHP = 10;
+    private int MaxEliteHP = 20;
     private new Camera camera;
 
     private void Awake()
@@ -30,10 +30,13 @@ public class EnemySpawnController : MonoBehaviour
         StartCoroutine(SpawnRoutine());
     }
 
-    private IEnumerator SpawnRoutine(){
-        while(true){
+    private IEnumerator SpawnRoutine()
+    {
+        while (true)
+        {
 
-            if(currentEnemies < maxEnemies){
+            if (currentEnemies < maxEnemies)
+            {
                 SpawnEnemy();
             }
             yield return new WaitForSeconds(spawnInterval);
@@ -48,7 +51,8 @@ public class EnemySpawnController : MonoBehaviour
         return new Vector3(X, Y, spawnDistance);
     }
 
-    public void IncreaseHpStats(){
+    public void IncreaseHpStats()
+    {
         MinBasicHP++;
         MaxBasicHP++;
         MinEliteHP++;
@@ -57,44 +61,48 @@ public class EnemySpawnController : MonoBehaviour
         MaxRangedHP++;
     }
 
-    private void SpawnEnemy(){
-        
-        //К примеру если прошло 5 минут то в avalibletypes добавить Elite, если 15 минут то добавить Boss
-        string TypeToSpawn = AvailbleTypes[Random.Range(0,AvailbleTypes.Count)];
+    private void SpawnEnemy()
+    {
+        string TypeToSpawn = AvailbleTypes[Random.Range(0, AvailbleTypes.Count)];
         GameObject enemy = pool.GetEnemy(TypeToSpawn);
-        if(enemy!=null){
+        if (enemy != null)
+        {
             currentEnemies++;
             Enemy EnemyComponent = enemy.GetComponent<Enemy>();
             int enemyHp = 1;
-            
-            if (EnemyComponent.GetEnemyType() == "Basic"){
-                enemyHp = Random.Range(MinBasicHP,MaxBasicHP);
-                EnemyComponent.SetLowExpTh(20*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(30*SessionData.ExpMultiplier);
-            }
-            else if(EnemyComponent.GetEnemyType()=="Elite"){
-                enemyHp = Random.Range(MinEliteHP,MaxEliteHP);
-                EnemyComponent.SetLowExpTh(30*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(60*SessionData.ExpMultiplier);
 
-                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f,2f));
-                
+            if (EnemyComponent.GetEnemyType() == "Basic")
+            {
+                enemyHp = Random.Range(MinBasicHP, MaxBasicHP);
+                EnemyComponent.SetLowExpTh(20 * SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(30 * SessionData.ExpMultiplier);
             }
-            else if(EnemyComponent.GetEnemyType()=="Ranged"){
-                enemyHp = Random.Range(MinRangedHP,MaxRangedHP);
-                EnemyComponent.SetLowExpTh(20*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(30*SessionData.ExpMultiplier);
+            else if (EnemyComponent.GetEnemyType() == "Elite")
+            {
+                enemyHp = Random.Range(MinEliteHP, MaxEliteHP);
+                EnemyComponent.SetLowExpTh(30 * SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(60 * SessionData.ExpMultiplier);
 
-                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(2f,3f));
-                
+                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(0.9f, 2f));
+
             }
-            else if(EnemyComponent.GetEnemyType()=="Boss"){
+            else if (EnemyComponent.GetEnemyType() == "Ranged")
+            {
+                enemyHp = Random.Range(MinRangedHP, MaxRangedHP);
+                EnemyComponent.SetLowExpTh(20 * SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(30 * SessionData.ExpMultiplier);
+
+                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(2f, 3f));
+
+            }
+            else if (EnemyComponent.GetEnemyType() == "Boss")
+            {
                 enemyHp = 10000;
-                EnemyComponent.SetLowExpTh(1000*SessionData.ExpMultiplier);
-                EnemyComponent.SetHighExpTh(3000*SessionData.ExpMultiplier);
+                EnemyComponent.SetLowExpTh(1000 * SessionData.ExpMultiplier);
+                EnemyComponent.SetHighExpTh(3000 * SessionData.ExpMultiplier);
 
-                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(1.5f,2f));
-                
+                enemy.GetComponent<EnemyPathfinder>().SetMoveSpeed(Random.Range(1.5f, 2f));
+
             }
             EnemyComponent.SetHealth(enemyHp);
             EnemyComponent.pool = pool;
@@ -104,10 +112,12 @@ public class EnemySpawnController : MonoBehaviour
             enemy.SetActive(true);
         }
     }
-    public void OnEnemyDeath(){
+    public void OnEnemyDeath()
+    {
         currentEnemies--;
     }
-    public void IncreaseMaxEnemies(int num){
+    public void IncreaseMaxEnemies(int num)
+    {
         maxEnemies += num;
     }
     public void ClearAvailableTypes()
@@ -118,11 +128,21 @@ public class EnemySpawnController : MonoBehaviour
     {
         AvailbleTypes.Add(newType);
     }
-    public void DecreaseSpawnInterval(float number){
-        spawnInterval-=number;
-        if(spawnInterval<0){
+    public void DecreaseSpawnInterval(float number)
+    {
+        spawnInterval -= number;
+        if (spawnInterval < 0)
+        {
             spawnInterval = 0.5f;
         }
+    }
+    public void SetSpawnInterval(float value)
+    {
+        spawnInterval = value;
+    }
+     public void SetMaxEnemies(int value)
+    {
+        maxEnemies = value;
     }
 
 

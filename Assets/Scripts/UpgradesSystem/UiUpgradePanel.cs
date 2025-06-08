@@ -33,7 +33,9 @@ public class UiUpgradePanel : MonoBehaviour
     }
     private void Update()
     {
-        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount()>0?$"Доступно улучшений: {SessionData.ChooseUpgradesCount- UIUpgradeCard.CurrentChoosenUpgradesCount}":"";
+        UpgradeCounterUI.GetComponent<TextMeshProUGUI>().text = playerLevelSystem.GetLevelUpsCount() > 0 ? $"Доступно улучшений: {SessionData.ChooseUpgradesCount - UIUpgradeCard.CurrentChoosenUpgradesCount}" : "";
+        Debug.Log($"{SessionData.ChooseUpgradesCount} - {UIUpgradeCard.CurrentChoosenUpgradesCount}");
+
     }
     public void CreateCard(Vector3 position, GameObject Card, Upgrade upgr)
     {
@@ -51,6 +53,10 @@ public class UiUpgradePanel : MonoBehaviour
         aimStatus = playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus;
         playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = false;
 
+    
+        UIUpgradeCard.CurrentChoosenUpgradesCount = 0;
+        
+
         timeBefore = Time.timeScale;
         Time.timeScale = 0;
         playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().CheckVisual();
@@ -64,10 +70,7 @@ public class UiUpgradePanel : MonoBehaviour
     }
     public void StartTime()
     {
-        if (SessionData.ChooseUpgradesCount == UIUpgradeCard.CurrentChoosenUpgradesCount)
-        {
-            UIUpgradeCard.CurrentChoosenUpgradesCount = 0;
-        }
+        
         playerLevelSystem.transform.parent.GetChild(0).GetComponentInChildren<AutoAim>().AutoAimStatus = aimStatus;
         Time.timeScale = timeBefore;
     }

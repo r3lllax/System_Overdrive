@@ -42,6 +42,15 @@ public class CharacterPage : MonoBehaviour
     {
         if (playerControls.UI.ToggleGameMenu.IsPressed())
         {
+            TempData.ChoosenCharacter = null;
+            TempData.ChoosenWeapon = null;
+            TempData.ActivePage = 0;
+            TempData.CharacterIsLocked = false;
+            TempData.WeaponIsLocked = false;
+            TempData.updateUI = false;
+            TempData.CharIsPicked = false;
+            TempData.WeaponIsPicked = false;
+            TempData.needRefreshData = false;
             SceneManager.LoadScene("MainMenuScene");
         }
     }

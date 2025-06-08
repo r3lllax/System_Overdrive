@@ -163,8 +163,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53fbdf47696b43d49a8568cdf77ea46b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expScaler:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.447076
+      value: 1
+      inSlope: 0.92789763
+      outSlope: 0.92789763
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.67773485
+      value: 1.6440301
+      inSlope: 2.5640976
+      outSlope: 2.5640976
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.31195617
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 5
+      inSlope: 10.4136915
+      outSlope: 10.4136915
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   ExpPrefab: {fileID: 332898835425162916, guid: 01c69385b96c21940a0e51be10a3c303, type: 3}
-  poolSize: 300
+  poolSize: 500
 --- !u!1 &949343964554579358
 GameObject:
   m_ObjectHideFlags: 0

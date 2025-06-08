@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Exp : MonoBehaviour
 {
-    [SerializeField]private float ExpirienceCount;
+    [SerializeField] private float ExpirienceCount;
     [SerializeField]private Transform target;
     private Vector3 pos;
     [SerializeField]private float speed;
