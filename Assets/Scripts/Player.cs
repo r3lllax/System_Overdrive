@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         liveTime += Time.deltaTime;
+        QualitySettings.vSyncCount = DataManager.CurrentUser.Settings.Vsync;
         TheRaceStatistics.TimeAlive = (int)liveTime;
         if (PlayerController.Instance.playerControls.Battle.Block.IsPressed())
         {

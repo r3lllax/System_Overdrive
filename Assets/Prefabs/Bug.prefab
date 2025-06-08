@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23892b2fc67f79041ba36f0330679a21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DeathEffect: {fileID: 5214810043253317559, guid: 222d87d2818c4784aabf8d77acccd4af, type: 3}
+  DeathEffect: {fileID: 5214810043253317559, guid: 95abc57496097fc4c843f7e7f5503f86, type: 3}
   DamageEffect: {fileID: 6325392617095057417, guid: 92dc7ddebcc0e68499bce85f739ee90a, type: 3}
   Type: Basic
   health: 0

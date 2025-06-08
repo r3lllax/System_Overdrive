@@ -1,7 +1,6 @@
 using DG.Tweening;
-using Unity.Burst.Intrinsics;
 using UnityEngine;
-using UnityEngine.UI;
+
 
 
 public class ProfileExists : MonoBehaviour

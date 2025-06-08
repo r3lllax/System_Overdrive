@@ -12,4 +12,5 @@ public class TempData
     public static bool CharIsPicked = false;
     public static bool WeaponIsPicked = false;
     public static bool needRefreshData = false;
+    public static bool FirstAppearence = true;
 }

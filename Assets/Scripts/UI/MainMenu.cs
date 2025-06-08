@@ -44,6 +44,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void AnimateLogo()
+    {
+        Sequence sq = DOTween.Sequence();
+    }
+
     public void OpenSettings(Transform transformObj)
     {
         Sequence sq = DOTween.Sequence();

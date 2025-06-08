@@ -15,13 +15,13 @@ public class WeaponPage : MonoBehaviour
     {
         Sequence sq = DOTween.Sequence();
         sq
-        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play().OnComplete(()=>TempData.ActivePage=0);;
+        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).Play().OnComplete(() => { gameObject.SetActive(!gameObject.activeSelf); TempData.ActivePage = 0; });
     }
     public void CloseAndOpenCharacterPage()
     {
         Sequence sq = DOTween.Sequence();
         sq
-        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).OnComplete(()=>CharacterPage.GetComponent<CharacterPage>().Open())
+        .Append(transform.DOScale(0f, 0.5f).From(1)).SetEase(Ease.InOutCubic).OnComplete(() => { CharacterPage.GetComponent<CharacterPage>().Open(); })
         .Play();
     }
 }

@@ -155,6 +155,7 @@ public class Settings
 {
     public bool EnableEnemyDeathEffect = false;
     public bool EnablePostProcessing = true;
+    public int Vsync = 0;
     public float MusicVolume = 1f;
     public float EffectsVolume = 1f;
 }

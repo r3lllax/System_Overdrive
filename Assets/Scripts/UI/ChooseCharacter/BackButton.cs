@@ -17,7 +17,7 @@ public class BackButton : MonoBehaviour
             TempData.CharIsPicked = false;
             TempData.ChoosenWeapon = null;
             TempData.WeaponIsLocked = false;
-            
+            weaponSelectPage.GetComponent<WeaponPage>().Close();
             weaponSelectPage.GetComponent<WeaponPage>().CloseAndOpenCharacterPage();
             
         }

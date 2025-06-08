@@ -14,7 +14,7 @@ public class topBar : MonoBehaviour
         try
         {
             transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = DataManager.CurrentUser.ProfileName;
-            transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Денег:\n{DataManager.CurrentUser.Coins}";
+            transform.GetChild(2).transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = $"Монет:\n<color=#ffcd45>{DataManager.CurrentUser.Coins}";
         }
         catch { }
         
