@@ -33,7 +33,6 @@ public class Sandevistan : Ability
         PlayerMLSBefore = SessionData.AttackSpeedMelee;
         PlayerMLSAfter = PlayerMLSBefore * 3;
         StartCoroutine(WaitEndOfAbility());
-        Debug.Log($"Исполняю способность с каст-таймом равному {castTime} и кд {cooldown}");
     }
     private IEnumerator WaitEndOfAbility()
     {
@@ -42,18 +41,24 @@ public class Sandevistan : Ability
         {
             weapon.SetUnlimitedAmmo(true);
         }
+        
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedAfter);
         SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSAfter);
         SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDdAfter);
 
         yield return new WaitForSeconds(activeTime);
-         if (weapon)
+        if (weapon)
         {
             weapon.SetUnlimitedAmmo(false);
         }
-        SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedBefore);
-        SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, PlayerMLSBefore);
-        SessionData.SetValueFloat(ref SessionData.CdBetweenFire, PlayerCDBefore);
+
+        float tempSpeed = SessionData.MoveSpeed - (PlayerSpeedAfter - PlayerSpeedBefore);
+        float tempCD = SessionData.CdBetweenFire - (PlayerCDdAfter - PlayerCDBefore);
+        float tempMLS = SessionData.AttackSpeedMelee - (PlayerMLSAfter - PlayerMLSBefore);
+
+        SessionData.SetValueFloat(ref SessionData.MoveSpeed, tempSpeed);
+        SessionData.SetValueFloat(ref SessionData.AttackSpeedMelee, tempMLS);
+        SessionData.SetValueFloat(ref SessionData.CdBetweenFire, tempCD);
         GameObject.FindWithTag("Player").gameObject.GetComponentInChildren<PlayerController>().NotTakeSpeed = false;
         Time.timeScale = 1f;
     }

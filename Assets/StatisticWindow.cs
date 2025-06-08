@@ -10,7 +10,7 @@ public class StatisticWindow : MonoBehaviour
     [SerializeField] private GameObject StatusText;
     [SerializeField] private GameObject ContinueBtn;
     private EndGameStats panelStat;
-
+    private GameObject player;
 
     private float TimeBefore;
     private Vector2 outOfScreen;
@@ -20,6 +20,10 @@ public class StatisticWindow : MonoBehaviour
         panelStat = Panel.transform.GetChild(0).transform.GetChild(0).transform.GetChild(0).gameObject.GetComponent<EndGameStats>();
         outOfScreen = new Vector2(0, -Screen.height * 2);
         Panel.GetComponent<RectTransform>().anchoredPosition = outOfScreen;
+    }
+    void Start()
+    {
+        player = GameObject.FindWithTag("Player").transform.GetChild(0).gameObject;
     }
 
     [ContextMenu("OpenPanel")]
@@ -47,7 +51,7 @@ public class StatisticWindow : MonoBehaviour
         Sequence sq = DOTween.Sequence();
         sq
         .Append(Panel.GetComponent<RectTransform>().DOAnchorPos(outOfScreen, 1).From(Vector2.zero))
-        .OnPlay(() => { Backdrop.SetActive(false); Time.timeScale = TimeBefore; Time.timeScale = 1; })
+        .OnPlay(() => {player.GetComponent<CapsuleCollider2D>().enabled = true; Backdrop.SetActive(false); Time.timeScale = TimeBefore; Time.timeScale = 1; })
         .SetUpdate(true)
         .Play();
     }
@@ -63,14 +67,22 @@ public class StatisticWindow : MonoBehaviour
         Sequence sq = DOTween.Sequence();
         sq
         .Append(StatusText.transform.DOScale(1f, 1f).From(0f))
-        .OnPlay(() => { TimeBefore = Time.timeScale; Time.timeScale = 0; })
+        .OnPlay(() =>
+        {
+            if (text != "Победа")
+            {
+                player.GetComponent<PlayerController>().enabled = false; 
+            }
+            TimeBefore = Time.timeScale;
+            player.GetComponent<CapsuleCollider2D>().enabled = false;    
+        })
         .Join(StatusText.transform.DORotate(new Vector3(0, 0, 360), 1f, RotateMode.FastBeyond360))
         .AppendInterval(1f)
         .Append(StatusText.transform.DOScale(0f, 1f).From(1f))
         .Join(StatusText.transform.DORotate(new Vector3(0, 0, -360), 1f, RotateMode.FastBeyond360))
         .Play()
         .SetUpdate(true)
-        .OnComplete(() => { OpenPanel(); });
+        .OnComplete(() => { OpenPanel(); Time.timeScale = 0f; });
     }
     public void Continue()
     {
@@ -120,6 +132,8 @@ public class StatisticWindow : MonoBehaviour
     }
     public void Reset()
     {
+        player.GetComponent<PlayerController>().enabled = true; 
+        player.GetComponent<CapsuleCollider2D>().enabled = true;
         Time.timeScale = 1f;
         TempData.ChoosenCharacter = null;
         TempData.ChoosenWeapon = null;
