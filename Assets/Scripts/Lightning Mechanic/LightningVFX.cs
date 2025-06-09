@@ -3,15 +3,16 @@ using UnityEngine;
 
 public class LightningVFX : MonoBehaviour
 {
-    public static void Create(Vector3 start, Vector3 end,bool useCollider = false,GameObject owner = null)
+    public static int SlashesCount;
+    public static void Create(Vector3 start, Vector3 end, bool useCollider = false, GameObject owner = null)
     {
         GameObject lightning = new GameObject("LightningVFX");
         LineRenderer lr = lightning.AddComponent<LineRenderer>();
         if (useCollider)
         {
 
-            
-            List<Vector2> Points = new List<Vector2>() { start, end};
+            SlashesCount++;
+            List<Vector2> Points = new List<Vector2>() { start, end };
             EdgeCollider2D ec = lightning.AddComponent<EdgeCollider2D>();
             Malevolent_Shrine_line ml = lightning.AddComponent<Malevolent_Shrine_line>();
             if (owner)
@@ -40,17 +41,22 @@ public class LightningVFX : MonoBehaviour
                     else
                     {
                         lr.startColor = new Color32(255, 255, 255, 1);
-                    lr.endColor = new Color32(255, 255, 255, 1);
+                        lr.endColor = new Color32(255, 255, 255, 1);
                     }
-                    
+
                 }
-                 
-                
+
+
             }
 
-            
+
             ec.isTrigger = true;
             ec.SetPoints(Points);
+            if (SlashesCount <= 10)
+            {
+                SoundManager.PlaySound(SoundType.Slashes,0, DataManager.CurrentUser.Settings.EffectsVolume);
+            }
+
         }
         lr.positionCount = 2;
         lr.SetPosition(0, start);
@@ -59,5 +65,9 @@ public class LightningVFX : MonoBehaviour
         lr.endWidth = 0.05f;
         lr.material = Resources.Load<Material>("Materials/WhiteFlash");
         Destroy(lightning, 0.2f);
+    }
+    void OnDestroy()
+    {
+        SlashesCount--;
     }
 }

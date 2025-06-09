@@ -59,6 +59,7 @@ public class LevelSystem : MonoBehaviour
     [ContextMenu("LEVELUP")]
     public void LevelUP(){
         DamageUI.Instance.AddText(1,transform.position,"LevelUP");
+        SoundManager.PlaySound(SoundType.Level, 1, DataManager.CurrentUser.Settings.EffectsVolume);
 
         levelUpsCount = 0;
         while (CurrentExpCount > 0f)
@@ -101,6 +102,7 @@ public class LevelSystem : MonoBehaviour
             {
                 var exp = expQueue.Dequeue();
                 CurrentExpCount += exp;
+                SoundManager.PlaySound(SoundType.Level, 0, DataManager.CurrentUser.Settings.EffectsVolume);
                 CheckLevelUpdate();
                 yield return new WaitForSeconds(CalculateExpDelay(exp, CurrentLevel, ExpCountToNextLevel));
             }

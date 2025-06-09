@@ -61,13 +61,14 @@ public class Enemy : MonoBehaviour
             Die();
         }
     }
-    public void TakeDamage(int Damage, float strength, string modifier = "default",bool tryLightning = false) {
+    public void TakeDamage(int Damage, float strength, string modifier = "default", bool tryLightning = false)
+    {
         health = health - Damage <= 0 ? 0 : health -= Damage;
         if (tryLightning)
         {
             if (lightningController)
             {
-                lightningController.TryProcLightning(this.gameObject,(float)Damage);
+                lightningController.TryProcLightning(this.gameObject, (float)Damage);
 
             }
 
@@ -77,9 +78,10 @@ public class Enemy : MonoBehaviour
         flash.StartCoroutine(flash.FlashRoutine());
         if (Type != "Boss")
         {
-            knockback.GetKnockBack(PlayerController.Instance.transform,strength);
+            knockback.GetKnockBack(PlayerController.Instance.transform, strength);
         }
-        Instantiate(DamageEffect,transform.position,Quaternion.identity);
+        Instantiate(DamageEffect, transform.position, Quaternion.identity);
+        SoundManager.PlayRandomSound(SoundType.Damage, DataManager.CurrentUser.Settings.EffectsVolume);
     }
     public void OneShot(float strength){
         health = 0;

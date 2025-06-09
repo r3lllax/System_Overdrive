@@ -29,6 +29,7 @@ public class CharacterCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointer
     public void SetChosenCharacter()
     {
         if (TempData.ChoosenCharacter == character) { return; }
+        SoundManager.PlaySound(SoundType.Clicks,0, DataManager.CurrentUser.Settings.EffectsVolume);
         TempData.ChoosenCharacter = character;
         TempData.CharacterIsLocked = isLocked;
         TempData.updateUI = true;

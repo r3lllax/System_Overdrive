@@ -62,6 +62,14 @@ public class GunWeapon : MonoBehaviour
         StartCoroutine(AnimReload());
     }
     public void AttackStart() {
+        if (UpgradesController.BulletType == "Bullet")
+        {
+            SoundManager.PlaySound(SoundType.Gun, 0, DataManager.CurrentUser.Settings.EffectsVolume);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundType.Gun, 1, DataManager.CurrentUser.Settings.EffectsVolume);
+        }
         var FireEffect = Instantiate(CurrentWeapon.AttackParticles, CurrentWeapon.AttackParticles.transform.position, CurrentWeapon.AttackParticles.transform.rotation);
         FireEffect.SetActive(true);
         FireEffect.transform.SetParent(transform, false);
@@ -133,7 +141,7 @@ public class GunWeapon : MonoBehaviour
             {
                 rb.linearVelocity = -transform.right * BulletSpeed;
             }
-
+            
             bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
             if (i == 0)
             {
@@ -167,6 +175,14 @@ public class GunWeapon : MonoBehaviour
         rb.linearVelocity = transform.right * BulletSpeed;
         //Перенос куротины в пулю был для того, чтобы при удалении оружия из слота, куртоина продолжала отчет до конца жизни пули, в то время как 
         //Куротина находилась тут, при удалении в момент когда есть активные пули, они оставались бескончено, так как объект с куротиной удалялся
+        if (UpgradesController.BulletType == "Bullet")
+        {
+            SoundManager.PlaySound(SoundType.Gun, 0, DataManager.CurrentUser.Settings.EffectsVolume);
+        }
+        else
+        {
+            SoundManager.PlaySound(SoundType.Gun, 1, DataManager.CurrentUser.Settings.EffectsVolume);
+        }
         bullet.GetComponent<Bullet>().StartCoroutine(bullet.GetComponent<Bullet>().ReturnBulletAfterTime(bullet, BulletLifeTime));
 
         AttackStart();

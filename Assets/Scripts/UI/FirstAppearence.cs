@@ -17,6 +17,7 @@ public class FirstAppearence : MonoBehaviour
     }
     void Start()
     {
+        DataManager.LoadUserProfile();
         if (TempData.FirstAppearence)
         {
             Appearence();
@@ -35,9 +36,9 @@ public class FirstAppearence : MonoBehaviour
         RectTransform rectTransform = Logo.GetComponent<RectTransform>();
         Sequence sq = DOTween.Sequence();
         sq
-        .Append(rectTransform.DOAnchorPos(Vector2.zero, 2f)
+        .Append(rectTransform.DOAnchorPos(Vector2.zero, 1f).OnPlay(() => SoundManager.PlaySound(SoundType.UI, 1, DataManager.CurrentUser != null ? DataManager.CurrentUser.Settings.EffectsVolume : 1))
         .SetEase(Ease.InOutBack))
-        .Append(rectTransform.DOScale(1.7f, 1.7f))
+        .Append(rectTransform.DOScale(1.7f, 1.7f).OnComplete(()=>{ SoundManager.PlaySound(SoundType.UI,0,DataManager.CurrentUser != null ? DataManager.CurrentUser.Settings.EffectsVolume : 1); }))
         .Append(rectTransform.DOScale(1, 0.5f))
         .Join(rectTransform.DOAnchorPos(new Vector2(0, 60), 0.5f))
         .SetUpdate(true)

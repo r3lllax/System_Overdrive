@@ -111,7 +111,6 @@ public class Malevolent_Shrine : Ability
 
     private void CreateLightningEffect(Vector3 start, Vector3 end,GameObject thisOwner)
     {
-        Debug.Log(owner);
         LightningVFX.Create(start, end, true,thisOwner);
     }
 

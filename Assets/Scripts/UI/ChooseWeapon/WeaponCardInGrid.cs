@@ -28,6 +28,7 @@ public class WeaponCardInGrid : MonoBehaviour, IPointerEnterHandler, IPointerExi
     public void SetChosenWeapon()
     {
         if (TempData.ChoosenWeapon == weapon) { return; }
+        SoundManager.PlaySound(SoundType.Clicks,0, DataManager.CurrentUser.Settings.EffectsVolume);
         TempData.ChoosenWeapon = weapon;
         TempData.WeaponIsLocked = isLocked;
         TempData.updateUI = true;
