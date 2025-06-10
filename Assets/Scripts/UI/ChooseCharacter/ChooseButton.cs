@@ -5,15 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class ChooseButton : MonoBehaviour
 {
-    private ScenesController controller;
     [SerializeField] private GameObject weaponSelectPage;
     [SerializeField] private GameObject characterSelectPage;
     private bool needBuy = false;
+    [SerializeField] private LevelChanger levelChanger;
     private bool ButtonIsShaking = false;
-    void Awake()
-    {
-        controller = GetComponent<ScenesController>();
-    }
+
 
     public void tryPickCharacter()
     {
@@ -52,7 +49,7 @@ public class ChooseButton : MonoBehaviour
             return;
             
         }
-        
+
         if (TempData.ChoosenCharacter && !TempData.CharIsPicked)
         {
             TempData.CharIsPicked = true;
@@ -64,7 +61,7 @@ public class ChooseButton : MonoBehaviour
             TempData.WeaponIsPicked = true;
             SessionData.Reset();
             SetChosenWeaponAndDefaultData();
-            SceneManager.LoadScene("SampleScene");
+            levelChanger.StartLoadScene();
 
         }
         
