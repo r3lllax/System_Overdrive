@@ -7,17 +7,18 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private GameObject BulletPrefab;
     public Transform Player;
     
-    private enum State{
+    public enum State{
         Roaming,
         FollowPlayer,
         RangedAttack
     }
-    public string GetState(){
-        return state.ToString();
+    public State GetState(){
+        return state;
     }
     [SerializeField]private State state;
     private float attackTimer =2f;
     private bool canAttack = true;
+    private Enemy enemyComponent;
     private EnemyPathfinder enemyPathfinder;
     public void SetPlayerOBJ(GameObject PlayerLink){
         Player = PlayerLink.GetComponent<Transform>();
@@ -27,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     {
         enemyPathfinder = GetComponent<EnemyPathfinder>();
         state = State.FollowPlayer;
-
+        enemyComponent = GetComponent<Enemy>();
     }
     [ContextMenu("Roaming")]
     public void SetRoaming(){
@@ -151,7 +152,7 @@ public class EnemyAI : MonoBehaviour
     }
      private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(GetComponent<Enemy>().GetEnemyType() != "Ranged"){return;}
+        if(enemyComponent.GetEnemyType() != "Ranged"){return;}
 
         if(collision.name == "shadow"){
             SetRangedAttack();
@@ -159,7 +160,7 @@ public class EnemyAI : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(GetComponent<Enemy>().GetEnemyType() != "Ranged"){return;}
+        if(enemyComponent.GetEnemyType() != "Ranged"){return;}
         if(collision.name == "shadow"){
             SetFollowPlayer();
         }

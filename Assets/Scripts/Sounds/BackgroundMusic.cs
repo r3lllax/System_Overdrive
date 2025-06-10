@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class BackgroundMusic : MonoBehaviour
@@ -36,19 +37,16 @@ public class BackgroundMusic : MonoBehaviour
 
     private void PlayNextClip()
     {
-        if (currentClipIndex < audioClips.Length)
+        if (currentClipIndex >= audioClips.Length)
         {
-            audioSource.clip = audioClips[currentClipIndex];
-            audioSource.Play();
-            StartCoroutine(WaitAndPlayNextClip());
+            currentClipIndex = 0;
         }
-        else
-        {
-            StopSequence();
-        }
+        audioSource.clip = audioClips[currentClipIndex];
+        audioSource.Play();
+        StartCoroutine(WaitAndPlayNextClip());
     }
 
-    System.Collections.IEnumerator WaitAndPlayNextClip()
+    private IEnumerator WaitAndPlayNextClip()
     {
         yield return new WaitForSeconds(audioSource.clip.length + delayBetweenClips); 
         currentClipIndex++;

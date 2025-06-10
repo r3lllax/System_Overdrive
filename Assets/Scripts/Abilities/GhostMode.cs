@@ -63,6 +63,7 @@ public class GhostMode : Ability
     
     private IEnumerator AbilityRoutine()
     {
+        SoundManager.PlaySound(SoundType.Ability, 0, DataManager.CurrentUser.Settings.EffectsVolume);
         DamageUI.Instance.AddText(1, owner.transform.position, "GhostMode");
         SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedAfter);
         PlayerColider.enabled = false;
@@ -75,7 +76,8 @@ public class GhostMode : Ability
             playerLight.enabled = true;
             yield return new WaitForSeconds(((activeTime / 3 * 1) / 3) / 2);
         }
-        SessionData.SetValueFloat(ref SessionData.MoveSpeed, PlayerSpeedBefore);
+        float tempSpeed = SessionData.MoveSpeed - (PlayerSpeedAfter - PlayerSpeedBefore);
+        SessionData.SetValueFloat(ref SessionData.MoveSpeed, tempSpeed);
         sp.color = oldColor;
         PlayerColider.enabled = true;
     }

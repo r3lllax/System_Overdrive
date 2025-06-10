@@ -39,6 +39,9 @@ public class Malevolent_Shrine_line : MonoBehaviour
             
         }
     }
-    
+    void OnDestroy()
+    {
+        LightningVFX.SlashesCount--;
+    }
    
 }

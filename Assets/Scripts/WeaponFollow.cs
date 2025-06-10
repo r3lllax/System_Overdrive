@@ -48,7 +48,6 @@ public class WeaponFollow : MonoBehaviour
             transform.position = player.position + direction * distanceFromPlayer;
         }
 
-        //Переделать через инпут систем(Перенести в плеер контроллер)
         if(PlayerController.Instance.playerControls.Battle.Attack.IsPressed() && AnimEnd && Time.timeScale>0){
             AnimEnd = false;
             Anim.SetBool("Attack",true);

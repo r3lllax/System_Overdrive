@@ -16,7 +16,7 @@ public class AllCharactersScropt : MonoBehaviour
     }
     public void LoadCharacters()
     {
-        for (int i =0;i<transform.childCount;i++)
+        for (int i = 0; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
         }
@@ -33,7 +33,7 @@ public class AllCharactersScropt : MonoBehaviour
             }
             card.GetComponent<CharacterCardInGrid>().characterName = character.CharacterName;
             card.GetComponent<CharacterCardInGrid>().character = character;
-            
+
         }
     }
     void Update()
@@ -42,5 +42,9 @@ public class AllCharactersScropt : MonoBehaviour
         {
             LoadCharacters();
         }
+    }
+    void LateUpdate()
+    {
+        TempData.needRefreshData = false;
     }
 }

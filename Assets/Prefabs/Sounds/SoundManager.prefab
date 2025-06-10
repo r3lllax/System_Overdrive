@@ -144,13 +144,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundList:
   - name: ColdWeapon
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 5ae4d298ed547ba4c88587effb75d7e1, type: 3}
+    - {fileID: 8300000, guid: 80502e18f68bb734b9dded7bb8d2e750, type: 3}
   - name: Gun
     sounds:
     - {fileID: 8300000, guid: 6739c01659ad96d47987f4ddee226b36, type: 3}
     - {fileID: 8300000, guid: 34b439bf70b80a6409eadecc6be92d68, type: 3}
   - name: Ability
-    sounds: []
+    sounds:
+    - {fileID: 8300000, guid: 9eca36188c7d18d40a756c27e41b7266, type: 3}
   - name: Movement
     sounds: []
   - name: UI
@@ -165,6 +168,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: d8bf57a57cb4a7e4a97d06ab4b136fca, type: 3}
     - {fileID: 8300000, guid: 2e3cfd8a4cd1afe40b6ddda869151d13, type: 3}
     - {fileID: 8300000, guid: c5dea467677cdd449a7f8190f8453783, type: 3}
+    - {fileID: 8300000, guid: 2b21ef916f6943c439b71a7c74568878, type: 3}
   - name: Reloads
     sounds: []
   - name: Clicks
@@ -194,3 +198,10 @@ MonoBehaviour:
     sounds:
     - {fileID: 8300000, guid: edae8a199c1540e4ab11086d1d18915d, type: 3}
     - {fileID: 8300000, guid: 1ab1925a391737f41bd0776ab9feb4b5, type: 3}
+    - {fileID: 8300000, guid: 4728c3815c4cb8940971f86c2a376205, type: 3}
+  - name: Block
+    sounds:
+    - {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
+  - name: PlayerDamage
+    sounds:
+    - {fileID: 8300000, guid: 0cf45749d239af64b9771f7941c5deca, type: 3}

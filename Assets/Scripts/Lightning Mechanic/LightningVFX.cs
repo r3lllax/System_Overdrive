@@ -52,9 +52,10 @@ public class LightningVFX : MonoBehaviour
 
             ec.isTrigger = true;
             ec.SetPoints(Points);
-            if (SlashesCount <= 10)
+            Debug.Log($"Slashes - {SlashesCount}");
+            if (SlashesCount <= 31)
             {
-                SoundManager.PlaySound(SoundType.Slashes,0, DataManager.CurrentUser.Settings.EffectsVolume);
+                SoundManager.PlayRandomSound(SoundType.Slashes, DataManager.CurrentUser.Settings.EffectsVolume);
             }
 
         }
@@ -66,8 +67,5 @@ public class LightningVFX : MonoBehaviour
         lr.material = Resources.Load<Material>("Materials/WhiteFlash");
         Destroy(lightning, 0.2f);
     }
-    void OnDestroy()
-    {
-        SlashesCount--;
-    }
+    
 }

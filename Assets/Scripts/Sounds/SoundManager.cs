@@ -12,7 +12,9 @@ public enum SoundType
     Reloads,
     Clicks,
     Damage,
-    Level
+    Level,
+    Block,
+    PlayerDamage
 }
 
 [RequireComponent(typeof(AudioSource)), ExecuteInEditMode]
@@ -41,6 +43,7 @@ public class SoundManager : MonoBehaviour
         AudioClip[] clips = instance.soundList[(int)sound].Sounds;
         instance.audioSource.PlayOneShot(clips[index],volume);
     }
+    
 #if UNITY_EDITOR
     private void OnEnable()
     {

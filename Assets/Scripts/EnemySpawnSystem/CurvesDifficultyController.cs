@@ -35,7 +35,15 @@ public class CurvesDifficultyController : MonoBehaviour
     private void Update()
     {
         timer += Time.deltaTime;
-        CurveTimer += Time.deltaTime;
+        if (CurveTimer < SessionData.totalGameTime)
+        {
+            CurveTimer += Time.deltaTime;
+        }
+        else
+        {
+            CurveTimer = 500;
+        }
+        
         float currentInterval = Mathf.Clamp(SpawnInterval.Evaluate(CurveTimer / SessionData.totalGameTime), 0f, 2f);
         int currentEnemies = Mathf.RoundToInt(Mathf.Lerp(minEnemies, maxEnemies, MaxEnemies.Evaluate(CurveTimer / SessionData.totalGameTime)));
         ESC.SetSpawnInterval(currentInterval);

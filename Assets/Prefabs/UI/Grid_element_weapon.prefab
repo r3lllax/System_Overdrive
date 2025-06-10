@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 4448980251587019431}
   - component: {fileID: -141428756745394277}
   - component: {fileID: 4864267129446767476}
+  - component: {fileID: 1680576312068142943}
   m_Layer: 5
   m_Name: Grid_element_weapon
   m_TagString: Untagged
@@ -317,6 +318,18 @@ MonoBehaviour:
   weaponName: 
   WeaponName: {fileID: 1979132507153807610}
   Background: {fileID: 4960820523619273214}
+--- !u!114 &1680576312068142943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4757779847574847780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd50c96cd9a42f548ad0e21300b9da2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6168285921421439893
 GameObject:
   m_ObjectHideFlags: 0

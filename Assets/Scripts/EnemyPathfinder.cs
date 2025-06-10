@@ -7,6 +7,8 @@ public class EnemyPathfinder : MonoBehaviour
     private Enemy enemy;
     private Vector2 moveDir;
     private Knockback knockback;
+    private EnemyAI enemyAI;
+    private Transform playerTransform;
 
     private bool isFreezed = false;
 
@@ -22,11 +24,17 @@ public class EnemyPathfinder : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         knockback = GetComponent<Knockback>();
         enemy = GetComponent<Enemy>();
+        enemyAI = GetComponent<EnemyAI>();
+
+        if(PlayerController.Instance != null)
+        {
+            playerTransform = PlayerController.Instance.transform;
+        }
     }
     private void FixedUpdate()
     {
-        if(knockback.KnockedBack || GetComponent<EnemyAI>().GetState()=="RangedAttack" ||isFreezed){return;}
-        //rb.MovePosition(rb.position+moveDir*(moveSpeed*Time.fixedDeltaTime));
+        bool isRangedAttacking = enemyAI.GetState() == EnemyAI.State.RangedAttack;
+        if (knockback.KnockedBack || isRangedAttacking || isFreezed || playerTransform == null) { return; }
         
         float speed = enemy.speed*SessionData.EnemySpeedMultiplier;
         transform.position = Vector2.MoveTowards(transform.position,PlayerController.Instance.transform.position, speed * Time.deltaTime);

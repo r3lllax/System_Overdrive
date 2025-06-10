@@ -152,6 +152,7 @@ public class Player : MonoBehaviour
             TheRaceStatistics.BlockedBossUltiSlashes++;
             DamageUI.Instance.AddText(1, transform.position,"Evade");
             Instantiate(EvadeEffect, transform.position,Quaternion.identity);
+            SoundManager.PlaySound(SoundType.Block, 0, DataManager.CurrentUser.Settings.EffectsVolume);
             return false;
         }
         TakeDamage(Damage, knock);
@@ -161,6 +162,7 @@ public class Player : MonoBehaviour
     private void TakeDamage(int Damage, bool knock = true)
     {
         SessionData.Health = Health - Damage < 0 ? 0 : Health - Damage;
+        SoundManager.PlaySound(SoundType.PlayerDamage, 0, DataManager.CurrentUser.Settings.EffectsVolume);
         GetComponent<CinemachineImpulseSource>().GenerateImpulse(1);
         Instantiate(DamagePrefab, transform.position, Quaternion.identity);
         StartCoroutine(DamageRoutine());
@@ -196,6 +198,7 @@ public class Player : MonoBehaviour
     public void Death(){
         ///Парткиклы, выключение управления, скрипт запуска экрана результата
         Instantiate(DeathPrefab, transform.position,Quaternion.identity);
+        SoundManager.PlaySound(SoundType.Level, 2, DataManager.CurrentUser.Settings.EffectsVolume);
         sw.Title("Вы погибли");
     }
     public float GetMoveSpeed(){
