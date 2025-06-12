@@ -61,7 +61,6 @@ public class AbilitiesController : MonoBehaviour
     {
         return AvailableSpells.Count > 0 ? true : false;
     }
-    [ContextMenu("UseEveryCD")]
     public void ToggleAutoUse()
     {
         if (!isProcessing)

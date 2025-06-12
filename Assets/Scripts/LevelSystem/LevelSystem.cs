@@ -56,7 +56,6 @@ public class LevelSystem : MonoBehaviour
     private void Update() {
         TheRaceStatistics.PlayerLevel = CurrentLevel;
     }
-    [ContextMenu("LEVELUP")]
     public void LevelUP(){
         DamageUI.Instance.AddText(1,transform.position,"LevelUP");
         SoundManager.PlaySound(SoundType.Level, 1, DataManager.CurrentUser.Settings.EffectsVolume);
@@ -135,9 +134,6 @@ public class LevelSystem : MonoBehaviour
         }
     }
     
-
-   
-
     private void CheckLevelUpdate()
     {
 

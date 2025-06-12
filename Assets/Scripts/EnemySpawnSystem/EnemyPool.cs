@@ -20,10 +20,7 @@ public class EnemyPool : MonoBehaviour
         public int poolSize;
         public bool Editable = true;
     }
-    private void Awake()
-    {
-        
-    }
+
     private Dictionary<string,Queue<GameObject>> poolDict;
     public List<PoolSettings> pools = new List<PoolSettings>();
     private void Start()
@@ -78,7 +75,6 @@ public class EnemyPool : MonoBehaviour
         return enemy;
     }
     public void ReturnEnemy(GameObject enemy){
-        //Возврат в определенный пул
         string EnemyType = enemy.GetComponent<Enemy>().GetEnemyType();
         poolDict[EnemyType].Enqueue(enemy);
         enemy.SetActive(false);

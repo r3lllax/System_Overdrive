@@ -19,7 +19,7 @@ MonoBehaviour:
   GunMagazineSize: 6
   GunBulletSpeed: 15
   GunBulletLifeTime: 8
-  GunMagazineReloadTime: 4
+  GunMagazineReloadTime: 3
   PlayerSpeedMultiplier: 1.1
   Damage: 4
   Price: 8000

@@ -38,13 +38,9 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
-       
         if(NotTakeSpeed!=true){
             moveSpeed = GetComponent<Player>().GetMoveSpeed();
         }
-        
-        
-        //Переделать через инпут систем
         if(Input.GetKeyDown(KeyCode.LeftShift)){
             if(isFreezed){ return; }
             NotTakeSpeed = true;

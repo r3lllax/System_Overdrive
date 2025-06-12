@@ -38,7 +38,6 @@ public abstract class Ability : MonoBehaviour
 
     private void Awake()
     {
-        //Скорее всего придется искать через родителя или на подобии
         owner = transform.parent.transform.parent.gameObject;
         if (PlayerIsOwner)
         {
@@ -120,7 +119,7 @@ public abstract class Ability : MonoBehaviour
     {
         return ActiveTimer;
     }
-     public bool TryActivate()
+    public bool TryActivate()
     {
         if (!isReady || !CanActivate()) return false;
 

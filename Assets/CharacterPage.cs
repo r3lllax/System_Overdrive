@@ -38,6 +38,11 @@ public class CharacterPage : MonoBehaviour
     {
         playerControls.Enable();
     }
+    void OnDisable()
+    {
+        playerControls.Disable();
+    }
+
     void Update()
     {
         if (playerControls.UI.ToggleGameMenu.IsPressed())
@@ -54,9 +59,5 @@ public class CharacterPage : MonoBehaviour
             SceneManager.LoadScene("MainMenuScene");
         }
     }
-    void OnDisable()
-    {
-        playerControls.Disable();
-    }
-
+    
 }

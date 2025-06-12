@@ -196,7 +196,6 @@ public class Player : MonoBehaviour
         return SessionData.Health<=0?true:false;
     }
     public void Death(){
-        ///Парткиклы, выключение управления, скрипт запуска экрана результата
         Instantiate(DeathPrefab, transform.position,Quaternion.identity);
         SoundManager.PlaySound(SoundType.Level, 2, DataManager.CurrentUser.Settings.EffectsVolume);
         sw.Title("Вы погибли");

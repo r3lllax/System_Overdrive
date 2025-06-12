@@ -7,10 +7,7 @@ public class AbiilityPanel : MonoBehaviour
     private AbilitiesController PlayerAbilityController;
     private LevelSystem playerLevelSystem;
     
-
     [SerializeField] private GameObject AbilitySlotPrefab;
-
-    
 
     private void Start()
     {

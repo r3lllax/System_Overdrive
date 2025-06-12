@@ -67,14 +67,6 @@ public class UpgradesController : MonoBehaviour
         FilterUpgrades();
         GenerateOfferUpdates(3);
     }
-    [ContextMenu("PlayerUpgrades")]
-    public void PlayerCollectedUpdates()
-    {
-        foreach (var obj in PlayerUpgrades)
-        {
-            Debug.Log($"Player upgrade - {obj.name}");
-        }
-    }
 
     public static string GetReadableString(string param)
     {
@@ -122,10 +114,9 @@ public class UpgradesController : MonoBehaviour
         return UnityEngine.Random.Range(upg.minVal, upg.maxVal);
     }
 
-    private static readonly Dictionary<string, Action<bool, float>> _fieldHandlers = new()
+    private static readonly Dictionary<string, Action<bool, float>> fieldHandlers = new()
     {
         // Float
-        
         { "MoveSpeed", (isPercent, val) => ApplyToFloatField(ref SessionData.MoveSpeed, isPercent, val) },
         { "ExpFinderRadius", (isPercent, val) => ApplyToFloatField(ref SessionData.ExpFinderRadius, isPercent, val) },
         { "AttackSpeedMelee", (isPercent, val) => ApplyToFloatField(ref SessionData.AttackSpeedMelee, isPercent, val) },
@@ -166,7 +157,6 @@ public class UpgradesController : MonoBehaviour
         { "MeleeSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.MeleeSize, isPercent, val) },
         { "BulletSize", (isPercent, val) => ApplyToVector3Field(ref SessionData.BulletSize, isPercent, val) },
         //Bool
-        // { "BackFire", (isPercent, val) => ApplyToBoolField(ref SessionData.BackFire, isPercent, Convert.ToBoolean(val)) },
         { "CanDestroyEnemyBullet", (isPercent, val) => ApplyToBoolField(ref SessionData.CanDestroyEnemyBullet, isPercent, Convert.ToBoolean(val)) },
         { "CanLifeSteal", (isPercent, val) => ApplyToBoolField(ref SessionData.CanLifeSteal, isPercent, Convert.ToBoolean(val)) }
 
@@ -178,9 +168,8 @@ public class UpgradesController : MonoBehaviour
     {
         string stat = upg.targerStat.ToString();
         
-        if (_fieldHandlers.TryGetValue(stat, out var handler))
+        if (fieldHandlers.TryGetValue(stat, out var handler))
         {
-            Debug.Log($"value - {value}");
             handler(upg.Procente, value);
             
             
@@ -201,10 +190,9 @@ public class UpgradesController : MonoBehaviour
     {
         string stat = upg.targetStat.ToString();
         
-        if (_fieldHandlers.TryGetValue(stat, out var handler))
+        if (fieldHandlers.TryGetValue(stat, out var handler))
         {
             handler(upg.isPercent, value);
-            Debug.Log($"Стартовое улучшение {stat} на {value}(Procente - {upg.isPercent})");   
         }
 
     }
@@ -215,7 +203,6 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesChance(ref field, value);
         else
             SessionData.AddValueChance(ref field, value);
-            Debug.Log(field);
 
     }
 
@@ -223,7 +210,6 @@ public class UpgradesController : MonoBehaviour
     {
 
         SessionData.SetBool(ref field, value);
-        Debug.Log(field);
        
     }
 
@@ -234,7 +220,6 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesFloatScale(ref field, value);
         else
             SessionData.AddValueFloat(ref field, value);
-            Debug.Log(field);
 
     }
 
@@ -244,7 +229,6 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesInt(ref field, value);
         else
             SessionData.AddValueInt(ref field, value);
-            Debug.Log(field);
 
     }
 
@@ -254,7 +238,6 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesFloat(ref field, value);
         else
             SessionData.AddValueFloat(ref field, value);
-            Debug.Log(field);
 
     }
 
@@ -264,11 +247,9 @@ public class UpgradesController : MonoBehaviour
             SessionData.AddProcentesV3(ref field, value);
         else
             SessionData.AddValueV3(ref field, value);
-            Debug.Log(field);
 
     }
 
-    /// 
 
     public void GenerateOfferUpdates(int n){
         NowSuggestedUpgrades.Clear();
@@ -289,7 +270,6 @@ public class UpgradesController : MonoBehaviour
         AvailableUpgrades.RemoveAt(num);
         return poppedItem;
     }
-    [ContextMenu("OfferUpdates")]
     public void OfferUpdates(){
         if(AvailableUpgrades.Count==0){return;}
         var NewUpdate = PopUpgrade(UnityEngine.Random.Range(0,AvailableUpgrades.Count));
@@ -312,13 +292,6 @@ public class UpgradesController : MonoBehaviour
         return false;
     }
 
-    [ContextMenu("ShowAvailables")]
-    public void Show(){
-        foreach(var item in AvailableUpgrades){
-            Debug.Log($"AVITEM - {item.name}");
-            Debug.Log($"stat - {item.targerStat}");
-        }
-    }
     public void FilterUpgrades(){
         AvailableUpgrades.Clear();
         for (int i = 0; i < AllUpgrades.UpgradesList.Count; i++)
