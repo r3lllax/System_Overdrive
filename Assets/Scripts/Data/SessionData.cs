@@ -32,9 +32,6 @@ public class SessionData
     public static float AbilityActiveTime = 0f;//✓
     public static int BulletBypassCount = 1;//✓
     public static int BulletRebonceCount = 1;//✓
-    /// <summary>
-    /// 
-    /// </summary>
 
     public static float DamageEvadeChance = 0;//✓
     public static float LightningProcChance = 0;//✓
@@ -240,7 +237,6 @@ public class SessionData
     ///Chances
     public static void AddProcentesChance(ref float variable,float procente){
         float add = ProcenteToScaleValue(procente);
-        Debug.Log(add);
         variable +=add;
         NeedRefresh = true;
     }

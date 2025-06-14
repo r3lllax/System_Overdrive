@@ -53,11 +53,7 @@ public static class DataManager
     }
     public static bool TryBuyEthernalSkill(EthernalUpgrade upgrade)
     {
-        if (CurrentUser.Coins < upgrade.CalculateCurrentPrice())
-        {
-            Debug.Log("Ошибка покупки");
-        }
-        else
+        if (CurrentUser.Coins >= upgrade.CalculateCurrentPrice())
         {
             EthernalUpgrade foundObject = CurrentUser.EthernalUpdates.Find(obj => obj.targetStat == upgrade.targetStat);
             if (foundObject != null)
@@ -66,14 +62,9 @@ public static class DataManager
                 foundObject.Count++;
                 SaveUserProfile();
                 TempData.needRefreshData = true;
-            }
-            
-            
-            return true;
-            
+                return true;
+            }    
         }
-
-        
         return false;
     }
     public static bool SaveFileExists()
