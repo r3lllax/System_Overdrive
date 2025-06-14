@@ -74,7 +74,9 @@ public class GunWeapon : MonoBehaviour
         FireEffect.SetActive(true);
         FireEffect.transform.SetParent(transform, false);
     }
+    public void AttackEnd() {
 
+    }
     public void TryFire() {
         if (CurrentMagazineSize > 0)
         {
