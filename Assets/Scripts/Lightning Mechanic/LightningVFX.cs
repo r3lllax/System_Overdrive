@@ -53,9 +53,16 @@ public class LightningVFX : MonoBehaviour
             ec.isTrigger = true;
             ec.SetPoints(Points);
             Debug.Log($"Slashes - {SlashesCount}");
-            if (SlashesCount <= 31)
+            if (SlashesCount <= 10)
             {
                 SoundManager.PlayRandomSound(SoundType.Slashes, DataManager.CurrentUser.Settings.EffectsVolume);
+            }
+            else
+            {
+                if (SlashesCount % 10 == 0)
+                {
+                    SoundManager.PlayRandomSound(SoundType.Slashes, DataManager.CurrentUser.Settings.EffectsVolume);
+                }
             }
 
         }

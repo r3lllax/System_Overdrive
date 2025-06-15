@@ -791,7 +791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.26729557, b: 0.3207547, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -4067,7 +4067,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23713954, g: 0.6574558, b: 0.6886792, a: 1}
+  m_Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6816,8 +6816,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -535.58496, y: 0.2000122}
-  m_SizeDelta: {x: -1138.3301, y: -20.400024}
+  m_AnchoredPosition: {x: -328.1574, y: 0.2000122}
+  m_SizeDelta: {x: -723.475, y: -20.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1355839239
 MonoBehaviour:
@@ -12978,7 +12978,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 589964597}
   m_Direction: 2
   m_Value: 0.9999991
-  m_Size: 0.7308132
+  m_Size: 0.73081326
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -13169,6 +13169,10 @@ PrefabInstance:
     - target: {fileID: 1332618384826719695, guid: 3fad044a5c566cd498537feacb3cd489, type: 3}
       propertyPath: m_Name
       value: LevelChanger
+      objectReference: {fileID: 0}
+    - target: {fileID: 1332618384826719695, guid: 3fad044a5c566cd498537feacb3cd489, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4003908542115651714, guid: 3fad044a5c566cd498537feacb3cd489, type: 3}
       propertyPath: loadingScreen

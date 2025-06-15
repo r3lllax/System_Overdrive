@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3d94b7d0a12d34880acf52c59556fd, type: 3}
   m_Name: Char2
   m_EditorClassIdentifier: 
-  CharacterName: SIGMA
-  Health: 999
-  MoveSpeed: 19
-  CharacterPrefab: {fileID: 7717986223910873738, guid: cf299a1ea0d072b448f5b1830b50b641, type: 3}
+  CharacterName: "\u042D\u043B\u0435\u043A\u0442\u0440\u043E\u043D\u0438\u043A"
+  Price: 8500
+  Health: 3
+  MoveSpeed: 5
+  CharacterPrefab: {fileID: 4647471272387530288, guid: 7f4ce07b5922d6c4e93b21daa9b359c7, type: 3}
+  AbilityPrefab: {fileID: 808242851833856795, guid: 09bb892b810439e4699da51a88dc2487, type: 3}
+  AbilityDescription: "\u0413\u0435\u0440\u043E\u0439 \u0440\u0430\u0437\u043C\u044B\u0432\u0430\u0435\u0442
+    \u0433\u0440\u0430\u043D\u0438\u0446\u044B \u0441\u0432\u043E\u0435\u0433\u043E
+    \u0442\u0435\u043B\u0430, \u043F\u043E\u0437\u0432\u043E\u043B\u044F\u044F \u0432\u0441\u0435\u043C\u0443
+    \u0438 \u0432\u0441\u0435\u043C \u043F\u0440\u043E\u0445\u043E\u0434\u0438\u0442
+    \u0441\u043A\u043E\u0432\u0437\u044C \u043D\u0435\u0433\u043E"
+  ActiveTime: 10
+  CooldownTime: 20
+  CastTime: 0.7

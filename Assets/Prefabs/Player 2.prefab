@@ -5305,57 +5305,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &6399863734525256661
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3201119605991960249}
-  - component: {fileID: 8860256072873949742}
-  m_Layer: 0
-  m_Name: Ghost
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3201119605991960249
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6399863734525256661}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3548209360607749659}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8860256072873949742
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6399863734525256661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7556c3d883365f24a8aa8b8932b913d7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 15
-  Image: {fileID: -3400387904147105493, guid: 189e30860caa36541ac205049f16cb7c, type: 3}
-  activeTime: 10
-  castTime: 0.5
-  currentCooldown: 0
-  TakeStatFromSessionData: 1
-  hotkey: 49
 --- !u!1 &6877538638454522250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5694,8 +5643,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3201119605991960249}
+  m_Children: []
   m_Father: {fileID: 2243572897196382321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6602635698374024069
@@ -5710,8 +5658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 081ebb442b7ae2044b26ad74295914af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilities:
-  - {fileID: 8860256072873949742}
+  abilities: []
   isPlayerOwner: 1
 --- !u!1 &8829109453137204986
 GameObject:
