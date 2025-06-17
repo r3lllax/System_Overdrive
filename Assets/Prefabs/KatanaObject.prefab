@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentWeapon: {fileID: 11400000, guid: de2a1e32cfc9f0f4cbb13db976dc1443, type: 2}
-  player: {fileID: 0}
+  player: {fileID: 6581544794454734126, guid: 6cd83c243176de80b931fa10cfb0a7fc, type: 3}
   distanceFromPlayer: 0.45
 --- !u!114 &7173975353145049459
 MonoBehaviour:
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bba1a9c1aaac5b45a01d0b563fbc4f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AimCursor: {fileID: 2800000, guid: eb1df59e4fc8ae745a02d49d5fc06572, type: 3}
+  AimPrefab: {fileID: 0}
   detectionRadius: 20
   enemyLayer:
     serializedVersion: 2

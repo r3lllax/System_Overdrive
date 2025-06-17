@@ -9,6 +9,7 @@ public class WeaponFollow : MonoBehaviour
     private Camera mainCamera;
     private SpriteRenderer sp;
     private Animator Anim;
+    private GameObject PlayerCursor;
     public static bool AnimEnd = true;
 
     void OnEnable()
@@ -24,6 +25,7 @@ public class WeaponFollow : MonoBehaviour
         Anim = GetComponentInChildren<Transform>().GetChild(0).GetComponent<Animator>();
         distanceFromPlayer = currentWeapon.distanceFromPlayer;
         Instantiate(currentWeapon.AttackParticles, GetComponentInChildren<Transform>().GetChild(0).transform.position, Quaternion.identity);
+        PlayerCursor = AutoAim.PlayerCursor;
 
     }
     private void Awake()
@@ -37,10 +39,10 @@ public class WeaponFollow : MonoBehaviour
         gameObject.transform.localScale = SessionData.MeleeSize;
         
         if(AnimEnd && Time.timeScale>0){
-            Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-            mousePosition.z = 0f;
+            Vector3 cursorPosition = mainCamera.ScreenToWorldPoint(PlayerCursor.GetComponent<RectTransform>().position);
+            cursorPosition.z = 0f;
 
-            Vector3 direction = mousePosition - player.position;
+            Vector3 direction = cursorPosition - player.position;
             direction.Normalize();
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
