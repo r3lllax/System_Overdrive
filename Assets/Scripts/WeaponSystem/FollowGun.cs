@@ -10,6 +10,7 @@ public class FollowGun : MonoBehaviour
     private SpriteRenderer sp;
     public float Reload;
     private GunWeapon Gun;
+    private GameObject PlayerCursor;
 
     private void Start() {
         mainCamera = Camera.main;
@@ -18,20 +19,21 @@ public class FollowGun : MonoBehaviour
         sp = GetComponentInChildren<Transform>().GetChild(0).GetComponent<SpriteRenderer>();
         distanceFromPlayer = currentWeapon.distanceFromPlayer;
         // Instantiate(currentWeapon.AttackParticles,GetComponentInChildren<Transform>().GetChild(0).transform.position,Quaternion.identity);
-
+        PlayerCursor = AutoAim.PlayerCursor;
     }
     private void Awake()
     {
-        
+
         Gun = transform.GetChild(0).GetComponent<GunWeapon>();
+        
     }
 
     private void Update()
     {
         Reload = Gun.ReloadTime;
         if (Time.timeScale == 0) { return; }
-        Vector3 mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        if (mousePosition.x < player.position.x)
+        Vector3 cursorPosition = mainCamera.ScreenToWorldPoint(PlayerCursor.GetComponent<RectTransform>().position);
+        if (cursorPosition.x < player.position.x)
         {
             sp.flipY = true;
         }
@@ -39,9 +41,9 @@ public class FollowGun : MonoBehaviour
         {
             sp.flipY = false;
         }
-        mousePosition.z = 0f;
+        cursorPosition.z = 0f;
         
-        Vector3 direction = mousePosition - player.position;
+        Vector3 direction = cursorPosition - player.position;
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0f, 0f, angle);

@@ -241,6 +241,7 @@ MonoBehaviour:
   currentWeapon: {fileID: 11400000, guid: ebb2d4a9b936dc74da48e3c85ca5dda4, type: 2}
   player: {fileID: 0}
   distanceFromPlayer: 1
+  Reload: 0
 --- !u!114 &1376538852841475927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AimCursor: {fileID: 2800000, guid: eb1df59e4fc8ae745a02d49d5fc06572, type: 3}
+  AimPrefab: {fileID: 6655944917269974897, guid: 6cd83c243176de80b931fa10cfb0a7fc, type: 3}
   detectionRadius: 20
   enemyLayer:
     serializedVersion: 2

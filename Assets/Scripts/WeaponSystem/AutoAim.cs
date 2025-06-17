@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 public class AutoAim : MonoBehaviour
 {
-    [SerializeField] private Texture2D AimCursor;
+    [SerializeField] private GameObject AimPrefab;
+    public static GameObject PlayerCursor{ get => cursor; }
+    private static GameObject cursor;
+    private GameObject Canvas;
     public float detectionRadius = 20f;
     public LayerMask enemyLayer;
     private Transform currentTarget;
@@ -19,8 +22,15 @@ public class AutoAim : MonoBehaviour
     private Image AutoAimIndicatorUI;
     private Color32 disabledColor = new Color32(255, 255, 255, 34);
     private Color32 enabledColor = new Color32(255, 255, 255, 255);
+    private void Awake()
+    {
+        Canvas = GameObject.FindWithTag("Panel").transform.parent.transform.gameObject;
+        cursor = Instantiate(AimPrefab, Canvas.transform);
+        cursor.transform.SetAsFirstSibling();
+    }
     private void Start()
     {
+        
         cam = GameObject.FindWithTag("MainCamera").GetComponent<Camera>();
         AutoAimIndicatorUI = GameObject.FindWithTag("AutoAimIndicatorUI").GetComponent<Image>();
     }
@@ -109,14 +119,11 @@ public class AutoAim : MonoBehaviour
         isProcessing = true;
         if (!AutoAimStatus)
         {
-            Cursor.visible = false;
-            Cursor.SetCursor(AimCursor, new Vector2(AimCursor.width/2,AimCursor.height/2), CursorMode.Auto);
+            cursor.GetComponent<Image>().enabled = true;
         }
         else
         {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.SetCursor(null, new Vector2(AimCursor.width/2,AimCursor.height/2), CursorMode.Auto);
+            cursor.GetComponent<Image>().enabled = false;
         }
         AutoAimStatus = !AutoAimStatus;
         yield return new WaitForSeconds(AutoAimReload);
@@ -127,17 +134,12 @@ public class AutoAim : MonoBehaviour
     {
         if (currentTarget != null)
         {
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
-            Mouse.current.WarpCursorPosition(cam.WorldToScreenPoint(currentTarget.position));
-
-            // Vector2 direction = (currentTarget.position - transform.position).normalized;
-            // float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            // transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            cursor.GetComponent<Image>().enabled = true;
+            cursor.GetComponent<RectTransform>().position = cam.WorldToScreenPoint(currentTarget.position);
         }
         else
         {
-            Cursor.visible = false;
+            cursor.GetComponent<Image>().enabled = false;
         }
 
     }

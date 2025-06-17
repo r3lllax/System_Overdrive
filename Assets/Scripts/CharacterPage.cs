@@ -12,6 +12,7 @@ public class CharacterPage : MonoBehaviour
         sq
         .Append(transform.DOScale(1f, 0.5f).From(0)).SetEase(Ease.InOutCubic).Play().OnPlay(()=>gameObject.SetActive(!gameObject.activeSelf)).OnComplete(() => TempData.ActivePage = 0);
     }
+    
     public void Close()
     {
         Sequence sq = DOTween.Sequence();
@@ -34,6 +35,7 @@ public class CharacterPage : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(null, new Vector2(Screen.width / 2, Screen.height / 2), CursorMode.Auto);
     }
+    
     void OnEnable()
     {
         playerControls.Enable();
