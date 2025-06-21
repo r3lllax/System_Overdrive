@@ -3,7 +3,6 @@ using TMPro;
 using Unity.Burst.Intrinsics;
 using Unity.Cinemachine;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunWeapon : MonoBehaviour
